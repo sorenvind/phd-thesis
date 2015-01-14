@@ -1,0 +1,3174 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% THIS IS (MOSTLY) A WELL-ORGANIZED BIBTEX FILE, WITH PAPERS ORGANIZED INTO THEIR BASIC SUBJECT.
+%% PLEASE KEEP IT THAT WAY!
+%%
+%% OBVIOUSLY THIS IS TO MAKE IT EASY TO MAKE REFERENCES TO THE SUBJECTS LATER :)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Colored range counting %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@article{nekrich2009orthogonal,
+  title={Orthogonal range searching in linear and almost-linear space},
+  author={Nekrich, Yakov},
+  journal={Computational Geometry},
+  volume={42},
+  number={4},
+  pages={342--351},
+  year={2009}
+}
+
+@article{janardan1993generalized,
+  title={Generalized intersection searching problems},
+  author={Janardan, Ravi and Lopez, Mario},
+  journal={International Journal of Computational Geometry \& Applications},
+  volume={3},
+  number={01},
+  pages={39--69},
+  year={1993}
+}
+
+@article{shi2005optimal,
+  title={Optimal and near-optimal algorithms for generalized intersection reporting on pointer machines},
+  author={Shi, Qingmin and JaJa, Joseph},
+  journal={Inform. Process. Lett.},
+  volume={95},
+  number={3},
+  pages={382--388},
+  year={2005}
+}
+
+@article{gupta1997technique,
+  title={A technique for adding range restrictions to generalized searching problems},
+  author={Gupta, Prosenjit and Janardan, Ravi and Smid, Michiel},
+  journal={Inform. Process. Lett.},
+  volume={64},
+  number={5},
+  pages={263--269},
+  year={1997}
+}
+
+@book{van1992new,
+  title={New results on data structures in computational geometry},
+  author={van Kreveld, Marc Johan},
+  year={1992},
+  publisher={PhD thesis}
+}
+
+@incollection{bozanis1995new,
+  title={New upper bounds for generalized intersection searching problems},
+  author={Bozanis, Panayiotis and Kitsios, Nectarios and Makris, Christos and Tsakalidis, Athanasios},
+  booktitle={Automata, Languages and Programming},
+  pages={464--474},
+  year={1995}
+}
+
+@article{gupta1995further,
+  title={{Further Results on Generalized Intersection Searching Problems: Counting, Reporting, and Dynamization}},
+  author={Gupta, P and Janardan, R and Smid, M},
+  journal={Journal of Algorithms},
+  volume={19},
+  number={2},
+  pages={282--317},
+  year={1995}
+}
+
+@inproceedings{kaplan2007counting,
+  title={Counting colors in boxes},
+  author={Kaplan, Haim and Rubin, Natan and Sharir, Micha and Verbin, Elad},
+  booktitle={Proc. 18th SODA},
+  pages={785--794},
+  year={2007}
+}
+
+@inproceedings{larsen2013near,
+  title={{Near-Optimal Range Reporting Structures for Categorical Data.}},
+  author={Larsen, Kasper Green and van Walderveen, Freek},
+  booktitle={Proc. 24th SODA},
+  pages={265--276},
+  year={2013}
+}
+
+% 1D
+@incollection{nekrich2013optimal,
+  title={Optimal color range reporting in one dimension},
+  author={Nekrich, Yakov and Vitter, Jeffrey Scott},
+  booktitle={Proc. ESA},
+  pages={743--754},
+  year={2013}
+}
+
+% 1D
+@article{gagie2012colored,
+  title={Colored range queries and document retrieval},
+  author={Gagie, Travis and K{\"a}rkk{\"a}inen, Juha and Navarro, Gonzalo and Puglisi, Simon J},
+  journal={Theoretical Computer Science},
+  year={2012}
+}
+
+% IO
+@inproceedings{nekrich2012space,
+  title={Space-efficient range reporting for categorical data},
+  author={Nekrich, Yakov},
+  booktitle={Proc. 31st PODS},
+  pages={113--120},
+  year={2012}
+}
+
+@incollection{jaja2005space,
+  title={Space-efficient and fast algorithms for multidimensional dominance reporting and counting},
+  author={J{\'a}J{\'a}, Joseph and Mortensen, Christian W and Shi, Qingmin},
+  booktitle={Algorithms and Computation},
+  pages={558--568},
+  year={2005}
+}
+@inproceedings{patrascu2007lower,
+  title={Lower bounds for 2-dimensional range counting},
+  author={Patrascu, Mihai},
+  booktitle={Proc. 39th STOC},
+  pages={40--46},
+  year={2007}
+}
+
+%% Matrix multiplication
+@inproceedings{williams2012multiplying,
+  title={{Multiplying matrices faster than Coppersmith-Winograd}},
+  author={Williams, Virginia Vassilevska},
+  booktitle={Proc. 44th STOC},
+  pages={887--898},
+  year={2012}
+}
+
+% Related work (Colored Range Reporting)
+@inproceedings{larsen2012efficient,
+  title={{I/O-efficient data structures for colored range and prefix reporting}},
+  author={Larsen, Kasper Green and Pagh, Rasmus},
+  booktitle={Proc. 23rd SODA},
+  pages={583--592},
+  year={2012}
+}
+
+@incollection{agarwal2002range,
+  title={{Range searching in categorical data: Colored range searching on grid}},
+  author={Agarwal, Pankaj K and Govindarajan, Sathish and Muthukrishnan, S},
+  booktitle={Proc. ESA},
+  pages={17--28},
+  year={2002}
+}
+
+%Approximate
+@incollection{lai2005approximate,
+  title={Approximate colored range queries},
+  author={Lai, Ying Kit and Poon, Chung Keung and Shi, Benyun},
+  booktitle={Algorithms and Computation},
+  pages={360--369},
+  year={2005}
+}
+@article{lai2008approximate,
+  title={Approximate colored range and point enclosure queries},
+  author={Lai, Ying Kit and Poon, Chung Keung and Shi, Benyun},
+  journal={Journal of Discrete Algorithms},
+  volume={6},
+  number={3},
+  pages={420--432},
+  year={2008}
+}
+
+@article{de2008orthogonal,
+  title={Orthogonal Range Searching},
+  author={de Berg, Mark and Cheong, Otfried and van Kreveld, Marc and Overmars, Mark},
+  journal={Computational Geometry: Algorithms and Applications},
+  pages={95--120},
+  year={2008}
+}
+
+
+% Predecessor
+@article{van1976design,
+  title={Design and implementation of an efficient priority queue},
+  author={van Emde Boas, P. and Kaas, R. and Zijlstra, E.},
+  journal={Theory Comput. Syst.},
+  volume={10},
+  number={1},
+  pages={99--127},
+  year={1976}
+}
+@article{mehlhorn1990bounded,
+  title={Bounded ordered dictionaries in {$O(\log \log N)$} time and {$O(n)$} space},
+  author={Mehlhorn, K. and N{\"a}her, S.},
+  journal={Inform. Process. Lett.},
+  volume={35},
+  number={4},
+  pages={183--189},
+  year={1990}
+}
+@article{willard1983log,
+  title={Log-logarithmic worst-case range queries are possible in space {$\Theta$(N)}},
+  author={Willard, D.E.},
+  journal={Inform. Process. Lett.},
+  volume={17},
+  number={2},
+  pages={81--84},
+  year={1983}
+}
+
+@article{andersson1999general,
+  title={General balanced trees},
+  author={Andersson, Arne},
+  journal={Journal of Algorithms},
+  volume={30},
+  number={1},
+  pages={1--18},
+  year={1999}
+}
+@book{overmars1983design,
+  title={The design of dynamic data structures},
+  author={Overmars, Mark H},
+  volume={156},
+  year={1983}
+}
+
+
+%% Tree2SLP
+@article{downey1980variations,
+  title={Variations on the common subexpression problem},
+  author={Downey, Peter J and Sethi, Ravi and Tarjan, Robert Endre},
+  journal={J. ACM},
+  volume={27},
+  number={4},
+  pages={758--771},
+  year={1980}
+}
+
+%% Clustering
+@article{king1967step,
+  title={Step-wise clustering procedures},
+  author={King, Benjamin},
+  journal={J. Am. Statist. Assoc.},
+  volume={62},
+  number={317},
+  pages={86--101},
+  year={1967}
+}
+@book{sneath1973numerical,
+  title={Numerical taxonomy. The principles and practice of numerical classification.},
+  author={Sneath, Peter H A and Sokal, Robert R},
+  year={1973}
+}
+@article{ward1963hierarchical,
+  title={Hierarchical grouping to optimize an objective function},
+  author={Ward Jr, Joe H},
+  journal={J. Am. Statist. Assoc.},
+  volume={58},
+  number={301},
+  pages={236--244},
+  year={1963}
+}
+@article{jain1999data,
+  title={{Data Clustering: A Review}},
+  author={Jain, Anil K and Murty, M Narasimha and Flynn, Patrick J},
+  journal={ACM CSUR},
+  volume={31},
+  number={3},
+  pages={264--323},
+  year={1999}
+}
+
+%% Range Queries
+% B
+@article{bayer1972organization,
+  title={Organization and maintenance of large ordered indexes},
+  author={Bayer, R and McCreight, EM},
+  journal={Acta Informatica},
+  volume={1},
+  number={3},
+  pages={173--189},
+  year={1972}
+}
+% B variants
+@article{comer1979ubiquitous,
+  title={{Ubiquitous B-tree}},
+  author={Comer, Douglas},
+  journal={ACM CSUR},
+  volume={11},
+  number={2},
+  pages={121--137},
+  year={1979}
+}
+% R
+@inproceedings{guttman1984r,
+  title={{R-trees: A dynamic index structure for spatial searching}},
+  author={Guttman, Antonin},
+  booktitle={Proc. 1984 ACM SIGMOD},
+  volume={14},
+  number={2},
+  pages = {47--57}
+}
+% R+
+@inproceedings{sellis1987r+,
+  title={{The R+-tree: A dynamic index for multidimensional objects}},
+  author={Sellis, Timos and Roussopoulos, Nick and Faloutsos, Christos},
+  booktitle={Proc. 13th VLDB},
+  pages={507--518},
+  year={1987}
+}
+% R*
+@inproceedings{beckmann1990r,
+  title={{The R*-tree: an efficient and robust access method for points and rectangles}},
+  author={Beckmann, Norbert and Kriegel, Hans-Peter and Schneider, Ralf and Seeger, Bernhard},
+  booktitle={Proc. 1990 ACM SIGMOD},
+  volume={19},
+  number={2},
+  pages = {322--331}
+}
+% X
+@inproceedings{berchtold1996x,
+  title={{The X-tree: An Index Structure for High-Dimensional Data}},
+  author={Berchtold, Stefan and Keim, Daniel A and Kriegel, Hans-Peter},
+  booktitle={Proc. 22th VLDB},
+  pages={28--39},
+  year={1996}
+}
+% kd
+@article{bentley1975multidimensional,
+  title={Multidimensional binary search trees used for associative searching},
+  author={Bentley, Jon Louis},
+  journal={Comm. ACM},
+  volume={18},
+  number={9},
+  pages={509--517},
+  year={1975}
+}
+@article{bentley1979multidimensional,
+  title={Multidimensional binary search trees in database applications},
+  author={Bentley, Jon Louis},
+  journal={IEEE Trans. Softw. Eng.},
+  number={4},
+  pages={333--340},
+  year={1979}
+}
+% range
+@article{bentley1979decomposable,
+  title={Decomposable searching problems},
+  author={Bentley, Jon Louis},
+  journal={Inform. Process. Lett.},
+  volume={8},
+  number={5},
+  pages={244--251},
+  year={1979}
+}
+@inproceedings{lueker1978data,
+  title={A data structure for orthogonal range queries},
+  author={Lueker, George S},
+  booktitle={Proc. 19th FOCS},
+  pages={28--34},
+  year={1978}
+}
+@article{lee1980quintary,
+  title={Quintary trees: a file structure for multidimensional datbase sytems},
+  author={Lee, DT and Wong, CK},
+  journal={ACM TODS},
+  volume={5},
+  number={3},
+  pages={339--353},
+  year={1980}
+}
+% quadtrees
+@article{orenstein1982multidimensional,
+  title={Multidimensional tries used for associative searching},
+  author={Orenstein, Jack A},
+  journal={Inform. Process. Lett.},
+  volume={14},
+  number={4},
+  pages={150--157},
+  year={1982}
+}
+% compressed quad
+@inproceedings{clarkson1983fast,
+  title={Fast algorithms for the all nearest neighbors problem},
+  author={Clarkson, Kenneth L},
+  booktitle={Proc. 24th FOCS},
+  volume={83},
+  pages={226--232},
+  year={1983}
+}
+@article{arge2008priority,
+  title={The priority R-tree: A practically efficient and worst-case optimal R-tree},
+  author={Arge, Lars and Berg, Mark De and Haverkort, Herman and Yi, Ke},
+  journal={ACM TALG},
+  volume={4},
+  number={1},
+  pages={9},
+  year={2008}
+}
+@inproceedings{robinson1981kdb,
+  title={{The KDB-tree: a search structure for large multidimensional dynamic indexes}},
+  author={Robinson, John T},
+  booktitle={Proc. 1981 ACM SIGMOD},
+  pages={10--18}
+}
+@incollection{procopiuc2003bkd,
+  title={{Bkd-tree: A dynamic scalable kd-tree}},
+  author={Procopiuc, Octavian and Agarwal, Pankaj K and Arge, Lars and Vitter, Jeffrey Scott},
+  booktitle={Proc. 8th SSTD},
+  pages={46--65},
+  year={2003}
+}
+% Divided kd
+@article{van1991dividedk,
+  title={Divided k-d trees},
+  author={van Kreveld, Marc J and Overmars, Mark H},
+  journal={Algorithmica},
+  volume={6},
+  number={1-6},
+  pages={840--858},
+  year={1991}
+}
+% O, C tree
+@incollection{kanth1999optimal,
+  title={{Optimal Dynamic Range Searching in Non-replicating Index Structures}},
+  author={Kanth, KV Ravi and Singh, Ambuj},
+  booktitle={Proc. 7th ICDT},
+  pages={257--276},
+  year={1999}
+}
+% RQ Survey
+@article{gaede1998multidimensional,
+  title={Multidimensional access methods},
+  author={Gaede, Volker and G{\"u}nther, Oliver},
+  journal={ACM CSUR},
+  volume={30},
+  number={2},
+  pages={170--231},
+  year={1998}
+}
+% LSD
+@inproceedings{henrich1989lsd,
+  title={{The LSD tree: spatial access to multidimensional and non-point objects}},
+  author={Henrich, A and Six, H-W and Widmayer, P},
+  booktitle={Proc. 15th VLDB},
+  pages={45--53},
+  year={1989}
+}
+% Buddy
+@inproceedings{seeger1990buddy,
+  title={{The Buddy-Tree: An Efficient and Robust Access Method for Spatial Data Base Systems}},
+  author={Seeger, Bernhard and Kriegel, Hans-Peter},
+  booktitle={Proc. 16th VLDB},
+  pages={590--601},
+  year={1990}
+}
+% GRID
+@article{nievergelt1984grid,
+  title={{The Grid File: An Adaptable, Symmetric Multikey File Structure}},
+  author={Nievergelt, J{\"u}rg and Hinterberger, Hans and Sevcik, Kenneth C},
+  journal={ACM TODS},
+  volume={9},
+  number={1},
+  pages={38--71},
+  year={1984}
+}
+% BANG
+@article{freeston1987bang,
+  title={{The BANG file: A new kind of grid file}},
+  author={Freeston, Michael},
+  journal={Proc. 1987 ACM SIGMOD},
+  volume={16},
+  number={3},
+  pages={260--269}
+}
+% SKD
+@inproceedings{ooi1987spatial,
+  title={Spatial kd-tree: An indexing mechanism for spatial databases},
+  author={Ooi, Beng Chin and McDonell, Ken J and Sacks-Davis, Ron},
+  booktitle={Proc. IEEE COMPSAC 1987},
+  pages={433--438}
+}
+
+% succinct/entropy, points, grid
+@incollection{bose2009succinct,
+  title={Succinct orthogonal range search structures on a grid with applications to text indexing},
+  author={Bose, Prosenjit and He, Meng and Maheshwari, Anil and Morin, Pat},
+  booktitle={Proc. 11th WADS},
+  pages={98--109},
+  year={2009}
+}
+@article{makinen2007rank,
+  title={Rank and select revisited and extended},
+  author={M{\"a}kinen, Veli and Navarro, Gonzalo},
+  journal={TCS},
+  volume={387},
+  number={3},
+  pages={332--347},
+  year={2007}
+}
+@article{farzan2014entropy,
+  title={Entropy-bounded representation of point grids},
+  author={Farzan, Arash and Gagie, Travis and Navarro, Gonzalo},
+  journal={CGTA},
+  volume={47},
+  number={1},
+  pages={1--14},
+  year={2014}
+}
+@incollection{barbay2010compact,
+  title={{Compact rich-functional binary relation representations}},
+  author={Barbay, J{\'e}r{\'e}my and Claude, Francisco and Navarro, Gonzalo},
+  booktitle={Proc. 9th LATIN},
+  pages={170--183},
+  year={2010}
+}
+
+% SLP algorithmics
+@article{lohrey2012algorithmics,
+  title={{Algorithmics on SLP-compressed strings: a survey}},
+  author={Lohrey, Markus},
+  year={2012},
+  journal={Groups Complexity Cryptology},
+  volume={4},
+  number={2},
+  pages={241--299}
+}
+% FP SLP
+@inproceedings{bille2013fingerprints,
+  title={{Fingerprints in Compressed Strings}},
+  author={Bille, Philip and Cording, Patrick Hagge and G{\o}rtz, Inge Li and Sach, Benjamin and Vildh{\o}j, Hjalte Wedel and Vind, S{\o}ren},
+  booktitle={Proc. 13th WADS},
+  year={2013},
+  pages={145--157}
+}
+% applications
+@book{samet1990applications,
+  title={Applications of spatial data structures},
+  author={Samet, Hanan},
+  year={1990}
+}
+
+% Logarithmic Method
+@article{bentley1980decomposable,
+  title={{Decomposable searching problems I. Static-to-dynamic transformation}},
+  author={Bentley, Jon Louis and Saxe, James B},
+  journal={J. Algorithms},
+  volume={1},
+  number={4},
+  pages={301--358},
+  year={1980}
+}
+% Logarithmic Method, External
+@article{arge2004efficient,
+  title={{I/O-efficient dynamic planar point location}},
+  author={Arge, Lars and Vahrenhold, Jan},
+  journal={CGTA},
+  volume={29},
+  number={2},
+  pages={147--162},
+  year={2004}
+}
+
+% Skip Quad
+@article{eppstein2008skip,
+  title={{Skip quadtrees: Dynamic data structures for multidimensional point sets}},
+  author={Eppstein, David and Goodrich, Michael T and Sun, Jonathan Z},
+  journal={IJCGA},
+  volume={18},
+  number={01n02},
+  pages={131--160},
+  year={2008}
+}
+
+
+% Level Ancestor
+@inproceedings{dietz1991finding,
+  author    = {Paul F. Dietz},
+  title     = {Finding Level-Ancestors in Dynamic Trees},
+  booktitle = {Proc. 2nd WADS},
+  year      = {1991},
+  pages     = {32-40}
+}
+
+@article{berkman1994finding,
+  title={Finding level-ancestors in trees},
+  author={Berkman, O. and Vishkin, U.},
+  journal={J. Comput. System Sci.},
+  volume={48},
+  number={2},
+  pages={214--230},
+  year={1994}
+}
+@inproceedings{alstrup2000improved,
+  title={Improved algorithms for finding level ancestors in dynamic trees},
+  author={Alstrup, Stephen and Holm, Jacob},
+  booktitle={Proc. 27th ICALP},
+  pages={73--84},
+  year={2000}
+}
+@article{bender2004level,
+  title={The level ancestor problem simplified},
+  author={Bender, M.A. and Farach-Colton, M.},
+  journal={Theoret. Comput. Sci.},
+  volume={321},
+  pages={5--12},
+  year={2004}
+}
+
+% Predecessor
+@article{van1976design,
+  title={Design and implementation of an efficient priority queue},
+  author={van Emde Boas, P. and Kaas, R. and Zijlstra, E.},
+  journal={Theory Comput. Syst.},
+  volume={10},
+  number={1},
+  pages={99--127},
+  year={1976}
+}
+@article{mehlhorn1990bounded,
+  title={Bounded ordered dictionaries in {$O(\log \log N)$} time and {$O(n)$} space},
+  author={Mehlhorn, K. and N{\"a}her, S.},
+  journal={Inform. Process. Lett.},
+  volume={35},
+  number={4},
+  pages={183--189},
+  year={1990}
+}
+@article{willard1983log,
+  title={Log-logarithmic worst-case range queries are possible in space {$\Theta$(N)}},
+  author={Willard, D.E.},
+  journal={Inform. Process. Lett.},
+  volume={17},
+  number={2},
+  pages={81--84},
+  year={1983}
+}
+
+% Heavy path
+@article{HT1984,
+	Author = {D. Harel and R. E. Tarjan},
+	Journal = {SIAM J. Comput.},
+	Number = {2},
+	Pages = {338--355},
+	Title = {Fast algorithms for finding nearest common ancestors},
+	Volume = {13},
+	Year = {1984}}
+
+
+% SLP Random Access
+@inproceedings{bille2011random,
+  title={Random access to grammar-compressed strings},
+  author={Bille, P. and Landau, G.M. and Raman, R. and Sadakane, K. and Satti, S.R. and Weimann, O.},
+  booktitle={Proc. 22nd SODA},
+  pages={373--389},
+  year={2011}
+}
+
+% General LCE
+@inproceedings{bille12lce,
+  author    = {Philip Bille and
+               Inge Li G{\o}rtz and
+               Benjamin Sach and
+               Hjalte Wedel Vildh{\o}j},
+  title     = {Time-Space Trade-Offs for Longest Common Extensions},
+  booktitle = {Proc. 23rd CPM},
+  year      = {2012},
+  pages     = {293--305},
+  ee        = {http://dx.doi.org/10.1007/978-3-642-31265-6_24},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+
+
+% Fusion Trees, Atomic heaps
+@article{fredmanwillardfusion,
+	Author = {Michael L. Fredman and Dan E. Willard},
+	Date-Modified = {2007-04-19 09:43:12 +0200},
+	Journal = {J. Comput. System Sci.},
+	Number = {3},
+	Pages = {424--436},
+	Title = {Surpassing the information theoretic bound with fusion trees},
+	Volume = {47},
+	Year = {1993}}
+
+@inproceedings{Hagerup1998,
+	Author = {Torben Hagerup},
+	Booktitle = {Proc. 15th STACS},
+	Pages = {366--398},
+	Title = {Sorting and Searching on the {W}ord {RAM}},
+	Year = {1998}
+	}
+
+% Fingerprints
+@article{karp1987efficient,
+  title={Efficient randomized pattern-matching algorithms},
+  author={Karp, Richard M and Rabin, Michael O},
+  journal={IBM J. Res. Dev.},
+  volume={31},
+  number={2},
+  pages={249--260},
+  year={1987}
+}
+
+
+@article{kaporis2013improved,
+  title={Improved Bounds for Finger Search on a RAM},
+  author={Kaporis, Alexis and Makris, Christos and Sioutas, Spyros and Tsakalidis, Athanasios and Tsichlas, Kostas and Zaroliagis, Christos},
+  journal={Algorithmica},
+  pages={1--38},
+  year={2013},
+  publisher={Springer}
+}
+@article{andersson2007dynamic,
+  title={Dynamic ordered sets with exponential search trees},
+  author={Andersson, Arne and Thorup, Mikkel},
+  journal={Journal of the ACM (JACM)},
+  volume={54},
+  number={3},
+  pages={13},
+  year={2007},
+  publisher={ACM}
+}
+
+@inproceedings{BT2010,
+	Author = {Philip Bille and Mikkel Thorup},
+	Booktitle = {Proc. 21st SODA},
+	Date-Added = {2010-03-16 14:51:39 +0100},
+	Date-Modified = {2010-03-16 14:52:31 +0100},
+	Title = {Regular expression matching with multi-strings and intervals},
+	Year = {2010}}
+	
+@article{CIMRTT2002,
+	Author = {Crochemore, Maxime and Iliopoulos, Costas and Makris, Christos and Rytter, Wojciech and Tsakalidis, Athanasios and Tsichlas, Kostas},
+	Date-Added = {2010-03-16 14:44:34 +0100},
+	Date-Modified = {2010-03-16 14:44:58 +0100},
+	Journal = {Nordic J. of Computing},
+	Number = {1},
+	Pages = {54--65},
+	Title = {Approximate string matching with gaps},
+	Volume = {9},
+	Year = {2002}}
+
+@inproceedings{LAIP2003,
+	Author = {Inbok Lee and A. Apostolico and Costas S. Iliopoulos and Kunsoo Park},
+	Booktitle = {Proc. 14th AWOCA},
+	Date-Added = {2010-03-16 14:40:02 +0100},
+	Date-Modified = {2010-03-16 14:41:58 +0100},
+	Pages = {89-100},
+	Title = {Finding approximate occurrences of a pattern that contains gaps},
+	Year = {2003}}
+
+@inproceedings{RILMS2006,
+	Author = {M. Sohel Rahman and Costas S. Iliopoulos and Inbok Lee and Manal Mohamed and William F. Smyth},
+	Booktitle = {Proc. 12th COCOON},
+	Date-Added = {2010-03-16 14:33:35 +0100},
+	Date-Modified = {2010-03-16 14:35:34 +0100},
+	Pages = {146-155},
+	Title = {Finding Patterns with Variable Length Gaps or Don't Cares},
+	Year = {2006}}
+
+@article{Thorup2002,
+	Author = {Mikkel Thorup},
+	Date-Added = {2009-10-10 23:19:20 +0200},
+	Date-Modified = {2009-10-10 23:20:56 +0200},
+	Journal = {J. Algorithms},
+	Note = {Announced at SODA 1997},
+	Number = {2},
+	Pages = {205-230},
+	Title = {Randomized Sorting in {$O(n \log \log n)$} Time and Linear Space Using Addition, Shift, and Bit-wise Boolean Operations},
+	Volume = {42},
+	Year = {2002}}
+
+@article{MPVZ2005,
+	Author = {Morgante, Michele and Policriti, Alberto and Vitacolonna, Nicola and Zuccolo, Andrea},
+	Date-Added = {2009-10-10 13:26:35 +0200},
+	Date-Modified = {2009-10-10 23:12:14 +0200},
+	Journal = {J. Comput. Bio.},
+	Number = {8},
+	Pages = {1065-1082},
+	Title = {Structured Motifs Search},
+	Volume = {12},
+	Year = {2005},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1089/cmb.2005.12.1065}}
+
+@inproceedings{BB1994,
+	Author = {P Bucher and A Bairoch},
+	Booktitle = {Proc. 2nd ISMB},
+	Date-Added = {2009-09-30 14:24:58 +0200},
+	Date-Modified = {2009-10-10 23:07:08 +0200},
+	Pages = {53--61},
+	Title = {A generalized profile syntax for biomolecular sequence motifs and its function in automatic sequence interpretation},
+	Year = {1994}}
+
+@article{Hofmann1999,
+	Author = {K Hofmann and P Bucher and L Falquet and A Bairoch},
+	Date-Added = {2009-09-30 14:24:58 +0200},
+	Date-Modified = {2009-09-30 14:24:58 +0200},
+	Journal = {Nucleic Acids Res},
+	Number = {27},
+	Pages = {215--219},
+	Title = {The PROSITE database, its status in},
+	Year = {1999}}
+
+@inproceedings{FG2009,
+	Author = {Kimmo Fredriksson and Szymon Grabowski},
+	Booktitle = {Proc. 3rd LATA},
+	Date-Added = {2009-09-30 12:28:52 +0200},
+	Date-Modified = {2009-10-10 23:07:49 +0200},
+	Pages = {338--349},
+	Title = {Nested Counters in Bit-Parallel String Matching},
+	Year = {2009}}
+
+@article{FG2008,
+	Author = {Kimmo Fredriksson and Szymon Grabowski},
+	Date-Added = {2009-09-30 12:22:02 +0200},
+	Date-Modified = {2009-09-30 12:22:17 +0200},
+	Journal = {Inf. Retr.},
+	Number = {4},
+	Pages = {335-357},
+	Title = {Efficient algorithms for pattern matching with general gaps, character classes, and transposition invariance},
+	Volume = {11},
+	Year = {2008}}
+
+@article{MM1993,
+	Author = {Gene Myers and Gerhard Mehldau},
+	Date-Added = {2009-09-30 11:43:18 +0200},
+	Date-Modified = {2009-09-30 11:44:54 +0200},
+	Journal = {CABIOS},
+	Number = {3},
+	Pages = {299--314},
+	Title = {A System for Pattern Matching Applications on Biosequences},
+	Volume = {9},
+	Year = {1993}}
+
+@inproceedings{BT2009,
+	Author = {Philip Bille and Mikkel Thorup},
+	Booktitle = {Proc. 36th ICALP},
+	Date-Added = {2009-07-03 11:05:26 +0200},
+	Date-Modified = {2009-10-10 23:05:48 +0200},
+	Pages = {171--182},
+	Title = {Faster Regular Expression Matching},
+	Year = {2009}}
+
+@inproceedings{SSW2004,
+	Author = {Sen, Subhabrata and Spatscheck, Oliver and Wang, Dongmei},
+	Booktitle = {Proc. 13th WWW},
+	Date-Added = {2009-07-03 10:40:00 +0200},
+	Date-Modified = {2009-10-10 23:14:36 +0200},
+	Pages = {512--521},
+	Title = {Accurate, scalable in-network identification of p2p traffic using application signatures},
+	Year = {2004},
+	Bdsk-Url-1 = {http://doi.acm.org/10.1145/988672.988742}}
+
+@inproceedings{Thorup1997,
+	Author = {Mikkel Thorup},
+	Booktitle = {Proc. 8th SODA},
+	Date-Added = {2009-06-18 10:18:15 +0200},
+	Date-Modified = {2009-10-10 23:15:18 +0200},
+	Pages = {352--359},
+	Title = {Randomized sorting in {$O(n \log \log n)$} Time and Linear Space Using Addition, Shift, and Bit-Wise Boolean Operations},
+	Year = {1997}}
+
+@article{KMP1977,
+	Author = {Donald E. Knuth and James H. Morris, Jr. and Vaughan R. Pratt},
+	Date-Added = {2009-06-16 09:33:32 +0200},
+	Date-Modified = {2009-06-16 09:33:32 +0200},
+	Journal = {SIAM J. Comput.},
+	Number = {2},
+	Pages = {323-350},
+	Title = {Fast Pattern Matching in Strings},
+	Volume = {6},
+	Year = {1977},
+	Bdsk-Url-1 = {http://link.aip.org/link/?SMJ/6/323/1},
+	Bdsk-Url-2 = {http://dx.doi.org/10.1137/0206024}}
+
+@article{AC1975,
+	Address = {New York, NY, USA},
+	Author = {Alfred V. Aho and Margaret J. Corasick},
+	Date-Added = {2009-06-12 12:32:55 +0200},
+	Date-Modified = {2009-06-12 12:32:55 +0200},
+	Doi = {http://doi.acm.org/10.1145/360825.360855},
+	Issn = {0001-0782},
+	Journal = {Commun. ACM},
+	Number = {6},
+	Pages = {333--340},
+	Publisher = {ACM},
+	Title = {Efficient string matching: an aid to bibliographic search},
+	Volume = {18},
+	Year = {1975},
+	Bdsk-Url-1 = {http://doi.acm.org/10.1145/360825.360855}}
+
+@incollection{Kle56,
+	Author = {S. C. Kleene},
+	Booktitle = {Automata Studies, Ann. Math. Stud. No. 34},
+	Date-Added = {2009-04-16 08:55:04 +0200},
+	Date-Modified = {2009-04-16 08:55:04 +0200},
+	Editor = {C. E. Shannon and J. McCarthy},
+	Pages = {3--41},
+	Publisher = {Princeton U. Press},
+	Title = {Representation of events in nerve nets and finite automata},
+	Year = 1956}
+
+@inproceedings{Bille06,
+	Author = {Philip Bille},
+	Booktitle = {Proc. 33rd ICALP},
+	Date-Added = {2009-04-16 08:52:52 +0200},
+	Date-Modified = {2009-10-10 23:03:31 +0200},
+	Pages = {643--654},
+	Title = {New Algorithms for Regular Expression Matching.},
+	Year = {2006}}
+
+@article{BFC2008,
+	Author = {Philip Bille and Martin Farach-Colton},
+	Date-Added = {2009-02-03 12:42:51 +0100},
+	Date-Modified = {2009-02-03 12:42:51 +0100},
+	Journal = {Theoret. Comput. Sci.},
+	Pages = {486 - 496},
+	Rating = {0},
+	Read = {No},
+	Title = {Fast and Compact Regular Expression Matching},
+	Volume = {409},
+	Year = {2008},
+	Bdsk-Url-1 = {http://www.citebase.org/cgi-bin/citations?id=oai:arXiv.org:cs/0509069}}
+
+@inproceedings{JMR2007,
+	Author = {Theodore Johnson and S. Muthukrishnan and Irina Rozenbaum},
+	Booktitle = {Proc. 23nd ICDE},
+	Date-Added = {2007-11-15 09:27:18 +0100},
+	Date-Modified = {2009-10-10 23:08:52 +0200},
+	Pages = {1315-1319},
+	Title = {Monitoring Regular Expressions on Out-of-Order Streams},
+	Year = {2007}}
+
+@inproceedings{YCDLK2006,
+	Author = {Fang Yu and Zhifeng Chen and Yanlei Diao and T. V. Lakshman and Randy H. Katz},
+	Booktitle = {Proc. ANCS},
+	Date-Added = {2007-11-15 09:24:30 +0100},
+	Date-Modified = {2009-10-10 23:16:08 +0200},
+	Pages = {93--102},
+	Title = {Fast and memory-efficient regular expression matching for deep packet inspection},
+	Year = {2006}}
+
+@inproceedings{CGGTVV1996,
+	Author = {Yi-Jen Chiang and Michael T. Goodrich and Edward F. Grove and Roberto Tamassia and Darren Erik Vengroff and Jeffrey Scott Vitter},
+	Booktitle = {Proceedings of the 6th annual ACM-SIAM Symposium on Discrete Algorithms},
+	Date-Added = {2007-11-08 10:37:06 +0100},
+	Date-Modified = {2007-11-08 10:38:16 +0100},
+	Isbn = {0-89871-349-8},
+	Pages = {139--149},
+	Title = {External-memory graph algorithms},
+	Year = {1995}}
+
+@article{AV1988,
+	Address = {New York, NY, USA},
+	Author = {Alok Aggarwal and Jeffrey S. Vitter},
+	Date-Added = {2007-11-07 15:12:33 +0100},
+	Date-Modified = {2008-07-02 22:17:19 +0200},
+	Issn = {0001-0782},
+	Journal = {Commun. ACM},
+	Number = {9},
+	Pages = {1116--1127},
+	Publisher = {ACM},
+	Title = {The {I}nput/{O}utput complexity of sorting and related problems},
+	Volume = {31},
+	Year = {1988},
+	Bdsk-Url-1 = {http://doi.acm.org/10.1145/48529.48535}}
+
+@inproceedings{MR1985,
+	Author = {Gary L. Miller and John H. Reif},
+	Booktitle = {Proceedings of the 26th Annual IEEE Symposium on Foundations of Computer Science},
+	Date-Added = {2007-11-06 13:38:04 +0100},
+	Date-Modified = {2007-11-06 13:39:08 +0100},
+	Pages = {478-489},
+	Title = {Parallel Tree Contraction and Its Application},
+	Year = {1985}}
+
+@book{Sto00,
+	Author = {Bjarne Stroustrup},
+	Note = {First edition from 1985},
+	Publisher = {Addison-Wesley},
+	Title = {The C++ Programming Language: Special Edition (3rd Edition)},
+	Year = 2000}
+
+@book{KR78,
+	Author = {Brian Kernighan and Dennis Ritchie},
+	Publisher = {Prentice-Hall},
+	Title = {The C Programming Language (1st Ed.)},
+	Year = 1978}
+
+@book{KR88,
+	Author = {Brian Kernighan and Dennis Ritchie},
+	Date-Added = {2007-10-30 21:39:55 +0100},
+	Date-Modified = {2007-10-30 21:39:55 +0100},
+	Note = {First edition from 1978},
+	Publisher = {Prentice-Hall},
+	Title = {The C Programming Language (2nd Ed.)},
+	Year = 1988}
+
+@inproceedings{Cha07,
+	Author = {T. M. Chan},
+	Booktitle = {Proc. 39th STOC},
+	Date-Added = {2007-10-30 21:39:48 +0100},
+	Date-Modified = {2007-10-30 21:39:48 +0100},
+	Pages = {590--598},
+	Title = {More algorithms for all-pairs shortest paths in weighted graphs},
+	Year = {2007}}
+
+@article{Fre76,
+	Author = {M.L. Fredman},
+	Date-Added = {2007-10-30 21:39:39 +0100},
+	Date-Modified = {2007-11-13 12:27:03 +0100},
+	Journal = {SIAM J. Comput.},
+	Number = 1,
+	Pages = {83--89},
+	Title = {New Bounds on the Complexity of the Shortest Path Problem},
+	Volume = 5,
+	Year = {1976}}
+
+@article{War62,
+	Author = {S. Warshall},
+	Date-Added = {2007-10-30 21:39:31 +0100},
+	Date-Modified = {2007-10-30 21:39:31 +0100},
+	Journal = {J. ACM},
+	Number = {1},
+	Pages = {11--12},
+	Title = {A Theorem on Boolean Matrices},
+	Volume = {9},
+	Year = {1962}}
+
+@article{Flo62,
+	Author = {R.W. Floyd},
+	Date-Added = {2007-10-30 21:39:20 +0100},
+	Date-Modified = {2007-11-13 12:25:03 +0100},
+	Journal = {Commun. ACM},
+	Number = {6},
+	Pages = {345},
+	Title = {Algorithm 97: Shortest path},
+	Volume = {5},
+	Year = {1962}}
+
+@incollection{Gal85,
+	Author = {Z. Galil},
+	Booktitle = {Combinatorial problems on words, NATO ASI Series, Vol. F12},
+	Date-Added = {2007-10-30 21:39:10 +0100},
+	Date-Modified = {2007-10-30 21:39:10 +0100},
+	Editor = {A. Apostolico and Z. Galil},
+	Pages = {1--8},
+	Title = {Open problems in stringology},
+	Year = 1985}
+
+@phdthesis{BaezaYates1989,
+	Author = {Ricardo A. Baeza-Yates},
+	Date-Added = {2007-06-04 13:46:07 +0200},
+	Date-Modified = {2007-06-04 13:47:44 +0200},
+	School = {Dept. of Computer Science, University of Waterloo},
+	Title = {Efficient Text Searching},
+	Year = {1989}}
+
+@article{AHNR1998,
+	Address = {Orlando, FL, USA},
+	Author = {Arne Andersson and Torben Hagerup and Stefan Nilsson and Rajeev Raman},
+	Date-Added = {2007-06-04 13:34:03 +0200},
+	Date-Modified = {2008-07-02 22:17:19 +0200},
+	Issn = {0022-0000},
+	Journal = {J. Comput. System Sci.},
+	Number = {1},
+	Pages = {74--93},
+	Publisher = {Academic Press, Inc.},
+	Title = {Sorting in linear time?},
+	Volume = {57},
+	Year = {1998},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1006/jcss.1998.1580}}
+
+@article{AH1997,
+	Author = {Susanne Albers and Torben Hagerup},
+	Date-Added = {2007-06-04 13:33:42 +0200},
+	Date-Modified = {2007-06-25 10:22:45 +0200},
+	Journal = {Inform. and Comput.},
+	Pages = {25--51},
+	Title = {Improved parallel integer sorting without concurrent writing},
+	Volume = {136},
+	Year = {1997}}
+
+@inproceedings{Chan2007,
+	Author = {Timothy M. Chan},
+	Booktitle = {Proceedings of the 39th Annual ACM Symposium on Theory of Computing},
+	Date-Added = {2007-06-04 12:47:21 +0200},
+	Date-Modified = {2009-04-15 15:35:09 +0200},
+	Pages = {590--598},
+	Title = {More algorithms for all-pairs shortest paths in weighted graphs},
+	Year = {2007}}
+
+@inproceedings{Han2006,
+	Author = {Yijie Han},
+	Booktitle = {Proceedings of the 14th Annual European Symposium on Algorithms, Lecture Notes in Computer Science},
+	Date-Added = {2007-06-04 12:42:43 +0200},
+	Date-Modified = {2007-06-04 12:45:48 +0200},
+	Pages = {411--417},
+	Title = {An {$O(n^3(\log\log n/\log n)^{5/4})$} Time Algorithm for All Pairs Shortest Paths},
+	Volume = {4168},
+	Year = {2006}}
+
+@inproceedings{Zwick2004,
+	Author = {U. Zwick},
+	Booktitle = {Proceedings of the 15th International Symposium on Algorithms and Computation, Lecture Notes in Computer Science},
+	Date-Added = {2007-06-04 12:36:01 +0200},
+	Date-Modified = {2007-06-04 12:38:22 +0200},
+	Pages = {921--932},
+	Title = {A slightly improved sub-cubic algorithm for the all pairs shortest paths problem with real edge lengths},
+	Volume = {3341},
+	Year = {2004}}
+
+@inproceedings{Takaoka2004,
+	Author = {T. Takaoka},
+	Booktitle = {Proceedings of the 10th Annual International Computing and Combinatorics Conference, Lecture Notes in Computer Science},
+	Date-Added = {2007-06-04 12:31:23 +0200},
+	Date-Modified = {2007-06-04 12:33:37 +0200},
+	Pages = {278--289},
+	Title = {A faster algorithm for the all-pairs shortest path problem and its application},
+	Volume = {3106},
+	Year = {2004}}
+
+@article{Han2004,
+	Author = {Yijie Han},
+	Date-Added = {2007-06-04 12:29:03 +0200},
+	Date-Modified = {2007-06-04 12:29:44 +0200},
+	Journal = {Inform. Process. Lett.},
+	Number = {5},
+	Pages = {245--250},
+	Title = {Improved algorithm for all pairs shortest paths},
+	Volume = {91},
+	Year = {2004}}
+
+@inproceedings{Chan2006,
+	Author = {Timothy M. Chan},
+	Booktitle = {Proceedings of the 17th Annual ACM-SIAM Symposium on Discrete Algorithms},
+	Date-Added = {2007-06-04 12:26:43 +0200},
+	Date-Modified = {2007-06-04 12:55:25 +0200},
+	Pages = {514--523},
+	Title = {All-pairs shortest paths for unweighted undirected graphs in {$O(mn)$} time},
+	Year = {2006}}
+
+@inproceedings{PT2006,
+	Author = {Mihai P{\v{a}}tra{\c{s}}cu and Mikkel Thorup},
+	Booktitle = {Proceedings of the 38th Annual ACM Symposium on Theory of Computing},
+	Date-Added = {2007-06-04 10:24:58 +0200},
+	Date-Modified = {2007-06-04 10:25:59 +0200},
+	Pages = {232--240},
+	Title = {Time-space trade-offs for predecessor search},
+	Year = {2006}}
+
+@inproceedings{Ruzic2004,
+	Author = {Milan Ru{\v{z}}i{\'{c}}},
+	Booktitle = {Proceedings of the 12th Annual European Symposium on Algorithms, Lecture Notes in Computer Science},
+	Date-Added = {2007-06-01 18:25:06 +0300},
+	Date-Modified = {2007-06-01 18:29:17 +0300},
+	Pages = {592-603},
+	Title = {Algorithms for Deterministic Construction of Efficient Dictionaries},
+	Year = {2004}}
+
+@inproceedings{CR1972,
+	Author = {Stephen A. Cook and Robert A. Reckhow},
+	Booktitle = {Proceedings of the 4th Annual ACM Symposium on Theory of Computing},
+	Date-Added = {2007-05-29 11:31:03 +0300},
+	Date-Modified = {2007-05-29 11:31:44 +0300},
+	Pages = {73--80},
+	Title = {Time-bounded random access machines},
+	Year = {1972}}
+
+@inproceedings{Rytter1999,
+	Author = {Wojciech Rytter},
+	Booktitle = {Proceedings of the 26th Conference on Current Trends in Theory and Practice of Informatics on Theory and Practice of Informatics, Lecture Notes in Computer Science},
+	Date-Added = {2007-05-24 10:30:08 +0200},
+	Date-Modified = {2007-05-24 10:31:02 +0200},
+	Pages = {48--65},
+	Title = {Algorithms on Compressed Strings and Arrays},
+	Volume = {1725},
+	Year = {1999}}
+
+@article{DDHS2000,
+	Author = {Keith Diefendorff and Pradeep K. Dubey and Ron Hochsprung and Hunter Scales},
+	Date-Added = {2007-05-23 09:44:26 +0200},
+	Date-Modified = {2007-06-25 12:36:45 +0200},
+	Journal = {IEEE Micro},
+	Number = {2},
+	Pages = {85--95},
+	Title = {{AltiVec} Extension to {PowerPC} Accelerates Media Processing},
+	Volume = {20},
+	Year = {2000}}
+
+@article{OFW1999,
+	Author = {Stuart Oberman and Greg Favor and Fred Weber},
+	Date-Added = {2007-05-23 09:42:45 +0200},
+	Date-Modified = {2007-05-23 09:43:10 +0200},
+	Journal = {IEEE Micro},
+	Number = {2},
+	Pages = {37--48},
+	Title = {{AMD 3DNow!} Technology: Architecture and Implementations},
+	Volume = {19},
+	Year = {1999}}
+
+@article{TH1999,
+	Author = {Shreekant (Ticky) Thakkar and Tom Huff},
+	Date-Added = {2007-05-23 09:39:09 +0200},
+	Date-Modified = {2007-05-23 09:39:33 +0200},
+	Journal = {Computer},
+	Number = {12},
+	Pages = {26--34},
+	Title = {Internet Streaming {SIMD} Extensions},
+	Volume = {32},
+	Year = {1999}}
+
+@article{TONH1996,
+	Author = {Marc Tremblay and J. Michael O'Connor and Venkatesh Narayanan and Liang He},
+	Date-Added = {2007-05-23 09:36:47 +0200},
+	Date-Modified = {2007-05-23 09:37:19 +0200},
+	Journal = {IEEE Micro},
+	Number = {4},
+	Pages = {10--20},
+	Title = {VIS Speeds New Media Processing},
+	Volume = {16},
+	Year = {1996}}
+
+@article{PWW1997,
+	Author = {Alex Peleg and Sam Wilkie and Uri Weiser},
+	Date-Added = {2007-05-23 09:33:03 +0200},
+	Date-Modified = {2007-05-23 09:33:30 +0200},
+	Journal = {Commun. ACM},
+	Number = {1},
+	Pages = {24--38},
+	Title = {Intel {MMX} for multimedia {PCs}},
+	Volume = {40},
+	Year = {1997}}
+
+@phdthesis{Tronicek2001,
+	Author = {Zden\v{e}k Tron\'{\i}\v{c}ek},
+	Date-Added = {2007-05-17 18:15:42 +0200},
+	Date-Modified = {2007-05-17 18:16:05 +0200},
+	School = {Department of Computer Science and Engineering, FEE CTU in Prague},
+	Title = {Searching subsequences},
+	Type = {{Ph. D. Thesis}},
+	Year = 2001}
+
+@inproceedings{BCGM1999,
+	Author = {Luc Boasson and Patrick Cegielski and I. Guessarian and Yuri Matiyasevich},
+	Booktitle = {In Proceedings of the 18th ACM SIGMOD-SIGACT-SIGART symposium on Principles of Database Systems},
+	Date-Added = {2007-05-17 18:07:19 +0200},
+	Date-Modified = {2007-05-17 18:08:29 +0200},
+	Pages = {327--336},
+	Title = {Window-accumulated subsequence matching problem is linear},
+	Year = {1999}}
+
+@inproceedings{DFGGK1997,
+	Author = {Gautam Das and Rudolf Fleischer and Leszek Gasieniec and Dimitrios Gunopulos and Juha K{\"a}rkk{\"a}inen},
+	Booktitle = {Proceedings of the 8th Annual Symposium on Combinatorial Pattern Matching, Lecture Notes in Computer Science},
+	Date-Added = {2007-05-17 18:02:01 +0200},
+	Date-Modified = {2007-05-17 18:04:13 +0200},
+	Pages = {12--27},
+	Title = {Episode Matching},
+	Volume = {1264},
+	Year = {1997}}
+
+@book{AKW1988,
+	Author = {Alfred V. Aho and Brian W. Kernighan and Peter J. Weinberger},
+	Date-Added = {2007-05-17 14:51:23 +0200},
+	Date-Modified = {2007-05-17 14:57:57 +0200},
+	Publisher = {Addison-Wesley},
+	Title = {The {AWK} Programming Language},
+	Year = {1998}}
+
+@book{Wall1994,
+	Author = {Larry Wall},
+	Date-Added = {2007-05-17 14:45:41 +0200},
+	Date-Modified = {2007-05-17 14:46:42 +0200},
+	Publisher = {Prentice Hall Software Series},
+	Title = {The Perl Programming Language},
+	Year = {1994}}
+
+@article{AGMML1990,
+	Abstract = {A new approach to rapid sequence comparison, basic local alignment search tool (BLAST), directly approximates alignments that optimize a measure of local similarity, the maximal segment pair (MSP) score. Recent mathematical results on the stochastic properties of MSP scores allow an analysis of the performance of this method as well as the statistical significance of alignments it generates. The basic algorithm is simple and robust; it can be implemented in a number of ways and applied in a variety of contexts including straightforward DNA and protein sequence database searches, motif searches, gene identification searches, and in the analysis of multiple regions of similarity in long DNA sequences. In addition to its flexibility and tractability to mathematical analysis, BLAST is an order of magnitude faster than existing sequence comparison tools of comparable sensitivity.},
+	Author = {Altschul, S. F. and Gish, W. and Miller, W. and Myers, E. W. and Lipman, D. J.},
+	Date-Added = {2007-05-17 12:57:40 +0200},
+	Date-Modified = {2007-05-17 12:58:07 +0200},
+	Journal = {J. Mol. Biol.},
+	Number = {3},
+	Pages = {403--410},
+	Title = {Basic local alignment search tool.},
+	Volume = {215},
+	Year = {1990}}
+
+@inproceedings{Yamamoto2001,
+	Author = {Hiroaki Yamamoto},
+	Booktitle = {Proceedings of the 12th International Symposium on Algorithms and Computation, Lecture Notes in Computer Science},
+	Date-Added = {2007-05-14 16:06:44 +0200},
+	Date-Modified = {2007-05-14 16:08:46 +0200},
+	Pages = {257-267},
+	Title = {A New Recognition Algorithm for Extended Regular Expressions.},
+	Volume = {2223},
+	Year = {2001}}
+
+@article{KMb1995,
+	Author = {James R. Knight and Eugene W. Myers},
+	Date-Added = {2007-05-14 16:05:03 +0200},
+	Date-Modified = {2007-05-14 16:05:36 +0200},
+	Journal = {Algorithmica},
+	Number = {1/2},
+	Pages = {211-243},
+	Title = {Super-Pattern Matching},
+	Volume = {13},
+	Year = {1995}}
+
+@inproceedings{YM2003,
+	Author = {Hiroaki Yamamoto and Takashi Miyazaki},
+	Booktitle = {Proceeding of the 9th Annual International Computing and Combinatorics Conference, Lecture Notes in Computer Science},
+	Date-Added = {2007-05-14 15:57:30 +0200},
+	Date-Modified = {2007-05-14 16:03:35 +0200},
+	Pages = {222-231},
+	Title = {A Fast Bit-Parallel Algorithm for Matching Extended Regular Expressions},
+	Volume = {2697},
+	Year = {2003}}
+
+@inproceedings{ISY2003,
+	Author = {Lucian Ilie and Baozhen Shan and Sheng Yu},
+	Booktitle = {Proceedings of the 20th Annual Symposium on Theoretical Aspects of Computer Science, Lecture Notes In Computer Science},
+	Date-Added = {2007-05-14 15:39:46 +0200},
+	Date-Modified = {2007-06-25 10:53:25 +0200},
+	Pages = {179--190},
+	Title = {Fast Algorithms for Extended Regular Expression Matching and Searching},
+	Volume = {Vol. 2607},
+	Year = {2003}}
+
+@article{NR2003,
+	Author = {Gonzalo Navarro and Mathieu Raffinot},
+	Date-Added = {2007-05-14 15:28:04 +0200},
+	Date-Modified = {2009-10-10 23:14:00 +0200},
+	Journal = {J. Comput. Bio.},
+	Number = {6},
+	Pages = {903-923},
+	Title = {Fast and Simple Character Classes and Bounded Gaps Pattern Matching, with Applications to Protein Searching},
+	Volume = {10},
+	Year = {2003}}
+
+@inproceedings{MOG1998,
+	Author = {Eugene W. Myers and Paulo Oliva and Katia S. Guimar{\~a}es},
+	Booktitle = {Proceedings of the 9th Annual Symposium on Combinatorial Pattern Matching, Lecture Notes in Computer Science},
+	Date-Added = {2007-05-14 15:19:15 +0200},
+	Date-Modified = {2007-05-14 15:20:53 +0200},
+	Pages = {91--103},
+	Title = {Reporting Exact and Approximate Regular Expression Matches},
+	Volume = {1448},
+	Year = {1998}}
+
+@article{Myers1996,
+	Author = {Eugene W. Myers},
+	Date-Added = {2007-05-14 15:14:47 +0200},
+	Date-Modified = {2009-10-10 23:12:35 +0200},
+	Journal = {J. Comput. Bio.},
+	Number = {1},
+	Pages = {33-51},
+	Title = {Approximate Matching of Network Expressions with Spacers},
+	Volume = {3},
+	Year = {1992}}
+
+@article{KMa1995,
+	Author = {James Robert Knight and Eugene W. Myers},
+	Date-Added = {2007-05-11 16:12:09 +0200},
+	Date-Modified = {2008-07-02 22:17:19 +0200},
+	Journal = {Algorithmica},
+	Pages = {85--121},
+	Title = {Approximate regular expression pattern matching with concave gap penalties},
+	Volume = {14},
+	Year = {1995},
+	Bdsk-Url-1 = {http://www.cs.arizona.edu/people/gene/PAPERS/reg.concave.ps}}
+
+@techreport{Myers1991,
+	Author = {Eugene W. Myers},
+	Date-Added = {2007-05-10 11:28:21 +0200},
+	Date-Modified = {2007-05-10 11:28:48 +0200},
+	Institution = {Univ. of Arizona, Dept. of Computer Science},
+	Number = {91--29},
+	Title = {An overview of sequence comparison algorithms in molecular biology},
+	Year = {1991}}
+
+@article{ALP2004,
+	Author = {Amihood Amir and Moshe Lewenstein and Ely Porat},
+	Date-Added = {2007-05-10 11:21:49 +0200},
+	Date-Modified = {2008-07-02 22:17:19 +0200},
+	Journal = {J. Algorithms},
+	Number = {2},
+	Pages = {257--275},
+	Title = {Faster algorithms for string matching with k mismatches},
+	Volume = {50},
+	Year = {2004},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1016/S0196-6774(03)00097-X}}
+
+@article{LMS1998,
+	Author = {Gad M. Landau and Eugene W. Myers and Jeanette P. Schmidt},
+	Date-Added = {2007-05-10 11:16:14 +0200},
+	Date-Modified = {2008-07-02 22:17:19 +0200},
+	Issn = {0097-5397},
+	Journal = {SIAM J. Comput.},
+	Number = {2},
+	Pages = {557--582},
+	Title = {Incremental String Comparison},
+	Volume = {27},
+	Year = {1998},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1137/S0097539794264810}}
+
+@inproceedings{EGG1988,
+	Author = {David Eppstein and Zvi Galil and Raffaele Giancarlo},
+	Booktitle = {Proceedings of the 29th Annual IEEE Symposium on Foundations of Computer Science},
+	Date-Added = {2007-05-10 10:49:35 +0200},
+	Date-Modified = {2007-05-10 10:50:18 +0200},
+	Pages = {488--496},
+	Title = {Speeding up dynamic programming},
+	Year = {1988}}
+
+@article{MM1988,
+	Author = {Webb Miller and Eugene W. Myers},
+	Date-Added = {2007-05-10 10:46:25 +0200},
+	Date-Modified = {2007-05-10 10:47:30 +0200},
+	Journal = {Bull. of Math. Biology},
+	Number = {2},
+	Pages = {97-120},
+	Title = {Sequence comparison with concave weighting functions},
+	Volume = {50},
+	Year = {1988}}
+
+@article{Gotoh1982,
+	Author = {O. Gotoh},
+	Date-Added = {2007-05-10 10:42:16 +0200},
+	Date-Modified = {2007-05-10 10:43:30 +0200},
+	Journal = {J. Molecular Biology},
+	Number = {3},
+	Pages = {705-708},
+	Title = {An Improved Algorithm for Matching Biological Sequences},
+	Volume = {162},
+	Year = {1982}}
+
+@article{EGCI1992,
+	Author = {David Eppstein and Zvi Galil and Raffaele Giancarlo and Giuseppe F. Italiano},
+	Bibsource = {DBLP, http://dblp.uni-trier.de},
+	Date-Added = {2007-05-09 16:42:40 +0200},
+	Date-Modified = {2007-05-09 16:43:02 +0200},
+	Ee = {http://doi.acm.org/10.1145/146637.146650},
+	Journal = {J. ACM},
+	Number = {3},
+	Pages = {519-545},
+	Title = {Sparse Dynamic Programming I: Linear Cost Functions.},
+	Volume = {39},
+	Year = {1992}}
+
+@article{Myers1986,
+	Author = {Eugene W. Myers},
+	Date-Added = {2007-05-09 16:34:53 +0200},
+	Date-Modified = {2007-05-09 16:35:11 +0200},
+	Journal = {Algorithmica},
+	Number = {2},
+	Pages = {251-266},
+	Title = {An {$O(ND)$} Difference Algorithm and Its Variations.},
+	Volume = {1},
+	Year = {1986}}
+
+@article{Ukkonen1985b,
+	Author = {Esko Ukkonen},
+	Date-Added = {2007-05-09 16:33:00 +0200},
+	Date-Modified = {2007-05-10 10:37:02 +0200},
+	Journal = {Inf. Control},
+	Number = {1-3},
+	Pages = {100--118},
+	Title = {Algorithms for approximate string matching},
+	Volume = {64},
+	Year = {1985}}
+
+@article{MNU2004,
+	Author = {Veli M{\"a}kinen and Gonzalo Navarro and Esko Ukkonen},
+	Date-Added = {2007-05-09 16:21:24 +0200},
+	Date-Modified = {2007-05-09 16:23:35 +0200},
+	Journal = {J. Algorithms},
+	Number = {2},
+	Pages = {124-153},
+	Title = {Transposition Invariant String Matching},
+	Volume = {56},
+	Year = {2005}}
+
+@article{CM2007,
+	Author = {Graham Cormode and S. Muthukrishnan},
+	Date-Added = {2007-05-09 16:09:09 +0200},
+	Date-Modified = {2007-05-09 16:09:31 +0200},
+	Journal = {ACM Trans. Algorithms},
+	Number = {1},
+	Pages = {2},
+	Title = {The string edit distance matching problem with moves},
+	Volume = {3},
+	Year = {2007}}
+
+@article{HN2005,
+	Author = {Heikki Hyyr{\"o} and Gonzalo Navarro},
+	Date-Added = {2007-05-09 15:17:39 +0200},
+	Date-Modified = {2007-05-09 15:18:24 +0200},
+	Journal = {Algorithmica},
+	Number = {3},
+	Pages = {203--231},
+	Title = {Bit-Parallel Witnesses and Their Applications to Approximate String Matching},
+	Volume = {41},
+	Year = {2005}}
+
+@article{Wright1994,
+	Author = {Alden H. Wright},
+	Date-Added = {2007-05-09 13:34:38 +0200},
+	Date-Modified = {2007-05-09 13:35:03 +0200},
+	Journal = {Softw. Pract. Exper.},
+	Number = {4},
+	Pages = {337--362},
+	Title = {Approximate string matching using within-word parallelism},
+	Volume = {24},
+	Year = {1994}}
+
+@inproceedings{BYN1996,
+	Author = {Ricardo A. Baeza-Yates and Gonzalo Navarro},
+	Booktitle = {Proceedings of the 7th Annual Symposium on Combinatorial Pattern Matching, Lecture Notes in Computer Science},
+	Date-Added = {2007-05-09 13:31:32 +0200},
+	Date-Modified = {2007-05-09 13:32:44 +0200},
+	Pages = {1--23},
+	Title = {A Faster Algorithm for Approximate String Matching},
+	Volume = {1075},
+	Year = {1996}}
+
+@article{CLZ2003,
+	Author = {Maxime Crochemore and Gad M. Landau and Michal Ziv-Ukelson},
+	Date-Added = {2007-05-09 11:35:06 +0200},
+	Date-Modified = {2007-05-09 11:35:28 +0200},
+	Journal = {SIAM J. Comput.},
+	Number = {6},
+	Pages = {1654--1673},
+	Title = {A Subquadratic Sequence Alignment Algorithm for Unrestricted Scoring Matrices},
+	Volume = {32},
+	Year = {2003}}
+
+@inproceedings{JP2006,
+	Author = {Jesper Jansson and Zeshan Peng},
+	Booktitle = {Proceedings of the 17th Annual Symposium on Combinatorial Pattern Matching, Lecture notes of Computer Science},
+	Date-Added = {2007-05-07 10:44:00 +0200},
+	Date-Modified = {2007-05-07 10:46:05 +0200},
+	Pages = {377-388},
+	Title = {Algorithms for Finding a Most Similar Subforest},
+	Volume = {4009},
+	Year = {2006}}
+
+@article{JHS2006,
+	Author = {Jesper Jansson and Ngo Trung Hieu and Wing-Kin Sung},
+	Date-Added = {2007-05-07 10:41:10 +0200},
+	Date-Modified = {2007-05-07 10:42:22 +0200},
+	Journal = {J. Comp. Biology},
+	Number = {3},
+	Pages = {702-718},
+	Title = {Local Gapped Subforest Alignment and Its Application in Finding RNA Structural Motifs},
+	Volume = {13},
+	Year = {2006}}
+
+@inproceedings{HTGK2003,
+	Author = {Matthias H{\"o}chsmann and Thomas T{\"o}ller and Robert Giegerich and Stefan Kurtz},
+	Booktitle = {Proceedings of the IEEE Computer Society Conference on Bioinformatics},
+	Date-Added = {2007-05-07 10:31:11 +0200},
+	Date-Modified = {2007-05-07 10:32:22 +0200},
+	Pages = {159-158},
+	Title = {Local Similarity in RNA Secondary Structures},
+	Year = {2003}}
+
+@article{JL2003,
+	Author = {Jesper Jansson and Andrzej Lingas},
+	Date-Added = {2007-05-04 15:34:22 +0200},
+	Date-Modified = {2007-05-04 15:34:44 +0200},
+	Journal = {Fundam. Inform.},
+	Number = {1-2},
+	Pages = {105-120},
+	Title = {A Fast Algorithm for Optimal Alignment between Similar Ordered Trees.},
+	Volume = {56},
+	Year = {2003}}
+
+@article{Akutsu2006,
+	Author = {Tatsuya Akutsu},
+	Date-Added = {2007-05-04 13:53:30 +0200},
+	Date-Modified = {2007-05-04 13:54:05 +0200},
+	Journal = {Inform. Process. Lett.},
+	Number = {3},
+	Pages = {105--109},
+	Title = {A relation between edit distance for ordered trees and edit distance for Euler strings},
+	Volume = {100},
+	Year = {2006}}
+
+@book{Waterman1995,
+	Author = {M.S. Waterman},
+	Date-Added = {2007-05-04 08:16:38 +0200},
+	Date-Modified = {2007-05-04 08:22:19 +0200},
+	Publisher = {Chapman {\&} Hall},
+	Title = {Introduction to Computational Biology},
+	Year = {1995}}
+
+@article{Navarro2001a,
+	Author = {Gonzalo Navarro},
+	Journal = {ACM Comput. Surv.},
+	Number = {1},
+	Pages = {31--88},
+	Title = {A guided tour to approximate string matching},
+	Volume = {33},
+	Year = {2001}}
+
+@article{Navarro2001b,
+	Author = {Gonzalo Navarro},
+	Journal = {Softw. Pract. Exper.},
+	Number = {13},
+	Pages = {1265--1312},
+	Title = {{NR-grep}: a fast and flexible pattern-matching tool},
+	Volume = {31},
+	Year = {2001}}
+
+@article{KNU2003,
+	Author = {Juha K{\"a}rkk{\"a}inen and Gonzalo Navarro and Esko Ukkonen},
+	Date-Added = {2007-05-03 14:55:51 +0200},
+	Date-Modified = {2007-05-03 14:55:51 +0200},
+	Journal = {J. Discrete Algorithms},
+	Number = {3-4},
+	Pages = {313-338},
+	Title = {Approximate string matching on {Z}iv-{L}empel compressed text.},
+	Volume = {1},
+	Year = {2003}}
+
+@article{ZL1977,
+	Author = {Jacob Ziv and Abraham Lempel},
+	Date-Added = {2007-05-03 13:57:50 +0200},
+	Date-Modified = {2008-07-02 22:17:19 +0200},
+	Journal = {IEEE Trans. Inform. Theory},
+	Number = {3},
+	Pages = {337-343},
+	Title = {A Universal Algorithm for Sequential Data Compression},
+	Volume = {23},
+	Year = {1977},
+	Bdsk-Url-1 = {citeseer.ist.psu.edu/ziv77universal.html}}
+
+@article{ZL1978,
+	Author = {Jacob Ziv and Abraham Lempel},
+	Date-Added = {2007-05-03 13:57:50 +0200},
+	Date-Modified = {2008-07-02 22:17:19 +0200},
+	Journal = {IEEE Trans. Inform. Theory},
+	Number = {5},
+	Pages = {530-536},
+	Title = {Compression of Individual Sequences via Variable-Rate Coding},
+	Volume = {24},
+	Year = {1978},
+	Bdsk-Url-1 = {citeseer.ist.psu.edu/ziv78compression.html}}
+
+@article{Welch1984,
+	Author = {Terry A. Welch},
+	Bibsource = {DBLP, http://dblp.uni-trier.de},
+	Date-Added = {2007-05-03 13:57:35 +0200},
+	Date-Modified = {2007-05-03 13:57:35 +0200},
+	Journal = {IEEE Computer},
+	Number = {6},
+	Pages = {8-19},
+	Title = {A Technique for High-Performance Data Compression.},
+	Volume = {17},
+	Year = {1984}}
+
+@techreport{NR1998,
+	Author = {G. Navarro and M. Raffinot},
+	Date-Added = {2007-05-03 13:57:08 +0200},
+	Date-Modified = {2007-05-03 13:57:08 +0200},
+	Institution = {Dept. of Computer Science, Univ. of Chile.},
+	Number = {TR/DCC-98-12},
+	Title = {A General Practical Approach to Pattern Matching over {Z}iv-{L}empel Compressed Text},
+	Year = 1998}
+
+@inproceedings{NKTSA01,
+	Address = {Washington, DC, USA},
+	Author = {Gonzalo Navarro and Takuya Kida and Masayuki Takeda and Ayumi Shinohara and Setsuo Arikawa},
+	Booktitle = {Proceedings of the 11th Data Compression Conference},
+	Date-Added = {2007-05-03 13:56:45 +0200},
+	Date-Modified = {2007-06-25 12:43:03 +0200},
+	Pages = {459},
+	Publisher = {IEEE Computer Society},
+	Title = {Faster Approximate String Matching over Compressed Text},
+	Year = {2001}}
+
+@article{Navarro2003,
+	Author = {Gonzalo Navarro},
+	Date-Added = {2007-05-03 13:56:29 +0200},
+	Date-Modified = {2007-05-03 13:56:29 +0200},
+	Journal = {J. Discrete Algorithms},
+	Number = {5-6},
+	Pages = {423--443},
+	Title = {Regular expression searching on compressed text},
+	Volume = {1},
+	Year = {2003}}
+
+@article{MY1960,
+	Author = {R. McNaughton and H. Yamada},
+	Date-Added = {2007-05-03 13:55:49 +0200},
+	Date-Modified = {2007-05-03 13:55:49 +0200},
+	Journal = {IRE Trans. on Electronic Computers},
+	Number = {1},
+	Pages = {39--47},
+	Title = {Regular Expressions and State Graphs for Automata},
+	Volume = 9,
+	Year = 1960}
+
+@inproceedings{MKTSA2000,
+	Author = {Tetsuya Matsumoto and Takuya Kida and Masayuki Takeda and Ayumi Shinohara and Setsuo Arikawa},
+	Booktitle = {Proceedings of the 7th International Symposium on String Processing and Information Retrieval},
+	Date-Added = {2007-05-03 13:55:34 +0200},
+	Date-Modified = {2007-05-03 13:55:34 +0200},
+	Pages = {221--228},
+	Title = {Bit-Parallel Approach to Approximate String Matching in Compressed Texts.},
+	Year = {2000}}
+
+@article{MUN2003,
+	Author = {Veli M{\"a}kinen and Esko Ukkonen and Gonzalo Navarro},
+	Date-Added = {2007-05-03 13:55:12 +0200},
+	Date-Modified = {2007-05-03 13:55:12 +0200},
+	Journal = {Algorithmica},
+	Number = {4},
+	Pages = {347--369},
+	Title = {Approximate Matching of Run-Length Compressed Strings.},
+	Volume = {35},
+	Year = {2003}}
+
+@inproceedings{KTSMA1998,
+	Author = {Takuya Kida and Masayuki Takeda and Ayumi Shinohara and Masamichi Miyazaki and Setsuo Arikawa},
+	Booktitle = {Proceedings of the 8th Data Compression Conference},
+	Date-Added = {2007-05-03 13:54:37 +0200},
+	Date-Modified = {2007-05-03 13:54:37 +0200},
+	Pages = {103--112},
+	Title = {Multiple Pattern Matching in {LZW} Compressed Text},
+	Year = {1998}}
+
+@article{FT1998,
+	Author = {Martin Farach and Mikkel Thorup},
+	Date-Added = {2007-05-03 13:53:49 +0200},
+	Date-Modified = {2007-05-03 13:53:49 +0200},
+	Journal = {Algorithmica},
+	Number = {4},
+	Pages = {388-404},
+	Title = {String Matching in {L}empel-{Z}iv Compressed Strings.},
+	Volume = {20},
+	Year = {1998}}
+
+@article{DKMMRT1994,
+	Author = {Martin Dietzfelbinger and Anna Karlin and Kurt Mehlhorn and Friedhelm Meyer auf der Heide and Hans Rohnert and Robert Tarjan},
+	Date-Added = {2007-05-03 13:53:41 +0200},
+	Date-Modified = {2007-05-03 13:53:41 +0200},
+	Journal = {SIAM J. Comput.},
+	Number = {4},
+	Pages = {738--761},
+	Title = {Dynamic Perfect Hashing: Upper and Lower Bounds},
+	Volume = {23},
+	Year = {1994}}
+
+@article{CH2002,
+	Author = {Richard Cole and Ramesh Hariharan},
+	Date-Added = {2007-05-03 13:53:25 +0200},
+	Date-Modified = {2007-05-03 13:53:25 +0200},
+	Journal = {SIAM J. Comput.},
+	Number = {6},
+	Pages = {1761--1782},
+	Title = {Approximate String Matching: A Simpler Faster Algorithm.},
+	Volume = {31},
+	Year = {2002}}
+
+@article{ABF1996,
+	Address = {Orlando, FL, USA},
+	Author = {Amihood Amir and Gary Benson and Martin Farach},
+	Date-Added = {2007-05-03 13:52:27 +0200},
+	Date-Modified = {2008-07-02 22:17:19 +0200},
+	Issn = {0022-0000},
+	Journal = {J. Comput. System Sci.},
+	Number = {2},
+	Pages = {299--307},
+	Publisher = {Academic Press, Inc.},
+	Title = {Let sleeping files lie: pattern matching in {Z}-compressed files},
+	Volume = {52},
+	Year = {1996},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1006/jcss.1996.0023}}
+
+@inproceedings{AB1992,
+	Author = {Amihood Amir and Gary Benson},
+	Booktitle = {Proceedings of the 3rd Annual ACM-SIAM Symposium on Discrete Algorithms},
+	Date-Added = {2007-05-01 14:59:13 +0200},
+	Date-Modified = {2007-05-01 14:59:13 +0200},
+	Pages = {440--452},
+	Title = {Two-dimensional periodicity and its applications},
+	Year = {1992}}
+
+@inproceedings{AB1992a,
+	Author = {Amihood Amir and Gary Benson},
+	Booktitle = {Proceedings of the 2nd Data Compression Conference},
+	Date-Added = {2007-05-01 14:59:13 +0200},
+	Date-Modified = {2007-05-01 14:59:13 +0200},
+	Pages = {279--288},
+	Title = {Efficient Two-Dimensional Compressed Matching},
+	Year = {1992}}
+
+@article{BYG1996,
+	Author = {Ricardo A. Baeza-Yates and Gaston H. Gonnet},
+	Date-Added = {2007-05-01 13:29:50 +0200},
+	Date-Modified = {2007-05-01 13:30:14 +0200},
+	Journal = {J. ACM},
+	Number = {6},
+	Pages = {915--936},
+	Title = {Fast text searching for regular expressions or automaton searching on tries},
+	Volume = {43},
+	Year = {1996}}
+
+@article{Sellers1980,
+	Author = {P. Sellers},
+	Date-Added = {2007-05-01 10:52:17 +0200},
+	Date-Modified = {2007-05-01 10:52:17 +0200},
+	Journal = {J. Algorithms},
+	Pages = {359--373},
+	Title = {The theory and computation of evolutionary distances: Pattern recognition},
+	Volume = {1},
+	Year = {1980}}
+
+@article{Hirschberg1975,
+	Address = {New York, NY, USA},
+	Author = {D. S. Hirschberg},
+	Date-Added = {2007-05-01 08:37:59 +0200},
+	Date-Modified = {2008-07-02 22:17:19 +0200},
+	Issn = {0001-0782},
+	Journal = {Commun. ACM},
+	Number = {6},
+	Pages = {341--343},
+	Publisher = {ACM Press},
+	Title = {A linear space algorithm for computing maximal common subsequences},
+	Volume = {18},
+	Year = {1975},
+	Bdsk-Url-1 = {http://doi.acm.org/10.1145/360825.360861}}
+
+@article{Glushkov1961,
+	Author = {Victor M. Glushkov},
+	Date-Added = {2007-04-30 14:13:52 +0200},
+	Date-Modified = {2007-04-30 14:13:52 +0200},
+	Journal = {Russian Math. Surveys},
+	Number = {5},
+	Pages = {1--53},
+	Title = {The Abstract Theory of Automata},
+	Volume = {16},
+	Year = {1961}}
+
+@article{Valiente2005,
+	Author = {Gabriel Valiente},
+	Bibsource = {DBLP, http://dblp.uni-trier.de},
+	Date-Added = {2007-04-27 14:42:55 +0200},
+	Date-Modified = {2007-04-27 14:43:09 +0200},
+	Ee = {http://dx.doi.org/10.1016/j.jda.2004.08.017},
+	Journal = {J. Discrete Algorithms},
+	Number = {2-4},
+	Pages = {431-447},
+	Title = {Constrained tree inclusion.},
+	Volume = {3},
+	Year = {2005}}
+
+@article{GK2005,
+	Author = {Minos Garofalakis and Amit Kumar},
+	Date-Added = {2007-04-27 13:08:05 +0200},
+	Date-Modified = {2007-04-27 13:08:27 +0200},
+	Journal = {ACM Trans. Database Syst.},
+	Number = {1},
+	Pages = {279--332},
+	Title = {XML stream processing using tree-edit distance embeddings},
+	Volume = {30},
+	Year = {2005}}
+
+@article{DT2003,
+	Author = {Serge Dulucq and Laurent Tichit},
+	Date-Added = {2007-04-27 13:04:56 +0200},
+	Date-Modified = {2007-04-27 13:05:50 +0200},
+	Journal = {Theoret. Comput. Sci.},
+	Number = {1-3},
+	Pages = {471-484},
+	Title = {RNA secondary structure comparison: exact analysis of the {Z}hang-{S}hasha tree edit algorithm.},
+	Volume = {306},
+	Year = {2003}}
+
+@article{Touzet2003,
+	Author = {H{\'e}l{\`e}ne Touzet},
+	Date-Added = {2007-04-27 13:03:19 +0200},
+	Date-Modified = {2007-04-27 13:12:12 +0200},
+	Journal = {Inform. Process. Lett.},
+	Number = {3},
+	Pages = {123-129},
+	Title = {Tree edit distance with gaps},
+	Volume = {85},
+	Year = {2003}}
+
+@inproceedings{Touzet2005,
+	Author = {H{\'e}l{\`e}ne Touzet},
+	Booktitle = {Proceedings of the 16th Annual Symposium on Combinatorial Pattern Matching, Lecture notes in Computer Science},
+	Date-Added = {2007-04-27 12:59:24 +0200},
+	Date-Modified = {2007-04-27 13:12:28 +0200},
+	Pages = {334-345},
+	Title = {A Linear Tree Edit Distance Algorithm for Similar Ordered Trees.},
+	Volume = {3537},
+	Year = {2005}}
+
+@inproceedings{AFT2006,
+	Author = {Tatsuya Akutsu and Daiji Fukagawa and Atsuhiro Takasu},
+	Booktitle = {Proceedings of the 17th International Symposium on Algorithms and Computation, Lecture Notes in Computer Science},
+	Date-Added = {2007-04-27 11:21:59 +0200},
+	Date-Modified = {2007-04-27 11:23:49 +0200},
+	Ee = {http://dx.doi.org/10.1007/11940128_11},
+	Pages = {90-99},
+	Title = {Approximating Tree Edit Distance Through String Edit Distance.},
+	Volume = {4288},
+	Year = {2006}}
+
+@article{WZ2003,
+	Author = {Lusheng Wang and Jianyun Zhao},
+	Date-Added = {2007-04-27 10:02:24 +0200},
+	Date-Modified = {2007-04-27 10:02:44 +0200},
+	Journal = {Bioinformatics},
+	Number = {17},
+	Pages = {2237-2245},
+	Title = {Parametric alignment of ordered trees.},
+	Volume = {19},
+	Year = {2003}}
+
+@inproceedings{WZ2006,
+	Author = {Lusheng Wang and Kaizhong Zhang},
+	Booktitle = {Proceedings of he 16th Annual International Symposium on Algorithms and Computation, Lecture Notes in Computer Science},
+	Date-Added = {2007-04-26 09:47:15 +0200},
+	Date-Modified = {2007-04-26 09:48:52 +0200},
+	Pages = {380-391},
+	Title = {Space Efficient Algorithms for Ordered Tree Comparison},
+	Volume = {3827},
+	Year = {2005}}
+
+@article{ZWS1996,
+	Author = {Kaizhong Zhang and Jason Tsong-Li Wang and Dennis Shasha},
+	Bibsource = {DBLP, http://dblp.uni-trier.de},
+	Date-Added = {2007-04-26 09:16:53 +0200},
+	Date-Modified = {2007-04-26 09:17:19 +0200},
+	Journal = {Int. J. Found. Comput. Sci.},
+	Number = {1},
+	Pages = {43-58},
+	Title = {On the Editing Distance Between Undirected Acyclic Graphs.},
+	Volume = {7},
+	Year = {1996}}
+
+@inproceedings{DMRW2007,
+	Author = {Erik Demaine and Shay Mozes and Benjamin Rossman and Oren Weimann},
+	Booktitle = {Proceedings of the 34th International Colloquium on Automata, Languages and Programming},
+	Date-Added = {2007-04-25 16:16:53 +0200},
+	Date-Modified = {2007-04-25 16:18:01 +0200},
+	Title = {An Optimal Decomposition Algorithm for Tree Edit Distance},
+	Year = {2007}}
+
+@article{DT2005,
+	Author = {Serge Dulucq and H{\'e}l{\`e}ne Touzet},
+	Date-Added = {2007-04-25 16:07:02 +0200},
+	Date-Modified = {2007-04-25 16:07:59 +0200},
+	Journal = {J. Discrete Algorithms},
+	Number = {2-4},
+	Pages = {448-471},
+	Title = {Decomposition algorithms for the tree edit distance problem.},
+	Volume = {3},
+	Year = {2005}}
+
+@article{ADKF1970,
+	Author = {V. L. Arlazarov and E. A. Dinic and M. A. Kronrod and I. A. Faradzev},
+	Journal = {Dokl. Acad. Nauk.},
+	Pages = {487--488},
+	Title = {On economic construction of the transitive closure of a directed graph (in Russian). English translation in Soviet Math. Dokl. 11, 1209-1210, 1975.},
+	Volume = {194},
+	Year = {1970}}
+
+@article{AGKR2004,
+	Author = {Stephen Alstrup and Cyril Gavoille and Haim Kaplan and Theis Rauhe},
+	Date-Modified = {2007-04-19 09:03:28 +0200},
+	Journal = {Theory Comput. Syst.},
+	Pages = {441--456},
+	Title = {Nearest Common Ancestors: A Survey and a new Algorithm for a Distributed Environment},
+	Volume = {37},
+	Year = {2004}}
+
+@inproceedings{AH1994,
+	Author = {T. Akutsu and M. M. Halld{\'{o}}rsson},
+	Booktitle = {Proceedings of the 5th Annual International Symposium on Algorithms and Computation, Lecture Notes in Computer Science},
+	Date-Modified = {2007-04-19 08:56:58 +0200},
+	Pages = {405--413},
+	Title = {On the Approximation of Largest Common Point Sets and Largest Common Subtrees},
+	Volume = {834},
+	Year = {1994}}
+
+@inproceedings{AHLT1997,
+	Author = {Stephen Alstrup and Jacob Holm and Kristian de Lichtenberg and Mikkel Thorup},
+	Booktitle = {Proceedings of the 24th International Colloquium on Automata, Languages and Programming, Lecture Notes in Computer Science},
+	Date-Added = {2006-06-07 20:01:47 +0200},
+	Date-Modified = {2007-04-19 09:06:00 +0200},
+	Isbn = {3-540-63165-8},
+	Pages = {270--280},
+	Title = {Minimizing Diameters of Dynamic Trees},
+	Volume = {1256},
+	Year = {1997}}
+
+@inproceedings{AHR1998,
+	Author = {Stephen Alstrup and Thore Husfeldt and Theis Rauhe},
+	Booktitle = {Proceedings of the 39th Annual IEEE Symposium on Foundations of Computer Science},
+	Date-Added = {2006-06-07 20:05:05 +0200},
+	Date-Modified = {2006-06-07 22:46:21 +0200},
+	Pages = {534--543},
+	Title = {Marked Ancestor Problems},
+	Year = {1998}}
+
+@inproceedings{AHT2000,
+	Author = {Stephen Alstrup and Jacob Holm and Mikkel Thorup},
+	Booktitle = {Proceedings of the 7th Scandinavian Workshop on Algorithm Theory, Lecture Notes in Computer Science},
+	Date-Added = {2006-06-07 20:03:59 +0200},
+	Date-Modified = {2007-04-19 09:09:00 +0200},
+	Pages = {46--56},
+	Title = {Maintaining Center and Median in Dynamic Trees},
+	Volume = {1851},
+	Year = {2000}}
+
+@article{AHU1976,
+	Author = {A. V. Aho and D. S. Hirschberg and J. D. Ullman},
+	Date-Modified = {2007-04-19 08:42:09 +0200},
+	Journal = {J. ACM},
+	Number = {23},
+	Pages = {1--12},
+	Title = {Bounds on the Complexity of the Longest Common Subsequence Problem},
+	Volume = {1},
+	Year = {1976}}
+
+@article{ALMSS1992,
+	Author = {A. Arora and C. Lund and R. Motwani and M. Sudan and M. Szegedy},
+	Date-Modified = {2007-04-19 09:15:21 +0200},
+	Journal = {J. ACM},
+	Number = {3},
+	Pages = {501--555},
+	Title = {Proof Verification and the Hardness of Approximation Problems},
+	Volume = {45},
+	Year = {1998}}
+
+@inproceedings{AR2002c,
+	Author = {Stephen Alstrup and Theis Rauhe},
+	Booktitle = {Proceedings of the 13th Annual ACM-SIAM Symposium on Discrete Algorithms},
+	Date-Modified = {2006-06-08 11:50:16 +0200},
+	Location = {San Francisco, California},
+	Pages = {947--953},
+	Title = {Improved Labeling Schemes for Ancestor Queries},
+	Year = {2002}}
+
+@article{AS2001,
+	Author = {Laurent Alonso and R. Schott},
+	Date-Added = {2006-06-07 19:24:59 +0200},
+	Date-Modified = {2007-04-19 09:01:40 +0200},
+	Journal = {Acta Inform.},
+	Number = {9},
+	Pages = {653--670},
+	Title = {On the tree inclusion problem},
+	Volume = {37},
+	Year = {2001}}
+
+@book{ASU1986,
+	Address = {Boston, MA, USA},
+	Author = {Alfred V. Aho and Ravi Sethi and Jeffrey D. Ullman},
+	Date-Added = {2006-02-04 09:19:10 +0100},
+	Date-Modified = {2006-02-04 09:19:46 +0100},
+	Isbn = {0-201-10088-6},
+	Publisher = {Addison-Wesley Longman Publishing Co., Inc.},
+	Title = {Compilers: principles, techniques, and tools},
+	Year = {1986}}
+
+@article{BaezaYates1991,
+	Author = {Ricardo A. Baeza-Yates},
+	Date-Modified = {2007-04-19 09:20:32 +0200},
+	Journal = {Theoret. Comput. Sci.},
+	Number = {2},
+	Pages = {363--376},
+	Title = {Searching subsequences},
+	Volume = {78},
+	Year = {1991}}
+
+@inproceedings{BFC2000,
+	Author = {Michael A. Bender and Martin Farach-Colton},
+	Booktitle = {Proceedings of the 4th Latin American Symposium on Theoretical Informatics},
+	Date-Modified = {2006-06-07 22:21:09 +0200},
+	Pages = {88--94},
+	Title = {The {LCA} Problem Revisited},
+	Year = {2000}}
+
+@misc{BFC2005,
+	Author = {Philip Bille and Martin Farach-Colton},
+	Date-Added = {2006-01-30 14:10:03 +0100},
+	Date-Modified = {2008-07-02 22:17:19 +0200},
+	Note = {Submitted to a journal. Preprint availiable at {\texttt{arxiv.org/cs/0509069}}},
+	Rating = {0},
+	Read = {No},
+	Title = {Fast and Compact Regular Expression Matching},
+	Year = {2005},
+	Bdsk-Url-1 = {http://www.citebase.org/cgi-bin/citations?id=oai:arXiv.org:cs/0509069}}
+
+@article{Bille2005,
+	Author = {Philip Bille},
+	Date-Added = {2006-06-07 20:15:30 +0200},
+	Date-Modified = {2006-06-07 22:43:06 +0200},
+	Journal = {Theoret. Comput. Sci.},
+	Number = {1-3},
+	Pages = {217--239},
+	Title = {A Survey on Tree Edit Distance and Related Problems},
+	Volume = {337},
+	Year = {2005}}
+
+@article{BKZ1977,
+	Author = {Peter van Emde Boas and R. Kaas and E. Zijlstra},
+	Bibsource = {DBLP, http://dblp.uni-trier.de},
+	Journal = {Mathematical Systems Theory},
+	Pages = {99-127},
+	Title = {Design and Implementation of an Efficient Priority Queue.},
+	Volume = {10},
+	Year = {1977}}
+
+@inproceedings{BMLMA2004,
+	Author = {Denilson Barbosa and Alberto O. Mendelzon and Leonid Libkin and Laurent Mignet and Marcelo Arenas},
+	Booktitle = {Proceedings of the 20th International Conference on Data Engineering},
+	Date-Modified = {2007-04-19 09:28:18 +0200},
+	Pages = {671},
+	Title = {Efficient Incremental Validation of {XML} Documents},
+	Year = {2004}}
+
+@article{Boas1977,
+	Author = {Peter van Emde Boas},
+	Bibsource = {DBLP, http://dblp.uni-trier.de},
+	Date-Modified = {2007-04-19 09:37:53 +0200},
+	Journal = {Inform. Process. Lett.},
+	Number = {3},
+	Pages = {80-82},
+	Title = {Preserving Order in a Forest in Less Than Logarithmic Time and Linear Space.},
+	Volume = {6},
+	Year = {1977}}
+
+@article{BYG1992,
+	Address = {New York, NY, USA},
+	Author = {Ricardo Baeza-Yates and Gaston H. Gonnet},
+	Date-Added = {2007-02-22 19:31:30 +0100},
+	Date-Modified = {2008-07-02 22:17:19 +0200},
+	Issn = {0001-0782},
+	Journal = {Commun. ACM},
+	Number = {10},
+	Pages = {74--82},
+	Publisher = {ACM Press},
+	Title = {A new approach to text searching},
+	Volume = {35},
+	Year = {1992},
+	Bdsk-Url-1 = {http://doi.acm.org/10.1145/135239.135243}}
+
+@misc{CD1999,
+	Author = {J. Clark and S. DeRose},
+	Title = {{XML} path language ({XPath}), available as \texttt{http://www.w3.org/TR/xpath}},
+	Year = {1999}}
+
+@article{Chen1998,
+	Author = {Weimin Chen},
+	Date-Modified = {2006-06-07 20:16:53 +0200},
+	Journal = {J. Algorithms},
+	Pages = {370--385},
+	Title = {More Efficient Algorithm for Ordered Tree Inclusion},
+	Volume = {26},
+	Year = {1998}}
+
+@article{Chen2000,
+	Author = {Weimin Chen},
+	Date-Modified = {2007-04-19 09:30:07 +0200},
+	Journal = {Inform. Process. Lett.},
+	Number = {5-6},
+	Pages = {229--233},
+	Title = {Multi-subsequence searching},
+	Volume = {74},
+	Year = {2000}}
+
+@article{Chen2001,
+	Author = {Weimin Chen},
+	Date-Modified = {2007-04-19 09:30:43 +0200},
+	Journal = {J. Algorithms},
+	Pages = {135--158},
+	Title = {New Algorithm for Ordered Tree-to-Tree Correction Problem},
+	Volume = {40},
+	Year = {2001}}
+
+@inproceedings{CHI1999,
+	Author = {Richard Cole and Ramesh Hariharan and Piotr Indyk},
+	Booktitle = {Proceedings of the 10th Annual ACM-SIAM Symposium on Discrete Algorithms},
+	Date-Added = {2006-06-07 20:21:15 +0200},
+	Date-Modified = {2006-06-07 22:22:19 +0200},
+	Location = {Baltimore, Maryland, United States},
+	Pages = {245--254},
+	Title = {Tree pattern matching and subset matching in deterministic {$O(n log^3 n)$}-time},
+	Year = {1999}}
+
+@article{Chung1987,
+	Author = {M. J. Chung},
+	Date-Modified = {2006-06-07 22:46:09 +0200},
+	Journal = {J. Algorithms},
+	Number = {1},
+	Pages = {106--112},
+	Title = {{$O(n^{2.5})$} algorithm for the subgraph homeomorphism problem on trees},
+	Volume = {8},
+	Year = {1987}}
+
+@book{CLRS2001,
+	Author = {Thomas H. Cormen and Charles E. Leiserson and Ronald L. Rivest and Clifford Stein},
+	Publisher = {MIT Press},
+	Title = {Introduction to Algorithms, second edition},
+	Year = {2001}}
+
+@inproceedings{CM1997,
+	Author = {S. Chawathe and H. Garcia-Molina},
+	Booktitle = {Proceedings of the ACM SIGMOD International Conference on Management of Data},
+	Date-Modified = {2007-04-19 09:26:36 +0200},
+	Pages = {26--37},
+	Title = {Meaningful Change Detection in Structured Data},
+	Year = {1997}}
+
+@article{CMT2003,
+	Author = {Maxime Crochemore and Borivoj Melichar and {Zden\v{e}k} {Tron\'{\i}\v{c}ek}},
+	Date-Added = {2007-02-22 20:40:15 +0100},
+	Date-Modified = {2008-07-02 22:17:19 +0200},
+	Issn = {1570-8667},
+	Journal = {J. Discrete Algorithms},
+	Number = {3-4},
+	Pages = {255--280},
+	Title = {Directed acyclic subsequence graph: Overview},
+	Volume = {1},
+	Year = {2003},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1016/S1570-8667(03)00029-7}}
+
+@article{CO1982,
+	Author = {Christoph M. Hoffmann and Michael J. O'Donnell},
+	Date-Modified = {2006-06-08 11:23:11 +0200},
+	Journal = {J. ACM},
+	Number = {1},
+	Pages = {68--95},
+	Title = {Pattern Matching in Trees},
+	Volume = {29},
+	Year = {1982}}
+
+@inproceedings{CRMW1996,
+	Author = {S. S. Chawathe and A. Rajaraman and H. Garcia-Molina and J. Widom},
+	Booktitle = {Proceedings of the ACM SIGMOD International Conference on Management of Data},
+	Date-Modified = {2007-04-19 09:27:25 +0200},
+	Pages = {493--504},
+	Title = {Change Detection in Hierarchically Structured Information},
+	Year = {1996}}
+
+@inproceedings{DGM1990,
+	Author = {Moshe Dubiner and Zvi Galil and Edith Magen},
+	Booktitle = {Proceedings of the 31st Annual IEEE Symposium on the Foundations of Computer Science},
+	Date-Modified = {2006-06-07 22:23:49 +0200},
+	Pages = {145--150},
+	Title = {Faster Tree Pattern Matching},
+	Year = {1990}}
+
+@inproceedings{Die89,
+	Author = {Dietz, P. F.},
+	Booktitle = {Proceedings of the Workshop on Algorithms and Data Structures, Lecture Notes in Computer Science},
+	Date-Modified = {2007-04-19 09:35:31 +0200},
+	Pages = {67--74},
+	Title = {Fully Persistent Arrays (Extended Array)},
+	Volume = {382},
+	Year = {1989}}
+
+@misc{DMRW2006,
+	Author = {Erik D. Demaine and Shay Mozes and Benjamin Rossman and Oren Weimann},
+	Date-Added = {2006-05-02 15:41:57 +0200},
+	Date-Modified = {2008-07-02 22:17:19 +0200},
+	Howpublished = {Arxiv preprint cs.DS/0604037},
+	Month = {April},
+	Title = {An {$O(n^3)$}-Time Algorithm for Tree Edit Distance},
+	Year = {2006},
+	Bdsk-Url-1 = {http://www.citebase.org/cgi-bin/citations?id=oai:arXiv.org:cs/0604037}}
+
+@inproceedings{DZ1997,
+	Author = {Dennis Shasha and Kaizhong Zhang},
+	Booktitle = {Pattern Matching in String, Trees and Arrays},
+	Chapter = {14},
+	Pages = {341--371},
+	Publisher = {Oxford University},
+	Title = {Approximate Tree Pattern Matching},
+	Year = {1997}}
+
+@inproceedings{FM1996,
+	Author = {P. Ferragina and S. Muthukrishnan},
+	Booktitle = {Proceedings of the 4th Annual European Symposium on Algorithms, Lecture Notes in Computer Science},
+	Date-Modified = {2007-04-19 09:39:49 +0200},
+	Pages = {107--120},
+	Title = {Efficient Dynamic Method-lookup for Object Oriented Languages},
+	Volume = {1136},
+	Year = {1996}}
+
+@article{frederickson1997,
+	Author = {Greg N. Frederickson},
+	Date-Added = {2006-06-07 22:26:04 +0200},
+	Date-Modified = {2007-11-08 08:53:16 +0100},
+	Journal = {SIAM J. Comput.},
+	Note = {Announced at FOCS'91},
+	Number = {2},
+	Pages = {484--538},
+	Title = {Ambivalent Data Structures for Dynamic 2-Edge-Connectivity and {$k$} Smallest Spanning Trees},
+	Volume = {26},
+	Year = {1997}}
+
+@article{fredmanwillardsp-n-mst,
+	Author = {Michael L. Fredman and Dan E. Willard},
+	Date-Modified = {2007-04-19 09:43:28 +0200},
+	Journal = {J. Comput. System Sci.},
+	Number = {3},
+	Pages = {533--551},
+	Title = {Trans-dichotomous algorithms for minimum spanning trees and shortest paths},
+	Volume = {48},
+	Year = {1994}}
+
+@inproceedings{FT1994,
+	Author = {Martin Farach and Mikkel Thorup},
+	Booktitle = {Proceedings of the 5th Annual ACM-SIAM Symposium on Discrete Algorithms},
+	Pages = {481--488},
+	Title = {Fast Comparison of Evolutionary Trees},
+	Year = {1994}}
+
+@book{GJ1979,
+	Author = {Michael J. Garey and David S. Johnson},
+	Publisher = {Freeman},
+	Title = {Computers and Intractability: A Guide to the Theory of NP-completeness},
+	Year = {1979}}
+
+@article{GN1998,
+	Author = {Arvind Gupta and Naomi Nishimura},
+	Journal = {Algorithmica},
+	Pages = {183--210},
+	Title = {Finding largest subtrees and smallest supertrees},
+	Volume = {21},
+	Year = {1998}}
+
+@inproceedings{GT1989,
+	Author = {Harold N. Gabow and Robert Endre Tarjan},
+	Booktitle = {Proceedings of the 15th Annual ACM Symposium on Theory of Computing},
+	Date-Modified = {2007-04-19 09:45:05 +0200},
+	Pages = {246--251},
+	Title = {A linear-time algorithm for a special case of disjoint set union},
+	Year = {1983}}
+
+@book{Gusfield1997,
+	Author = {Dan Gusfield},
+	Publisher = {Cambridge},
+	Title = {Algorithms on strings, trees, and sequences: computer science and computational biology},
+	Year = {1997}}
+
+@article{HMP2001,
+	Author = {Torben Hagerup and Peter Bro Miltersen and Rasmus Pagh},
+	Fjournal = {Journal of Algorithms},
+	Issn = {0196-6774},
+	Journal = {J. Algorithms},
+	Number = {1},
+	Pages = {69-85},
+	Title = {Deterministic Dictionaries},
+	Volume = {41},
+	Year = {2001}}
+
+@inproceedings{HP2001,
+	Author = {Haruo Hosoya and Benjamin Pierce},
+	Booktitle = {Proceedings of the 28th ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages},
+	Date-Modified = {2007-04-19 09:51:02 +0200},
+	Pages = {67--80},
+	Title = {Regular expression pattern matching for {XML}},
+	Year = {2001}}
+
+@inproceedings{HT2002,
+	Author = {Yijie Han and Mikkel Thorup},
+	Booktitle = {Proceedings of the 43rd Annual IEEE Symposium on Foundations of Computer Science},
+	Date-Modified = {2007-04-19 09:49:03 +0200},
+	Pages = {135--144},
+	Title = {Integer Sorting in {$O(n \sqrt{\log \log n})$} Expected Time and Linear Space},
+	Year = {2002}}
+
+@inproceedings{JL2001,
+	Author = {Jesper Jansson and Andrzej Lingas},
+	Booktitle = {Proceedings of the 12th Annual Symposium on Combinatorial Pattern Matching, Lecture notes of Computer Science},
+	Date-Modified = {2007-04-19 09:51:42 +0200},
+	Title = {A Fast Algorithm for Optimal Alignment Between Similar Ordered Trees},
+	Volume = {2089},
+	Year = {2001}}
+
+@article{Jordan1869,
+	Author = {C. Jordan},
+	Date-Added = {2006-01-26 13:17:56 +0100},
+	Date-Modified = {2006-01-26 13:19:19 +0100},
+	Journal = {J. Reine Angew. Math.},
+	Pages = {185--190},
+	Title = {Sur les assemblages des lignes},
+	Volume = {70},
+	Year = {1869}}
+
+@article{JWZ1995,
+	Author = {Tao Jiang and Lusheng Wang and Kaizhong Zhang},
+	Date-Modified = {2007-04-19 09:53:12 +0200},
+	Journal = {Theoret. Comput. Sci.},
+	Number = {1},
+	Pages = {137--148},
+	Title = {Alignment of Trees -- an Alternative to Tree Edit},
+	Volume = {143},
+	Year = {1995}}
+
+@inproceedings{KA1994,
+	Author = {Dmitry Keselman and Amihood Amir},
+	Booktitle = {Proceedings of the 35th Annual IEEE Symposium on Foundations of Computer Science},
+	Date-Modified = {2007-04-19 09:53:41 +0200},
+	Pages = {758--769},
+	Title = {Maximum Agreement Subtree in a Set of Evolutionary Trees -- Metrics and Efficient Algorithms},
+	Year = {1994}}
+
+@phdthesis{Kilpelainen1992,
+	Author = {Pekka Kilpel{\"{a}}inen},
+	Month = {November},
+	School = {University of Helsinki, Department of Computer Science},
+	Title = {Tree Matching Problems with Applications to Structured Text Databases},
+	Year = {1992}}
+
+@inproceedings{Klein1998,
+	Author = {Klein, P.N.},
+	Booktitle = {Proceedings of the 6th Annual European Symposium on Algorithms, Lecture Notes in Computer Science},
+	Date-Modified = {2007-04-19 09:58:04 +0200},
+	Pages = {91--102},
+	Title = {Computing the edit-distance between unrooted ordered trees},
+	Volume = {1461},
+	Year = {1998}}
+
+@misc{Klein2002,
+	Author = {Philip Klein},
+	Note = {Personal communication},
+	Year = {2002}}
+
+@article{KM1995,
+	Author = {Pekka Kilpel{\"{a}}inen and Heikki Mannila},
+	Date-Modified = {2006-06-08 11:29:13 +0200},
+	Journal = {SIAM J. Comput.},
+	Pages = {340--356},
+	Title = {Ordered and Unordered Tree Inclusion},
+	Volume = {24},
+	Year = {1995}}
+
+@inproceedings{KM93,
+	Author = {Pekka Kilpel{\"{a}}inen and Heikki Mannila},
+	Booktitle = {Proceedings of the 16th Conference on Research and Development in Information Retrieval},
+	Date-Modified = {2006-06-08 11:28:50 +0200},
+	Pages = {214--222},
+	Title = {Retrieval from hierarchical texts by partial patterns.},
+	Year = {1993}}
+
+@techreport{KMY1995,
+	Author = {S. Khanna and R. Motwani and F. F. Yao},
+	Institution = {Stanford University},
+	Title = {Approximation Algorithms for the Largest Common Subtree Problem},
+	Year = {1995}}
+
+@book{Knuth1969,
+	Author = {Donald Erwin Knuth},
+	Publisher = {Addison Wesley},
+	Title = {The Art of Computer Programming, Volume 1},
+	Year = {1969}}
+
+@inproceedings{Kosaraju1989,
+	Author = {S. Rao Kosaraju},
+	Booktitle = {Proceedings of the 30th Annual IEEE Symposium on the Foundations of Computer Science},
+	Date-Modified = {2007-04-19 09:59:04 +0200},
+	Pages = {178--183},
+	Title = {Efficient Tree Pattern Matching},
+	Year = {1989}}
+
+@inproceedings{KTSK2000,
+	Author = {Philip Klein and Srikanta Tirthapura and Daniel Sharvit and Ben Kimia},
+	Booktitle = {Proceedings of the 11th Annual ACM-SIAM Symposium on Discrete Algorithms},
+	Date-Modified = {2007-04-19 09:58:32 +0200},
+	Pages = {696--704},
+	Title = {A Tree-Edit-Distance algorithm for comparing simple, closed shapes},
+	Year = {2000}}
+
+@inproceedings{LM2001,
+	Author = {Quanzhong Li and Bongki Moon},
+	Booktitle = {Proc. 27th VLDB},
+	Date-Modified = {2009-10-10 23:09:44 +0200},
+	Pages = {361--370},
+	Title = {Indexing and Querying {XML} Data for Regular Path Expressions},
+	Year = {2001}}
+
+@inproceedings{LST2001,
+	Author = {Chin Lung Lu and Zheng-Yao Su and Chuan Yi Tang},
+	Bibsource = {DBLP, http://dblp.uni-trier.de},
+	Booktitle = {Proceedings of the 7th Annual International Computing and Combinatorics Conference, Lecture Notes in Computer Science},
+	Date-Modified = {2007-04-19 10:01:22 +0200},
+	Isbn = {3-540-42494-6},
+	Pages = {338--348},
+	Title = {A new measure of edit distance between labeled trees},
+	Volume = {2108},
+	Year = {2001}}
+
+@article{Lu1979,
+	Author = {S. Y. Lu},
+	Date-Modified = {2007-04-19 10:14:38 +0200},
+	Journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+	Pages = {219--224},
+	Title = {A Tree-to-Tree distance and its Application to Cluster Analysis},
+	Volume = {1},
+	Year = {1979}}
+
+@article{Lu1989,
+	Author = {S. Y. Lu},
+	Date-Modified = {2007-04-19 10:14:48 +0200},
+	Journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+	Number = {2},
+	Pages = {249--256},
+	Title = {A Tree-Matching Algorithm Based on Node Splitting and Merging},
+	Volume = {6},
+	Year = {1984}}
+
+@article{LV1989,
+	Author = {G. M. Landau and U. Vishkin},
+	Date-Modified = {2007-04-19 09:59:27 +0200},
+	Journal = {J. Algorithms},
+	Pages = {157--169},
+	Title = {Fast Parallel and Serial Approximate String Matching},
+	Volume = {10},
+	Year = {1989}}
+
+@article{MM1989,
+	Author = {E. W. Myers and W. Miller},
+	Journal = {Bull. of Math. Biology},
+	Pages = {5--37},
+	Title = {Approximate matching of regular expressions.},
+	Volume = {51},
+	Year = {1989}}
+
+@inproceedings{MM1996,
+	Author = {S. Muthukrishnan and Martin M{\"{u}}ller},
+	Booktitle = {Proceedings of the 7th Annual ACM-SIAM Symposium on Discrete Algorithms},
+	Date-Modified = {2007-04-19 10:19:36 +0200},
+	Pages = {42--51},
+	Title = {Time and space efficient method-lookup for object-oriented programs},
+	Year = {1996}}
+
+@article{MN1990,
+	Author = {K. Mehlhorn and S. N{\"a}hler},
+	Journal = {Inform. Process. Lett.},
+	Number = {4},
+	Pages = {183--189},
+	Title = {Bounded ordered dictionaries in {$O(\log\log N)$} time and {$O(n)$} space},
+	Volume = {35},
+	Year = {1990}}
+
+@techreport{Motwani1992,
+	Author = {Rajeev Motwani},
+	Institution = {Stanford University, Department of Computer Science},
+	Number = {STAN-CS-92-1435},
+	Title = {Lecture Notes on Approximation Algorithms Volume 1},
+	Year = {1992}}
+
+@article{MP1980,
+	Author = {W. Masek and M. Paterson},
+	Date-Modified = {2007-04-19 10:16:15 +0200},
+	Journal = {J. Comput. System Sci.},
+	Pages = {18--31},
+	Title = {A faster algorithm for computing string edit distances},
+	Volume = {20},
+	Year = {1980}}
+
+@article{MR90,
+	Author = {Heikki Mannila and K. J. R{\"{a}}ih{\"{a}}},
+	Date-Modified = {2007-04-19 10:14:59 +0200},
+	Journal = {Information Modelling and Knowledge Bases},
+	Pages = {469--482},
+	Title = {On Query Languages for the {$p$}-string data model},
+	Year = {1990}}
+
+@article{MT1992,
+	Author = {Jiri Matou\v{s}ek and R. Thomas},
+	Date-Modified = {2006-06-08 11:33:41 +0200},
+	Journal = {Discrete Math.},
+	Pages = {343--364},
+	Title = {On the Complexity of Finding Iso- and Other Morphisms for Partial $k$-trees},
+	Volume = {108},
+	Year = {1992}}
+
+@inproceedings{Murata2001,
+	Author = {Makoto Murata},
+	Booktitle = {Proc. 20th PODS},
+	Date-Modified = {2009-10-10 23:13:17 +0200},
+	Pages = {126--137},
+	Title = {Extended path expressions of {XML}},
+	Year = {2001}}
+
+@article{Myers1992,
+	Author = {E. W. Myers},
+	Date-Modified = {2007-04-19 10:20:08 +0200},
+	Journal = {J. ACM},
+	Number = {2},
+	Pages = {430--448},
+	Title = {A Four-Russian Algorithm for Regular Expression Pattern Matching.},
+	Volume = {39},
+	Year = {1992}}
+
+@article{Myers1999,
+	Address = {New York, NY, USA},
+	Author = {Gene Myers},
+	Date-Added = {2006-02-04 17:36:46 +0100},
+	Date-Modified = {2008-07-02 22:17:19 +0200},
+	Issn = {0004-5411},
+	Journal = {J. ACM},
+	Number = {3},
+	Pages = {395--415},
+	Publisher = {ACM Press},
+	Title = {A fast bit-vector algorithm for approximate string matching based on dynamic programming},
+	Volume = {46},
+	Year = {1999},
+	Bdsk-Url-1 = {http://doi.acm.org/10.1145/316542.316550}}
+
+@article{Navarro2001,
+	Author = {Gonzalo Navarro},
+	Journal = {Software -- Practice and Experience},
+	Number = {13},
+	Pages = {1265--1312},
+	Title = {{NR-grep}: a fast and flexible pattern-matching tool},
+	Volume = {31},
+	Year = {2001}}
+
+@article{Navarro2004,
+	Author = {Gonzalo Navarro},
+	Date-Added = {2007-02-22 19:51:23 +0100},
+	Date-Modified = {2007-04-19 10:22:02 +0200},
+	Issn = {1236-6064},
+	Journal = {Nordic J. Comput.},
+	Number = {4},
+	Pages = {356--373},
+	Publisher = {Publishing Association Nordic Journal of Computing},
+	Title = {Approximate regular expression searching with arbitrary integer weights},
+	Volume = {11},
+	Year = {2004}}
+
+@article{NR2004,
+	Author = {Gonzalo Navarro and Mathieu Raffinot},
+	Date-Added = {2007-02-22 18:45:34 +0100},
+	Date-Modified = {2007-02-22 18:45:43 +0100},
+	Journal = {Algorithmica},
+	Number = {2},
+	Pages = {89-116},
+	Title = {New Techniques for Regular Expression Searching},
+	Volume = {41},
+	Year = {2004}}
+
+@article{NRT2000,
+	Author = {Naomi Nishimura and Prabhakar Ragde and Dimitrios M. Thilikos},
+	Date-Modified = {2007-04-19 10:25:00 +0200},
+	Journal = {Int. J. Found. Comput. Sci.},
+	Number = {3},
+	Pages = {445--465},
+	Title = {Finding smallest supertrees under minor containment},
+	Volume = {11},
+	Year = {2000}}
+
+@techreport{Richter1997,
+	Author = {Thorsten Richter},
+	Institution = {Department of Computer Science, University of Bonn},
+	Title = {A new measure of the distance between ordered trees and its applications, Technical Report 85166-CS},
+	Year = {1997}}
+
+@inproceedings{Richter1997a,
+	Author = {Thorsten Richter},
+	Booktitle = {Proceedings of the 8th Annual Symposium on Combinatorial Pattern Matching,Lecture Notes of Computer Science},
+	Date-Modified = {2007-04-19 10:26:08 +0200},
+	Pages = {150--166},
+	Title = {A New Algorithm for the Ordered Tree Inclusion Problem},
+	Volume = {1264},
+	Year = {1997}}
+
+@article{RR1992,
+	Author = {R. Ramesh and I.V. Ramakrishnan},
+	Date-Modified = {2007-04-19 10:25:19 +0200},
+	Journal = {J. ACM},
+	Number = {2},
+	Pages = {295--316},
+	Title = {Nonlinear Pattern Matching in Trees},
+	Volume = {39},
+	Year = {1992}}
+
+@article{Selkow1977,
+	Author = {Stanley M. Selkow},
+	Date-Modified = {2007-04-19 10:33:31 +0200},
+	Journal = {Inform. Process. Lett.},
+	Number = {6},
+	Pages = {184--186},
+	Title = {The Tree-to-Tree Editing Problem},
+	Volume = {6},
+	Year = {1977}}
+
+@book{SM1997,
+	Author = {J. Setubal and J. Meidanis},
+	Publisher = {PWS Publishing Company},
+	Title = {Introduction to Computational Biology},
+	Year = {1997}}
+
+@article{SM2002,
+	Author = {Torsten Schlieder and Holger Meuss},
+	Date-Modified = {2008-07-02 22:17:19 +0200},
+	Issn = {1532-2882},
+	Journal = {J. Am. Soc. Inf. Sci. Technol.},
+	Number = {6},
+	Pages = {489--503},
+	Publisher = {John Wiley \& Sons, Inc.},
+	Title = {Querying and ranking {XML} documents},
+	Volume = {53},
+	Year = {2002},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1002/asi.10060}}
+
+@inproceedings{SN2000,
+	Author = {T. Schlieder and F. Naumann},
+	Booktitle = {ACM SIGIR Workshop On XML and Information Retrieval},
+	Date-Modified = {2007-04-19 10:28:56 +0200},
+	Title = {Approximate Tree Embedding for Querying {XML} Data},
+	Year = {2000}}
+
+@article{ST1999,
+	Author = {R. Shamir and D. Tsur},
+	Date-Modified = {2007-04-19 10:34:00 +0200},
+	Journal = {J. Algorithms},
+	Pages = {267--280},
+	Title = {Faster Subtree Isomorphism},
+	Volume = {33},
+	Year = {1999}}
+
+@article{Stallman1981,
+	Author = {Richard M. Stallman},
+	Journal = {SIGPLAN Not.},
+	Number = {6},
+	Pages = {147--156},
+	Title = {EMACS the extensible, customizable self-documenting display editor},
+	Volume = {16},
+	Year = {1981}}
+
+@inproceedings{SWSZ2002,
+	Author = {Dennis Shasha and Jason Tsong-Li Wang and Huiyuan Shan and Kaizhong Zhang},
+	Booktitle = {Proceedings of the 14th International Conference on Scientific and Statistical Database Management},
+	Pages = {89--98},
+	Title = {ATreeGrep: Approximate Searching in Unordered Trees},
+	Year = {2002}}
+
+@article{SZ1990,
+	Author = {Dennis Shasha and Kaizhong Zhang},
+	Date-Modified = {2007-04-19 10:35:34 +0200},
+	Journal = {J. Algorithms},
+	Pages = {581--621},
+	Title = {Fast Algorithms for the Unit Cost Editing Distance Between Trees},
+	Volume = {11},
+	Year = {1990}}
+
+@article{Tai1979,
+	Author = {Kuo-Chung Tai},
+	Date-Modified = {2006-06-08 11:37:10 +0200},
+	Journal = {J. ACM},
+	Pages = {422--433},
+	Title = {The Tree-to-Tree Correction Problem},
+	Volume = {26},
+	Year = {1979}}
+
+@article{Thomp1968,
+	Author = {K. Thompson},
+	Journal = {Commun. ACM},
+	Pages = {419--422},
+	Title = {Regular Expression Search Algorithm},
+	Volume = {11},
+	Year = {1968}}
+
+@article{Thorup1999,
+	Author = {Mikkel Thorup},
+	Journal = {J. ACM},
+	Number = {3},
+	Pages = {362--394},
+	Title = {Undirected single-source shortest paths with positive integer weights in linear time},
+	Volume = {46},
+	Year = {1999}}
+
+@inproceedings{Thorup2003,
+	Author = {Mikkel Thorup},
+	Booktitle = {Proceedings of the 33rd Annual ACM Symposium on Theory of Computing},
+	Date-Modified = {2007-04-19 10:38:39 +0200},
+	Pages = {649--658},
+	Title = {Space efficient dynamic stabbing with fast queries},
+	Year = {2003}}
+
+@inproceedings{TRS2002,
+	Author = {A. Termier and M. Rousset and M. Sebag},
+	Booktitle = {Proceedings of the 2nd International Conference on Data Mining},
+	Date-Modified = {2006-06-08 11:40:23 +0200},
+	Pages = {450},
+	Title = {TreeFinder: a First Step towards {XML} Data Mining},
+	Year = {2002}}
+
+@inproceedings{TSKK1998,
+	Author = {Srikanta Tirthapura and Daniel Sharvit and Philip Klein and Benjamin B. Kimia},
+	Booktitle = {Proceeding of SPIE International Symposium on Voice, Video and Data Communications},
+	Pages = {91--102},
+	Title = {Indexing Based on Edit-Distance Matching of Shape Graphs},
+	Year = {1998}}
+
+@article{TT1988,
+	Author = {Eiichi Tanaka and Keiko Tanaka},
+	Journal = {International Journal of Pattern Recognition and Artificial Intelligence},
+	Number = {2},
+	Pages = {221--240},
+	Title = {The Tree-to-Tree Editing Problem},
+	Volume = {2},
+	Year = {1988}}
+
+@article{TT1995,
+	Author = {Eiichi Tanaka},
+	Journal = {International Journal of Pattern Recognition and Artificial Intelligence},
+	Number = {1},
+	Pages = {167--172},
+	Title = {A Note on a Tree-to-Tree Editing Problem},
+	Volume = {9},
+	Year = {1995}}
+
+@article{Ukkonen1985,
+	Author = {Esko Ukkonen},
+	Date-Modified = {2007-04-19 10:39:58 +0200},
+	Journal = {J. Algorithms},
+	Pages = {132--137},
+	Title = {Finding Approximate Patterns in Strings},
+	Volume = {6},
+	Year = {1985}}
+
+@article{WF1974,
+	Author = {Robert A. Wagner and Michael J. Fischer},
+	Date-Modified = {2008-07-02 22:17:19 +0200},
+	Issn = {0004-5411},
+	Journal = {J. ACM},
+	Pages = {168--173},
+	Publisher = {ACM Press},
+	Title = {The String-to-String Correction Problem},
+	Volume = {21},
+	Year = {1974},
+	Bdsk-Url-1 = {http://doi.acm.org/10.1145/321796.321811}}
+
+@inproceedings{WM1992,
+	Author = {S. Wu and U. Manber},
+	Booktitle = {Proceedings {USENIX} Winter 1992 Technical Conference},
+	Pages = {153--162},
+	Title = {Agrep -- a fast approximate pattern-matching tool},
+	Year = {1992}}
+
+@article{WM1992b,
+	Author = {Sun Wu and Udi Manber},
+	Date-Modified = {2007-04-19 10:41:02 +0200},
+	Journal = {Commun. ACM},
+	Number = {10},
+	Pages = {83--91},
+	Title = {Fast text searching: allowing errors},
+	Volume = {35},
+	Year = {1992}}
+
+@article{WMM1995,
+	Author = {S. Wu and U. Manber and E. W. Myers},
+	Date-Modified = {2007-04-19 10:40:49 +0200},
+	Journal = {J. Algorithms},
+	Number = {3},
+	Pages = {346--360},
+	Title = {A Subquadratic Algorithm for Approximate Regular Expression Matching.},
+	Volume = {19},
+	Year = {1995}}
+
+@article{WZJS1994,
+	Author = {Jason Tsong-Li Wang and Kaizhong Zhang and Karpjoo Jeong and Dennis Shasha},
+	Journal = {IEEE Transactions on Knowledge and Data Engineering},
+	Number = {4},
+	Pages = {559--571},
+	Title = {A System for Approximate Tree Matching},
+	Volume = {6},
+	Year = {1994}}
+
+@inproceedings{YLH2003,
+	Author = {Liang Huai Yang and Mong Li Lee and Wynne Hsu},
+	Booktitle = {Proceedings of the 29th Conference on Very Large Data Bases},
+	Date-Modified = {2006-06-08 11:45:37 +0200},
+	Pages = {69--80},
+	Title = {Efficient Mining of {XML} Query Patterns for Caching},
+	Year = {2003}}
+
+@article{YLH2004,
+	Author = {Huai Yang and Li Lee and Wynne Hsu},
+	Date-Modified = {2006-06-08 11:43:34 +0200},
+	Journal = {The VLDB Journal},
+	Number = {4},
+	Pages = {318--332},
+	Title = {Finding hot query patterns over an {XQuery} stream},
+	Volume = {13},
+	Year = {2004}}
+
+@inproceedings{ZADR03,
+	Author = {P. Zezula and G. Amato and F. Debole and F. Rabitti},
+	Booktitle = {Proceedings of the 1st International XML Database Symposium},
+	Date-Modified = {2006-06-08 11:48:16 +0200},
+	Pages = {149--163},
+	Title = {Tree Signatures for {XML} Querying and Navigation},
+	Year = {2003}}
+
+@phdthesis{Zhang1989,
+	Author = {Kaizhong Zhang},
+	School = {Courant Institute, Department of Computer Science},
+	Title = {The Editing Distance Between Trees: Algorithms and Applications},
+	Year = {1989}}
+
+@article{Zhang1995,
+	Author = {Kaizhong Zhang},
+	Date-Modified = {2007-04-19 10:42:12 +0200},
+	Journal = {Pattern Recognition},
+	Pages = {463--474},
+	Title = {Algorithms for the constrained editing problem between ordered labeled trees and related problems},
+	Volume = {28},
+	Year = {1995}}
+
+@article{Zhang1996,
+	Author = {Kaizhong Zhang},
+	Date-Modified = {2007-04-19 10:43:04 +0200},
+	Journal = {Algorithmica},
+	Number = {3},
+	Pages = {205--222},
+	Title = {A constrained edit distance between unordered labeled trees},
+	Volume = {15},
+	Year = {1996}}
+
+@inproceedings{Zhang1996a,
+	Author = {Kaizhong Zhang},
+	Booktitle = {Proceedings of the 7th Annual Symposium Combinatorial Pattern Matching, Lecture Notes in Computer Science},
+	Date-Modified = {2007-04-19 10:43:30 +0200},
+	Pages = {361--372},
+	Title = {Efficient Parallel Algorithms for Tree Editing Problems},
+	Volume = {1075},
+	Year = {1996}}
+
+@article{ZJ1994,
+	Author = {Kaizhong Zhang and Tao Jiang},
+	Date-Modified = {2007-04-19 10:43:48 +0200},
+	Journal = {Inform. Process. Lett.},
+	Pages = {249--254},
+	Title = {Some {MAX SNP}-hard Results Concerning Unordered Labeled Trees},
+	Volume = {49},
+	Year = {1994}}
+
+@article{ZS1989,
+	Author = {Kaizhong Zhang and Dennis Shasha},
+	Date-Modified = {2006-06-08 11:49:12 +0200},
+	Journal = {SIAM J. Comput.},
+	Pages = {1245--1262},
+	Title = {Simple Fast Algorithms for the Editing Distance Between Trees and Related Problems},
+	Volume = {18},
+	Year = {1989}}
+
+@techreport{ZSS1991,
+	Author = {Kaizhong Zhang and Rick Statman and Dennis Shasha},
+	Institution = {The University of Western Ontario, Department of Computer Science},
+	Number = {289},
+	Title = {On the Editing Distance Between Unordered Labeled Trees},
+	Year = {1991}}
+
+@article{ZSS1992,
+	Author = {Kaizhong Zhang and Rick Statman and Dennis Shasha},
+	Date-Modified = {2007-04-19 10:44:42 +0200},
+	Journal = {Inform. Process. Lett.},
+	Pages = {133--139},
+	Title = {On the Editing Distance Between Unordered Labeled Trees},
+	Volume = {42},
+	Year = {1992}}
+
+@article{ZSW1994,
+	Author = {Kaizhong Zhang and Dennis Shasha and Jason T. L. Wang},
+	Date-Modified = {2007-04-19 10:44:59 +0200},
+	Journal = {J. Algorithms},
+	Number = {1},
+	Pages = {33--66},
+	Title = {Approximate Tree Matching in the Presence of Variable Length Don't Cares},
+	Volume = {16},
+	Year = {1994}}
+
+@article{claude2011self,
+  title={Self-indexed grammar-based compression},
+  author={Claude, F. and Navarro, G.},
+  journal={Fundamenta Informaticae},
+  volume=111,
+  number=3,
+  pages={313--337},
+  year=2011,
+  publisher={IOS Press}
+}
+
+@article{charikar2005smallest,
+  title={The smallest grammar problem},
+  author={Charikar, Moses and Lehman, Eric and Liu, Ding and Panigrahy, Rina and Prabhakaran, Manoj and Sahai, Amit and Shelat, Abbi},
+  journal={IEEE Trans. Inf. Theory},
+  volume={51},
+  number={7},
+  pages={2554--2576},
+  year={2005}
+}
+
+@article{rytter2003application,
+  title={Application of {L}empel--{Z}iv factorization to the approximation of grammar-based compression},
+  author={Rytter, Wojciech},
+  journal={Theoret. Comput. Sci.},
+  volume={302},
+  number={1},
+  pages={211--222},
+  year={2003}
+}
+
+@inproceedings{gasieniec2005real,
+  title={Real-time traversal in grammar-based compressed files},
+  author={G\c{a}sieniec, Leszek and Kolpakov, Roman and Potapov, Igor and Sant, Paul},
+  booktitle={Proc. 15th DCC},
+  pages={458},
+  year={2005}
+}
+
+@article{ukkonen1992approximate,
+  title={Approximate string-matching with $q$-grams and maximal matches},
+  author={Ukkonen, Esko},
+  journal={Theoretical Computer Science},
+  volume={92},
+  number={1},
+  pages={191--211},
+  year={1992},
+  publisher={Elsevier}
+}
+
+@article{lz77,
+  title={A universal algorithm for sequential data compression},
+  author={Ziv, Jacob and Lempel, Abraham},
+  journal={Information Theory, IEEE Trans. Inf. Theory},
+  volume={23},
+  number={3},
+  pages={337--343},
+  year={1977}
+}
+
+@article{lz78,
+  title={Compression of individual sequences via variable-rate coding},
+  author={Ziv, Jacob and Lempel, Abraham},
+  journal={Information Theory, IEEE Trans. Inf. Theory},
+  volume={24},
+  number={5},
+  pages={530--536},
+  year={1978}
+}
+
+@article{fingerpred,
+  title={Predecessor search with distance-sensitive query time},
+  author={Belazzougui, Djamal and Boldi, Paolo and Vigna, Sebastiano},
+  journal={arXiv:1209.5441},
+  volume={},
+  number={},
+  pages={},
+  year={2012},
+  publisher={}
+}
+
+@article{gagiefingerprint,
+  title={A faster grammar-based self-index},
+  author={Travis Gagie and Pawe{\l} Gawrychowski and Juha K{\"a}rkk{\"a}inen and Yakov Nekrich and Simon J. Puglisi},
+  journal={arXiv:1209.5441},
+  volume={},
+  number={},
+  pages={},
+  year={2012},
+  publisher={}
+}
+
+
+% new
+@article{farach1998string,
+  title={String Matching in {L}empel--{Z}iv Compressed Strings},
+  author={Farach, Martin and Thorup, Mikkel},
+  journal={Algorithmica},
+  volume={20},
+  number={4},
+  pages={388--404},
+  year={1998}
+}
+
+@inproceedings{sutinen1995using,
+  title={On using q-gram locations in approximate string matching},
+  author={Sutinen, Erkki and Tarhio, Jorma},
+  booktitle={Proc. 3rd ESA},
+  pages={327--340},
+  year={1995}
+}
+
+@article{cormode2007string,
+  title={The string edit distance matching problem with moves},
+  author={Cormode, Graham and Muthukrishnan, S},
+  journal={ACM Trans. Algorithms},
+  volume={3},
+  number={1},
+  pages={2},
+  year={2007},
+  publisher={ACM}
+}
+
+@article{cole2003faster,
+  title={Faster suffix tree construction with missing suffix links},
+  author={Cole, Richard and Hariharan, Ramesh},
+  journal={SIAM J. Comput.},
+  volume={33},
+  number={1},
+  pages={26--42},
+  year={2003},
+  publisher={SIAM}
+}
+
+@inproceedings{kalai2002efficient,
+  title={Efficient pattern-matching with don't cares},
+  author={Kalai, Adam},
+  booktitle={Proc. 13th SODA},
+  pages={655--656},
+  year={2002}
+}
+
+@inproceedings{amir1992efficient,
+  title={Efficient randomized dictionary matching algorithms},
+  author={Amir, Amihood and Farach, Martin and Matias, Yossi},
+  booktitle={Proc. 3rd CPM},
+  pages={262--275},
+  year={1992}
+}
+
+@inproceedings{gasieniec1996randomized,
+  title={Randomized efficient algorithms for compressed strings: {T}he finger-print approach},
+  author={G\c{a}sieniec, Leszek and Karpinski, Marek and Plandowski, Wojciech and Rytter, Wojciech},
+  booktitle={Proc. 7th CPM},
+  pages={39--49},
+  year={1996}
+}
+
+@inproceedings{andoni2006efficient,
+  title={Efficient algorithms for substring near neighbor problem},
+  author={Andoni, Alexandr and Indyk, Piotr},
+  booktitle={Proc. 17th SODA},
+  pages={1203--1212},
+  year={2006}
+}
+
+@inproceedings{porat2009exact,
+  title={Exact and approximate pattern matching in the streaming model},
+  author={Porat, Benny and Porat, Ely},
+  booktitle={Proc. 50th FOCS},
+  pages={315--323},
+  year={2009}
+}
+
+@inproceedings{cormode2005substring,
+  title={Substring compression problems},
+  author={Cormode, Graham and Muthukrishnan, S},
+  booktitle={Proc. 16th SODA},
+  pages={321--330},
+  year={2005}
+}

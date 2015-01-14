@@ -1,0 +1,132 @@
+%!TEX root = ../Thesis.tex
+
+%% TIKZ
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{shapes.misc}
+\usetikzlibrary{positioning}
+\usetikzlibrary{patterns}
+\usetikzlibrary{fit}
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations.markings}
+\tikzstyle{every picture}+=[remember picture]
+
+
+\usepackage[english]{babel}
+\usepackage{upgreek}
+\usepackage{amsthm,amsmath,amssymb,nicefrac,graphicx,lastpage,array}
+
+ 
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{fact}{Fact}
+
+
+\frenchspacing
+
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Proper and meaningful colored Fixmes.
+% Simpler interface to fixmes/todos
+\usepackage{soul} % provides sethlcolor, hl for fixes
+\usepackage{framed} % shading for notes
+\definecolor{shadecolor}{rgb}{1,0.8,0.2} % shade color for notes
+
+\usepackage[inline,nomargin,author=,draft]{fixme}
+\fxusetheme{color}
+%\fxsetface{inline}{\bfseries}
+%\fxsetface{inline}{\rmfamily}
+%\newcommand{\note}[1]{\fxnote{\hlc[gray!0.2]{#1}}}
+\newcommand{\note}[1]{\begin{shaded}\fxnote{#1}\end{shaded}}
+
+\newcommand{\hlc}[2][yellow]{{\sethlcolor{#1} \hl{#2}}}
+\newcommand{\fix}[1]{\fxfatal{\hlc[yellow]{#1}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%% Info about papers
+\newenvironment{infosection}{\par\vspace*{\fill} \hrule}{\clearpage}
+\newcommand{\published}[1]{\noindent {\paragraph{Publication} #1}}
+\newcommand{\authors}[1]{\noindent {\paragraph{Authors} 
+#1 
+\setcounter{footnote}{0}
+}}
+
+\makeatletter
+\def\@xfootnote[#1]{%
+  \protected@xdef\@thefnmark{#1}%
+  \@footnotemark\@footnotetext}
+\makeatother
+
+%% Specify affiliations with this massive hack
+\newcommand{\uniname}[2]{\footnotetext[#1]{#2}}
+\newcommand{\uni}[1]{\footnotemark[#1]}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Table row height. From IEEE package documentation
+\renewcommand{\arraystretch}{1.2}
+
+
+
+
+%%%%%%%%%%%%%%% MAKES AUTHORS ON TOP WITH MAKETITLE.
+\begin{comment}
+%%% FROM LIPICS
+\makeatletter
+\renewcommand\maketitle{\par
+  \begingroup
+    \renewcommand\thefootnote{\@fnsymbol\c@footnote}%
+    \if@twocolumn
+      \ifnum \col@number=\@ne
+        \@maketitle
+      \else
+        \twocolumn[\@maketitle]%
+      \fi
+    \else
+      %\newpage
+      \global\@topnum\z@   % Prevents figures from going at top of page.
+      \@maketitle
+    \fi
+    \thispagestyle{plain}\@thanks
+  \endgroup
+  \setcounter{footnote}{0}%
+  \global\let\thanks\relax
+  \global\let\maketitle\relax
+  \global\let\@maketitle\relax
+  \global\let\@thanks\@empty
+  \global\let\@author\@empty
+  \global\let\@date\@empty
+  \global\let\@title\@empty
+  \global\let\title\relax
+  \global\let\author\relax
+  \global\let\date\relax
+  \global\let\and\relax
+}
+\def\@maketitle{%
+  %\newpage
+  %\null\vskip-\baselineskip
+  %\vskip-\headsep
+  \let \footnote \thanks
+  \parindent\z@ \raggedright
+    \ifnum\c@authors=0 %
+      \@latexerr{No \noexpand\author given}%
+        {Provide at least one author. See the LIPIcs class documentation.}%
+    \else
+      \@author
+    \fi
+  \par}
+\makeatother
+
+\usepackage{authblk}
+\renewcommand*\Authand{{ and }}
+\end{comment}

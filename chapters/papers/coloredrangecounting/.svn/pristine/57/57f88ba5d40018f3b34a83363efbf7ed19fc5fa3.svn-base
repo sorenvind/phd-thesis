@@ -1,0 +1,229 @@
+\documentclass[a4paper]{llncs}
+
+%%%% IF NOT LLNCS
+%\documentclass[a4paper,11pt]{article}
+%\usepackage{amsthm}
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{corollary}{Corollary}
+%\newtheorem{lemma}{Lemma}
+
+%\usepackage[utf8]{inputenc} % danske tegn
+\usepackage{hyperref}
+\usepackage[noadjust]{cite}
+\usepackage{amsmath,amssymb,nicefrac,graphicx}
+%\usepackage{lastpage,array}
+%\renewcommand{\baselinestretch}{0.98}
+\usepackage{algpseudocode,algorithm}
+\usepackage{lineno}
+
+%\setlength{\textheight}{20cm}
+%\setlength{\textwidth}{12.4cm}
+% Upright greek letters that scales properly.
+%\usepackage{upgreek}
+
+% Improved typography. Also typically reduces the length of text (in pages).
+%\usepackage{microtype}
+
+% Allow table cells spanning multiple rows/columns
+%\usepackage{multirow}
+
+
+%% TO DISABLE
+\usepackage{comment}
+\usepackage[draft]{fixme}
+
+%% SQUEEZE
+\usepackage{microtype}
+%\usepackage{times}
+\usepackage[font={small}]{caption, subfig}
+%\usepackage[margin=1.3in]{geometry}
+
+%Macros: Trees, SLPs
+\newcommand{\size}{\ensuremath{\mathit{size}}}
+\newcommand{\depth}{\ensuremath{\mathit{depth}}}
+\newcommand{\leaf}{\ensuremath{\mathit{leaf}}}
+\newcommand{\heavy}{\ensuremath{heavy}}
+\newcommand{\heavypath}{\ensuremath{H}}
+\newcommand{\rootnode}{\ensuremath{\mathit{root}}}
+\newcommand{\lchild}{\ensuremath{\mathit{left}}}
+\newcommand{\rchild}{\ensuremath{\mathit{right}}}
+
+
+%Macros: Points
+\newcommand{\points}{\ensuremath{\mathit{points}}}
+
+
+%Macros: Polylogs
+\newcommand{\polylog}{\ensuremath{\mathrm{\, polylog \,}}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% TITLEPAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Colored Range Counting in Linear Space}
+\author{\small
+	Roberto Grossi \qquad S{\o}ren Vind$^\star$
+}
+\date{}
+\institute{}
+
+\begin{document}
+\linenumbers
+	
+\maketitle
+% Fix grants, reset footnote counter to arabic.
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\footnotetext[1]{Supported by a grant from the Danish National Advanced Technology Foundation.} %star
+
+\renewcommand{\thefootnote}{\arabic{footnote}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% ABSTRACT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+    In the \emph{colored range counting problem}, we are given a set of $n$ colored points in $d \geq 2$ dimensions to preprocess. A query asks us to report the number of distinct colors found in an ortogonal query range.
+    
+    \quad We give the first data structure for the two dimensional problem obtaining linear space usage and $o(n)$ worst case query time. We also give the first data structure for the problem obtaining almost-linear space usage for multidimensional points and $o(n)$ worst case query time. At the same time, even in two dimensions, we present the first dynamic solutions to the problem, allowing point insertions and deletions. 
+    
+    \quad We also present solutions using almost-linear space that answer queries in almost-linear time in the number of colors, and an efficient solution to the 1D case when the number of colors is small.
+\end{abstract}
+
+%\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%% INTRODUCTION %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\begin{itemize}
+    \item Classic (which we will call standard) range searching is extremely well-studied (See \cite{} \fxfatal{cite} for a great overview).
+    \item Colored range searching (also known as categorical or generalized range searching), where each point has a color, is a natural generalisation of the standard problem introduced by Janardan and Lopez in 1993 \cite{janardan1993generalized}. The variations we will review here supports queries in the form of a $d$-dimensional query box $Q$, where a reporting query must list the distinct colors in $Q$ and a counting query must report the number of distinct colors in $Q$.
+    \item For the colored range searching problems, counting is considered harder than reporting, because counting is not decomposable (knowing the number of colors in two halves of the query range does not give the answer) and because complexity cannot be hidden as output-sensitive time bounds. This is not the case in standard range searching.
+    \item The colored range reporting problem is relatively well-studied \cite{janardan1993generalized, nekrich2012space, nekrich2013optimal, gagie2012colored, shi2005optimal, gupta1995further, gupta1997technique}, with output-sensitive solutions almost matching the time and space bounds obtained for standard range reporting in one and two dimensions. We let $k$ denote the number of distinct colors reported. 
+    \item In particular, Nekrich and Vitter give a dynamic solution to one dimensional colored range reporting with optimal query time $O(1+k)$ time and linear space \cite{nekrich2013optimal}, while Gagie et al. earlier presented a succinct solution with query time logarithmic in the length of the query interval \cite{gagie2012colored}. In two dimensions Shi and JaJa obtain a bound of $O(\log n + k)$ time and $O(n \log n)$ space \cite{shi2005optimal}. In three dimensions Gupta et al. achieve a data structure using $O(n \log ^4 n)$ space and answering queries in $O(\log ^2 n + k)$ \cite{gupta1995further}. To the best of our knowledge, the only data structure for $> 3$ dimensions is by van Kreveld, answering queries in $O(\log n + k)$ time and using $O(n^{1+\epsilon})$ space \cite{van1992new, gupta1997technique}. \fxfatal{Have we accidentally also created the first $O(n \polylog n)$ space sol to reporting for $d>3$?}
+    
+    \item In one dimension, an optimal solution is known for colored range counting. Larsen and Walderveen showed that one-dimensional colored range counting is equivalent to two-dimensional standard range counting \cite{larsen2013near}, and so the $O(\log n / \log \log n)$ upper bound for two dimensional range counting of JaJa, Mortensen and Shi \cite{jaja2005space} combined with a matching lower bound by Patrascu \cite{patrascu2007lower} is also optimal for one-dimensional colored range counting.
+    
+    \item If we consider two or more dimensions, no bounds that are close to their standard counting counterparts are known. For example, while a classic range tree solves two dimensional standard range counting in logarithmic time, no logarichmic time solutions in $o(n^2)$ space are known for colored range counting. 
+    \item In fact, Kaplan et al. \cite{kaplan2007counting} show that answering $n$ two dimensional colored range counting queries in $O(n^{p/2})$ time (including all preprocessing time) yields an $O(n^p)$ time algorithm for multiplying two $n \times n$ matrices. This reduction means that solving colored range counting in polylogarithmic time would be a major breakthrough, and suggest that even for two dimensions, no logarithmic time solutions may exist.
+    \item $\sigma$ denotes the number of distinct colors
+    \item $k$ denote the number of colors in the output (i.e. the result of the counting query.)
+    \item $n$ is the number of points
+    \item $d \geq 2$ is the dimensionality of the points
+\end{itemize}
+
+\subsection*{Previous Results}
+No previous solutions uses linear space and answer queries in $o(n)$ time. There are solutions obtaining polylogarithmic query time, but they use $O(n^2)$ space.
+\begin{itemize}
+    \item Trivial solution: Look through points. $O(n)$ space and time, $O(1)$ update.
+    \item Nekrich \cite{nekrich2009orthogonal}: Range emptiness for each color. $O(n)$ space, $O(\sigma \log n)$ time, update?
+    \item Janardan, Lopez \cite{janardan1993generalized}: 
+    \item Gupta, Janardan, Smid \cite{gupta1995further}: Color reporting. $O(n \log n)$ space, $O(\log^2 n + k)$ time, update?
+    \item Kaplan et al \cite{kaplan2007counting}: Tradeoff solution.
+    \item Gupta, Janardan, Smid \cite{gupta1995further} (Matched by Kaplan et al.  \cite{kaplan2007counting}): Tailored for counting. $O(n^2 \log^2 n)$ space, $O(\log^2 n)$ time.
+\end{itemize}
+
+%%% REFERENCE
+%Prosenjit Gupta, Ravi Janardan, Michiel Smid. 
+%Computational geometry: generalized intersection searching. 
+%Handbook of Data Structures and Applications (Dinesh Mehta and Sartaj Sahni, editors), Chapman & Hall/CRC, Boca Raton, 2005, pp. 64-1 - 64-17. 
+
+\subsection*{Our Results}
+Our main result can be summarised in the following theorems, noting that $c > 1$ is a positive integer. Since $\sigma \leq n$, the two dimensional solution is a logarithmic improvement over previously known solutions.
+
+%%% Two dimensions:
+\begin{theorem}\label{thm:2D}
+    There is a linear space data structure for the two-dimensional colored range counting problem storing $n$ points, each assigned one of $\sigma$ colors. The data structure answers queries in time $O( (\frac{\sigma}{\log n} + \frac{n}{\log ^c n}) \log ^{2+\epsilon} \log ^c n)$.
+\end{theorem}
+
+%%% Many dimensions:
+\begin{theorem}\label{thm:dD}
+    There is a data structure for the $d$ dimensional colored range counting problem storing $n$ points each assigned one of $\sigma$ colors. The data structure uses $O(n \log \log ^{(d-1)c} n)$ space and answer queries in time $O( (\frac{\sigma}{\log n} + \frac{n}{\log ^c n})\log \log ^{(d-1)c} n \log \log \log ^c n)$.
+\end{theorem}
+
+Our approach partitions points into groups depending on their color. Each group stores all points of $\leq \log n$ specific colors. A further subdivision of the groups into buckets ensures that the number of points in each bucket is $O(\log ^c n)$. Thus, the number of buckets is $O(\frac{\sigma}{\log n} + \frac{n}{\log ^c n})$ (the first term counts all underfull buckets, the second counts all full buckets). Because the colors are partitioned across the groups, we can obtain the final result to a query by summing the number of colors found in each group (and we have thus obtained a decomposition of the problem along the color dimension). 
+
+As the colors of each group may be stored in several buckets, we cannot obtain the solution for a group from an individual count for each bucket (since we may risk counting a color several times). Instead, we use an efficient solution to the $d$-dimensional \emph{colored range reporting problem} in the buckets (where the number of points is $m \leq \log ^c n$ and the number of colors is $f \leq \log n$). Since the colors present in a bucket can be represented as a word-long bitstring, the answers to each of the queries on the buckets can be efficently composed to produce the full answer for the group.
+
+The solution for each bucket is obtained by building a $d$-dimensional range tree on top of the $m$ points, which uses a space efficient solution to one dimensional colored range reporting as the last auxiliary data structure. The solution requires $O(m \log ^{d-1} m)$ space and $O(\log ^d m)$ query time. In two dimensions, we can reduce the space to linear by only storing representative rectangles in the range tree covering $\Theta(\log m)$ points each and use a linear space range reporting data structure by Nekrich \cite{nekrich2009orthogonal} to enumerate and check the underlying points. We thus obtain a query time of $O(\log ^{2+\epsilon} m)$ for two dimensional buckets.
+
+\vspace{0.3cm}
+Though the basic approach is simple, it allows us to obtain the first linear space data structure for two dimensional colored range counting that obtains $o(n)$ worst case query time in Theorem \ref{thm:2D}. Theorem \ref{thm:dD} is the first almost-linear space data structure for colored range counting in higher dimensions that obtain $o(n)$ worst case query time. 
+And finally, by doing a little extra work for each bucket, we also obtain the first linear or almost-linear space solutions to colored range reporting (depending on the dimensionality). In particular, for $> 3$ dimensions, the solution is the first using $o(n^{1+\epsilon})$ space. It also has the added benefit that it can be trivially parallelized, so it is well-suited for the distributed computing setting.
+
+\begin{itemize}
+    \item Alternative (faster, but larger) solution.
+    \item Solution with almost-linear time in $\sigma$ or $k$
+    \item Dynamic data structures, how? Check Arne Andersson paper on balanced trees...
+\end{itemize}
+
+%An alternative (faster, but larger) solution to $d$-dimensional color range reporting in each bucket results in the following theorem.
+%\begin{theorem}
+%   There is a dynamic data structure storing $n$ $d$-dimensional points each assigned one of $\sigma$ colors. The space used by the data structure is $O(n \log \log ^{dc} n)$, it answers queries in time $O( (\frac{\sigma}{\log n} + \frac{n}{\log ^c n})\log \log ^{(d-1)c} n)$ and supports updates in $O(\log \log ^{(d+1)c} n)$ amortized time, where $c \geq 1$ is any positive integer.
+%\end{theorem}
+
+\section{Preliminaries}
+We denote the set of points by $P$ and let $n = |P|$. The set of distinct colors is $\Sigma$ and we let $\sigma = |\Sigma|$.  
+
+\begin{itemize}
+    \item Points not from a bounded universe
+    \item Word RAM model with words of $w \geq \log n$ bits.
+\end{itemize}
+
+\section{Colored Range Counting in Almost-Linear Space}
+In this section, we present the basic approach used in all theorems. Later sections show how to adapt the approach to obtain different bounds, and in particular, how to obtain linear space usage for two dimensional points. We first show how to partition the points into $O(\frac{\sigma}{\log n} + \frac{n}{\log ^c n})$ buckets storing $m = O(\log ^c n)$ points and $f = O(\log n)$ distinct colors, for which the results can be easily combined. We then show how to answer queries in each bucket in time $O(\log ^{d-1} m \log \log m)$ and space $O(m \log ^{d-1} m)$. We thus obtain Theorem \ref{thm:dD}.
+
+\subsection{Color Grouping and Bucketing}
+We partition the points of $P$ into a number of groups $P_i$, where $i = 1, \ldots, \frac{\sigma}{\log n}$, depending on their color. Each group stores all points of $f = \log n \leq w$ distinct colors (except for the last group which may store points of less colors), and for each group $P_i$ we store a list $L_i$ of the $f$ colors in the group. That is, a group may contain $O(n)$ points but the points has at most $f$ distinct colors. Observe that assuming a colored range counting query can be answered for each group, we can clearly answer a colored range counting query by adding the results for each group (since colors are partitioned among groups).
+
+Each group is further partitioned into a number of buckets containing $\log ^c n$ points each (except for the last bucket, which may contain fewer points). Since the buckets partition the points and there cannot be more than one bucket with fewer than $\log ^c n$ points in each group, the total number of buckets is $O(\frac{\sigma}{\log n} + \frac{n}{\log ^c n})$. We require that each bucket supports answering restricted colored range reporting queries with a $f$-bit long bitstring, where the $j$'th bit indicates if color $L_i[j]$ is present in the query area in that bucket. Clearly, a constant number of bitwise OR operations per bucket is enough to produce a $f$-bit long bitstring from a single restricted colored range reporting query per bucket. We call this bitstring $F_{i, Q}$, and note that it indicates the colors present in the query range across the entire group.
+
+Finally, we store a table $T$ of size $O(\sqrt(n)\log n) = o(n)$ for all possible bitstrings of length $\frac{f}{2}$. For each bitstring, the table stores the number of 1's present in the bitstring as well as the indices where the 1's are present. Using two table lookups in $T$ of the two halves of $F_{i, Q}$, we can both obtain the number of colors present in the group, as well as the indices into $L_i$ for the colors that are present. 
+
+Summarising, we can combine answers from each bucket in a group and add the results for all groups in time linear in the number of buckets for a colored range counting query. Thus, the total time spent is bounded by the number of buckets present multiplied by the time taken to answer a restricted colored range reporting query in a bucket. Additionally, we can answer colored range reporting queries in the same time plus constant time per color reported.
+
+\subsection{Restricted Colored Range Reporting for Buckets}
+Each bucket stores $m = O(\log ^c n)$ points colored with $f = O(\log n)$ distinct colors. A simple solution is to answer a query using the classic range tree, augmented with a $f$-bit long bitstring for each node on the last level of the range tree (using some ordering of the colors). It is well-known that a $d$-dimensional query can be answered by finding $O(\log ^d m)$ summary nodes on the last level. The colors within the range can thus be reported by taking the bitwise OR of all the bitstrings in total time $O(\frac{f}{w} \log ^d m) = O(\log ^d m)$ and space $O(m \log ^{d-1} m \frac{f}{w}) = O(m \log ^{d-1} m)$.
+
+While the above solution is enough to obtain some of our results, we can improve it by replacing the last level in the $d$-dimensional range tree with a new data structure for one dimensional colored range that answer queries in time $O(\log \log m)$ and linear space. A query may perform $O(\log ^{d-1} m)$ queries on the last level of the range tree, so the query time is reduced to $O(\log ^{d-1} m \log \log m)$ for each bucket. 
+
+Observe that though the points are not from a bounded universe, we can remap a query in a bucket to a bounded universe of size $m$ in time $O(\log m)$ and linear space per dimension. We do so for the final dimension, noting that we only need to do it once for all $O(\log ^{d-1} m)$ queries in the final dimension. 
+
+\subsubsection*{One Dimensional Colored Range Reporting}
+Given $O(m)$ points in one dimension from a universe of size $m$, each colored with one of $f$ distinct colors, we now show how to report the colors contained in a query range in $O(\log \log m)$ time and linear space. First, partition the points into $j = O(\frac{m}{\log m})$ intervals spanning $\Theta(\log m)$ consecutive points each. We call the first point stored in each interval a \emph{representative}. 
+
+Each interval is stored as a balanced binary search tree, with each node storing a $f$-bit long bitstring indicating the colors that are present in its subtree. A query in the interval tree is answered by taking the bitwise OR of the bitstrings stored at the $O(\log \log m)$ nodes spanning a range in the interval. 
+
+We store $O(\log m)$ $f$-bit long bitstrings for each of the representatives. Each of these bitstrings is a summary of the colors stored in the $1, 2, \ldots, 2^{\log j}$ neighboring intervals including the interval containing the representative (we both store these bitstrings towards the left and the right). Finally, we store a predecessor data structure over the representatives. 
+
+A query $[a, b]$ across is answered by finding at most two bitstrings covering the entire range of fully contained intervals, and combining these with at most two bitstrings from the interval trees that span $a$ and $b$. Finding the two outermost intervals that are fully covered is done using predecessor/successor queries with $a$ and $b$ on the representatives. Since we store summaries for all exponential numbers of intervals and all representatives, there are at most two bitstrings summarising the colors found in the entire range of fully contained intervals. Thus, if using one of the classic predecessor data structures \fxfatal{vEB pred}, we obtain a query time of $O(\log \log m)$ and linear space since $O(\frac{f}{w} m + \frac{m}{\log m} \log m) = O(m)$.
+
+\section{Linear Space Two Dimensions Colored Range Counting}
+To obtain linear space in two dimensions, we use the same approach as described previously, storing points in groups depending on their color and splitting the groups into smaller buckets. We only change the solution for each bucket of $m$ points and $f$ distinct colors to use linear space instead of $O(m \log m)$ space. Thus, we will just describe the solution for a bucket $B_i$ in the following.
+
+We store a linear space two dimensional range reporting data structure $A_i$ by Nekrich \cite{nekrich2009orthogonal} for all points in the bucket $B_i$:
+\begin{theorem}[Nekrich \cite{nekrich2009orthogonal}]
+    There is a linear space data structure storing $n$ two-dimensional points which support orthogonal range reporting queries in $O(\log n + k \log ^{\epsilon} n)$ time and updates in $O(\log ^{3+\epsilon} n)$ time, where $k$ is the reported number of points and $\epsilon > 0$.
+\end{theorem}
+
+We also store the simple range tree augmented with $f$-bit long bitstrings previously described, but instead of storing points in the range tree, we reduce its space usage by only storing areas covering $O(\log m)$ points each. This can easily be done by first building the range tree taking $O(m \log m)$ space, and cutting off subtrees at nodes at maximal height such that $\Theta(\log m)$ points is covered by the node. \fxfatal{Can we do better, build it on the fly?}
+
+A query is answered by the range tree, finding $O(\log ^2 m)$ summary nodes that span the entire query range. Combining bitstrings as previously described, the colors for all fully contained ranges (that are not stored in the leafs) can thus be found. Since the range of the leafs are not necessarily fully contained in the query range, we must identify the colors of the $O(\log m)$ points contained in each leaf $\ell$. To do so, we query $A_i$ with the range spanned by $\ell$ to get all the points and in constant time for each check the color and the location (and build a bitstring for the colors spanned by $\ell$). We then merge the bitstrings for all summary nodes in constant time per bitstring to obtain the final result.
+
+The time spent answering a query is $O(\log ^2 m)$ to find all bitstrings in non-leaf nodes of the range tree and to combine all bitstrings. The time spent finding the bitstring for each leaf is $O(\log ^{1+\epsilon} m)$. Observe that only two leafs spanning a range of $O(\log m)$ points may be visited in each of the $O(\log m)$ second level data structures visited, so the time spent in all leafs is $O(\log ^{2+\epsilon} m)$, which is also the total time. Finally, since we reduced the size of the range tree by a factor $\Theta(\log m)$, the total space usage is linear. This concludes the proof of Theorem \ref{thm:2D}.
+
+\section{Dynamic Data Structures}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\small
+\bibliographystyle{abbrv}
+
+%\nocite{*}
+\bibliography{references}
+
+\end{document}

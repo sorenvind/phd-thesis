@@ -1,0 +1,150 @@
+%!TEX root = ../Thesis.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%% Fingerprints
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Macros: Queries
+\newcommand{\fingerprintq}{\ensuremath{\textsc{Fingerprint}}}
+\newcommand{\lceq}{\ensuremath{\textsc{LCE}}}
+\newcommand{\levelanc}{\ensuremath{\textsc{LA}}}
+\renewcommand{\succ}{\ensuremath{\textsc{succ}}}
+\newcommand{\pred}{\ensuremath{\textsc{pred}}}
+
+%Macros: Fingerprints
+\newcommand{\fp}{\ensuremath\phi}
+\newcommand{\fpv}{\ensuremath{\phi_v}}
+\newcommand{\fpe}{\ensuremath{\phi_e}}
+\newcommand{\fpplus}{\ensuremath{\oplus}}
+\newcommand{\fpdelsuffix}{\ensuremath{\ominus_s}}
+\newcommand{\fpdelprefix}{\ensuremath{\ominus_p}}
+
+%Macros: Trees, SLPs
+\newcommand{\size}{\ensuremath{\mathit{size}}}
+\newcommand{\depth}{\ensuremath{\mathit{depth}}}
+\newcommand{\leaf}{\ensuremath{\mathit{leaf}}}
+\newcommand{\heavy}{\ensuremath{heavy}}
+\newcommand{\heavypath}{\ensuremath{H}}
+\newcommand{\rootnode}{\ensuremath{\mathit{root}}}
+\newcommand{\lchild}{\ensuremath{\mathit{left}}}
+\newcommand{\rchild}{\ensuremath{\mathit{right}}}
+\newcommand{\leftnodes}{\ensuremath{V}} %V
+\newcommand{\leftsize}{\ensuremath{L}} %L
+\newcommand{\leftstring}{\ensuremath{P}} %P
+\newcommand{\str}{\ensuremath{S} }
+\newcommand{\slp}{\ensuremath{G} }
+\newcommand{\lslp}{\ensuremath{G_L} }
+
+%Macros: Misc
+\newcommand{\lce}{\ensuremath\ell}
+\newcommand{\rs}{root-substring}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%% Pattern Extraction
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\epsilon}{\upvarepsilon}
+
+%Functions/Operators
+\newcommand{\suff}{\operatorname{suffix}}
+\newcommand{\prefset}{\operatorname{prefset}}
+\newcommand{\maxpref}{\operatorname{maxprefix}}
+\newcommand{\lab}{\operatorname{label}}
+\newcommand{\srt}{\operatorname{sort}}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+
+% NEW COMMANDS FOR MOTIFS
+\newcommand{\calph}{\Sigma} % Alphabet for characters
+\newcommand{\salph}{\Pi} % Alphabet for solid blocks
+
+\newcommand{\lexleq}{\preceq_{lex}}
+\newcommand{\lexl}{\prec_{lex}}
+
+\newcommand{\dontcare}{\star}
+\newcommand{\numdc}{\operatorname{dc}}
+\newcommand{\occ}{\operatorname{occ}}
+\newcommand{\ilcp}{\operatorname{LCP}}
+\newcommand{\lcp}{\operatorname{\textit{lcp}}}
+\newcommand{\reverse}{\operatorname{reverse}}
+\newcommand{\maxlcp}[1]{\operatorname{\ell}_{#1}}
+\newcommand{\occs}[1]{L_{#1}}
+\newcommand{\sortoccs}[1]{E_{#1}}
+\newcommand{\interval}[1]{I_{#1}}
+\newcommand{\intervalset}[1]{\mathcal{I}_{#1}}
+\newcommand{\handlevalset}[1]{\mathcal{H}_{#1}}
+\newcommand{\maxset}{\mathcal{M}}
+\newcommand{\nummax}{|\mathcal{M}|}
+
+\newcommand{\rintset}{\mathcal{R}}
+\newcommand{\candset}{\mathcal{C}}
+
+\newcommand{\generate}[1]{\operatorname{\textsc{Generate}}\ensuremath{(#1)}}
+
+% EXTENSIONS
+\newcommand{\ext}{\operatorname{ext}}
+\newcommand{\skipchar}{\operatorname{skip}}
+\newcommand{\skipset}[1]{P_{#1}}
+
+\newcommand{\istart}[1]{\operatorname{start}(#1)}
+\newcommand{\iend}[1]{\operatorname{end}(#1)}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%% Colored Range Counting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%Macros: Trees, SLPs
+\newcommand{\bitzero}{\ensuremath{\mathtt{0}}}
+\newcommand{\bitone}{\ensuremath{\mathtt{1}}}
+
+%Macros: Points
+\newcommand{\points}{\ensuremath{\mathit{points}}}
+
+
+%Macros: Polylogs
+\renewcommand{\log}{\lg}
+\newcommand{\polylog}{\ensuremath{\mathrm{\, polylg \,}}}
+
+
+%Operations
+\newcommand{\opins}{\ensuremath{\textsc{insert}}}
+\newcommand{\opdel}{\ensuremath{\textsc{delete}}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%% Compressed Range Searching
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Macros: Trees, SLPs
+% As above
+
+%Ranges
+\newcommand{\range}[1]{\ensuremath{\mathit{r_{#1}}}}
+\newcommand{\offset}{\ensuremath{\mathit{offset}}}
+\newcommand{\position}{\ensuremath{\mathit{position}}}
+\newcommand{\rangespan}{\ensuremath{\mathit{extent}}}
+
+%Macros: Points, Clusters
+\newcommand{\rootpath}{\ensuremath{\mathit{path}}}
+\newcommand{\rank}{\ensuremath{\mathit{rank}}}
+\newcommand{\mindist}{\ensuremath{\mathit{mindist}}}
+\newcommand{\maxdist}{\ensuremath{\mathit{maxdist}}}
+\newcommand{\vlabel}{\ensuremath{\mathit{label}}}
+\newcommand{\diameter}{\ensuremath{\mathit{diameter}}}
+\newcommand{\clustering}{\ensuremath{\mathit{C}}}
+\newcommand{\inrange}{\ensuremath{\subseteq}}
+\newcommand{\height}{\ensuremath{\mathit{height}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%% Motion Detection
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\mdquery}{\ensuremath{\mathtt{MD(T, A, v, p)}}}

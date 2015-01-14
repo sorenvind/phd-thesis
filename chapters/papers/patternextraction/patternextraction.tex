@@ -1,0 +1,531 @@
+%!TEX root = ../../../Thesis.tex
+
+%\documentclass[a4paper,UKenglish,subfig]{lipics}
+%This is a template for producing LIPIcs articles. 
+%See lipics-manual.pdf for further information.
+%for A4 paper format use option "a4paper", for US-letter use option "letterpaper"
+%for british hyphenation rules use option "UKenglish", for american hyphenation rules use option "USenglish"
+% for section-numbered lemmas etc., use "numberwithinsect"
+
+ %\usepackage[utf8]{inputenc}
+ %\usepackage[T1]{fontenc} % Smallcaps in Sections
+ %\usepackage{upgreek}
+ %\usepackage{cite}
+ %\usepackage{amsmath,amssymb,nicefrac,graphicx,lastpage,array}
+ %\usepackage{multirow}
+ %\usepackage{caption}
+% \usepackage{subcaption}
+ %\usepackage{soul}
+
+ %\usepackage{multirow}
+
+ 
+ 
+%\usepackage{microtype}%if unwanted, comment out or use option "draft"
+
+%\graphicspath{{./graphics/}}%helpful if your graphic files are in another directory
+
+%\bibliographystyle{plain}% the recommended bibstyle
+
+% Author macros::begin %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Output-Sensitive Pattern Extraction in Sequences}
+%\titlerunning{Output-Sensitive Pattern Extraction in Sequences} %optional, in case that the title is too long; the running title should fit into the top page column
+
+%\author[1]{Roberto Grossi}
+%\author[1]{Giulia Menconi}
+%\author[1]{Nadia Pisanti}
+%\author[1]{Roberto Trani}
+%\author[2]{S{\o}ren Vind$^*$}
+%\affil[1]{Universit\`{a} di Pisa, Dipartimento di Informatica\\
+%  \texttt{grossi@di.unipi.it, menconigiulia@gmail.com, pisanti@di.unipi.it, tranir@cli.di.unipi.it}}
+%\affil[2]{Technical University of Denmark, DTU Compute\\
+%  \texttt{sovi@dtu.dk}}
+%\authorrunning{R.\,Grossi, G.\,Menconi, N.\,Pisanti, R.\,Trani and S.\,Vind} %mandatory. First: Use abbreviated first/middle names. Second (only in severe cases): Use first author plus 'et. al.'
+
+%\Copyright{Roberto Grossi, Giulia Menconi, Nadia Pisanti, Roberto Trani and S{\o}ren Vind}%mandatory, please use full first names. LIPIcs license is "CC-BY";  http://creativecommons.org/licenses/by/3.0/
+
+% QED Marker
+%\let\doendproof\endproof
+%\renewcommand\endproof{~\hfill$\qed$\doendproof}
+
+%\frenchspacing
+%\usepackage{algorithm}
+
+%\maketitle
+% Fix grants, reset footnote counter to arabic.
+% \renewcommand{\thefootnote}{\fnsymbol{footnote}}
+% \footnotetext[1]{Supported by a grant from the Danish National Advanced Technology Foundation.} %star
+
+% \renewcommand{\thefootnote}{\arabic{footnote}}
+% \setcounter{footnote}{0}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% ABSTRACT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+    Genomic Analysis, Plagiarism Detection, Data Mining, Intrusion Detection, Spam Fighting and Time Series Analysis are just some examples of applications where extraction of recurring patterns in sequences of objects is one of the main computational challenges.
+    %
+    Several notions of patterns exist, and many share the common idea of strictly specifying some parts of the pattern and to \emph{don't care} about the remaining parts. Since the number of patterns can be exponential in the length of the sequences, \emph{pattern extraction} focuses on statistically relevant patterns, where any attempt to further refine or extend them causes a loss of significant information (where the number of occurrences changes).
+    %
+Output-sensitive algorithms have been proposed to enumerate and list these patterns, taking polynomial time $O(n^c)$ per pattern for constant $c >1$, which is impractical for massive sequences of very large length $n$.
+
+    We address the problem of extracting maximal patterns with at most $k$ don't care symbols and at least $q$ occurrences. Our contribution is to give the first algorithm that attains a \emph{stronger} notion of output-sensitivity, borrowed from the analysis of data structures: the cost is proportional to the \emph{actual} number of occurrences of each pattern, which is at most $n$ and practically much smaller than $n$ in real applications, thus avoiding the aforementioned cost of $O(n^c)$ per pattern.
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%% INTRODUCTION %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}\label{sec:introduction}
+In \emph{pattern extraction}, the task is to extract the ``most important'' and frequently occurring patterns from sequences of ``objects'' such as log files, time series, text documents, datasets or DNA sequences. Each individual object can be as simple as a character from $\{ \mathtt{A}, \mathtt{C}, \mathtt{G}, \mathtt{T} \}$ or as complex as a \texttt{json} record from a log file. What is of interest to us is the potentially very large set of all possible different objects, which we call the \emph{alphabet} $\calph$, and  sequence~$S$ built with $n$ objects drawn from $\calph$. 
+%To keep our algorithm general over the RAM computational model, we only require that for any object $a \in \calph$ and subset $\calph' \subseteq \calph$ we can check if $a \in \calph'$.
+% (as this is useful to branch from any trie node having children for each $a \in \calph'$).
+
+We define the occurrence of a pattern in $S$ as in \emph{pattern   matching} but its importance depends on its statistical relevance, namely, if the number of occurrences is above a certain threshold. However, pattern extraction is not to be confused with pattern matching. The problems may be considered inverse of each other: the former gets an input sequence $S$ from the user, and extracts patterns $P$ and their occurrences from $S$, where both are unknown to the user; the latter gets $S$ and a given pattern $P$ from the user, and searches for $P$'s occurrences in $S$, and thus only the pattern occurrences are unknown to the user.
+
+Many notions of patterns exist, reflecting the diverse applications of the problem
+%\cite{CominV13, CunialA12, ApostolicoPU11, rime, Eskin04, IliopoulosMPPRS05, grossi2011madmx, IsaacAU05, sagot1998spelling, tcsUkkonen09}
+\cite{grossi2011madmx, arimura2007efficient, sagot1998spelling, tcsUkkonen09}. We study a natural variation allowing the special don't care character $\dontcare$ in a pattern to mean that the position inside the pattern occurrences in~$S$ can be ignored (so $\dontcare$ matches any single character in~$S$). For example, $\mathtt{TA}\dontcare\mathtt{C}\dontcare \mathtt{ACA}\dontcare \mathtt{GTG}$ is a pattern for DNA sequences.
+
+A \emph{motif} is a pattern of \emph{any} length with \emph{at most   $k$ don't cares} occurring \emph{at least $q$ times} in $S$. In this paper, we consider the problem of determining the \emph{maximal} motifs, where any attempt to extend them or replace their $\dontcare$'s with symbols from $\Sigma$ causes a loss of significant information (where the number of occurrences in $S$ changes).  We denote the family of all motifs by $M_{qk}$, the set of maximal motifs $\maxset \subseteq M_{qk}$ (dropping the subscripts in $\maxset$) and let $\occ(m)$ denote the number of occurrences of a motif $m$ inside $S$. It is well known that $M_{qk}$ can be exponentially larger than $\maxset$ \cite{Parida00}.
+
+\subparagraph{Our Results}
+We show how to efficiently build an index that we call a \emph{motif trie} which is a trie that contains all prefixes, suffixes and occurrences of $\maxset$, and we show how to extract $\maxset$ from it. The motif trie is built in level-wise, using an oracle $\generate{u}$ that reveals the children of a node $u$ efficiently using properties of the motif alphabet and a bijection between new children of $u$ and intervals in the ordered sequence of occurrences of $u$. We are able to bound the resulting running time with a strong notion of \emph{output-sensitive} cost, borrowed from the analysis of data structures, where the cost is proportional to the \emph{actual} number $\occ(m)$ of occurrences of each maximal motif $m$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% THEOREM %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Give the theorem here. Proven in following sections.
+\begin{theorem}\label{the:main}
+    Given a sequence $S$ of $n$ objects over an alphabet $\calph$, and two integers $q > 1$ and $k \geq 0$, there is an algorithm for extracting the maximal motifs $\maxset \subseteq M_{qk}$ and their occurrences from $S$ in 
+$
+O \Bigl( n (k + \log \calph) + (k+1)^3 \times  \sum_{m \in \maxset} \occ(m) \Bigr)
+$
+time.
+%where $\occ(m)$ denotes the number of occurrences of the maximal %motif~$m$ in $S$. 
+\end{theorem}
+
+Our result may be interesting for several reasons.
+%
+First, observe that this is an optimal listing bound when the maximal number of don't cares is $k=O(1)$, which is true in many practical applications. The resulting bound is $O(n \log \calph + \sum_{m \in \maxset} \occ(m))$ time, where the first additive term accounts for building the motif trie and the second term for discovering and reporting all the occurrences of each maximal motif. 
+
+Second, our bound provides a strong notion of output-sensitivity since it depends on how many times each maximal motif occurs in $S$. In the literature for enumeration, an output-sensitive cost traditionally means that there is polynomial cost of $O(n^c)$ per pattern, for a constant $c>1$. This is infeasible in the context of big data, as $n$ can be very large, whereas our cost of $\occ(m) \leq n$ compares favorably with $O(n^c)$ per motif $m$, and $\occ(m)$ can be actually much smaller than $n$ in practice. This has also implications in what we call ``the \texttt{CTRL-C} argument,'' which ensures that we can safely stop the computation for a \emph{specific} sequence $S$ if it is taking too much time\footnote{Such an algorithm is also called an anytime algorithm in the literature.}.
+Indeed, if much time is spent with our solution, too many results to be really useful may have been produced. Thus, one may stop the computation and refine the query (change $q$ and $k$) to get better results. On the contrary, a non-output-sensitive algorithm may use long time without producing any output: It does not indicate if it may be beneficial to interrupt and modify the query. 
+%This is not a minor point as it explains analytically why certain pattern extraction algorithms, which spends potentially exponential time, are instead efficient in practice. 
+
+Third, our analysis improves significantly over the brute-force bound: $M_{qk}$ contains pattern candidates of lengths $p$ from 1 to $n$ with up to $\min\{k,p\}$ don't cares, and so has size $\sum_p |\calph|^p \times (\sum_{i=1}^{\min\{k,p\}} {p \choose i}) = O(|\calph|^n n^k)$. Each candidate can be checked in $O(nk)$ time (e.g. string matching with $k$ mismatches), or $O(k)$ time if using a data structure such as the suffix tree \cite{sagot1998spelling}. In our analysis we are able to remove both of the nasty exponential dependencies on $|\calph|$ and $n$ in $O(|\calph|^n n^k)$. In the current scenario where implementations are fast in practice but skip worst-case analysis, or state the latter in pessimistic fashion equivalent to the brute-force bound, our analysis could explain why several previous algorithms are fast in practice. (We have implemented a variation of our algorithm that is very fast in practice.) 
+
+
+\subparagraph{Related Work} Although the literature on pattern extraction is vast and spans many different fields of applications with various notation, terminology and variations, we could not find time bounds explicitly stated obeying our stronger notion of output-sensitivity, even for pattern classes different from ours. Output-sensitive solutions with a polynomial cost per pattern have been previously devised for slightly different notions of patterns. For example, Parida et al.~\cite{P+01} describe an enumeration algorithm with $O(n^2)$ time per maximal motif plus a bootstrap cost of $O(n^5 \log n)$ time.~\footnote{The set intersection   problem (SIP) in appendix~A of~\cite{P+01} requires polynomial time   $O(n^2)$: The recursion tree of depth $\leq n$ can have unary nodes,   and each recursive call requires $O(n)$ to check if the current   subset has been already generated.}  Arimura and Uno obtain a solution with $O(n^3)$ delay per maximal motif where there is no limitations on the number of don't cares \cite{arimura2007efficient}. Similarly, the \textsc{MadMX} algorithm \cite{grossi2011madmx} reports dense motifs, where the ratio of don't cares and normal characters must exceed some threshold, in time $O(n^3)$ per maximal dense motif.  Our stronger notion of output-sensitivity is borrowed from the design and analysis of data structures, where it is widely employed. For example, searching a pattern $P$ in $S$ using the suffix tree~\cite{McCreight} has cost proportional to $P$'s length and its number of occurrences. A one-dimensional query in a sorted array reports all the wanted keys belonging to a range in time proportional to their number plus a logarithmic cost. Therefore it seemed natural to us to extend this notion to enumeration algorithms also.
+
+\subparagraph{Applications}
+Although the pattern extraction problem has found immediate applications in stringology and biological sequences, it is highly multidisciplinary and spans a vast number of applications in different areas. This situation is similar to the one for the edit distance problem and dynamic programming. We here give a short survey of some significant applications, but others are no doubt left out due to the difference in terminology used (see \cite{abouelhoda2010string} for further references). 
+In computational biology, motif discovery in biological sequences identifies areas of interest\cite{sagot1998spelling,tcsUkkonen09,grossi2011madmx,abouelhoda2010string}. Computer security researches use patterns in log files to perform intrusion detection and find attack signatures based on their frequencies \cite{debar1999towards}, while commercial anti-spam filtering systems use pattern extraction to detect and block SPAM \cite{rigoutsos2004chung}. 
+In the data mining community pattern extraction is used extensively \cite{mabroukeh2010taxonomy} as a core method in web page content extraction \cite{chang2003automatic} and time series analysis \cite{pichl2006symbolic,sherkat2006efficiently}.
+%to determine general association rules and solve sequential pattern mining problems.
+%is performed by solving the problem . 
+%A core building block of time series analysis is to use pattern extraction on events that occur over time \cite{pichl2006symbolic,sherkat2006efficiently}. 
+%
+In plagiarism detection finding recurring patterns across a (large) number of documents is a core primitive to detect if significant parts of documents are plagiarized \cite{brin1995copy} or duplicated \cite{baker1995finding,chen2004shared}.
+And finally, in data compression extraction of the common patterns enables a compression scheme that competes in efficiency with well-established compression schemes \cite{apostolico2006bridging}.
+
+As the motif trie is an index, we believe that it may be of independent interest for storing similar patterns across similar strings. 
+Our result easily extends to real-life applications requiring a solution with two thresholds for motifs, namely, on the number of occurrences in a sequence and across a minimum number of sequences. 
+
+
+\subparagraph{Reading Guide}
+Our solution has two natural parts. In Section \ref{sec:motif_trie} we define the \emph{motif trie}, which is an index storing all maximal motifs and their prefixes, suffixes and occurrences. We show how to report only the maximal motifs in time linear in the size of the trie. That is, it is easy to extract the maximal motifs from the motif trie -- the difficulty is to build the motif trie without knowing the motifs in advance. 
+In Section \ref{sec:construction} and \ref{sec:generate} we give an efficient algorithm for constructing the motif trie and bound its construction time by the number of occurrences of the maximal motifs, thereby obtaining an output-sensitive algorithm. 
+
+\begin{figure}[t]
+        \centering
+        \subfloat[Input and parameters for example.]{
+            \begin{tabular}[t]{l l}
+                \textbf{String}        & \texttt{TACTGACACTGCCGA} \\[3mm]
+                \textbf{Quorum}        & $q = 2$ \\
+                \textbf{Don't cares}   & $k = 1$ \\
+            \end{tabular}
+        } 
+        \quad
+        \subfloat[Output: Maximal motifs found (and their occurrence list) for the given input.]{
+            \begin{tabular}[t]{c l}
+                ~~\textbf{Maximal Motif}~~ & \textbf{Occurrence List}~~ \\
+                \hline\\[-4mm]
+                \texttt{A}     & 2, 6, 8, 15     \\
+                \texttt{AC}    & 2, 6, 8         \\
+                \texttt{ACTG$\dontcare$C} & 2, 8 \\
+                \texttt{C}     & 3, 7, 9, 12, 13 \\
+                \texttt{G}     & 5, 11, 14       \\
+                \texttt{GA}    & 5, 14           \\
+                \texttt{G$\dontcare$C} & 5, 11   \\
+                \texttt{T}     & 1, 4, 10        \\
+                \texttt{T$\dontcare$C} & 1, 10   \\
+                \hline
+            \end{tabular}
+        }
+        \caption{Example 1: Maximal Motifs found in string.}\label{ex:one}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%% PRELIMINARIES %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Preliminaries}
+\label{sec:preliminaries}
+
+\subparagraph{Strings}
+%
+We let $\calph$ be the alphabet of the input string $S \in \calph^*$ and $n = |S|$ be its length.
+%, where we can check if $a \in \calph'$ for any $a \in \calph$ and subset $\calph' \subseteq \calph$ (see Section~\ref{sub:efficient-representatin-motifs}).  
+For $1 \leq i \leq j \leq n$, $S[i, j]$ is the substring of~$S$ between index $i$ and $j$, both included. $S[i, j]$ is the empty string~$\epsilon$ if $i > j$, and $S[i] = S[i, i]$ is a single character. Letting $1 \leq i \leq n$, a prefix or suffix of $S$ is $S[1, i]$ or $S[i, n]$, respectively. We let $\prefset(S)$ be the set of all prefixes of $S$. The \emph{longest common prefix} $\lcp(x, y)$ is the longest string such that $x[1, |\lcp(x, y)|] = y[1, |\lcp(x, y)|]$ for any two strings $x, y \in \calph^*$.  
+
+\subparagraph{Tries}
+%
+A trie $T$ over an alphabet $\salph$ is a rooted, labeled tree, where each edge $(u, v)$ is labeled with a symbol from $\salph$. All edges to children of node~$u \in T$ must be labeled with distinct symbols from $\salph$. We may consider node $u \in T$ as a string generated over $\salph$ by spelling out characters from the root on the path towards $u$. We will use $u$ to refer to both the node and the string it encodes, and $|u|$ to denote its string length. A property of the trie~$T$ is that for any string $u \in T$, it also stores all prefixes of~$u$. A compacted trie is obtained by compacting chains of unary nodes in a trie, so the edges are labeled with substrings: the suffix tree for a string is special compacted trie that is built on all suffixes of the string \cite{McCreight}.
+
+\subparagraph{Motifs}
+%
+A motif $m \in \calph \, (\calph \cup \{\dontcare\})^* \, \calph$ consist of symbols from $\calph$ and \emph{don't care characters} $\dontcare \not \in \calph$. We let the length $|m|$ denote the number of symbols from $\calph \cup \{\dontcare\}$ in $m$, and let $\numdc(m)$ denote the number of $\dontcare$ characters in~$m$. Motif $m$ \emph{occurs} at position $p$ in $S$ iff $m[i] = S[p + i - 1]$ or $m[i] = \dontcare$ for all $1 \leq i \leq |m|$. The number of occurrences of $m$ in $S$ is denoted $\occ(m)$. Note that appending $\dontcare$ to either end of a motif $m$ does not change $\occ(m)$, so we assume that motifs starts and ends with symbols from $\calph$. A \emph{solid block} is a maximal (possibly empty $\epsilon$) substring from $\calph^*$ inside~$m$.
+
+We say that a motif $m$ can be \emph{extended} by adding don't cares and characters from $\calph$ to either end of $m$. Similarly, a motif $m$ can be \emph{specialized} by replacing a don't care~$\dontcare$ in~$m$ with a symbol $c \in \calph$. An example is shown in Figure~\ref{ex:one}.
+
+\subparagraph{Maximal Motifs}
+%
+Given an integer quorum $q > 1$ and a maximum number of don't cares $k \geq 0$, we define a family of motifs $M_{qk}$ containing motifs $m$ that have a limited number of don't cares $\numdc(m) \leq k$, and occurs frequently $\occ(m) \geq q$. A \emph{maximal motif} $m \in M_{qk}$ cannot be extended or specialized into another motif $m' \in M_{qk}$ such that $\occ(m') = \occ(m)$. Note that extending a maximal motif~$m$ into motif $m'' \not \in M_{qk}$ may maintain the occurrences (but have more than $k$ don't cares). We let $\maxset \subseteq M_{qk}$ denote the \emph{set of maximal motifs}.
+
+Motifs $m \in M_{qk}$ that are \emph{left-maximal} or \emph{right-maximal} cannot be specialized or extended on the left or right without decreasing the number of occurrences, respectively. They may, however, be prefix or suffix of another (possibly maximal) $m' \in M_{qk}$, respectively. 
+
+\begin{fact}
+  \label{fact:right-maximal-suffix}
+  If motif $m \in M_{qk}$ is right-maximal then it is a suffix of a maximal motif.
+\end{fact}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%% ALGORITHM %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Motif Tries and Pattern Extraction}
+\label{sec:motif_trie}
+%
+This section introduces the \emph{motif trie}. This trie is not used for searching but its properties are exploited to orchestrate the search for maximal motifs in $\maxset$ to obtain a strong output-sensitive cost. Due to space constraints, all proofs have been omitted in the present version.
+%moved to Appendix~\ref{app:proofs}.
+
+\subsection{Efficient Representation of Motifs}
+\label{sub:efficient-representatin-motifs}
+%
+We first give a few simple observations that are key to our algorithms. Consider a suffix tree built on~$S$ over the alphabet $\calph$, which can be done in $O(n \log |\calph|)$ time. 
+%, using our assumption on $\calph$  (see Section~\ref{sec:preliminaries}) to branch in $O(\log |\calph|)$ time from any node. 
+It is shown in \cite{tcsUkkonen09,tcsFP09} that when a motif $m$ is maximal, its solid blocks correspond to nodes in the suffix tree for~$S$, matching their substrings from the root\footnote{The proofs in~\cite{tcsUkkonen09,tcsFP09} can be easily extended to our notion of maximality.}.
+For this reason, we introduce a new alphabet, the \emph{solid block alphabet} $\salph$ of size at most $2n$, consisting of the strings stored in all the suffix tree nodes. 
+
+We can write a maximal motif $m \in M_{qk}$ as an alternating sequence of $\leq k+1$ solid blocks and $\leq k$ don't cares, where the first and last solid block must be different from $\epsilon$. Thus we represent~$m$ as a sequence of $\leq k+1$ strings from $\salph$ since the don't cares are implicit.
+By traversing the suffix tree nodes in \emph{preorder} we assign integers to the strings in $\salph$, allowing us to assume that $\salph \subseteq [1, \ldots, 2n]$, and so each motif $m \in M_{qk}$ is actually represented as a sequence of $\leq k+1$ integers from~$1$ to~$|\salph| =O(n)$. Note that the order on the integers in $\salph$ shares the following grouping property with the strings over $\calph$.
+
+\begin{lemma}
+  \label{lemma:grouping}
+  Let $A$ be an array storing the sorted alphabet $\salph$. For any   string $x \in \calph^*$, the solid blocks represented in $\salph$   and sharing $x$ as a common prefix, if any, are grouped together   in~$A$ in a contiguous segment $A[i,j]$ for some $1 \leq i \leq j   \leq |\salph|$.
+\end{lemma}
+
+%Lemma~\ref{lemma:grouping} is technically needed to circumvent the fact that the symbols in~$\calph$ can be only compared for equality in some applications (otherwise the lexicographic ordering is sufficient). This is particularly useful as the suffixes of sequence $S$ are also represented in $\salph$.
+
+When it is clear from its context, we will use the shorthand $x \in \salph$ to mean equivalently a string $x$ represented in $\salph$ or the integer $x$ in $\salph$ that represents a string stored in a suffix tree node.  We observe that the set of strings represented in $\salph$ is \emph{closed} under the longest common prefix operation: for any $x, y \in \salph$, $\lcp(x, y) \in \salph$ and it may be computed in constant time after augmenting the suffix tree for $S$ with a lowest common ancestor data structure \cite{harel1984fast}.
+
+Summing up, the above relabeling from $\calph$ to $\salph$ only requires the string $S \in \calph^*$ and its suffix tree augmented with lowest common ancestor information. 
+
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[-,>=stealth',auto=false, thick,
+    every label/.style={rectangle, font=\scriptsize, inner sep=3pt},
+    	main node/.style={draw=black, fill=black, circle, inner sep=0pt, minimum size=4pt},
+      	terminal/.style={circle,fill=white, inner sep=0.2pt}]
+
+      \node[main node, fill=white] (root) [] {};
+      \node[main node] (1) [below left=2cm and 5.2cm of root] {};
+      \node[main node] (2) [right=1.6cm of 1] {};
+      \node[main node, fill=white] (3) [right=1.6cm of 2] {};
+      \node[main node] (4) [right=1.6cm of 3] {};
+      \node[main node] (5) [right=1.6cm of 4] {};
+      \node[main node] (6) [right=1.6cm of 5] {};
+      \node[main node] (7) [right=1.6cm of 6] {};
+      \node[main node] (31) [below=1cm of 3] {};
+      %\node[main node] (41) [below=1cm of 4] {};
+      \node[main node] (51) [below=1cm of 5] {};
+      \node[main node] (71) [below=1cm of 7] {};
+
+      \path[] (root) edge [] node [sloped, left=2cm, above] {\texttt{A}} (1);
+      \path[] (root) edge [] node [sloped, left=1.4cm, above] {\texttt{AC}} (2);
+      \path[] (root) edge [] node [sloped, left=0.8cm, above] {\texttt{ACTG}} (3);
+      \path[] (root) edge [] node [left, below left=0.4cm and 0.1cm] {\texttt{C}} (4);
+      \path[] (root) edge [] node [sloped, right=1cm, above] {\texttt{G}} (5);
+      \path[] (root) edge [] node [sloped, right=1.4cm, above] {\texttt{GA}} (6);
+      \path[] (root) edge [] node [sloped, right=2cm, above] {\texttt{T}} (7);
+      \path[] (3) edge [] node [left] {\texttt{C}} (31);
+      %\path[] (4) edge [] node [left] {\texttt{G}} (41);
+      \path[] (5) edge [] node [left] {\texttt{C}} (51);
+      \path[] (7) edge [] node [left] {\texttt{C}} (71);
+    \end{tikzpicture}
+    \caption{Motif trie for Example 1. The black nodes are maximal motifs (with their occurrence lists shown in Fig. \ref{ex:one}(b)).}
+\end{figure}
+
+
+\subsection{Motif Tries}
+\label{sec:motiftrie}
+%
+We now exploit the machinery on alphabets described in Section~\ref{sub:efficient-representatin-motifs}. For the input sequence~$S$, consider the family $M_{qk}$ defined in Section~\ref{sec:preliminaries}, where each $m$ is seen as a string $m = m[1,\ell]$ of $\ell \leq k+1$ integers from~$1$ to~$|\salph|$. Although each $m$ can contain $O(n)$ symbols from $\calph$, we get a benefit from treating $m$ as a short string over $\salph$: unless specified otherwise, the prefixes and suffixes of $m$ are respectively $m[1,i]$ and $m[i,\ell]$ for $1\leq i \leq \ell$, where $\ell = \numdc(m) + 1 \leq k+1$. This helps with the following definition as it does not depend on the $O(n)$ symbols from $\calph$ in a maximal motif $m$ but it solely depends on its $\leq k+1$ length over~$\salph$.
+
+\begin{definition}[Motif Trie]
+A \emph{motif trie} $T$ is a trie over alphabet $\salph$ which stores all maximal motifs $\maxset \subseteq M_{qk}$ and their suffixes.
+\end{definition}
+
+As a consequence of being a trie, $T$ implicitly stores all prefixes of all the maximal motifs and edges in $T$ are labeled using characters from $\salph$.
+Hence, all sub-motifs of the maximal motifs are stored in $T$, and the motif trie can be essentially seen as a generalized suffix trie\footnote{As it will be clear later, a compacted motif trie does not give any advantage in terms of the output-sensitive bound compared to the motif trie.} storing $\maxset$ over the alphabet $\salph$. From the definition, $T$ has 
+%With $T$ being a trie, we inherit a number of useful properties. The number of leaves is 
+$O((k+1) \cdot \nummax)$ leaves, the total number of nodes is $O(|T|) = O((k+1)^2 \cdot \nummax)$, and the height is at most $k+1$. 
+
+We may consider a node $u$ in $T$ as a string generated over $\salph$ by spelling out the $\leq k+1$ integers from the root on the path towards $u$. To decode the motif stored in $u$, we retrieve these integers in $\salph$ and, using the suffix tree of $S$, we obtain the corresponding solid blocks over $\calph$ and insert a don't care symbol between every pair of consecutive solid blocks. When it is clear from the context, we will use $u$ to refer to \emph{(1)}~the node $u$ or \emph{(2)}~the string of integers from $\Pi$ stored in $u$, or \emph{(3)}~the corresponding motif from $(\calph \cup \{ \dontcare \})^*$. We reserve the notation $|u|$ to denote the length of motif $u$ as the number of characters from $\calph \cup \{ \dontcare \}$. Each node $u \in T$ stores a list $\occs{u}$ of occurrences of motif $u$ in $S$, i.e. $u$ occurs at $p$ in $S$ for $p \in \occs{u}$.
+
+Since child edges for $u \in T$ are labeled with solid blocks, the child edge labels may be prefixes of each other, and one of the labels may be the empty string $\epsilon$ (which corresponds to having two neighboring don't cares in the decoded motif).
+
+
+% HOW TO USE TRIE T, ASSUMING WE CAN GENERATE IT
+\subsection{Reporting Maximal Motifs using Motif Tries}
+\label{subec:reporting-maximal-motifs}
+%
+Suppose we are given a motif trie $T$ but we do not know which nodes of $T$ store the maximal motifs in $S$. We can identify and report the maximal motifs in $T$ in $O(|T|) = O((k+1)^2 \cdot \nummax) = O((k+1)^2 \cdot \sum_{m \in \maxset} \occ(m))$ time as follows.
+
+We first identify the set $R$ of nodes $u \in T$ that are right-maximal motifs. A characterization of right-maximal motifs in $T$ is relatively simple: we choose a node $u \in T$ if \emph{(i)}~its parent edge label is not $\epsilon$, and \emph{(ii)}~$u$ has no descendant $v$ with a non-empty parent edge label such that~$|\occs{u}| = |\occs{v}|$. By performing a bottom-up traversal of nodes in $T$, computing for each node the length of the longest list of occurrences for a node in its subtree with a non-empty edge label, it is easy to find $R$ in time $O(|T|)$ and by Fact \ref{fact:right-maximal-suffix}, $|R| = O((k+1) \cdot \nummax)$.
+
+Next we perform a radix sort on the set of pairs $\langle |\occs{u}|, \reverse(u) \rangle$, where $u \in R$ and $\reverse(u)$ denotes the reverse of the string $u$, to select the motifs that are also left-maximal (and thus are maximal). In this way, the suffixes of the maximal motifs become prefixes of the reversed maximal motifs. By Lemma~\ref{lemma:grouping}, those motifs sharing common prefixes are grouped together consecutively. However, there is a caveat, as one maximal motif $m'$ could be a suffix of another maximal motif $m$ and we do not want to drop~$m'$: in that case, we have that $|\occs{m}| \neq |\occs{m'}|$ by the definition of maximality. Hence, after sorting, we consider consecutive pairs $\langle |\occs{u_1}|, \reverse(u_1) \rangle$ and $\langle |\occs{u_2}|, \reverse(u_2) \rangle$ in the order, and eliminate $u_1$ iff $|\occs{u_1}|=|\occs{u_2}|$ and $u_1$ is a suffix of $u_2$ in time $O(k+1)$ per pair (i.e. prefix under $\reverse$). The remaining motifs are maximal.
+
+
+\section{Building Motif Tries}
+\label{sec:construction}
+
+The goal of this section is to show how to efficiently build the motif trie $T$ discussed in Section~\ref{sec:motiftrie}. Suppose without loss of generality that enough new symbols are prepended and appended to the sequence $S$ to avoid border cases. We want to store the maximal motifs of $S$ in $T$ as strings of length $\leq k+1$  over $\salph$. Some difficulties arise as we do not know in advance which are the maximal motifs. Actually, we plan to find them \emph{during} the output-sensitive construction of $T$, which means that we would like to obtain a construction bound close to the term $\sum_{m \in \maxset} \! \occ(m)$ stated in Theorem~\ref{the:main}. 
+
+We proceed in top-down and level-wise fashion by employing an \emph{oracle} that is invoked on each node~$u$ on the last level of the partially built trie, and which reveals the future children of $u$. The oracle is executed many times to generate~$T$ level-wise starting from its root~$u$ with $\occs{u} = \{1,\dots, n\}$, and stopping at level $k+1$ or earlier for each root-to-node path. 
+Interestingly, this sounds like the wrong way to do anything efficiently, e.g. it is a slow way to build a suffix tree, however the oracle allows us to amortize the total cost to construct the trie. In particular, we can bound the total cost by the total number of occurrences of the maximal motifs stored in the motif trie. 
+%with our oracle idea as we show in the following. 
+
+%\begin{description}
+%\item[(a)] The intermediate steps should avoid generating the motifs in $M_{qk} \setminus \maxset$ that are not suffixes of maximal motifs nor their prefixes, otherwise we cannot guarantee output-sensitive bounds as $M_{qk}$ can be exponentially larger than $\maxset$.
+%\item[(b)] The construction cost charged to each node $u$ should be bounded by $O( \srt(\occs{u}) + (k+1) \cdot |\occs{u}|)$, where $\srt(\occs{u})$ is the cost of radix sorting for the list of occurrences $\occs{u}$. %(We prove and motivate this in Section~\ref{sec:bounding-construction-cost-motif-trie}.) 
+%\item[(c)] The construction cost charged to each motif in the trie should be given in terms of its $\leq k+1$ length in $\salph$ rather than its $\leq n-1$ length in $\calph \cup \{ \dontcare \}$.
+%\end{description}
+
+The oracle is implemented by the $\generate{u}$ procedure that generates the children $u_1, \ldots, u_d$ of $u$. We ensure that \emph{(i)}~$\generate{u}$ operates on the $\leq k+1$ length motifs from $\salph$, and \emph{(ii)}~$\generate{u}$ avoids generating the motifs in $M_{qk} \setminus \maxset$ that are not suffixes or prefixes of maximal motifs. This is crucial, as otherwise we cannot guarantee output-sensitive bounds because $M_{qk}$ can be exponentially larger than $\maxset$.
+
+In Section~\ref{sec:generate} we will show how to implement $\generate{u}$ and  prove:
+%The time spent executing $\generate{u}$ is given by the following lemma, .
+
+\begin{lemma}
+  \label{lemma:generate_time}
+  Algorithm $\generate{u}$ produces the children of $u$ and can be implemented in time $O(\srt(\occs{u}) + (k+1) \cdot |\occs{u}| + \sum_{i=1}^d |\occs{u_i}|)$. 
+\end{lemma}
+
+
+% BOUNDING THE SIZE OF T
+%\subsection{Bounding the Total Construction Cost of Motif Tries}
+%\label{sec:bounding-construction-cost-motif-trie}
+%
+By summing the cost to execute procedure $\generate{u}$ for all nodes $u \in T$, we now bound the construction time of $T$. Observe that when summing over $T$ the formula stated in Lemma~\ref{lemma:generate_time}, each node exists once in the first two terms and once in the third term, so the latter can be ignored when summing over $T$ (as it is dominated by the other terms)
+\[
+\sum_{u \in T} (\srt(\occs{u}) + (k+1) \cdot |\occs{u}| + \sum_{i=1}^d |\occs{u_i}|) = O\left(\sum_{u \in   T} (\srt(\occs{u}) + (k+1) \cdot |\occs{u}|) \right) ~~ .
+\]
+
+% = O(n(k+1) + (k+1) \times \sum_{u \in T} |\occs{u}|))$, where 
+\noindent We bound 
+\[
+\sum_{u \in T} \srt(\occs{u}) = O\left( n(k+1) + \sum_{u \in T} |\occs{u}|\right)
+\] 
+by running a single cumulative radix sort for all the instances over the several nodes $u$ at the same level, allowing us to amortize the additive cost $O(n)$ of the radix sorting among nodes at the same level (and there are at most $k+1$ such levels).
+
+To bound $\sum_{u \in T} |\occs{u}|$, we observe $\sum_i |\occs{u_i}| \geq |\occs{u}|$ (as trivially the $\epsilon$ extension always maintains the number of occurrences of its parent). Consequently we can charge each leaf $u$ the cost of its $\leq k$ ancestors, so \[
+\sum_{u \in T} |\occs{u}| = O\left((k+1) \times \sum_{\mathrm{leaf\ }u \in T} |\occs{u}|\right) ~~ .
+\]
+
+Finally, from Section~\ref{sec:motiftrie} there cannot be more leaves than maximal motifs in $\maxset$ and their suffixes, and the occurrence lists of maximal motifs dominate the size of the non-maximal ones in $T$, which allows us to bound: 
+\[
+(k+1) \times \sum_{\mathrm{leaf\ }u \in T} |\occs{u}| = O\left((k+1)^2 \times \sum_{m \in \maxset} \occ(m)\right) ~~ .
+\]   
+Adding the $O(n \log \calph)$ cost for the suffix tree and the LCA ancestor data structure of Section~\ref{sub:efficient-representatin-motifs}, we obtain:
+
+\begin{theorem}\label{the:trie}
+    Given a sequence $S$ of $n$ objects over an alphabet $\calph$ and two integers $q > 1$ and $k \geq 0$, a motif trie containing the maximal motifs $\maxset \subseteq M_{qk}$ and their occurrences $\occ(m)$ in $S$ for $m \in \maxset$  can be built in time and space
+$O \Bigl( n (k + \log \calph) + (k+1)^3 \times \sum_{m \in \maxset} \occ(m) \Bigr)$.
+\end{theorem}
+
+
+\section{Implementing $\generate{u}$}\label{sec:generate}
+We now show how to implement $\generate{u}$ within the time bounds stated by Lemma~\ref{lemma:generate_time}. The idea is as follows. We first obtain $\sortoccs{u}$, which is an array storing the occurrences in $\occs{u}$, sorted lexicographically according to the suffix associated with each occurrence. We can then show that there is a bijection between the children of $u$ and a set of maximal intervals in $\sortoccs{u}$. By exploiting the properties of these intervals, we are able to find them efficiently through a number of scans of $\sortoccs{u}$. The bijection implies that we thus efficiently obtain the new children of $u$.
+
+
+\subsection{Nodes of the Motif Trie as Maximal Intervals}
+\label{sub:intervals}
+The key point in the efficient implementation of the oracle $\generate{u}$ is to relate each node $u$ and its future children $u_1, \ldots, u_d$ labeled by solid blocks $b_1, \ldots, b_d$, respectively, to some suitable intervals that represent their occurrence lists $\occs{u}, \occs{u_1}, \ldots, \occs{u_d}$. 
+Though the idea of using intervals for representing trie nodes is not new (e.g. in \cite{abouelhoda2004replacing}), we use intervals to expand the trie rather than merely representing its nodes. Not all intervals generate children as not all solid blocks that extend $u$ necessarily generate a child. Also, some of the solid blocks $b_1, \ldots, b_d$ can be prefixes of each other and one of the intervals can be the empty string $\epsilon$. To select them carefully, we need some definitions and properties.
+
+\subparagraph*{Extensions.}
+%
+For a position $p \in \occs{u}$, we define its \emph{extension} as the suffix $\ext(p, u) = S[p + |u| + 1, n]$ that starts at the position after $p$ with an offset equivalent to skipping the prefix matching $u$ plus one symbol (for the don't care). We may write $\ext(p)$, omitting the motif $u$ if it is clear from the context. We also say that the \emph{skipped characters} $\skipchar(p)$ at position $p \in \occs{u}$ are the $d=\numdc(u)+2$ characters in $S$ that specialize $u$ into its occurrence $p$: formally,  $\skipchar(p) = \langle c_0, c_1, \ldots, c_{d-1}  \rangle$ where $c_0 = S[p-1]$, $c_{d-1} = S[p+|u|]$, and $c_i = S[p+j_i-1]$, for $1 \leq i \leq d-2$, where $u[j_i] = \dontcare$ is the $i$th don't care in $u$. 
+
+We denote by $\sortoccs{u}$ the list $\occs{u}$ sorted using as keys the integers for $\ext(p)$ where $p \in \occs{u}$. (We recall from Section~\ref{sub:efficient-representatin-motifs} that the suffixes are represented in the alphabet~$\salph$, and thus $\ext(p)$ can be seen as an integer in $\salph$.) By Lemma~\ref{lemma:grouping} consecutive positions in $\sortoccs{u}$ share common prefixes of their extensions. Lemma~\ref{lem:commonPref} below states that these prefixes are the candidates for being correct edge labels for expanding $u$ in the trie. 
+\begin{lemma}
+  \label{lem:commonPref}
+    Let $u_i$ be a child of node $u$, $b_i$ be the label of  edge $(u, u_i)$, and $p \in \occs{u}$ be an occurrence position. If position $p \in \occs{u_i}$ then $b_i$ is a prefix of $\ext(p, u)$.
+\end{lemma}
+\begin{proof}
+    Assume otherwise, so $p \in \occs{u} \cap \occs{u_i}$ but $b_i \not \in \prefset(\ext(p, u))$. 
+    Then there is a mismatch of solid block $b_i$ in $\ext(p, u)$, since at least one of the characters in $b_i$ is not in $\ext(p, u)$. But this means that $u_i$ cannot occur at position $p$, and consequently $p \not \in \occs{u_i}$, which is a contradiction.
+\end{proof}
+
+\subparagraph*{Intervals.}
+%
+Lemma~\ref{lem:commonPref} states a necessary condition, so we have to filter the candidate prefixes of the extensions. We use the following notion of intervals to facilitate this task. We call $\interval{} \subseteq \sortoccs{u}$ an \emph{interval} of $\sortoccs{u}$ if $\interval{}$ contains consecutive entries of $\sortoccs{u}$. We write $\interval{} = [i, j]$ if $\interval{}$ covers the range of indices from $i$ to $j$ in $\sortoccs{u}$. 
+The \emph{longest common prefix} of an interval is defined as $\ilcp(\interval{}) = \min_{p_1, p_2 \in \interval{}} \lcp(\ext(p_1), \ext(p_2))$, which is a solid block in $\salph$ as discussed at the end of Section~\ref{sub:efficient-representatin-motifs}. By Lemma~\ref{lemma:grouping}, $\ilcp(\interval{}) = \lcp(\ext(\sortoccs{u}[i]), \ext(\sortoccs{u}[j]))$ can be computed in $O(1)$ time, where $\sortoccs{u}[i]$ is the first and $\sortoccs{u}[j]$ the last element in $\interval{} = [i, j]$. 
+
+\subparagraph*{Maximal Intervals.}
+%
+An interval $\interval{} \subseteq \sortoccs{u}$ is \emph{maximal} if \emph{(1)}~there are at least~$q$ positions in $\interval{}$ (i.e. $|\interval{}| \geq q$), \emph{(2)}~motif $u$ cannot be specialized with the skipped characters in $\skipchar(p)$ where $p \in \interval{}$, and \emph{(3)}~any other interval $\interval{}' \subseteq \sortoccs{u}$ that strictly contains $\interval{}$ has a shorter common prefix (i.e. $|\ilcp(\interval{}')| < |\ilcp(\interval{})|$ for $\interval{}' \supset \interval{}$) \footnote{%
+%While conditions~\emph{(1)} and~\emph{(3)} are intuitive, as we want the largest intervals with $\geq q$ positions that cannot be extended, condition~\emph{(2)} is less intuitive but has a dramatic effect on the complexity. To see why consider an interval $\interval{}$ that satisfies~\emph{(1)} and~\emph{(3)} but not~\emph{(2)}. This means that the occurrences of $u$ in $S$ restricted at positions $p \in \interval{}$ have the same symbol in correspondence of the same $\dontcare$ in $u$ (while this is not true for all $p \in \sortoccs{u}$). 
+In the full version we show that condition~\emph{(2)} is needed to avoid the enumeration of either motifs from $M_{qk} \setminus \maxset$ or duplicates from $\maxset$.}. 
+We denote by $\intervalset{u}$ the \emph{set of all maximal intervals} of $\sortoccs{u}$, and show that $\intervalset{u}$ form a tree covering of $\sortoccs{u}$. A similar lemma for intervals over the LCP array of a suffix tree was given in \cite{abouelhoda2004replacing}.
+\begin{lemma}
+  \label{lem:intOverlap}
+    Let $\interval{1}, \interval{2} \in \intervalset{u}$ be two maximal intervals, where $\interval{1} \not = \interval{2}$ and $|\interval{1}| \leq  |\interval{2}|$.
+    Then either $\interval{1}$ is contained in $\interval{2}$ with a longer common prefix (i.e. $\interval{1} \subset \interval{2}$ and $|\ilcp(\interval{1})| > |\ilcp(\interval{2})|$) or the intervals are disjoint (i.e. $\interval{1} \cap \interval{2} = \emptyset$). 
+\end{lemma}
+\begin{proof}
+    Let $\interval{1} = [i, j]$ and $\interval{2} = [i', j']$. 
+    %Since $\interval{1} \not = \interval{2}$, either $i < i'$ or $j > j'$. 
+    Assume partial overlaps are possible, $i' \leq i \leq j' < j$, to obtain a contradiction.
+    Since $|\ilcp(\interval{1})| \geq |\ilcp(\interval{2})|$, the interval $\interval{3} = [j', j]$ has a longest common prefix $|\ilcp(\interval{3})| \geq |\ilcp(\interval{2})|$, and so $\interval{2}$ could have been extended and was not maximal, giving a contradiction. 
+    The remaining cases are symmetric.
+\end{proof}
+
+The next lemma establishes a useful bijection between maximal intervals $\intervalset{u}$ and children of $u$, motivating why we use intervals to expand the motif trie. 
+\begin{lemma}
+  \label{lem:bijection}
+    Let $u_i$ be a child of a node $u$. Then the occurrence list $\occs{u_i}$ is a permutation of a maximal interval $\interval{} \subseteq \intervalset{u}$, and vice versa. The label on edge $(u, u_i)$ is the solid block $b_i = \ilcp(\interval{})$. No other children or maximal intervals have this property with $u_i$ or $\interval{}$.
+\end{lemma}
+\begin{proof}
+    We prove the statement by assuming that $T$ has been built, and that the maximal intervals have been computed for a node $u \in T$.
+
+    We first show that given a maximal interval $\interval{} \in \intervalset{u}$, there is a single corresponding child $u_i \in T$ of $u$.
+    Let $b_i = \ilcp(\interval{})$ denote the longest common prefix of occurrences in $\interval{}$, and note that $b_i$ is distinct among the maximal intervals in $\intervalset{u}$. Also, since $b_i$ is a common prefix for all occurrence extensions in $\interval{}$, the motif $u \dontcare b_i$ occurs at all locations in $\interval{}$ (as we know that $u$ occurs at those locations). 
+    Since $|\interval{}| \geq q$ and $u \dontcare b_i$ is an occurrence at all $p \in \interval{}$, there must be a child $u_i$ of $u$, where the edge $(u, u_i)$ is labeled $b_i$ and where $\interval{} \subseteq \occs{u_i}$. From the definition of tries, there is at most one such node. There can be no $p' \in \occs{u_i} - \interval{}$, since that would mean that an occurrence of $u \dontcare b_i$ was not stored in $\interval{}$, contradicting the maximality assumption of $\interval{}$. Finally, because $|\skipset{\interval{}}| \geq 2$ and $b_i$ is the longest common prefix of all occurrences in $\interval{}$, not all occurrences of $u_i$ can be extended to the left using one symbol from $\calph$. Thus, $u_i$ is a prefix or suffix of a maximal motif.
+    
+    We now prove the other direction, that given a child $u_i \in T$ of $u$, we can find a single maximal interval $\interval{} \in \intervalset{u}$.    
+    First, denote by $b_i$ the label on the $(u, u_i)$ edge. From Lemma \ref{lem:commonPref}, $b_i$ is a common prefix of all extensions of the occurrences in $\sortoccs{u_i}$. Since not all occurrences of $u_i$ can be extended to the left using a single symbol from $\calph$, $b_i$ is the longest common prefix satisfying this, and there are at least two different skipped characters of the occurrences in $\occs{u_i}$. 
+    Now, we know that $u_i = u \dontcare b_i$ occurs at all locations $p \in \occs{u_i}$. Observe that $\occs{u_i}$ is a (jumbled) interval of $\sortoccs{u}$ (since otherwise, there would be an element $p' \in \sortoccs{u}$ which did not match $u_i$ but had occurrences from $\occs{u_i}$ on both sides in $\sortoccs{u}$, contradicting the grouping of $\sortoccs{u}$). All occurrences of $u_i$ are in $\occs{u_i}$ so $\occs{u_i}$ is a (jumbled) maximal interval of $\sortoccs{u}$.
+    We just described a maximal interval with a distinct set of occurrences, at least two different skipped characters and a common prefix, so there must surely be a corresponding interval $\interval{} \in \intervalset{u}$ such that $\ilcp(\interval{}) = b_i$, $|\skipset{\interval{}}| \geq 2$ and $\occs{u_i} \subseteq \interval{}$. There can be no $p' \in \interval{} - \occs{u_i}$, as $p' \in \occs{u}$ and $b_i \in \prefset(\ext(p', u))$ means that $p' \in \occs{u_i}$.
+\end{proof}
+
+
+\subsection{Exploiting the Properties of Maximal Intervals}
+%
+We now use the properties shown above to implement the oracle $\generate{u}$, resulting in Lemma~\ref{lemma:generate_time}. Observe that the task of $\generate{u}$ can be equivalently seen by Lemma~\ref{lem:bijection} as the task of finding all maximal intervals $\intervalset{u}$ in $\sortoccs{u}$, where each interval $\interval{} \in \intervalset{u}$ corresponds exactly to a distinct child $u_i$ of $u$. We describe three main steps, where the first takes $O(\srt(\occs{u}) + (k+1) \cdot |\occs{u}| )$ time, and the others require $O(\sum_{i=1}^d |\occs{u_i}|)$ time. The interval $\interval{} = \sortoccs{u}$ corresponding to the solid block~$\epsilon$ is trivial to find, so we focus on the rest. We assume $\numdc(u) < k$, as otherwise we are already done with $u$.
+
+
+\subparagraph*{Step~1. Sort occurrences and find maximal runs of skipped characters.} 
+%
+We perform a radix-sort of $\occs{u}$ using the extensions as keys, seen as integers from $\salph$, thus obtaining array $\sortoccs{u}$. To facilitate the task of checking condition~\emph{(2)} for the maximality of intervals, we compute for each index $i \in \sortoccs{u}$ 
+%at index $i(p)$ in $\sortoccs{u}$  
+the smallest index $R(i) > i$ in $\sortoccs{u}$ such that motif $u$ cannot be specialized with the skipped characters in $\skipchar(\sortoccs{u}[j])$ where $j \in [i, R(i)]$. That is, there are at least two different characters from $\calph$ hidden by each of the skipped characters in the interval. (If $R(i)$ does not exist, we do not create $[i, R(i)]$.)
+We define $|\skipset{\interval{}}|$ as the minimum number of different characters covered by each skipped character in interval $\interval{}$, and note that $|\skipset{[i, R(i)]}| \geq 2$ by definition. 
+
+To do so we first find, for each skipped character position, all indices where a maximal run of equal characters end: $R(i)$ is the maximum indices for the given $i$. This helps us because for any index $i$ inside such a block of equal characters, $R(i)$ must be on the right of where the block ends (otherwise $[i, R(i)]$ would cover only one character in that block). 
+Using this to calculate $R(i)$ for all indices $i \in \sortoccs{u}$ from left to right, we find each answer in time $O(k+1)$, and $O((k+1) \cdot |\sortoccs{u}|)$ total time. We denote by $\rintset$ the set of intervals $[i, R(i)]$ for $i \in \sortoccs{u}$. 
+
+\begin{lemma}
+  \label{lemma:R-prefix}
+  For any maximal interval $\interval{} \equiv [i,j] \in \intervalset{u}$, there exists $R(i) \leq j$, and thus $[i,R(i)]$ is an initial portion of $\interval{}$.
+\end{lemma}
+
+\subparagraph*{Step~2. Find maximal intervals with handles.}
+%
+
+We want to find all maximal intervals covering each position of $\sortoccs{u}$. To this end, we introduce \emph{handles}. 
+For each $p \in \sortoccs{u}$, its \emph{interval domain} $D(p)$ is the set of intervals $\interval{}' \subset \sortoccs{u}$ such that $p \in \interval{}'$ and $|\skipset{\interval{}'}| \geq 2$.
+We let $\maxlcp{p}$ be the length of the longest shared solid block prefix $b_i$ over $D(p)$, namely, $\maxlcp{p} = \max_{\interval{}' \in D(p)} |\ilcp(\interval{}')|$. For a maximal interval $\interval{} \subseteq \intervalset{u}$, if $|\ilcp(\interval{})| = \maxlcp{p}$ for some $p \in \interval{}$ we call $p$ a \emph{handle} on $\interval{}$. Handles are relevant for the following reason.
+
+\begin{lemma}
+  \label{lem:handles}
+    For each maximal interval $\interval{} \subseteq \intervalset{u}$, either there is a handle $p \in \sortoccs{u}$ on $\interval{}$, or $\interval{}$ is fully covered by $\geq 2$ adjacent maximal intervals with handles.
+\end{lemma}
+\begin{proof}
+    From Lemma \ref{lem:intOverlap}, any maximal interval $\interval{} \in \intervalset{u}$ is either fully contained in some other maximal interval, or completely disjoint from other maximal intervals. Partial overlaps of maximal intervals are impossible.
+    
+    Now, assume there is no handle $p \in \occs{u}$ on $\interval{}$. If so, all $p' \in \interval{}$ has $\maxlcp{p'} \not = |\ilcp(\interval{})|$ (since otherwise $p' \in \interval{}$ and $\maxlcp{p'} = |\ilcp(\interval{})|$ and thus $p'$ was a handle on $\interval{}$).
+    Clearly for all $p' \in \interval{}$, $|\ilcp(\interval{})|$ is a lower bound for $\maxlcp{p'}$. Thus, to get a contradiction it must be the case that $\maxlcp{p'} > |\ilcp(\interval{})|$ for all $p' \in \interval{}$.
+    This can only happen if $\interval{}$ is completely covered by $\geq 2$ maximal intervals with a larger longest common prefix. From Lemma \ref{lem:intOverlap}, a single interval $\interval{}'$ is not enough because $\interval{}'$ is fully contained (or completely disjoint) in $\interval{}$ if $|\ilcp(\interval{}')| \geq |\ilcp(\interval{})|$.
+\end{proof}
+
+Let $\handlevalset{u}$ denote the set of maximal intervals with handles. We now show how to find the set $\handlevalset{u}$ among the intervals of $\sortoccs{u}$. Observe that for each occurrence $p \in \sortoccs{u}$, we must find the interval $\interval{}'$ with the largest $\ilcp(\interval{}')$ value among all intervals containing~$p$.
+
+From the definition, a handle on a maximal interval $\interval{}'$ requires $|\skipset{\interval{}'}| \geq 2$, which is exactly what the intervals in $\rintset$ satisfy. As the $\ilcp$ value can only drop when extending an interval, these are the only candidates for maximal intervals with handles. Note that from Lemma \ref{lemma:R-prefix}, $\rintset$ contains a prefix for all of the (not expanded) maximal intervals because it has all intervals from left to right obeying the conditions on length and skipped character conditions. Furthermore, $|\rintset| = O(|\sortoccs{u}|)$, since only one $R(i)$ is calculated for each starting position. Among the intervals $[i, R(i)] \in \rintset$, we will now show how to find those with maximum $\ilcp$ (i.e. where the $\ilcp$ value equals $\maxlcp{p}$) for all $p$.
+
+%To avoid using a priority queue to find $\maxlcp{p}$ as the maximum over the intervals in $\rintset$, which would require super-linear time, 
+We use an idea similar to that used in Section \ref{subec:reporting-maximal-motifs} to filter maximal motifs from the right-maximal motifs. 
+We sort the intervals $\interval{}' = [i, R(i)] \in \rintset$ in decreasing lexicographic order according to the pairs
+%$\langle|\ilcp(\interval{}')|, R(i), i\rangle$. 
+$\langle|\ilcp(\interval{}')|, -i\rangle$ (i.e. decreasing $\ilcp$ values but increasing indices $i$), to obtain the sequence $\candset$. 
+Thus, if considering the intervals left to right in $\candset$, we consider intervals with larger $\ilcp$ values from left to right in $S$ before moving to smaller $\ilcp$ values. 
+%For each of the interval in this ordering, we check if it is a new maximal interval with a handle. If so, we expand the interval until the the $\ilcp$ value changes and mark the newly covered occurrences in $\sortoccs{u}$. %This is done by first filtering $\rintset$ and afterwards using a number of linear scans to produce the final set of maximal intervals with handles $\handlevalset{u}$.
+
+
+%We scan the ordered intervals from left to right and compare intervals $\interval{1} = [i, R(i)], \interval{2} = [j, R(j)]$: we discard interval $\interval{1}$ if $|\ilcp(\interval{1})| = |\ilcp(\interval{2})|$, $R(i) = R(j)$ and $i > j$ (as $\interval{1}$ is fully contained in $\interval{2}$ with the same $\ilcp$ value, $\interval{1}$ cannot be maximal). 
+
+%After elimination, we scan the remaining ordered intervals from left to right and compare intervals $\interval{1} = [i, R(i)], \interval{2} = [j, R(j)]$: we merge intervals $\interval{1}$ and $\interval{2}$ into $\interval{3} = [i, R(j)]$ if $|\ilcp(\interval{1})| = |\ilcp(\interval{2})|$, $R(j) > R(i)$ and $R(i) \geq j > i$ (since the intervals are overlapping with the same $\ilcp$ value). After the merge procedure, each $p \in \sortoccs{u}$ only has a single maximal interval candidate remaining in the set, which we call the candidate set $\candset$. Observe that the set may contain intervals that overlap and which are not maximal. 
+
+%We will now show how to find $\handlevalset{u}$ by processing $\candset$ to find the maximal intervals with handles. $\candset$ is considered from left to right using the ordering previously described. 
+Consider an interval $\interval{p} = [i, R(i)] \in \candset$. The idea is that we determine if $\interval{p}$ has already been added to $\handlevalset{u}$ by some previously processed handled maximal interval. If not, we expand the interval (making it maximal) and add it to $\handlevalset{u}$, otherwise $\interval{p}$ is discarded. When $\candset$ is fully processed, all occurrences in $\sortoccs{u}$ are covered by maximal intervals with handles.
+
+First, since maximal intervals must be fully contained in each other (from Lemma \ref{lem:intOverlap}), we determine if $\interval{p} = [i, R(i)] \in \candset$ is already fully covered by previously expanded intervals (with larger $\ilcp$ values) -- if not, we must expand $\interval{p}$. Clearly, if either $i$ or $R(i)$ is not included in any previous expansions, we must expand $\interval{p}$. Otherwise, if both $i$ and $R(i)$ is part of a single previous expansion $\interval{q} \in \candset$, $\interval{p}$ should not be expanded. If $i$ and $R(i)$ is part of two different expansions $\interval{q}$ and $\interval{r}$ we compare their extent values: $\interval{p}$ must be expanded if some $p \in \interval{p}$ is not covered by either $\interval{q}$ or $\interval{r}$. To enable these checks we mark each $j \in \sortoccs{u}$ with the longest processed interval that contains it (during the expansion procedure below).
+
+Secondly, to expand $\interval{p}$ maximally to the left and right, we use pairwise $\lcp$ queries on the border of the interval. Let $a \in \interval{p}$ be a border occurrence and $b \not \in \interval{p}$ be its neighboring occurrence in $\sortoccs{u}$ (if any, otherwise it is trivial). When $|\lcp(a, b)| < |\ilcp(\interval{p})|$, the interval cannot be expanded to span $b$. When the expansion is completed, $\interval{p}$ is a maximal interval and added to $\handlevalset{u}$. As previously stated, all elements in $\interval{p}$ are marked as being part of their longest covering handled maximal interval by writing $\interval{p}$ on each of its occurrences.
+
+\subparagraph*{Step~3. Find composite maximal intervals covered by maximal intervals with handles.}
+%
+From Lemma \ref{lem:handles}, the only remaining type of intervals are composed of maximal intervals with handles from the set $\handlevalset{u}$. A \emph{composite maximal interval} must be the union of a sequence of adjacent maximal intervals with handles. We find these as follows. We order $\handlevalset{u}$ according to the starting position and process it from left to right in a greedy fashion, letting $\interval{h} \in \handlevalset{u}$ be one of the previously found maximal intervals with handles. Each interval $\interval{h}$ is responsible for generating exactly the composite maximal intervals where the sequence of covering intervals starts with $\interval{h}$ (and which contains a number of adjacent intervals on the right). Let $\interval{h}' \in \handlevalset{u}$ be the interval adjacent on the right to $\interval{h}$, and create the composed interval $\interval{c} = \interval{h} + \interval{h}'$ (where $+$ indicates the concatenation of consecutive intervals). To ensure that a composite interval is new, we check as in Step 2 that there is no previously generated maximal interval $\interval{}$ with $|\ilcp(\interval{})| = |\ilcp(\interval{c})|$ such that $\interval{c} \subseteq \interval{}$. This is correct since if there is such an interval, it has already been fully expanded by a previous expansion (of composite intervals or a handled interval). Furthermore, if there is such an interval, all intervals containing $\interval{c}$ with shorter longest common prefixes have been taken care of, since from Lemma \ref{lem:intOverlap} maximal intervals cannot straddle each other. If $\interval{c}$ is new, we know that we have a new maximal composite interval and can continue expanding it with adjacent intervals. If the length of the longest common prefix of the expanded interval changes, we must perform the previous check again (and add the previously expanded composite interval to $\intervalset{u}$).
+
+\vspace{1em}
+By analyzing the algorithm described, one can prove the following two lemmas showing that the motif trie is generated correctly. While Lemma \ref{lem:soundness} states that $\epsilon$-extensions may be generated (i.e. a sequence of $\dontcare$ symbols may be added to suffixes of maximal motifs), a simple bottom-up cleanup traversal of $T$ is enough to remove these.
+
+\begin{lemma}\label{lem:soundness}
+\textbf{(Soundness)} Each motif stored in $T$ is a prefix or an $\epsilon$-extension of some suffix of a maximal motif (encoded using alphabet $\salph$ and stored in $T$).
+\end{lemma}
+\begin{proof}
+    The property to be shown for motif $m \in T$ is: \emph{(1)} $m$ is a prefix of some suffix of a maximal motif $m' \in \maxset$ (encoded using alphabet $\salph$), or \emph{(2)} $m$ is the suffix of some maximal motif $m' \in \maxset$ extended by at most $k$ $\epsilon$ solid blocks (and don't cares). 
+    
+    Note that we only need to show that $\generate{u}$ can only create children of $u \in T$ with the desired property. We prove this by induction. In the basis, $u$ is the root and $\generate{u}$ produce all motifs such that adding a character from $\calph$ to either end decreases the number of occurrences: this is ensured by requiring that there must be more than two different skipped characters in the occurrences considered, using the LCP of such intervals and only extending intervals to span occurrences maintaining  the same LCP length. Since there are no don't cares in these motifs they cannot be specialized and so each of them must be a prefix or suffix of some maximal motif.
+    
+    For the inductive step, we prove the property by construction, assuming $\numdc(u) < k$. Consider a child $u_i$ generated by $\generate{u}$ by extending with solid block $b_i$: it must not be the case that, without losing occurrences,
+    \emph{(a)} $u_i$ can be specialized by converting one of its don't cares into a solid character from $\calph$, or
+    \emph{(b)} $u_i$ can be extended in either direction using only characters from $\calph$.
+    If either of these conditions is violated, $u_i$ can clearly not satisfy the property (in the first case, the generalization $u_i$ is not a suffix or prefix of the specialized maximal motif). However, these conditions are sufficient, as they ensure that $u_i$ is encoded using $\salph$ and cannot be specialized or extended without using don't cares. Thus, if $b_i \not = \epsilon$, $u_i$ is either a prefix of some suffix of a maximal motif (since $u_i$ ends with a solid block it may be maximal), or if $b_i = \epsilon$, $u_i$ may be an $\epsilon$-extension of $u$ (or a prefix of some suffix if some descendant of $u_i$ has the same number of occurrences and a non-$\epsilon$ parent edge).  
+    
+    By the induction hypothesis, $u$ satisfies \emph{(1)} or \emph{(2)} and $u$ is a prefix of $u_i$. Furthermore, the occurrences of $u$ have more than one different character at all locations covered by the don't cares in $u$ (otherwise one of those locations in $u$ could be specialized to the common character).     
+    When generating children, we ensure that \emph{(a)} cannot occur by forcing the occurrence list of generated children to be large enough that at least two different characters is covered by each don't care. That is, $u_i$ may only be created if it cannot be specialized in any location, ensured by only considering intervals covering $L(p)$ and $R(p)$. Condition \emph{(b)} is avoided by ensuring that there are at least two different skipped characters for the occurrences of $u_i$ and forcing the extending block $b_i$ to be maximal under that condition. 
+\end{proof}
+
+\begin{lemma}\label{lem:completeness}
+\textbf{(Completeness)} If $m \in \maxset$, $T$ stores $m$ and its suffixes.
+\end{lemma}
+\begin{proof}
+    We summarize the proof that $\generate{u}$ is correct and the correct motif trie is produced. From Lemma \ref{lem:handles}, we create all intervals in $\generate{u}$ by expanding those with handles, and expanding all composite intervals from these. By Lemma \ref{lem:bijection} the intervals found correspond exactly to the children of $u$ in the motif trie. Thus, as $\generate{u}$ is executed for all $u \in T$ when $\numdc(u) \leq k-1$, all nodes in $T$ is created correctly until depth $k+1$. 
+    
+    Now clearly $T$ contains $\maxset$ and all the suffixes: for a maximal motif $m \in \maxset$, any suffix $m'$ is generated and stored in $T$ as \emph{(1)} $\occ(m') \geq \occ(m)$ and \emph{(2)} $\numdc(m') \leq \numdc(m)$. 
+\end{proof}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%% REFERENCES, APPENDIX %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\textbf{History}
+%This theoretical work was inspired by an algorithm implemented for motif extraction in DNA sequences, which performed very well. 
+%The present paper is the result of explaining its behavior, improving it in many respects. 
