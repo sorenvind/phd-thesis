@@ -13,97 +13,111 @@ S'xcolor'
 p6
 aS'amsmath'
 p7
-aS'framed'
+aS'etoolbox'
 p8
-aS'amsthm'
+aS'framed'
 p9
-aS'array'
+aS'amsthm'
 p10
-aS'upgreek'
+aS'array'
 p11
-aS'mathtools'
+aS'upgreek'
 p12
-aS'nicefrac'
+aS'mathtools'
 p13
-aS'babel'
+aS'nicefrac'
 p14
-aS'preamble/dtucolors'
+aS'babel'
 p15
-aS'algpseudocode'
+aS'preamble/dtucolors'
 p16
-aS'blindtext'
+aS'algpseudocode'
 p17
-aS'microtype'
+aS'blindtext'
 p18
-aS'fontspec'
+aS'microtype'
 p19
-aS'tikz'
+aS'fixme'
 p20
 aS'cleveref'
 p21
 aS'lastpage'
 p22
-aS'graphicx'
+aS'mathdesign'
 p23
-aS'subfig'
+aS'graphicx'
 p24
-aS'hyperref'
+aS'subfig'
 p25
-aS'fixme'
+aS'hyperref'
 p26
-aS'authblk'
+aS'tikz'
 p27
-aS'todonotes'
+aS'authblk'
 p28
-aS'algorithm'
+aS'todonotes'
 p29
-aS'listings'
+aS'algorithm'
 p30
-aS'url'
+aS'listings'
 p31
-aS'eso-pic'
+aS'url'
 p32
-aS'soul'
+aS'eso-pic'
 p33
-aS'totcount'
+aS'soul'
 p34
-aS'csquotes'
+aS'totcount'
 p35
-aS'amssymb'
+aS'fontenc'
 p36
-atp37
-Rp38
+aS'csquotes'
+p37
+atp38
+Rp39
 sS'files_with_guttermarks'
-p39
+p40
 g4
-((lp40
+((lp41
 S'/Users/sovi/Google Drive/phd/thesis/./chapters/papers/fingerprints/fingerprints.tex'
-p41
-aS'/Users/sovi/Google Drive/phd/thesis/chapters/papers/patternextraction/patternextraction.tex'
 p42
-aS'/Users/sovi/Google Drive/phd/thesis/chapters/papers/compressedrangesearching/compressedrangesearching.tex'
+aS'/Users/sovi/Google Drive/phd/thesis/chapters/papers/patternextraction/patternextraction.tex'
 p43
-aS'/Users/sovi/Google Drive/phd/thesis/./chapters/papers/patternextraction/patternextraction.tex'
+aS'/Users/sovi/Google Drive/phd/thesis/chapters/papers/compressedrangesearching/compressedrangesearching.tex'
 p44
-aS'/Users/sovi/Google Drive/phd/thesis/chapters/papers/motiondetection/motiondetection.tex'
+aS'/Users/sovi/Google Drive/phd/thesis/frontmatter/Abstract-EN.tex'
 p45
-aS'/Users/sovi/Google Drive/phd/thesis/./chapters/papers/motiondetection/motiondetection.tex'
+aS'/Users/sovi/Google Drive/phd/thesis/./chapters/Introduction.tex'
 p46
-aS'/Users/sovi/Google Drive/phd/thesis/./chapters/papers/compressedrangesearching/compressedrangesearching.tex'
+aS'/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/amssymb.sty'
 p47
-aS'/Users/sovi/Google Drive/phd/thesis/chapters/papers/fingerprints/fingerprints.tex'
+aS'/Users/sovi/Google Drive/phd/thesis/chapters/Conclusion.tex'
 p48
-aS'/Users/sovi/Google Drive/phd/thesis/appendices/AnAppendix.tex'
+aS'/Users/sovi/Google Drive/phd/thesis/./chapters/papers/patternextraction/patternextraction.tex'
 p49
-aS'/Users/sovi/Google Drive/phd/thesis/chapters/papers/coloredrangecounting/coloredrangecounting.tex'
+aS'/Users/sovi/Google Drive/phd/thesis/preamble/fonts.tex'
 p50
-aS'/Users/sovi/Google Drive/phd/thesis/./Thesis.tex'
+aS'/Users/sovi/Google Drive/phd/thesis/chapters/papers/motiondetection/motiondetection.tex'
 p51
-aS'Thesis.tex'
+aS'/Users/sovi/Google Drive/phd/thesis/./chapters/papers/motiondetection/motiondetection.tex'
 p52
-atp53
-Rp54
-sS'synctex'
+aS'/Users/sovi/Google Drive/phd/thesis/chapters/Introduction.tex'
+p53
+aS'/Users/sovi/Google Drive/phd/thesis/./chapters/papers/compressedrangesearching/compressedrangesearching.tex'
+p54
+aS'/Users/sovi/Google Drive/phd/thesis/chapters/papers/fingerprints/fingerprints.tex'
 p55
+aS'/Users/sovi/Google Drive/phd/thesis/appendices/AnAppendix.tex'
+p56
+aS'/Users/sovi/Google Drive/phd/thesis/chapters/papers/coloredrangecounting/coloredrangecounting.tex'
+p57
+aS'/Users/sovi/Google Drive/phd/thesis/./Thesis.tex'
+p58
+aS'Thesis.tex'
+p59
+atp60
+Rp61
+sS'synctex'
+p62
 I01
 s.

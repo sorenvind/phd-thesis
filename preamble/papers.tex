@@ -16,8 +16,8 @@
 
 \usepackage[english]{babel}
 \usepackage{upgreek}
-\usepackage{amsthm,amsmath,amssymb,nicefrac,graphicx,lastpage,array}
-
+\usepackage{amsthm,amsmath,nicefrac,graphicx,lastpage,array}
+%,amssymb
  
 
 \newtheorem{theorem}{Theorem}[section]
@@ -47,6 +47,7 @@
 
 \newcommand{\hlc}[2][yellow]{{\sethlcolor{#1} \hl{#2}}}
 \newcommand{\fix}[1]{\fxfatal{\hlc[yellow]{#1}}}
+\newcommand{\docite}[1]{\footnote{\fix{#1}}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -75,8 +76,6 @@
 
 % Table row height. From IEEE package documentation
 \renewcommand{\arraystretch}{1.2}
-
-
 
 
 %%%%%%%%%%%%%%% MAKES AUTHORS ON TOP WITH MAKETITLE.
@@ -130,3 +129,4 @@
 \usepackage{authblk}
 \renewcommand*\Authand{{ and }}
 \end{comment}
+

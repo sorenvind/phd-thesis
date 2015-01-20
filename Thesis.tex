@@ -6,10 +6,14 @@
 \input{preamble/etc}
 \input{preamble/papers}
 \input{preamble/paper-commands}
+\input{preamble/compilation}
 
 \addbibresource{bibliography/Bibliography.bib}
 
 \begin{document}
+
+% Fixme list on very first page. Eases finding it :D
+\listoffixmes
 
 \prefrontmatter
 \include{prefrontmatter/titlepage}
@@ -21,28 +25,30 @@
 \include{frontmatter/Abstract-EN}
 \include{frontmatter/Abstract-DK}
 \include{frontmatter/Preface}
-\include{frontmatter/Acknowledgements}
+%\include{frontmatter/Acknowledgements}
 \clearforchapter
 \tableofcontents
 \clearforchapter
-\mylistoftodos
 
 \mainmatter
 \include{chapters/Introduction}
-\note{Dynamic Relative Compression paper} %text, compression, ds
-\include{chapters/papers/fingerprints/fingerprints} %text, compression, ds
 
-\note{Annotated Data Streaming paper} %text, streaming, ds
-\include{chapters/papers/patternextraction/patternextraction} %text, algorithm, ds
-\include{chapters/papers/compressedrangesearching/compressedrangesearching} %geometry, compression, ds
-\include{chapters/papers/coloredrangecounting/coloredrangecounting} %geometry, ds
-\include{chapters/papers/motiondetection/motiondetection} %geometry, compression, practical, ds
+\iftoggle{withpapers}{
+    \note{Dynamic Relative Compression paper} %text, compression, ds
+    \include{chapters/papers/fingerprints/fingerprints} %text, compression, ds
 
-%\blinddocument %% Gives demo/instructions for use
-\include{chapters/Conclusion}
+    \note{Annotated Data Streaming paper} %text, streaming, ds
+    \include{chapters/papers/patternextraction/patternextraction} %text, algorithm, ds
+    \include{chapters/papers/compressedrangesearching/compressedrangesearching} %geometry, compression, ds
+    \include{chapters/papers/coloredrangecounting/coloredrangecounting} %geometry, ds
+    \include{chapters/papers/motiondetection/motiondetection} %geometry, compression, practical, ds
 
-\appendix
-\include{appendices/AnAppendix}
+    %\blinddocument %% Gives demo/instructions for use
+    \include{chapters/Conclusion}
+
+    \appendix
+    \include{appendices/AnAppendix}
+}
 
 \backmatter
 \printbibliography
