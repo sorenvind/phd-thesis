@@ -1,26 +1,37 @@
 %!TEX root = ../Thesis.tex
 \chapter{Introduction}
-\emph{Data Structures} are the basic building blocks in software engineering; they are the method we use to organise and access information in our computers. An \emph{Algorithm} specifies the steps we take in order to perform some task on an input in order to produce a given output, often relying on underlying data structures. Naturally, deep knowledge and understanding of algorithms and data structures is a core competence for software engineers, absolutely vital to developing efficient and predictable software.
+\emph{Data Structures} are the basic building blocks in software engineering; they are the organizational method that allow us to store and access information in our computers efficiently. 
+An \emph{Algorithm} specifies the steps we perform to complete some task on an input in order to produce the correct output, relying on underlying data structures. %, typically relying on underlying data structures. 
+Naturally, deep knowledge and understanding of algorithms and data structures are core competences for software engineers, absolutely vital to developing efficient and predictable software.
 
 %For software engineers, knowledge and understanding of algorithms and data structures remain a core competence, absolutely vital to developing efficient and predictable software. This is especially true for data structures, as they are the basic building blocks in software engineering; they are the method through which we store and access information in our computers. 
 
-In this chapter, I will give a brief primer to the study of data structures and an overview of the important problems in the field and introduce the included papers.
+In this chapter I will give a brief primer to the study of data structures, an overview of the important problems in the field, and introduce the included papers.
 
 %How does the world look? And where are we?
 \section{Bits of Background and Context}
 %\section{Algorithms and Data Structures: Taxonomy} 
-The academic field of Computer Science emerged from mathematics and electrical engineering during the latter half of the 20th century. 
-The first large-scale use of computers was during the Second World War, where they were used to break encryption schemes. Ever more complex and large computer installations were built in the following years, primarily for military use, but the machines eventually found a home in industry and universities. 
-The result was that the first academic institutions devoted to studying computer science were created almost exactly fifty years ago (e.g. The Department of Computer Science at Carnegie Mellon University was founded in 1965, as possibly the first such department in the world).
+%The academic field of Computer Science emerged from mathematics and electrical engineering during the latter half of the 20th century. 
+%The first large-scale use of computers was during the Second World War, where they were used to break encryption schemes. Ever more complex and large computer installations were built in the following years, primarily for military use, but the machines eventually found a home in industry and universities. 
+%The result was that the first academic institutions devoted to studying computer science were created almost exactly fifty years ago (e.g. The Department of Computer Science at Carnegie Mellon University was founded in 1965, as possibly the first such department in the world).
 
-In his pioneering work \emph{``On Computable Numbers, with an Application to the Entscheidungsproblem''}~\cite{turing1936computable} from 1936, Alan Turing in a single stroke became the father of the field of \emph{theoretical computer science}. He gave the first general model of the theoretical capabilities of computers with the \emph{Turing Machine}
-%, that is the basis of all later theoretical computer models
-, and (among others) gave a formalisation of \emph{algorithms}.
-In the following 80 years, the field expanded in various directions, but the design and analysis of \emph{algorithms} and \emph{data structures} remain at the core. 
+In his pioneering work \emph{``On Computable Numbers, with an Application to the Entscheidungsproblem''}~\cite{turing1936computable} from 1936, Alan Turing in a single stroke became the father of the field of \emph{theoretical computer science}. He gave the first general model of the theoretical capabilities of computers with the \emph{Turing Machine}, and (among others) gave a formalisation of \emph{algorithms}.
+In the following 80 years theoretical computer science naturally expanded, with the computer revolution and the first computer science institutions being established almost exactly fifty years ago\footnote{The Department of Computer Science at Carnegie Mellon University was founded in 1965, as possibly the first such department in the world.}. 
+%However, research in the \emph{design and analysis of algorithms and data structures} remain at the core:
+However, research in the \emph{design and analysis of algorithms and data structures} remain extremely important. The core of the field is:
+
+%The core of the field of \emph{design and analysis of algorithms and data structures} is as follows:
+
+\begin{framed}
+%\paragraph{Design and analysis of algorithms and data structures}
+\noindent Our objective is to use resources efficiently. We \emph{design} data structures and algorithms that solve a \emph{problem}, and \emph{analyse} proposed designs in a \emph{machine model} that allows us to predict and compare the efficiency of different solutions on real computers.
+\end{framed}
 
 %\fix{Move to after defs below} The fields of algorithms and data structures are extremely closely related, and we often use solutions and ideas from one in the other. 
-In the following, we describe the fields of algorithms and data structures as one, and give a very brief introduction and taxonomy of the basic concepts as they are now established.
-The modern equivalents of the concepts introduced by Turing are as follows:
+%In the following, we 
+%describe the fields of algorithms and data structures as one, and 
+%give a very brief introduction to some concepts important to this thesis as they are now established. Let us start with the beginning, with the modern equivalents of the concepts introduced by Turing:
+\noindent The foundation is the modern equivalents of the concepts introduced by Turing:
 
 \begin{description}
     \item[Machine Model] We use an abstract model of a computer that ignores most details and allows us to understand its behaviour and reason about performance.
@@ -49,17 +60,20 @@ One is to prove that it is impossible to solve the problem using less resources 
 %That is, on one hand we try to show that we cannot possibly do better, and on the other we show what we can actually do. 
 
 %One is to prove \emph{lower bounds}, showing that it is impossible to solve the problem using less resources than some lower bound in a given machine model. When proving \emph{upper bounds}, we do the opposite by showing the existence of a solution where the amount of used resources is limited by some upper bound. 
-\paragraph{The Classic Example of Sorting}
-%Consider the classic problem of sorting a list of $n$ numbers where we measure the number of comparisons and swaps of pairs of numbers in the list. 
-%There is a lower bound showing that $\Omega(n \log n)$ comparisons are necessary\docite{sorting}, and a matching upper bound giving an algorithm for solving the problem using $O(n \log n)$ comparisons\docite{mergesort, heapsort}. 
-It is easy to show a lower bound of $\Omega(n \log n)$ for sorting $n$ numbers using comparisons and swaps of pairs of numbers: If all $n$ numbers are distinct they have $n!$ possible permutations, only one of which is the correct ordering. Then the number of number-pair comparisons to identify a single permutation uniquely is $\Omega(\log (n!)) = \Omega(n \log n)$. There are several matching upper bounds in the form of algorithms solving the problem using $O(n \log n)$ comparisons\docite{mergesort, heapsort}.
+\begin{leftbar}
+    \vspace{-1.4em} \paragraph{The Classic Example of Sorting}
+    %Consider the classic problem of sorting a list of $n$ numbers where we measure the number of comparisons and swaps of pairs of numbers in the list. 
+    %There is a lower bound showing that $\Omega(n \log n)$ comparisons are necessary\docite{sorting}, and a matching upper bound giving an algorithm for solving the problem using $O(n \log n)$ comparisons\docite{mergesort, heapsort}. 
+    It is easy to show a lower bound of $\Omega(n \log n)$ for sorting $n$ numbers using comparisons and swaps of pairs of numbers: If all $n$ numbers are distinct they have $n!$ possible permutations, only one of which is the correct ordering. Then the number of number-pair comparisons to identify a single permutation uniquely is $\Omega(\log (n!)) = \Omega(n \log n)$. There are several matching upper bounds in the form of algorithms solving the problem using $O(n \log n)$ comparisons\docite{mergesort, heapsort}.
 
-Observe that the sorting lower bound immediately implies a lower bound for any sorted list representation data structure $\mathcal{D}$. The argument is as follows: First insert the entire list of $n$ numbers into $\mathcal{D}$, and then repeatedly get, store, and remove the smallest number in $\mathcal{D}$. Then the result is an ordered version of the original list, created in $O(n)$ operations, meaning that at least one of the operations must take time $\Omega(\log n)$.
+    Observe that the sorting lower bound immediately implies a lower bound for any sorted list representation data structure $\mathcal{D}$. The argument is as follows: First insert the entire list of $n$ numbers into $\mathcal{D}$, and then repeatedly get, store, and remove the smallest number in $\mathcal{D}$. Then the result is an ordered version of the original list, created in $O(n)$ operations, meaning that at least one of the operations must take time $\Omega(\log n)$.
 
-However, the lower bounds does not apply in the Word RAM model where there \emph{is} a linear ($O(n)$) time solution if the numbers each fit in a word. That is, generally lower bounds in weaker models may be circumvented by a stronger machine model.
+    However, the lower bounds does not apply in the Word RAM model where there \emph{is} a linear ($O(n)$) time solution if the numbers each fit in a word. That is, generally lower bounds in weaker models may be circumvented by a stronger machine model.
+\end{leftbar}
 
 % So what particular branch do we consider? And why is this interesting?
-\section{My Particular Branch: What and Why?}
+\section{The Motivation and Focus for This Work}
+\note{Rewrite this entire thing}
 Clearly, although I have only touched upon major concepts there are many possible research directions to take. My main interest is in designing data structures from a theoretical perspective in order to obtain new and improved upper bounds compared to previously known results. I have particularly enjoyed considering the simplest of questions, focusing on core data structure primitives and extremely classic problems.
 
 A common theme in my work and a particular interest of mine is to find solutions that require relatively little space. Each of the proposed data structures exhibit this particular feature, though they span several different classic subfields of algorithmic research, namely combinatorial pattern matching, geometry, and compression. 
@@ -67,6 +81,49 @@ A common theme in my work and a particular interest of mine is to find solutions
 The papers included in the latter chapters of this thesis each contribute at least one non-trivial newly-designed data structure for solving a particular problem. In some instances, the data structure is used as a cornerstone in giving a solution to a particular algorithmic problem, while in other cases the data structure is the singular contribution. All but one of the papers are purely theoretical, meaning that although the proposed solutions may be good in practice, their efficiency have only been established in theory. In a single case, the proposed data structure was implemented and tested experimentally in practical scenarios.
 
 As initially stated, I consider data structures to be some of the most fundamental building blocks for efficiently solving problems. To see why, consider the following example from the origins of the field of combinatorial pattern matching. In 1970, a fair amount of research had gone into finding solutions to the problem of determining the \emph{longest common substring}\footnote{Given two strings of length $n$, what is the longest substring that is in both strings?} of two strings of length $n$, and thus it was conjectured that no linear time solution existed\docite{donald knuth}. However, in 1973 Peter Weiner~\cite{weiner1973linear} disproved the conjecture by giving a linear time algorithm for building the \emph{suffix tree} data structure, which immediately solved the problem (and many others). In the following 40 years, the properties of the data structure and its extensions have been exploited to solve countless problems\docite{many papers} in combinatorial pattern matching, where it remains a key primitive.
+
+\section{Data Structure Primer}
+In the following, I will give a brief overview of some of the fundamental data structure problems that are relevant for the later chapters, and provide a background for how our results fit in the larger world of data structures. The chapter is meant to give a brief overview of the field from our perspective, and does not provide an exhaustive history. A much more expansive account of our contributions can be found in the next chapter.
+%Since the contributions by each paper fit into a number of categories, I will discuss general themes, and include each paper in the themes where it fits.
+
+%The chapter should be relatively self-contained and the significance of the results understandable.
+
+\subsection{Integer Data Structures}
+One of the most fundamental and important fields of data structures is that of \emph{integer data structures}, where we operate on a sequence of integers, here denoted $X$. We will focus on two core problems, called \emph{predecessor} and \emph{prefix sums}.
+
+\paragraph{Predecessor}
+We must store $X$ in order to support the \emph{predecessor} query $\pred(q)$, asking for the largest element in $X$ that is smaller than $q$ (a \emph{successor} query for the smallest elemment larger than $q$ must also be supported). Early data structures for the problem only supported that query, but later developments also included support for insertions and deletions in $X$ as well as other closely related queries. The latest solutions are extremely advanced data structures; they are the culmination of decades of work and essentially optimal for all possible parameters\docite{vEB, PatrascuThorup, Fusion Trees}, yielding a query time of $O(\log \log |X|)$\fix{include fusion tree bounds}. 
+
+Predecessor data structures are used in several of the included papers as a black box. But we also introduced a new data structure in \fix{fingerprints} for answering \emph{finger predecessor} queries: The query is as before except that it also gives a reference to an existing element $\ell \in X$. For that variant, we give a dynamic solution with query time $O(\log \log |\ell-q|)$ \fix{number of elements between $q, \ell$?}, which is much better than the general solution when the reference is close to the query point.
+
+\paragraph{Prefix Sums}
+We must store the sequence of integers $X$ to support three operations: \emph{update} the value of an integer at some position by adding some value to it, find the \emph{prefix sum} of the first $i$ elements, and \emph{search} for the smallest prefix sum larger than some query integer $q$. It is natural to consider the search operation as a successor query among the prefix sums in $X$. 
+
+The prefix sums problem is extremely well-studied, with a long line of papers showing improved upper and lower bounds\docite{ManyPapers}. It was shown early that $O(\log n / \log \log n)$ time per operation is sufficient\docite{somePaper}. Due to Patrascu and Demaine\docite{PatrascuDemaine, Others?}, we now have matching upper and lower bounds of $O(\log n / \log (w / \Delta))$ \fix{check this} time per query in the Word RAM model, where $\Delta$ is the maximal number of bits allowed in the update argument and $w$ is the maximal number of bits per integer in $X$. In \fix{DynamicRelative} we give a new improvement to the existing (optimal-time) data structure that also allow insertions and deletions in the sequence $X$. All previous data structures that allow modifications in $X$ only worked for very small integers (where $w = O(\log \log n)$) \fix{check this}. 
+
+\subsection{Range Searching}
+In \emph{orthogonal range searching}, we must store a set of points $P$ to support \emph{reporting} and \emph{counting} queries. The input to a query is a rectangle, and the answer is the list of points in $P$ that are contained in the rectangle (or the number of points). If we allow updates, they are typically in the form of point insertions or deletions. 
+
+Observe that if the points are in a single dimension we can solve the problem using a predecessor data structure as follows: the query identifies two ends of an interval for which we can find the end points using predecessor queries, and we must report the points between the ends.  
+
+In two or more dimensions, there are multiple data structures for range searching. 
+
+- How do we answer such queries and keep the point set compressed?
+- What if the points have colors?
+- What if the points are moving?
+- In practice: What about points on the grid that are moving and updated?
+
+Basic Techniques
+- Trees, DAGs
+- Fingerprints
+- Heavy Paths
+
+Advanced Data Structures
+v- Predecessor (Finger Predecessor)
+v- Prefix Sums (Dynamic Prefix Sums)
+- Range Searching (Colored Range Searching)
+- Pattern Matching
+- Pattern Extraction
 
 
 
@@ -93,7 +150,7 @@ As initially stated, I consider data structures to be some of the most fundament
 
 
 
-\section{An Overview and Outline of Results}
+\section{Our Contributions: An Overview and Outline of Results}
 The remaining chapters of this dissertation include the following papers, each of them submitted to or published in peer-reviewed conference proceedings. The papers appear in their original form, meaning that notation, language and terminology has not been changed and may not be consistent across chapters. The chapter titles are equal to the original paper titles. Authors are listed alphabetically as is the tradition in the field (except for the paper \emph{Indexing Motion Detection Data for Surveillance Video} as it was published at a multimedia conference where that is not the norm).
 
 \begin{description}
@@ -112,7 +169,10 @@ The journal version of the following paper appeared during my PhD, but as the re
     \item[String Indexing for Patterns with Wildcards.] By Philip Bille, Inge Li Gørtz, Hjalte Wedel Vildhøj and Søren Vind. Presented at Scandinavian Symposium and Workshops on Algorithm Theory (SWAT), 2012. In Theory of Computing Systems, 2014. 
 \end{description}
 
-For each paper or subject considered in the later chapters:
+
+
+For each paper or subject considered in the later chapters, make a subsection. 
+Then in that subsection clarify:
 \begin{itemize}
     \item Our Contributions
     \item Future Directions

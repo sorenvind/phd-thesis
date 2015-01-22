@@ -99,8 +99,10 @@
 \captiontitlefinal{.}
 
 % Table of contents (TOC)
-\setcounter{tocdepth}{1}              % Depth of table of content
-\setcounter{secnumdepth}{2}           % Depth of section numbering
+\setcounter{tocdepth}{2}              % Depth of table of content
+%\setcounter{secnumdepth}{3}           % Depth of section numbering
+\maxsecnumdepth{subsection} % also number subsections
+\setsecnumdepth{subsection}
 
 % Todos
 \usepackage{totcount}                 % For total counting of counters
@@ -136,7 +138,8 @@
 \makeatletter
 \makechapterstyle{mychapterstyle}{
     \chapterstyle{default}
-    \def\format{\normalfont\sffamily}
+%    \def\format{\normalfont\sffamily}
+    \def\format{\normalfont}
 
     \setlength\beforechapskip{0mm}
 
@@ -163,7 +166,8 @@
 \chapterstyle{mychapterstyle}
 
 % Header and footer
-\def\hffont{\sffamily\small}
+%\def\hffont{\sffamily\small}
+\def\hffont{\small}
 \makepagestyle{myruled}
 \makeheadrule{myruled}{\textwidth}{\normalrulethickness}
 \makeevenhead{myruled}{\hffont\thepage}{}{\hffont\leftmark}
