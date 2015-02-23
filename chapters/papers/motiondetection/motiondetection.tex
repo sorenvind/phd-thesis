@@ -1,81 +1,28 @@
 %!TEX root = ../../../Thesis.tex
-
 \chapter{Indexing Motion Detection Data for Surveillance Video}
+\begin{infosection}
+    \begin{authors}
+        Philip Bille\footnote{Supported by a grant from the Danish Council for Independent Research $\vert$ Natural Sciences.} \qquad Inge Li G{\o}rtz\samethanks \qquad S{\o}ren Vind\footnote{Supported by a grant from the Danish National Advanced Technology Foundation.}
+    \end{authors}
+
+    \begin{uninames}
+        Technical University of Denmark
+    \end{uninames}
 
 
-%\usepackage[caption=false]{caption}
-%\usepackage[font=footnotesize]{subfig}
-% subfig.sty, also written by Steven Douglas Cochran, is the modern
-% replacement for subfigure.sty. However, subfig.sty requires and
-% automatically loads Axel Sommerfeldt's caption.sty which will override
-% IEEEtran.cls handling of captions and this will result in nonIEEE style
-% figure/table captions. To prevent this problem, be sure and preload
-% caption.sty with its "caption=false" package option. This is will preserve
-% IEEEtran.cls handing of captions. Version 1.3 (2005/06/28) and later 
-% (recommended due to many improvements over 1.2) of subfig.sty supports
-% the caption=false option directly:
-%
-% The latest version and documentation can be obtained at:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/subfig/
-% The latest version and documentation of caption.sty can be obtained at:
-% http://www.ctan.org/tex-archive/macros/latex/contrib/caption/
-
-
-
-
-% correct bad hyphenation here
-% e.g. \hyphenation{op-tical net-works semi-conduc-tor}
-
-
-%\begin{document}
-%
-% paper title
-% can use linebreaks \\ within to get better formatting as desired
-%\title{Indexing Motion Detection Data for Surveillance Video\,$^\star$\thanks{$^\star$ Supported by a grant from the Danish National Advanced Technology Foundation.} \thanks{$^\dagger$ Supported by a grant from the Danish Council for Independent Research\,$\vert$ Natural Sciences.}}
-
-
-% author names and affiliations
-% use a multiple column layout for up to two different
-% affiliations
-
-%\author{\IEEEauthorblockN{S{\o}ren Vind, Philip Bille\,$^\dagger$, and Inge Li G{\o}rtz\,$^{\dagger}$}
-%\IEEEauthorblockA{Department of Applied Mathematics and Computer Science\\
-%Technical University of Denmark\\
-%Copenhagen, Denmark\\
-%sovi@dtu.dk, phbi@dtu.dk, inge@dtu.dk}
-%}
-
-% make the title area
-%\maketitle
-
-
-\begin{abstract}
-    We show how to compactly index video data to support fast \emph{motion detection} queries. 
-    A query specifies a time interval $T$, a area $A$ in the video and two thresholds $v$ and $p$. The answer to a query is a list of timestamps in $T$ where $\geq p\%$ of $A$ has changed by $\geq v$ values.
-%    A query specifies an area $A$ in the video, a time interval $T$ and two thresholds: a minimum pixel value change $v$ and minimal percentage $p$ of $A$ affected by said change. The answer to a query is the list of timestamps in $T$ where at least $p\%$ of the pixels in $A$ has changed by at least $v$ values.
+    \begin{abstract}
+        We show how to compactly index video data to support fast \emph{motion detection} queries. 
+        A query specifies a time interval $T$, a area $A$ in the video and two thresholds $v$ and $p$. The answer to a query is a list of timestamps in $T$ where $\geq p\%$ of $A$ has changed by $\geq v$ values.
+    %    A query specifies an area $A$ in the video, a time interval $T$ and two thresholds: a minimum pixel value change $v$ and minimal percentage $p$ of $A$ affected by said change. The answer to a query is the list of timestamps in $T$ where at least $p\%$ of the pixels in $A$ has changed by at least $v$ values.
     
-    Our results show that by building a small index, we can support queries with a speedup of two to three orders of magnitude compared to motion detection without an index. For high resolution video, the index size is about $20\%$ of the compressed video size.
-\end{abstract}
-
-%\begin{IEEEkeywords}
-    % TODO FIX KEYWORDS
-%    motion detection index; motion detection data structure; 
-%    surveillance video; video analysis; data structure; 
-%\end{IEEEkeywords}
+        Our results show that by building a small index, we can support queries with a speedup of two to three orders of magnitude compared to motion detection without an index. For high resolution video, the index size is about $20\%$ of the compressed video size.
+    \end{abstract}
+\end{infosection}
 
 
-% For peer review papers, you can put extra information on the cover
-% page as needed:
-% \ifCLASSOPTIONpeerreview
-% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
-% \fi
-%
-% For peerreview papers, this IEEEtran command inserts a page break and
-% creates the second title. It will be ignored for other modes.
-%\IEEEpeerreviewmaketitle
-
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%% INTRODUCTION %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 % no \IEEEPARstart
 Video data require massive amounts of storage space and substantial computational resources to subsequently analyse. For motion detection in video surveillance systems, this is particularly true, as the video data typically have to be stored (in compressed form) for extended periods for legal reasons and motion detection requires time-consuming decompressing and processing of the data. In this paper, we design a simple and compact index for video data that supports efficient motion detection queries. This enables fast motion detection queries on a selected time interval and area of the video frame without the need for decompression and processing of the video file. 

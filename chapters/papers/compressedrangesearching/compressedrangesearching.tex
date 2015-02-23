@@ -1,46 +1,24 @@
 %!TEX root = ../../../Thesis.tex
+\chapter{Compressed Range Searching}
 
+\begin{infosection}
+    \begin{authors}
+        Philip Bille\footnote{Supported by a grant from the Danish Council for Independent Research $\vert$ Natural Sciences.} \qquad Inge Li G{\o}rtz\samethanks \qquad S{\o}ren Vind\footnote{Supported by a grant from the Danish National Advanced Technology Foundation.}
+    \end{authors}
 
-\chapter{Compressed Data Structures for Range Searching}
+    \begin{uninames}
+        Technical University of Denmark
+    \end{uninames}
 
+    \begin{abstract}
+    We study the orthogonal range searching problem on points that have a significant number of \emph{geometric repetitions}, that is, subsets of points that are identical under translation. Such repetitions occur in scenarios such as image compression, GIS applications and in compactly representing sparse matrices and web graphs. Our contribution is twofold. 
+    
+    First, we show how to compress geometric repetitions that may appear in standard range searching data structures (such as K-D trees, Quad trees, Range trees, R-trees, Priority R-trees, and K-D-B trees), and how to implement subsequent range queries on the compressed representation with only a constant factor overhead. 
+    
+    Secondly, we present a compression scheme that efficiently identifies geometric repetitions in point sets, and produces a hierarchical clustering of the point sets, which combined with the first result leads to a compressed representation that supports range searching. 
+    \end{abstract}
+\end{infosection}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%% TITLEPAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\newcommand*\samethanks[1][\value{footnote}]{\footnotemark[#1]}
-
-%\title{Compressed Data Structures\\for Range Searching\thanks{Supported by a grant from the Danish National Advanced Technology Foundation.}}
-%\author{
-%	Philip Bille\thanks{Supported by a grant from the Danish Council for Independent Research $\vert$ Natural Sciences.}
-%	\and Inge Li G{\o}rtz\samethanks
-% 	\and S{\o}ren Vind
-%}
-%\date{}
-%\institute{DTU Compute, Technical University of Denmark, DK-2800 Kgs. Lyngby, Denmark \\ \email{$\{$phbi,inge,sovi$\}$@dtu.dk}}
-
-
-%\begin{document}
-%\pagestyle{plain}	
-%\linenumbers
-
-%\maketitle
-%\setcounter{footnote}{0}
-
-% Fix grants, reset footnote counter to arabic.
-%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
-%\footnotetext[1]{Supported by a grant from the Danish National Advanced Technology Foundation.} %star
-%\footnotetext[4]{Supported by a grant from the Danish Council for Independent Research $\vert$ Natural Sciences.} %dagger
-
-%\renewcommand{\thefootnote}{\arabic{footnote}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%% ABSTRACT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{abstract}
-We study the orthogonal range searching problem on points that have a significant number of \emph{geometric repetitions}, that is, subsets of points that are identical under translation. Such repetitions occur in scenarios such as image compression, GIS applications and in compactly representing sparse matrices and web graphs. Our contribution is twofold. 
-First, we show how to compress geometric repetitions that may appear in standard range searching data structures (such as K-D trees, Quad trees, Range trees, R-trees, Priority R-trees, and K-D-B trees), and how to implement subsequent range queries on the compressed representation with only a constant factor overhead. 
-Secondly, we present a compression scheme that efficiently identifies geometric repetitions in point sets, and produces a hierarchical clustering of the point sets, which combined with the first result leads to a compressed representation that supports range searching. 
-\end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%% INTRODUCTION %%%%%%%%%%%%%%%%%%%%%%%%%%

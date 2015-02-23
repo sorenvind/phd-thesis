@@ -1,51 +1,30 @@
 %!TEX root = ../../../Thesis.tex
-
-
 \chapter{Colored Range Searching in Linear Space}
 
 
 
+\begin{infosection}
+    \begin{authors}
+        Roberto Grossi\uni{1}\footnote{Partially supported by Italian MIUR PRIN project AMANDA.} \qquad S{\o}ren Vind\uni{2}\footnote{Supported by a grant from the Danish National Advanced Technology Foundation.}
+    \end{authors}
 
+    \begin{uninames}
+        \uni{1} Universit\`{a} di Pisa \\
+        \uni{2} Technical University of Denmark
+    \end{uninames}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%% TITLEPAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\author{Roberto Grossi\inst{1}$^{\star}$ \and S{\o}ren Vind\inst{2}$^{\star\star}$}
-%\institute{Universit\`{a} di Pisa, Dipartimento di Informatica, \email{grossi@di.unipi.it} \and Technical University of Denmark, DTU Compute, \email{sovi@dtu.dk}}
-
-%\begin{document}
-%\linenumbers
-%\pagestyle{plain}	
-
-%\maketitle
-% % Fix grants, reset footnote counter to arabic.
-%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
-%\footnotetext[1]{Partially supported by Italian MIUR PRIN project AMANDA.} %star
-%\footnotetext[2]{
-%Supported by a grant from the Danish National Advanced Technology Foundation. 
-%Research carried out while the author was visiting Universit\`{a} di Pisa.
-%} %starstar
-
-%\renewcommand{\thefootnote}{\arabic{footnote}}
-%\setcounter{footnote}{0}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%% ABSTRACT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{abstract}
-In \emph{colored range searching}, we are given a set of $n$ colored points in $d \geq 2$ dimensions to store, and want to support orthogonal range queries taking colors into account. In the \emph{colored range counting} problem, a query must report the number of distinct colors found in the query range, while an answer to the \emph{colored range reporting} problem must report the distinct colors in the query range.
+    \begin{abstract}
+    In \emph{colored range searching}, we are given a set of $n$ colored points in $d \geq 2$ dimensions to store, and want to support orthogonal range queries taking colors into account. In the \emph{colored range counting} problem, a query must report the number of distinct colors found in the query range, while an answer to the \emph{colored range reporting} problem must report the distinct colors in the query range.
     
-    \quad We give the first linear space data structure for both problems in two dimensions ($d=2$) with $o(n)$ worst case query time. We also give the first data structure obtaining almost-linear space usage and $o(n)$ worst case query time for points in $d > 2$ dimensions. Finally, we present the first dynamic solution to both counting and reporting with $o(n)$ query time for $d \geq 2$ and $d \geq 3$ dimensions, respectively.
-\end{abstract}
-
-%\newpage
+    We give the first linear space data structure for both problems in two dimensions ($d=2$) with $o(n)$ worst case query time. We also give the first data structure obtaining almost-linear space usage and $o(n)$ worst case query time for points in $d > 2$ dimensions. Finally, we present the first dynamic solution to both counting and reporting with $o(n)$ query time for $d \geq 2$ and $d \geq 3$ dimensions, respectively.
+    \end{abstract}
+\end{infosection}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%% INTRODUCTION %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-\label{sec:introduction}
+\label{sec:crc-introduction}
 %
 In standard range searching a set of points must be stored to support queries for any given orthogonal $d$-dimensional query box $Q$ (see \cite{de2008orthogonal} for an overview). Two of the classic problems are standard range reporting, asking for the points in $Q$, and standard range counting, asking for the number of points in $Q$. In 1993, Janardan and Lopez \cite{janardan1993generalized} introduced one natural generalisation of standard range searching, requiring each point to have a color. This variation is known as \emph{colored range searching}\footnote{Also known in the literature as \emph{categorical} or \emph{generalized} range searching.}. 
 The two most studied colored problems are \emph{colored range reporting}, where a query answer must list the distinct colors in $Q$, and \emph{colored range counting}, where the number of distinct colors in $Q$ must be reported. 

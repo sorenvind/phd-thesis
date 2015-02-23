@@ -1,0 +1,69 @@
+%!TEX root = ../Thesis.tex
+
+\definecolor{bordergray}{rgb}{0.4,0.4,0.4}
+\definecolor{Kblue}{rgb}{0,0,0.7}
+\definecolor{Kgreen}{rgb}{0,0.4,0}
+\definecolor{Dark}{gray}{.2}
+\definecolor{Medium}{gray}{.6}
+\definecolor{Light}{gray}{.8}
+\definecolor{DTUred}{RGB}{193,39,54}
+
+
+%%%% Styling from Lasse and Kenneth
+
+%%% Definition of headers and footers
+% page style (header and footer)
+\pagestyle{ruled}
+%\pagestyle{plain} % centered page number and no header
+
+\copypagestyle{source}{ruled}
+\newcommand{\srcSec}{}
+\makeevenhead{source}{\leftmark}{}{\srcSec}
+\makeoddhead{source}{}{}{\thesection~--~\srcSec}
+
+%%% Definition of Lasse and Kenneth's chapter heading style, VERY NICE
+% CHAPTERSTYLE
+	\newif\ifNoChapNumber 
+	\makeatletter 
+	\makechapterstyle{VZ34}{ 
+	\renewcommand\chapternamenum{} 
+	\renewcommand\printchaptername{} 
+	\renewcommand\printchapternum{} 
+	\renewcommand\chapnumfont{\Huge\bfseries} 
+	\renewcommand\chaptitlefont{\Huge\bfseries\raggedright} 
+	\renewcommand\printchaptertitle[1]{% 
+				\vspace{-1.0em}
+%                \hfill% % float to the right
+                \centering 
+		        \ifNoChapNumber\relax\else%
+                      {\color{dtured}\chapnumfont\@setfontsize\huge{18}{20}\thechapter}%
+                      \begin{picture}(-2,0)
+                        \setlength\unitlength{1mm}
+                        % The line of the bar
+                        \linethickness{1pt}
+                        % The actual line
+                        % put setc coordinate for start
+                        % line is \line(deltaX,deltaY){length}
+                        \color{black}\put(1.5,-4){\line(0,1){20}}
+                      \end{picture}%
+                \fi%
+		        {\color{black}\chaptitlefont \@setfontsize\huge{18}{20}  \textsc{##1}}%	
+                } 
+	\renewcommand\printchapternonum{\NoChapNumbertrue} 
+	} 
+	\chapterstyle{VZ34}
+
+\setlength{\beforechapskip}{15pt}
+
+
+
+\newcommand{\klsection}[1]{ % Use Kenneth and Lasse nice sections
+   \Large\bfseries\raggedright\scshape#1
+}
+
+\newcommand{\klsubsec}[1]{ % Use Kenneth and Lasse nice sections
+   \large\bfseries\raggedright\scshape#1
+}
+\newcommand{\klsubsubsec}[1]{ % Use Kenneth and Lasse nice sections
+   \bfseries\raggedright\scshape#1
+}

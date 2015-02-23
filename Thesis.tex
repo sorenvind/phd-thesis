@@ -4,6 +4,7 @@
 \input{preamble/general}
 \input{preamble/fonts}
 \input{preamble/etc}
+\input{preamble/klstyles}
 \input{preamble/papers}
 \input{preamble/paper-commands}
 \input{preamble/compilation}
@@ -34,20 +35,20 @@
 \include{chapters/Introduction}
 
 \iftoggle{withpapers}{
-    \note{Dynamic Relative Compression paper} %text, compression, ds
+    \todo{Dynamic Relative Compression paper} %text, compression, ds
     \include{chapters/papers/fingerprints/fingerprints} %text, compression, ds
 
-    \note{Annotated Data Streaming paper} %text, streaming, ds
+    \include{chapters/papers/annotated/annotated} %text, streaming, ds
     \include{chapters/papers/patternextraction/patternextraction} %text, algorithm, ds
     \include{chapters/papers/compressedrangesearching/compressedrangesearching} %geometry, compression, ds
     \include{chapters/papers/coloredrangecounting/coloredrangecounting} %geometry, ds
     \include{chapters/papers/motiondetection/motiondetection} %geometry, compression, practical, ds
 
     %\blinddocument %% Gives demo/instructions for use
-    \include{chapters/Conclusion}
+    %\include{chapters/Conclusion}
 
-    \appendix
-    \include{appendices/AnAppendix}
+    %\appendix
+    %\include{appendices/AnAppendix}
 }
 
 \backmatter

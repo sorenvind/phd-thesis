@@ -37,6 +37,7 @@
 \usepackage{soul} % provides sethlcolor, hl for fixes
 \usepackage{framed} % shading for notes
 \definecolor{shadecolor}{rgb}{1,0.8,0.2} % shade color for notes
+%\definecolor{shadecolor}{rgb}{1,0.8,0.2} % shade color for notes
 
 \usepackage[inline,nomargin,author=,draft]{fixme}
 \fxusetheme{color}
@@ -44,6 +45,7 @@
 %\fxsetface{inline}{\rmfamily}
 %\newcommand{\note}[1]{\fxnote{\hlc[gray!0.2]{#1}}}
 \newcommand{\note}[1]{\begin{shaded}\fxnote{#1}\end{shaded}}
+\renewcommand{\todo}[1]{\begin{shaded}\fxfatal{#1}\end{shaded}}
 
 \newcommand{\hlc}[2][yellow]{{\sethlcolor{#1} \hl{#2}}}
 \newcommand{\fix}[1]{\fxfatal{\hlc[yellow]{#1}}}
@@ -55,12 +57,24 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%% Info about papers
-\newenvironment{infosection}{\par\vspace*{\fill} \hrule}{\clearpage}
+\newenvironment{infosection}
+    {}
+    {\clearpage}
 \newcommand{\published}[1]{\noindent {\paragraph{Publication} #1}}
-\newcommand{\authors}[1]{\noindent {\paragraph{Authors} 
-#1 
-\setcounter{footnote}{0}
-}}
+%\newenvironment{authors}
+%    {\begin{center}}
+%    {\end{center}\setcounter{footnote}{0}\vspace{1em}}
+    \newenvironment{authors}
+      {\par\edef\savedfootnotenumber{\number\value{footnote}}
+       \renewcommand{\thefootnote}{\fnsymbol{footnote}}
+       \setcounter{footnote}{0}\centering}
+      {\par\setcounter{footnote}{\savedfootnotenumber}}
+    
+\newenvironment{uninames}
+    {\begin{center}}
+    {\end{center}\vspace{3em}}
+
+
 
 \makeatletter
 \def\@xfootnote[#1]{%
@@ -69,8 +83,9 @@
 \makeatother
 
 %% Specify affiliations with this massive hack
-\newcommand{\uniname}[2]{\footnotetext[#1]{#2}}
-\newcommand{\uni}[1]{\footnotemark[#1]}
+%\newcommand{\uniname}[2]{\footnotemark[#1] #2 \\}
+\newcommand{\uni}[1]{$^{#1}$}
+\newcommand*\samethanks[1][\value{footnote}]{\footnotemark[#1]}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

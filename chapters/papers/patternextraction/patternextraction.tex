@@ -1,82 +1,30 @@
 %!TEX root = ../../../Thesis.tex
+\chapter[Output-Sensitive Pattern Extraction in Sequences]{Output-Sensitive Pattern Extraction}
+\begin{infosection}
+    \begin{authors}
+        Roberto Grossi\uni{1} \qquad Giulia Menconi\uni{1} \qquad Nadia Pisanti\uni{1} \\  
+        Roberto Trani\uni{1} \qquad S{\o}ren Vind\uni{2}\footnote{Supported by a grant from the Danish National Advanced Technology Foundation.}
+    \end{authors}
 
-%\documentclass[a4paper,UKenglish,subfig]{lipics}
-%This is a template for producing LIPIcs articles. 
-%See lipics-manual.pdf for further information.
-%for A4 paper format use option "a4paper", for US-letter use option "letterpaper"
-%for british hyphenation rules use option "UKenglish", for american hyphenation rules use option "USenglish"
-% for section-numbered lemmas etc., use "numberwithinsect"
+    \begin{uninames}
+        \uni{1} Universit\`{a} di Pisa \\
+        \uni{2} Technical University of Denmark
+    \end{uninames}
 
- %\usepackage[utf8]{inputenc}
- %\usepackage[T1]{fontenc} % Smallcaps in Sections
- %\usepackage{upgreek}
- %\usepackage{cite}
- %\usepackage{amsmath,amssymb,nicefrac,graphicx,lastpage,array}
- %\usepackage{multirow}
- %\usepackage{caption}
-% \usepackage{subcaption}
- %\usepackage{soul}
+    \begin{abstract}
+        Genomic Analysis, Plagiarism Detection, Data Mining, Intrusion Detection, Spam Fighting and Time Series Analysis are just some examples of applications where extraction of recurring patterns in sequences of objects is one of the main computational challenges.
+        Several notions of patterns exist, and many share the common idea of strictly specifying some parts of the pattern and to \emph{don't care} about the remaining parts. Since the number of patterns can be exponential in the length of the sequences, \emph{pattern extraction} focuses on statistically relevant patterns, where any attempt to further refine or extend them causes a loss of significant information (where the number of occurrences changes).
+    Output-sensitive algorithms have been proposed to enumerate and list these patterns, taking polynomial time $O(n^c)$ per pattern for constant $c >1$, which is impractical for massive sequences of very large length $n$.
 
- %\usepackage{multirow}
+        We address the problem of extracting maximal patterns with at most $k$ don't care symbols and at least $q$ occurrences. Our contribution is to give the first algorithm that attains a \emph{stronger} notion of output-sensitivity, borrowed from the analysis of data structures: the cost is proportional to the \emph{actual} number of occurrences of each pattern, which is at most $n$ and practically much smaller than $n$ in real applications, thus avoiding the aforementioned cost of $O(n^c)$ per pattern.
+    \end{abstract}
+\end{infosection}
 
- 
- 
-%\usepackage{microtype}%if unwanted, comment out or use option "draft"
-
-%\graphicspath{{./graphics/}}%helpful if your graphic files are in another directory
-
-%\bibliographystyle{plain}% the recommended bibstyle
-
-% Author macros::begin %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Output-Sensitive Pattern Extraction in Sequences}
-%\titlerunning{Output-Sensitive Pattern Extraction in Sequences} %optional, in case that the title is too long; the running title should fit into the top page column
-
-%\author[1]{Roberto Grossi}
-%\author[1]{Giulia Menconi}
-%\author[1]{Nadia Pisanti}
-%\author[1]{Roberto Trani}
-%\author[2]{S{\o}ren Vind$^*$}
-%\affil[1]{Universit\`{a} di Pisa, Dipartimento di Informatica\\
-%  \texttt{grossi@di.unipi.it, menconigiulia@gmail.com, pisanti@di.unipi.it, tranir@cli.di.unipi.it}}
-%\affil[2]{Technical University of Denmark, DTU Compute\\
-%  \texttt{sovi@dtu.dk}}
-%\authorrunning{R.\,Grossi, G.\,Menconi, N.\,Pisanti, R.\,Trani and S.\,Vind} %mandatory. First: Use abbreviated first/middle names. Second (only in severe cases): Use first author plus 'et. al.'
-
-%\Copyright{Roberto Grossi, Giulia Menconi, Nadia Pisanti, Roberto Trani and S{\o}ren Vind}%mandatory, please use full first names. LIPIcs license is "CC-BY";  http://creativecommons.org/licenses/by/3.0/
-
-% QED Marker
-%\let\doendproof\endproof
-%\renewcommand\endproof{~\hfill$\qed$\doendproof}
-
-%\frenchspacing
-%\usepackage{algorithm}
-
-%\maketitle
-% Fix grants, reset footnote counter to arabic.
-% \renewcommand{\thefootnote}{\fnsymbol{footnote}}
-% \footnotetext[1]{Supported by a grant from the Danish National Advanced Technology Foundation.} %star
-
-% \renewcommand{\thefootnote}{\arabic{footnote}}
-% \setcounter{footnote}{0}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%% ABSTRACT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{abstract}
-    Genomic Analysis, Plagiarism Detection, Data Mining, Intrusion Detection, Spam Fighting and Time Series Analysis are just some examples of applications where extraction of recurring patterns in sequences of objects is one of the main computational challenges.
-    %
-    Several notions of patterns exist, and many share the common idea of strictly specifying some parts of the pattern and to \emph{don't care} about the remaining parts. Since the number of patterns can be exponential in the length of the sequences, \emph{pattern extraction} focuses on statistically relevant patterns, where any attempt to further refine or extend them causes a loss of significant information (where the number of occurrences changes).
-    %
-Output-sensitive algorithms have been proposed to enumerate and list these patterns, taking polynomial time $O(n^c)$ per pattern for constant $c >1$, which is impractical for massive sequences of very large length $n$.
-
-    We address the problem of extracting maximal patterns with at most $k$ don't care symbols and at least $q$ occurrences. Our contribution is to give the first algorithm that attains a \emph{stronger} notion of output-sensitivity, borrowed from the analysis of data structures: the cost is proportional to the \emph{actual} number of occurrences of each pattern, which is at most $n$ and practically much smaller than $n$ in real applications, thus avoiding the aforementioned cost of $O(n^c)$ per pattern.
-\end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%% INTRODUCTION %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduction}\label{sec:introduction}
+\section{Introduction}\label{sec:pe-introduction}
 In \emph{pattern extraction}, the task is to extract the ``most important'' and frequently occurring patterns from sequences of ``objects'' such as log files, time series, text documents, datasets or DNA sequences. Each individual object can be as simple as a character from $\{ \mathtt{A}, \mathtt{C}, \mathtt{G}, \mathtt{T} \}$ or as complex as a \texttt{json} record from a log file. What is of interest to us is the potentially very large set of all possible different objects, which we call the \emph{alphabet} $\calph$, and  sequence~$S$ built with $n$ objects drawn from $\calph$. 
 %To keep our algorithm general over the RAM computational model, we only require that for any object $a \in \calph$ and subset $\calph' \subseteq \calph$ we can check if $a \in \calph'$.
 % (as this is useful to branch from any trie node having children for each $a \in \calph'$).

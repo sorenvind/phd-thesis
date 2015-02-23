@@ -4,7 +4,7 @@
 \newcommand{\papersizeswitch}[3]{\ifnum\strcmp{\papersize}{#1}=0#2\else#3\fi}
 \papersizeswitch{b5paper}{\def\classfontsize{10pt}}{\def\classfontsize{12pt}}
 
-\documentclass[\classfontsize,\papersize,twoside,showtrims]{memoir}
+\documentclass[\classfontsize,\papersize,twoside,showtrims,openright,final]{memoir}
 \RequireXeTeX
 
 \showtrimsoff

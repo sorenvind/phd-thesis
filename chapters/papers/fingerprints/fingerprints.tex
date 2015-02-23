@@ -2,45 +2,28 @@
 
 \chapter{Fingerprints in Compressed Strings}
 
-%\title{Fingerprints in Compressed Strings\footnote{An extended abstract of this paper appeared at the 13th Algorithms and Data Structures Symposium.}}
-
-\begin{comment}
-\author[1]{Philip Bille}
-\author[1]{Patrick Hagge Cording}
-\author[1]{Inge Li G{\o}rtz\thanks{Supported by a grant from the Danish Council for Independent Research $\vert$ Natural Sciences.}}
-\author[2]{Benjamin Sach}
-\author[1]{Hjalte Wedel Vildh{\o}j}
-\author[1]{S{\o}ren Vind\thanks{Supported by a grant from the Danish National Advanced Technology Foundation.}}
-\affil[1]{Technical University of Denmark}
-\affil[2]{University of Warwick}
-  
-
-\maketitle
-{
- \renewcommand{\thefootnote}{\fnsymbol{footnote}}
- \setlength{\footnotesep}{2em}
- \footnotetext{An extended abstract of this paper appeared at the 13th Algorithms and Data Structures Symposium.}
- \renewcommand{\thefootnote}{\arabic{footnote}}
- \setcounter{footnote}{0}
-}
-\end{comment}
-%\begin{document}
-	
-
-\begin{abstract}
-\noindent The Karp-Rabin fingerprint of a string is a type of hash value that due to its strong properties has been used in many string algorithms. In this paper we show how to construct a data structure for a string $S$ of size $N$ compressed by a context-free grammar of size $n$ that answers fingerprint queries. That is, given indices $i$ and $j$, the answer to a query is the fingerprint of the substring $S[i,j]$. We present the first $O(n)$ space data structures that answer fingerprint queries without decompressing any characters. For Straight Line Programs (SLP) we get $O(\log N)$ query time, and for Linear SLPs (an SLP derivative that captures LZ78 compression and its variations) we get $O(\log \log N)$ query time. Hence, our data structures has the same time and space complexity as for random access in SLPs. We utilize the fingerprint data structures to solve the longest common extension problem in query time $O(\log N\log \lce)$ and $O(\log \lce \log\log \lce + \log\log N)$ for SLPs and Linear SLPs, respectively. Here, $\lce$ denotes the length of the LCE.
-\end{abstract}
-
 \begin{infosection}
-    \uniname{1}{Technical University of Denmark}
-    \uniname{2}{University of Warwick}
-    \authors{Philip Bille\uni{1}, Patrick Hagge Cording\uni{1}, Inge Li G{\o}rtz\uni{1}\footnote[$\star$]{Supported by a grant from the Danish Council for Independent Research $\vert$ Natural Sciences.}, Benjamin Sach\uni{2}, Hjalte Wedel Vildh{\o}j\uni{1}, and S{\o}ren Vind\uni{1}\footnote[\textdagger]{Supported by a grant from the Danish National Advanced Technology Foundation.}.}
+    \begin{authors}
+        Philip Bille\uni{1} \qquad Patrick Hagge Cording\uni{1} \qquad Inge Li G{\o}rtz\uni{1}\footnote{Supported by a grant from the Danish Council for Independent Research $\vert$ Natural Sciences.}\\
+        Benjamin Sach\uni{2} \qquad Hjalte Wedel Vildh{\o}j\uni{1} \qquad S{\o}ren Vind\uni{1}\footnote{Supported by a grant from the Danish National Advanced Technology Foundation.}
+    \end{authors}
+
+    \begin{uninames}
+        \uni{1} Technical University of Denmark \\
+        \uni{2} University of Warwick
+    \end{uninames}
+
+    \begin{abstract}
+    The Karp-Rabin fingerprint of a string is a type of hash value that due to its strong properties has been used in many string algorithms. In this paper we show how to construct a data structure for a string $S$ of size $N$ compressed by a context-free grammar of size $n$ that answers fingerprint queries. That is, given indices $i$ and $j$, the answer to a query is the fingerprint of the substring $S[i,j]$. 
     
-    \published{An extended abstract of this paper appeared at the 13th Algorithms and Data Structures Symposium (WADS 2013). %The present full journal version is in submission with Journal of Computer and System Sciences.
-    }
+    We present the first $O(n)$ space data structures that answer fingerprint queries without decompressing any characters. For Straight Line Programs (SLP) we get $O(\log N)$ query time, and for Linear SLPs (an SLP derivative that captures LZ78 compression and its variations) we get $O(\log \log N)$ query time. Hence, our data structures has the same time and space complexity as for random access in SLPs. We utilize the fingerprint data structures to solve the longest common extension problem in query time $O(\log N\log \lce)$ and $O(\log \lce \log\log \lce + \log\log N)$ for SLPs and Linear SLPs, respectively. Here, $\lce$ denotes the length of the LCE.
+    \end{abstract}
 \end{infosection}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%% INTRODUCTION %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 %Given a string \str of size $N$ compressed by a context-free grammar \slp of size $n$ and a Karp-Rabin fingerprint function $\fp$, the answer to a $\fingerprintq(i, j)$ query is the fingerprint $\fp(\str[i, j])$ of the substring $\str[i, j]$.
 Given a string \str of size $N$ and a Karp-Rabin fingerprint function $\fp$, the answer to a $\fingerprintq(i, j)$ query is the fingerprint $\fp(\str[i, j])$ of the substring $\str[i, j]$. We consider the problem of constructing a data structure that efficiently answers fingerprint queries when the string is compressed by a context-free grammar of size $n$.
