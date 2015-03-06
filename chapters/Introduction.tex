@@ -116,8 +116,6 @@ In the following, I will give a brief overview of some of the fundamental data s
 
 %The chapter should be relatively self-contained and the significance of the results understandable.
 
-\todo{Describe MVaaS and my collaboration with Milestone}
-
 
 \begin{framed}
 \noindent For each paper or subject considered in the later chapters, make a subsection. 
@@ -254,11 +252,27 @@ Three of our papers consider variations of range searching. First, we consider \
 
 \clearpage
 \subsubsection{Points with Colors}
-We consider \prob{colored range searching}, which is a natural variation of range searching where points each have a single color from some color alphabet. This is also sometimes called generalized or categorical range searching. Query results are on the colors of the points contained in a query range; answering reporting we must report the distinct colors and we must report the number of distinct colors in a counting query.
+We consider \prob{colored range searching}, which is a natural variation of range searching where points each have a single color. Colors are picked from some color alphabet, and two points can have the same color. The problem is also sometimes called generalized or categorical range searching, as we can think of the colors as categories that the points are put in. Queries ask for information about the colors of the points contained in a query range (instead of the actual points). That is, an answer to a reporting query is the distinct colors in a range, and a counting query must return the number of distinct colors.
 
-Perhaps surprisingly, the colored variations of range searching are known to be much harder than their non-colored counterparts of the same dimensionality~\docite{lower bounds}. Where we know \fix{simple bounds for non-colored and colored here in two dimensions}. Consequently, in order to obtain logarithmic query times to the colored problems previous solutions required excessive amounts of space of around $O(n^d)$. 
+Perhaps surprisingly, the colored variations of range searching are known to be much harder than their non-colored counterparts of the same dimensionality~\docite{lower bounds}. This is due to the non-uniqueness of colors in the query range, which means that reporting distinct colors incur additional computation that cannot be counted towards the time spent outputting points \fix{normally we count the time spent outputting points separately, as this is a required part of the output}. 
 
-In the paper \paper{Colored Range Searching in Linear Space}, we give the first data structure with linear space use in two dimensions and sub-linear query time. We also give higher dimensional structures with almost-linear space of $O(n \log \log^d n)$. This is obtained by collecting results from many small data structures, each storing an auxiliary data structure with each node in a range tree of a limited size. The resulting query time is $O(n / \log n)$ \fix{check this}, which is only slightly sub-linear.
+\todo{Counting hardness}
+\todo{Counting "harder" than reporting}
+
+Observe that for any constant dimensionality, we can always obtain linear space and linear time by simply storing the points in a list and scanning throught it to find (the distinct colors of) the points in the range. 
+Furthermore, the well-known range tree~\docite{range tree} gives logarithmic query time for the non-colored problem using space $O(n \log n)$, and in linear space we can obtain $O(\sqrt{n})$ time with the K-D tree. 
+However, to obtain sublinear query times for the colored variant, previous solutions required excessive amounts of space of roughly $O(n^d)$. 
+
+
+\paragraph{Our Contribution} 
+In the paper \paper{Colored Range Searching in Linear Space}, we give the first data structure for two-dimensional points in linear space and with sub-linear query time. We also give high dimensional structures with almost-linear space of $O(n \log \log^d n)$. In addition, we propose the first dynamic solutions in for any number of dimensions.
+
+No previous papers considered how to obtain a non-trivial solution to colored range searching in (almost) linear space, and consequently, the proposed solution uses much less space than previous solutions.
+
+Our result is obtained by partitioning points into groups depending on their color. Each group stores all the points for at most $\log n$ specific colors. We then further partition the points in each group into buckets, each containing a polylogarithmic number of points. 
+The points in each bucket are stored in a modified range tree data structure, storing for each node in the range tree an auxiliary data structure identifying the colors contained in its range. 
+To answer a query, we solve the problem independently in each bucket and get the final answer by merging the bucket results. 
+
 
 \paragraph{Future Work}
 \begin{itemize}
@@ -267,6 +281,7 @@ In the paper \paper{Colored Range Searching in Linear Space}, we give the first 
     \item What if the points have multiple colors?
     \item What if the points are moving?
 \end{itemize}
+
 
 \clearpage
 \subsubsection{Compressed Point Sets}
