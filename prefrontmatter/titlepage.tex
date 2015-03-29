@@ -3,21 +3,32 @@
 \calccentering{\unitlength}
 \begin{adjustwidth*}{\unitlength}{-\unitlength}
     \begin{adjustwidth}{-0.5cm}{-0.5cm}
-        \sffamily
-        \begin{flushright}
-            \thesistypeabbr{} Thesis\\*[0cm]
-            \thesistype{}\\
-        \end{flushright}
-        \vspace*{\fill}
-        \noindent
+%        \sffamily%
         \includegraphics[width=0.75\textwidth]{DTU-Compute-B-UK}\\*[0.5cm]
-        \Huge \thesistitle{}\\*[0.2cm]
-        \LARGE \thesissubtitle{}\\*[1.2cm]
+%        \vspace{-2.5em}
+%        \begin{flushright}
+%            
+%            \thesistype{}\\
+%        \end{flushright}
+%        \vspace*{\fill}
+        \vfill
+{        
+        \centering
+        \Huge \thesistitle{}\\*[0.4cm]
+        \LARGE \emph{or,}\\*[0.4cm]
+        \thesissubtitle{}\\*[1cm]
+}
+        \vspace{2cm}
         \parbox[b]{0.5\linewidth}{%
             \large 
             \thesisauthor{}\\*[1.2cm]
-            \normalsize
-            \thesislocation{} \the\year
+            {
+            \small
+            %\thesislocation{} \the\year\\
+            \thesistypeabbr{} Thesis\\[0cm]
+            \thesisnumber{}\\[0cm]
+            ISSN: \thesisISSN{}
+            }
         }
         \hfill\includegraphics[scale=0.7]{DTU-logo-CMYK}
     \end{adjustwidth}

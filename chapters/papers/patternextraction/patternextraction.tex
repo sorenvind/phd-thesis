@@ -1,8 +1,9 @@
 %!TEX root = ../../../Thesis.tex
-\chapter[Output-Sensitive Pattern Extraction in Sequences]{Output-Sensitive Pattern Extraction}
+\chapter{Output-Sensitive Pattern Extraction in Sequences}\label{chp:patternextraction}
+
 \begin{infosection}
     \begin{authors}
-        Roberto Grossi\uni{1} \qquad Giulia Menconi\uni{1} \qquad Nadia Pisanti\uni{1} \\  
+        Roberto Grossi\uni{1}\footnote{Partially supported by Italian MIUR PRIN project AMANDA.} \qquad Giulia Menconi\uni{1} \qquad Nadia Pisanti\uni{1} \\  
         Roberto Trani\uni{1} \qquad S{\o}ren Vind\uni{2}\footnote{Supported by a grant from the Danish National Advanced Technology Foundation.}
     \end{authors}
 
@@ -38,7 +39,7 @@ Many notions of patterns exist, reflecting the diverse applications of the probl
 A \emph{motif} is a pattern of \emph{any} length with \emph{at most   $k$ don't cares} occurring \emph{at least $q$ times} in $S$. In this paper, we consider the problem of determining the \emph{maximal} motifs, where any attempt to extend them or replace their $\dontcare$'s with symbols from $\Sigma$ causes a loss of significant information (where the number of occurrences in $S$ changes).  We denote the family of all motifs by $M_{qk}$, the set of maximal motifs $\maxset \subseteq M_{qk}$ (dropping the subscripts in $\maxset$) and let $\occ(m)$ denote the number of occurrences of a motif $m$ inside $S$. It is well known that $M_{qk}$ can be exponentially larger than $\maxset$ \cite{Parida00}.
 
 \subparagraph{Our Results}
-We show how to efficiently build an index that we call a \emph{motif trie} which is a trie that contains all prefixes, suffixes and occurrences of $\maxset$, and we show how to extract $\maxset$ from it. The motif trie is built in level-wise, using an oracle $\generate{u}$ that reveals the children of a node $u$ efficiently using properties of the motif alphabet and a bijection between new children of $u$ and intervals in the ordered sequence of occurrences of $u$. We are able to bound the resulting running time with a strong notion of \emph{output-sensitive} cost, borrowed from the analysis of data structures, where the cost is proportional to the \emph{actual} number $\occ(m)$ of occurrences of each maximal motif $m$.
+We show how to efficiently build an index that we call a \emph{motif trie} which is a trie that contains all prefixes, suffixes and occurrences of $\maxset$, and we show how to extract $\maxset$ from it. The motif trie is built level-wise, using an oracle $\generate{u}$ that reveals the children of a node $u$ efficiently using properties of the motif alphabet and a bijection between new children of $u$ and intervals in the ordered sequence of occurrences of $u$. We are able to bound the resulting running time with a strong notion of \emph{output-sensitive} cost, borrowed from the analysis of data structures, where the cost is proportional to the \emph{actual} number $\occ(m)$ of occurrences of each maximal motif $m$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%% THEOREM %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -111,7 +112,7 @@ In Section \ref{sec:construction} and \ref{sec:generate} we give an efficient al
                 \hline
             \end{tabular}
         }
-        \caption{Example 1: Maximal Motifs found in string.}\label{ex:one}
+        \caption{Example 1: Maximal Motifs found in string\label{ex:one}}
 \end{figure}
 
 
@@ -156,7 +157,7 @@ Motifs $m \in M_{qk}$ that are \emph{left-maximal} or \emph{right-maximal} canno
 \section{Motif Tries and Pattern Extraction}
 \label{sec:motif_trie}
 %
-This section introduces the \emph{motif trie}. This trie is not used for searching but its properties are exploited to orchestrate the search for maximal motifs in $\maxset$ to obtain a strong output-sensitive cost. Due to space constraints, all proofs have been omitted in the present version.
+This section introduces the \emph{motif trie}. This trie is not used for searching but its properties are exploited to orchestrate the search for maximal motifs in $\maxset$ to obtain a strong output-sensitive cost. %Due to space constraints, all proofs have been omitted in the present version.
 %moved to Appendix~\ref{app:proofs}.
 
 \subsection{Efficient Representation of Motifs}
@@ -214,7 +215,7 @@ Summing up, the above relabeling from $\calph$ to $\salph$ only requires the str
       \path[] (5) edge [] node [left] {\texttt{C}} (51);
       \path[] (7) edge [] node [left] {\texttt{C}} (71);
     \end{tikzpicture}
-    \caption{Motif trie for Example 1. The black nodes are maximal motifs (with their occurrence lists shown in Fig. \ref{ex:one}(b)).}
+    \caption{Motif trie for Example 1. The black nodes are maximal motifs (with their occurrence lists shown in Figure \ref{ex:one}(b))}
 \end{figure}
 
 
@@ -307,7 +308,7 @@ $O \Bigl( n (k + \log \calph) + (k+1)^3 \times \sum_{m \in \maxset} \occ(m) \Big
 
 
 \section{Implementing $\generate{u}$}\label{sec:generate}
-We now show how to implement $\generate{u}$ within the time bounds stated by Lemma~\ref{lemma:generate_time}. The idea is as follows. We first obtain $\sortoccs{u}$, which is an array storing the occurrences in $\occs{u}$, sorted lexicographically according to the suffix associated with each occurrence. We can then show that there is a bijection between the children of $u$ and a set of maximal intervals in $\sortoccs{u}$. By exploiting the properties of these intervals, we are able to find them efficiently through a number of scans of $\sortoccs{u}$. The bijection implies that we thus efficiently obtain the new children of $u$.
+We now show how to implement $\generate{u}$ in the time bounds stated by Lemma~\ref{lemma:generate_time}. The idea is as follows. We first obtain $\sortoccs{u}$, which is an array storing the occurrences in $\occs{u}$, sorted lexicographically according to the suffix associated with each occurrence. We can then show that there is a bijection between the children of $u$ and a set of maximal intervals in $\sortoccs{u}$. By exploiting the properties of these intervals, we are able to find them efficiently through a number of scans of $\sortoccs{u}$. The bijection implies that we thus efficiently obtain the new children of $u$.
 
 
 \subsection{Nodes of the Motif Trie as Maximal Intervals}
@@ -338,7 +339,8 @@ The \emph{longest common prefix} of an interval is defined as $\ilcp(\interval{}
 %
 An interval $\interval{} \subseteq \sortoccs{u}$ is \emph{maximal} if \emph{(1)}~there are at least~$q$ positions in $\interval{}$ (i.e. $|\interval{}| \geq q$), \emph{(2)}~motif $u$ cannot be specialized with the skipped characters in $\skipchar(p)$ where $p \in \interval{}$, and \emph{(3)}~any other interval $\interval{}' \subseteq \sortoccs{u}$ that strictly contains $\interval{}$ has a shorter common prefix (i.e. $|\ilcp(\interval{}')| < |\ilcp(\interval{})|$ for $\interval{}' \supset \interval{}$) \footnote{%
 %While conditions~\emph{(1)} and~\emph{(3)} are intuitive, as we want the largest intervals with $\geq q$ positions that cannot be extended, condition~\emph{(2)} is less intuitive but has a dramatic effect on the complexity. To see why consider an interval $\interval{}$ that satisfies~\emph{(1)} and~\emph{(3)} but not~\emph{(2)}. This means that the occurrences of $u$ in $S$ restricted at positions $p \in \interval{}$ have the same symbol in correspondence of the same $\dontcare$ in $u$ (while this is not true for all $p \in \sortoccs{u}$). 
-In the full version we show that condition~\emph{(2)} is needed to avoid the enumeration of either motifs from $M_{qk} \setminus \maxset$ or duplicates from $\maxset$.}. 
+%In the full version we show that c
+Condition~\emph{(2)} is needed to avoid the enumeration of either motifs from $M_{qk} \setminus \maxset$ or duplicates from $\maxset$.}.
 We denote by $\intervalset{u}$ the \emph{set of all maximal intervals} of $\sortoccs{u}$, and show that $\intervalset{u}$ form a tree covering of $\sortoccs{u}$. A similar lemma for intervals over the LCP array of a suffix tree was given in \cite{abouelhoda2004replacing}.
 \begin{lemma}
   \label{lem:intOverlap}

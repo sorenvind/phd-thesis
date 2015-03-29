@@ -13,57 +13,86 @@
 
 %%% Definition of headers and footers
 % page style (header and footer)
+
 \pagestyle{ruled}
 %\pagestyle{plain} % centered page number and no header
+
 
 \copypagestyle{source}{ruled}
 \newcommand{\srcSec}{}
 \makeevenhead{source}{\leftmark}{}{\srcSec}
 \makeoddhead{source}{}{}{\thesection~--~\srcSec}
 
-%%% Definition of Lasse and Kenneth's chapter heading style, VERY NICE
-% CHAPTERSTYLE
-	\newif\ifNoChapNumber 
-	\makeatletter 
-	\makechapterstyle{VZ34}{ 
-	\renewcommand\chapternamenum{} 
-	\renewcommand\printchaptername{} 
-	\renewcommand\printchapternum{} 
-	\renewcommand\chapnumfont{\Huge\bfseries} 
-	\renewcommand\chaptitlefont{\Huge\bfseries\raggedright} 
-	\renewcommand\printchaptertitle[1]{% 
-				\vspace{-1.0em}
-%                \hfill% % float to the right
-                \centering 
-		        \ifNoChapNumber\relax\else%
-                      {\color{dtured}\chapnumfont\@setfontsize\huge{18}{20}\thechapter}%
-                      \begin{picture}(-2,0)
-                        \setlength\unitlength{1mm}
-                        % The line of the bar
-                        \linethickness{1pt}
-                        % The actual line
-                        % put setc coordinate for start
-                        % line is \line(deltaX,deltaY){length}
-                        \color{black}\put(1.5,-4){\line(0,1){20}}
-                      \end{picture}%
-                \fi%
-		        {\color{black}\chaptitlefont \@setfontsize\huge{18}{20}  \textsc{##1}}%	
-                } 
-	\renewcommand\printchapternonum{\NoChapNumbertrue} 
-	} 
-	\chapterstyle{VZ34}
 
-\setlength{\beforechapskip}{15pt}
-
-
-
-\newcommand{\klsection}[1]{ % Use Kenneth and Lasse nice sections
-   \Large\bfseries\raggedright\scshape#1
+\makeatletter
+\newif\ifNoChapNumber 
+\makechapterstyle{phdt}{%
+  \chapterstyle{default}
+  \renewcommand{\printchaptername}{}
+  \renewcommand{\chapternamenum}{}
+  \renewcommand{\chaptitlefont}{\normalfont\Huge\bfseries}
+  \renewcommand{\chapnumfont}{\normalfont\Huge\bfseries}
+  \renewcommand{\printchapternum}{}%\chapnumfont \thechapter\space}
+  \renewcommand{\afterchapternum}{}
+  \renewcommand\printchapternonum{\NoChapNumbertrue} 
+  \renewcommand*{\printchaptertitle}[1]{%
+\ifNoChapNumber\relax\else%
+    \@hangfrom{%
+        \chapnumfont%
+        \hspace{0.5em}%
+        {\color{dtured}\thechapter}%
+        \hspace{0.3em}%
+        \begin{picture}(0,0)%
+            \setlength\unitlength{1mm}%
+            % The line of the bar
+            \linethickness{1pt}%
+            % put setc coordinate for start
+            % line is \line(deltaX,deltaY){length}
+            \ifthenelse{\thechapter > -1}{%
+                \color{black}\put(0,-8.5){\line(0,1){28}}%
+            }{%
+                \color{black}\put(0,-2.5){\line(0,1){22}}%
+            }%
+        \end{picture}%
+        \hspace{0.3em}%
+    }%
+\fi
+       {\raggedright\chaptitlefont{##1}%
+        \ifNoChapNumber%
+        \vspace{-1cm}%
+        \fi}
+  }
 }
+\chapterstyle{phdt}
+\makeatother
 
-\newcommand{\klsubsec}[1]{ % Use Kenneth and Lasse nice sections
-   \large\bfseries\raggedright\scshape#1
+\setlength{\beforechapskip}{10pt}
+
+\usepackage{ifthen}
+
+% Counter is incremented before printing it. We want to start with 0, so set to -1.
+%\setcounter{part}{-1}
+\makeatletter
+%\renewcommand*{\thepart}{\arabic{part}}
+\renewcommand{\midpartskip}{
+    \par\parbox{2.7cm}{\leavevmode\leaders\hrule height 1pt\hfill\kern\z@}\par
 }
-\newcommand{\klsubsubsec}[1]{ % Use Kenneth and Lasse nice sections
-   \bfseries\raggedright\scshape#1
-}
+\renewcommand{\beforepartskip}{\vspace*{\fill}}
+\renewcommand{\afterpartskip}{\vspace*{\fill}}
+\makeatother
+
+
+\begin{comment}
+
+    
+    
+\renewcommand{\printpartname}{\partnamefont Act}
+\renewcommand*{\printpartnum}{
+    \ifthenelse{%
+        \equal{\thepart}{I}
+        }{0}
+        {\ifthenelse{
+            \equal{\thepart}{II}
+            }{1 -- 4}
+            {5 -- 7}}}
+\end{comment}

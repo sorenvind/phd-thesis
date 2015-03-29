@@ -1,0 +1,23 @@
+\begin{figure}
+\centering
+\begin{tikzpicture}
+
+\matrix (first) [table1withindices]
+{
+  & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & \node (a) {9}; &\node (b) {10}; & 11 &12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20 \\
+  $Z$   & 5 & 1 & 4 & 7 & 1 & 1 & 6 & 3 & 2 & 1 & 1 & 2 & 2 & 1 & 3 & 5 & 10 & 5 & 10 & 2 \\
+  $Y$   & \node[fill=black!20] () {5}; & 6 & 10 & \node[fill=black!20] () {17}; & 18 & 19 & \node[fill=black!20] () {25}; & 28 & 30 & 31 & 32 & 34 & 36 & 37 & 40 & \node[fill=black!20] () {45}; & \node[fill=black!20] () {55}; & \node[fill=black!20] () {60}; & \node[fill=black!20] () {70}; & 72 \\
+$\mathcal{R}$  & $\{5, 17, 25, 45, 55, 60, 70\}$ \\
+$\mathcal{U}$   & 0 & 1 & 5 & 0 & 1 & 2 & 0 & 3 & 5 & 6 & 7 & 9 & 11 & 12 & 15 & 0 & 0 & 0 & 0 & 2 \\
+$\mathcal{B}$  & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 \\
+$\mathcal{C}$  & 1 & 1 & 1 & 2 & 2 & 2 & 3 & 3 & 3 & 3 & 3 & 3 & 3 & 3 & 3 & 4 & 5 & 6 & 7 & 7 \\
+%& 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 \\[0.1em]
+};
+\node[above=1em of a] (labela) {New index 9};
+\node[right=1em of labela] (labelb) {Old index 9};
+\draw [->,thick] (labela.south) -- (a.north);
+\draw [->,thick] (labelb.south)-- (b.north east);
+\end{tikzpicture}
+\caption{\label{fig:examplesplit}
+The result of $\pdivide(8,3)$ on the structure of Figure \ref{fig:exampleinit}. Representative value 30 was removed from $\mathcal{R}$. We shifted and updated $\mathcal{U}$, $\mathcal{B}$ and $\mathcal{C}$ to remove the old representative and accommodate for a new element with value 2} 
+\end{figure}

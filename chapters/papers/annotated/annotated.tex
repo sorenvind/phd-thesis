@@ -1,5 +1,5 @@
 %!TEX root = ../../../Thesis.tex
-\chapter{Compressed Pattern Matching in the Annotated Streaming Model}
+\chapter{Compressed Pattern Matching in the Annotated Streaming Model}\label{chp:annotated}
 
 \begin{infosection}
     \begin{authors}
@@ -132,8 +132,8 @@ In cryptology, a related notion is that of Zero Knowledge Proofs~\cite{goldwasse
 
 \paragraph{Karp-Rabin fingerprints.} Our work makes use of Karp and Rabin~\cite{karp1987efficient} fingerprints which were originally used to design a randomized string matching algorithm and since have been used as a central tool to design algorithms for a wide range of problems (see e.g.,~\cite{cole2003faster, kalai2002efficient, porat2009exact}). The Karp-Rabin fingerprint of a string is given by the following definition.
 
-\begin{definition}{Karp-Rabin fingerprint.}
-Let $p$ be a prime and $r$ a random integer in $\{1,2,3, \ldots, p-1\}$. The fingerprint function $\fp$ for a string $S$ is given by:
+\begin{definition}[Karp-Rabin fingerprint.]
+Let $p$ be a prime and $r$ a random integer in $\{1,2,3,...,p-1\}$. The fingerprint function $\fp$ for a string $S$ is given by:
 \begin{center}
  $\phi(S)=\sum_{i=0}^{|S|-1} S[i]r^i ~mod~ p$.
 \end{center}
@@ -220,7 +220,7 @@ We send the timestamps for queries to $X[i]$ one at a time by stringing together
 We now show how to use the power of the annotator to solve the pattern matching problem in a phrase-compressed text stream. The compressed phrases are on the form $i = (j, \sigma)$, which either extends a previous phrase $j$ by an alphabet character $\sigma$, or starts a new chain of extending phrases if $j = -1$\footnote{This models most phrase-based compressors, such as LZ78.}. 
     The problem is to find occurrences of an (uncompressed) pattern $P$ of $m$ alphabet characters in the uncompressed text as follows: for each arriving phrase we must output true iff there is an occurrence of $P$ ending in the latest phrase. At any time $n$ denotes the number of phrases we have seen so far. 
    
-In compressed pattern matching, the output when phrase $n$ arrives can depend on phrases arbitrarily far in the past. This is is in contrast to well-studied uncompressed streaming pattern matching problems in which the output typically only depends on a window of length $O(m)$. More formally, we have that in the standard, unannotated streaming model, there is a space lower bound of $\Omega(n)$ for our problem. This follows via a reduction to the indexing problem with the pattern $P=1$. We can use the first $n$ phrases to encode a bit string of length $n$ (by starting a new chain with every phrase). We can then `query' any of these bits by appending the phrase $(j,0)$ where $j$ is the index to be queried. This lower bound also holds (with a little bit of fiddling) if the phrase scheme is restricted to be LZ78 compression~\cite{lz78}. The details are given in the appendix.
+In compressed pattern matching, the output when phrase $n$ arrives can depend on phrases arbitrarily far in the past. This is is in contrast to well-studied uncompressed streaming pattern matching problems in which the output typically only depends on a window of length $O(m)$. More formally, we have that in the standard, unannotated streaming model, there is a space lower bound of $\Omega(n)$ for our problem. This follows via a reduction to the indexing problem with the pattern $P=1$. We can use the first $n$ phrases to encode a bit string of length $n$ (by starting a new chain with every phrase). We can then `query' any of these bits by appending the phrase $(j,0)$ where $j$ is the index to be queried. This lower bound also holds (with a little bit of fiddling) if the phrase scheme is restricted to be LZ78 compression~\cite{lz1978}. The details are given in the appendix.
 
 
 We first give an algorithm which determines whether $P$ is a substring of the latest phrase, we will then then extend this to find new pattern occurrences that cross phrase boundaries (but still end in the latest phrase). Before we do so, we briefly discuss some (mostly) standard pattern matching data structures that we store on the client for use in for our solution.

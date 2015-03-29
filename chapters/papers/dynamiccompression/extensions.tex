@@ -1,0 +1,87 @@
+%!TEX root = article.tex
+\section{Extensions to DRC}\label{sec:extensions}
+In this section we show how to solve two other variants of the dynamic relative compression problem. We first prove Theorem~\ref{thm:extension1}, showing how to improve the query time if only supporting operations $\sacc$ and $\srep$. We then show Theorem~\ref{thm:extension2}, generalising the problem to support multiple strings. These data structures use the same substring concatenation data structure of Theorem~\ref{thm:substringconcat} as before but replace the dynamic partial sums data structure.
+
+\subsection{DRC Restricted to Access and Replace}
+In this setting we constrain the operations on $S$ to $\sacc(i)$ and $\srep(i, \alpha)$.
+% since insertion and deletion of characters would induce changes in the prefix sum of the following blocks. 
+Then, instead of maintaining a dynamic partial sums data structure over the lengths of the substrings in $C$, we only need a dynamic predecessor data structure over the prefix sums. 
+The operations are implemented as before, except that for $\sacc(i)$ we obtain block $b_j$ by computing the predecessor of $i$ in the predecessor data structure, which also immediately gives us access to $\ell$. 
+For $\srep(i, \alpha)$, a constant number of updates to the predecessor data structure is needed to reflect the changes. We use substring concatenation queries to restore maximality as described in Section~\ref{sec:DRC}. The prefix sums of the subsequent blocks in $C$ are preserved since $|b_j|=|b_j^1|+|b_j^2|+|b_j^3|$.
+%With the restriction on the supported operations we have reduced the problem of locating the block containing a specific index of $S$ to the problem of maintaining a dynamic predecessor data structure over the prefix sums of the lengths of the blocks in $C$. 
+This results in Theorem~\ref{thm:extension1}.
+
+% Using a standard van Emde Boas~\cite{BKZ1977,Boas1977} data structure with dynamic perfect hashing~\cite{DKMMRT1994} or a Fusion trees~\cite{raman1996priority} we immediately obtain  \ref{thm:mainconstrained} the following Corollary.
+
+% \begin{corollary}\label{thm:mainconstrained}
+% We can solve the dynamic relative compression problem constrained to the operations $\sacc(i)$ and $\srep(i, \alpha)$
+% \begin{itemize}
+% \item[(i)] in space $O(n + r)$ and time $O(\min(\log\log N, \frac{\log n}{\log\log n}))$ and $O(t_u(n, N) + \log\log r)$ for $\sacc(i)$ and $\srep(i, \alpha)$, respectively, or
+% \item[(ii)] in space $O(n + r\log r)$ and time $O(t_q(n, N))$ and $O(t_u(n, N))$ for $\sacc(i)$ and $\srep(i, \alpha)$, respectively.
+% \end{itemize}
+% \end{corollary}
+
+
+
+
+% In this section we give a solution to DRC with access and updates. For each $S_i$ in $\stringset$, we maintain a dynamic predecessor data structure, $P_i$, over the start indices of the blocks in $S_i$, i.e., the prefix sums of the block sizes. For each point in $P_i$ we store a reference to the corresponding block. We also maintain the substring concatenation data structure from Lemma~\ref{?} over $R$.
+
+% %\begin{itemize}
+% %\item \texttt{pred}$(j)$:
+% %  Returns a reference to the block $b_l$ that contains character $S_i[j]$, and the start index $s_l$ of $b_l$ in $S_i$.
+% %\item \texttt{insert}$(s_l,b_l)$:
+% %  Inserts the start index $s_l$ of block $b_l$ into the predecessor structure along with a reference to $b_l$
+% %\item \texttt{delete}$(s_l)$:
+% %  Deletes the index $s_l$.
+% %\end{itemize}
+
+% We implement $\sacc$ and $\srep$ as follows.
+% \begin{itemize}
+% \item $\sacc(i,j)$:
+% Compute the predecessor of $j$ in $P_i$ to identify the block $b$ starting at position $b_{S_i}$ in $S_i$ that contains position $j$. Let $b_R$ be the starting position of $b$ in $R$ and $j_b = j - b_{S_i}$ be the local position in $b$ corresponding to position $j$. Return the character $R[b_{S_i} + j_b]$. 
+
+% \item $\srep(i,j,\alpha)$:
+% We identify the block $b$ and the local position $j_b$ in $b$ to update as in the $\sacc$ operation.  To implement the update we split $b$ into at most three blocks $b_1$, $b_2$, and  $b_3$ corresponding to the prefix of $b$ before $j_b$, the single character at $b[j_b]$, and the suffix after $b_j$. We update $b_2$ to $\alpha$ and restore the maximality property of the cover using Lemma~\ref{lem:maintainmax}. We remove $b$ from $P_i$ and insert the newly created blocks into $P_i$. 
+
+% %  First, we need to find the correct block $b_l$ that contains character $S_i[j]$. This can be done as in the $\sacc$ query. Character $S_i[j]$ is located at index $j- s_l$ of $b_l$. Hence, updating $S_i[j]:= \alpha$, implies $b_l[j - s_l] := \alpha$. Updating a character in $b_l$, splits $b_l$ into three new blocks, $b^1_{l}$, $b^2_{l}$ and $b^3_{l}$ that are inserted into $C_i$ instead of $b_l$.  Now, the blocks $b_{l-1}, b^1_l, b^2_l, b^3_l$ and $b_{l+1}$ might violate the maximality property of $C_i$. We use lemma \ref{lem:maintainmax} to restore the maximality property of $C_i$. In order to maintain $P_i$, we need to perform a \texttt{delete}$(b_l)$ operation and a constant number of \texttt{delete} and \texttt{insert} operations to reflect the changes made to $C_i$ with lemma \ref{lem:maintainmax}.
+% \end{itemize}
+
+% The $\sacc$ operation uses a single predecessor query. The $\srep$ operation uses a single predecessor query and $O(1)$ inserts and deletes. Using a standard van Emde Boas~\cite{BKZ1977,Boas1977} data structure with dynamic perfect hashing~\cite{DKMMRT1994} the time for $\sacc$ is $O(\log \log N)$ and the time for $\srep$ is $O(\log \log N)$ amortized expected. By Lemma~\ref{lem:maintainmax} this is also becomes the total time bound for each operation. The total space is linear. In summary, we have the following result.
+
+% \begin{theorem}\label{thm:theorem1}
+% There is an $O(n+r)$ space DRC data structure supporting $\sacc$ in $O(\log \log N)$ time and $\srep$ in $O(\log\log N)$ expected amortized time.
+% \end{theorem}
+
+
+\subsection{DRC of Multiple Strings with Split and Concatenate}
+Consider the variant of the dynamic relative compression problem where we want to maintain a relative compression of a set of strings $S_1,\ldots,S_k$. Each string $S_i$ has a cover $C_i$ and all strings are compressed relative to the same string $R$. In this setting $n=\sum_{i=1}^k |C_i|$. In addition to the operations $\sacc$, $\srep$, $\sins$, and $\sdel$, we also want to support split and concatenation of strings. Note that the semantics of the operations change to indicate the string(s) to perform a given operation on. 
+
+We build a height-balanced binary tree $T_i$ (e.g. an AVL tree or red-black tree) over the blocks $C_i[1],\ldots,C_i[|C_i|]$ for each string $S_i$. In each internal node $v$, we store the sum of the block sizes represented by its leaves. Since the total number of blocks is $n$, the trees use $O(n)$ space. All operations rely on the standard procedures for searching, inserting, deleting, splitting and joining height-balanced binary trees. All of these run in $O(\log n)$ time for a tree of size $n$. See for example \cite{CLRS2001} for details on how red-black trees achieve this.
+
+The answer to an $\sacc(i, j)$ query is found by doing a top-down search in $T_i$ using the sums of block sizes to navigate. Since the tree is balanced and the size of the cover is at most $n$, this takes $O(\log n)$ time. The operations $\srep(i,j,\alpha)$, $\sins(i,j,\alpha)$, and $\sdel(i,j)$ all initially require that we use $\sacc(i,j)$ to locate the block containing the $j$-th character of $S_i$. To reflect possible changes to the blocks of the cover, we need to modify the corresponding tree to contain more leaves and restore the balancing property. Since the number of nodes added to the tree is constant these operations each take $O(\log n)$ time. The $\sconcat(i,j)$ operation requires that we join two trees in the standard way and restore the balancing property of the resulting tree. For the $\ssplit(i,j)$ operation we first split the block that contains position $j$ such that the $j$-th character is the trailing character of a block. We then split the tree into two trees separated by the new block. This takes $O(\log n)$ time for a height-balanced tree.
+
+To finalize the implementation of the operations, we must restore the maximality property of the affected covers as described in Section~\ref{sec:DRC}. At most a constant number of blocks are non-maximal as a result of any of the operations. If two blocks can be combined to one, we delete the leaf that represents the rightmost block, update the leftmost block to reflect the change, and restore the property that the tree is balanced. If the tree subsequently contains an internal node with only one child, we delete it and restore the balancing. Again, this takes $O(\log n)$ time for balanced trees, which concludes the proof of Theorem~\ref{thm:extension2}.
+
+%%%
+% Below here is the old description of this data structure
+%%%
+
+% For each string $S_i$, we build a height-balanced binary tree $T_i$ over the blocks $C_i[1],\ldots,C_i[|C_i|]$. Each leaf is associated with its respective block and stores the size of the block. In each internal node $v$, we store the sum of the block sizes represented by its leaves. Since the total number of blocks is $n$, the trees use $O(n)$ space.
+
+% The answer to an $\sacc(i, j)$ query is found by doing a top-down search in $T_i$ using the sums of block sizes to navigate. Since the tree is balanced and the size of the cover is at most $n$, this takes $O(\log n)$ time.
+
+% The operations $\srep(i,j,\alpha)$, $\sins(i,j,\alpha)$, and $\sdel(i,j)$ all initially require that we use $\sacc(i,j)$ to locate the block containing the $j$-th character of $S_i$. These operations may then result in splitting a block into three new blocks as shown in the preceding sections. To reflect this in $T_i$ we need to insert $4$ new nodes to create $3$ new leaves. After each insertion we need to maintain that the tree is balanced and update the sums on the path from the new leaf to the root. In summary, the operations $\srep$, $\sins$, and $\sdel$ are each reduced to an $\sacc$ operation and a constant number of insertions which in total takes $O(\log n)$ time.
+
+% We support the $\sconcat(i,j)$ operation as follows. Assume w.l.o.g. that $T_i$ is taller than $T_j$. Find a node $v$ on the rightmost path in $T_i$ such that $|height(v)-height(T_j)|\leq 1$. Insert a new node in $v$'s place with $v$ as its left child and the root of $T_j$ as its right child. The resulting tree might not be balanced, but since the height difference between $left(v)$ and $right(v)$ is at most $2$, this property can be restored with the same procedure as used when inserting a new node. In total, $\sconcat(i,j)$ takes $O(|height(T_i)-height(T_j)|)=O(\log n)$ time.
+
+% Here is how to perform the $\ssplit(i,j)$ operation. First, we split the block that contains position $j$ such that the $j$-th character is the trailing character of a block. This requires an $\sacc(i,j)$ query to locate the block, and then we insert two new nodes and restore all necessary properties of $T_i$. Next, we split the tree into two forests. One contains the sequence of subtrees that are hanging to the left of the path from the leaf containing $j$ to the root, and the other contains the sequence of subtrees that are hanging to the right of this path. It remains to join the trees of each forest into two height-balanced trees. The trees in the left forest are joined right to left and the trees in the right forest are joined left to right (i.e., we join smaller trees first). In both cases we use the same procedure as described for the $\sconcat$ operation to join the trees. Specifically, let $S_{i_1},\ldots,S_{i_p}$ be the strings represented by the trees in the left forest. Then we compute $\sconcat(i_1,\sconcat(\ldots,\sconcat(i_{p-1},i_p)))$ to obtain the first of the two trees resulting from a split. Analogously we can create the other tree resulting from the split from the right forest.
+
+% Each forest contains $O(\log n)$ trees since the original tree is balanced. Moreover, the trees of the left forest have non-increasing heights and the trees in the right forest have non-decreasing heights. When joining two trees $T_1$ and $T_2$, the height of the resulting tree is at most $\max\{height(T_1),height(T_2)\}+1$.  Thus, the time to join the trees of a forest $T_{i_1},\ldots,T_{i_p}$ is bounded by $\sum_{l=1}^{p-1}c+|height(T_l)-height(T_{l+1})|=O(\log n)$ and the running time of $\ssplit(i,j)$ is $O(\log n)$.
+
+% As the final step of the implementation of each of the operations, we must restore the maximality property of the cover. In the previous sections we covered how the operations $\srep$, $\sins$, and $\sdel$ splits a block into several blocks. We use Lemma \ref{lem:maintainmax} to determine if it is possible to join these. 
+
+% When concatenating $S_i$ and $S_j$ it is sufficient to perform at most three checks using Lemma \ref{lem:maintainmax} to restore the maximality property. Let $b_{i_1},\ldots,b_{i_k}$ and $b_{j_1},\ldots,b_{j_p}$ be the blocks of $S_i$ and $S_j$, respectively. First we check if $b_{i_k}$ and $b_{j_1}$ can be joined, and if possible, let $b'_{i_k}$ be the resulting block. Then we check if $b_{i_{k-1}}$ and $b'_{i_k}$ can be joined, and if not, we check $b'_{i_k}$ and $b_{j_2}$.
+
+% After a $\ssplit$ operation we need to make two checks. Let $S_i$ and $S_j$ be the two strings resulting from a split. Then we need to check of the last two blocks of $S_i$ can be joined and the first two blocks of $S_j$ can be joined.
+
+% If two blocks can be combined to one, we delete the leaf that represents the rightmost block, update the leftmost block to reflect the change, and restore the property that the tree is balanced. If the tree subsequently contains an internal node with only one child, we delete it and restore the balancing. Again, this takes $O(\log n)$ time for balanced trees, and we thus have the following theorem.

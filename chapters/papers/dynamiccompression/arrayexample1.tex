@@ -1,0 +1,61 @@
+\tikzset{ 
+nodesrep/.style={
+    rectangle,
+    align=center,
+    draw=black,
+},
+table1withindices/.style={
+    matrix of nodes,
+%    row sep=-\pgflinewidth,
+    row sep=1pt,
+    column sep=-\pgflinewidth,
+    font=\footnotesize,
+    text depth=1pt,
+    text height=5pt,
+    text width=9pt,
+    text centered,
+    nodes={
+        rectangle,
+        draw=black,
+        anchor=north,
+    },
+    nodes in empty cells,
+    column 1/.style={
+        nodes={
+            draw=white,
+            align=left
+        }
+    },
+    row 1/.style={
+        nodes={
+          draw=white,
+          font=\tiny
+        }
+    },
+    row 4/.style={
+      nodes={
+        draw=white
+      }
+    }
+}
+}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+
+\matrix (first) [table1withindices]
+{
+  & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 &\node (a) {12}; & 13 & 14 & 15 & 16 & 17 & 18 & 19 \\
+  $Z$   & 5 & 1 & 4 & 7 & 1 & 1 & 6 & 5 & 1 & 1 & 2 & 2 & 1 & 3 & 5 & 10 & 5 & 10 & 2 \\
+  $Y$   &\node[fill=black!20] () {5}; & 6 & 10 & \node[fill=black!20] () {17}; & 18 & 19 & \node[fill=black!20] () {25}; & \node[fill=black!20] () {30}; & 31 & 32 & 34 & 36 & 37 & 40 & \node[fill=black!20] () {45}; & \node[fill=black!20] () {55}; & \node[fill=black!20] () {60}; & \node[fill=black!20] () {70}; & 72 \\
+$\mathcal{R}$  & $\{5, 17, 25, 30, 45, 55, 60, 70\}$ \\
+$\mathcal{U}$   & 0 & 1 & 5 & 0 & 1 & 2 & 0 & 0 & 1 & 2 & 4 & 6 & 7 & 10 & 0 & 0 & 0 & 0 & 2 \\
+$\mathcal{B}$  & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 \\
+$\mathcal{C}$  & 1 & 1 & 1 & 2 & 2 & 2 & 3 & 4 & 4 & 4 & 4 & 4 & 4 & 4 & 5 & 6 & 7 & 8 & 8 \\
+%& 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 \\[0.1em]
+};
+%\draw [<->,red,thick] (a.center) -- (b.center) node [right,midway] {1cm};
+\end{tikzpicture}
+\caption{\label{fig:exampleinit}The initial data structure constructed from $Z$.}
+\end{figure}

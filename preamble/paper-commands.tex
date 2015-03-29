@@ -3,6 +3,9 @@
 
 \newcommand{\prob}[1]{\emph{#1}}
 \newcommand{\paper}[1]{\emph{#1}}
+\newcommand{\slpc}{\ensuremath{\textsc{SLP}}}
+\newcommand{\Oh}{\mathcal{O}}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%% Fingerprints
@@ -12,8 +15,8 @@
 \newcommand{\fingerprintq}{\ensuremath{\textsc{Fingerprint}}}
 \newcommand{\lceq}{\ensuremath{\textsc{LCE}}}
 \newcommand{\levelanc}{\ensuremath{\textsc{LA}}}
-\renewcommand{\succ}{\ensuremath{\textsc{succ}}}
-\newcommand{\pred}{\ensuremath{\textsc{pred}}}
+\renewcommand{\succ}{\ensuremath{\mathsf{succ}}}
+\newcommand{\pred}{\ensuremath{\mathsf{pred}}}
 
 %Macros: Fingerprints
 \newcommand{\fp}{\ensuremath\phi}
@@ -137,7 +140,6 @@
 
 %Macros: Points, Clusters
 \newcommand{\rootpath}{\ensuremath{\mathit{path}}}
-\newcommand{\rank}{\ensuremath{\mathit{rank}}}
 \newcommand{\mindist}{\ensuremath{\mathit{mindist}}}
 \newcommand{\maxdist}{\ensuremath{\mathit{maxdist}}}
 \newcommand{\vlabel}{\ensuremath{\mathit{label}}}
@@ -177,3 +179,56 @@
 
 \newcommand{\True}{\ensuremath{\textsc{True}}}
 \newcommand{\False}{\ensuremath{\textsc{False}}}
+
+\newcommand{\YES}{\ensuremath{\textsc{yes}}}
+\newcommand{\NO}{\ensuremath{\textsc{no}}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%% Dynamic Compression
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DRC Objects
+\newcommand{\refstring}{R}
+\newcommand{\stringset}{\mathcal{S}}
+\newcommand{\compset}{\mathcal{C}}
+
+% DRC Operations
+\newcommand{\sacc}{\mathsf{access}}
+\newcommand{\srep}{\mathsf{replace}}
+\newcommand{\sins}{\mathsf{insert}}
+\newcommand{\sdel}{\mathsf{delete}}
+\newcommand{\ssplit}{\mathsf{split}}
+\newcommand{\sconcat}{\mathsf{concat}}
+
+% Partial Sums
+\newcommand{\psum}{\mathsf{sum}}
+\newcommand{\psearch}{\mathsf{search}}
+\newcommand{\pupdate}{\mathsf{update}}
+\newcommand{\pincrement}{\mathsf{increment}}
+\newcommand{\pdecrement}{\mathsf{decrement}}
+\newcommand{\pentrydivide}{\mathsf{divide}}
+\newcommand{\pentrymerge}{\mathsf{merge}}
+\newcommand{\pinsert}{\mathsf{insert}}
+\newcommand{\pdelete}{\mathsf{delete}}
+\newcommand{\psplit}{\mathsf{split}}
+\newcommand{\pdivide}{\mathsf{divide}}
+\newcommand{\pmerge}{\mathsf{merge}}
+\newcommand{\weight}{\mathsf{weight}}
+
+
+
+\newcommand{\trep}{\ensuremath{\mathsf{rep}}}
+\newcommand{\trank}{\ensuremath{\mathsf{rank}}}
+\newcommand{\tselect}{\ensuremath{\mathsf{select}}}
+\newcommand{\tmember}{\ensuremath{\mathsf{member}}}
+
+
+% Deltas
+\newcommand{\updbit}{\delta}
+\newcommand{\updabs}{\Delta}
+
+%MISC
+\newcommand{\start}{\mathrm{start}}
+\newcommand{\rank}{\mathrm{rank}}

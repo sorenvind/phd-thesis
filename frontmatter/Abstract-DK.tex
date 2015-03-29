@@ -1,3 +1,72 @@
 %!TEX root = ../Thesis.tex
-\chapter{Resume}
-\todo{Write Danish Resume}
+\chapter{Resumé}
+Denne afhandling præsenterer vor forskning i feltet algoritmer og datastrukturer. Mere specifikt viser vi løsninger til følgende problemer relateret til strenge, punkter og heltal. Vores grænser gælder i RAM-modellen, og vi måler plads i antal $w$-bit ord.
+
+
+\paragraph{Komprimerede Fingeraftryk.}
+En strengs Karp-Rabin fingeraftryk er en brugbar type hash-værdi, der har talrige anvendelser på grund af dens stærke egenskaber.
+Givet en streng $S$ af længde $N$ komprimeret som et Straight Line Program (SLP) af størrelse $n$, viser vi en datastruktur der kræver $\Oh(n)$ plads som understøtter \emph{fingeraftryksforespørgsler} der returnerer fingeraftrykket af en given delstreng i $S$.
+Vi svarer på forespørgsler i $\Oh(\log N)$ tid. Hvis kompressionen er en Lineær SLP (dette omfatter LZ78 kompression og varianter) kan vi svare i $\Oh(\log \log N)$ tid.
+
+Vores løsning matcher den bedst kendte tidsgrænse for at tilgå et enkelt tegn i SLPer, og det er den første for generelle (ikke-balancerede) SLPer der svarer på forespørgsler uden at dekomprimere noget tekst. 
+Vi understøtter også \emph{længste fælles delstreng} forespørgsler, der returnerer længden $\ell$ som $S$ matcher sig selv startende fra to givne positioner. 
+Vi svarer forespørgsler korrekt med høj sandsynlighed i tid $\Oh(\log N \log \ell)$ og $\Oh(\log \log N + \log \ell \log \log \ell)$ for henholdsvis SLPer og Lineære SLPer.
+
+
+\paragraph{Dynamisk Kompression.}
+I \emph{dynamisk relativ kompression} komprimerer vi en streng $S$ af længde $N$ som $n$ delstrenge fra en given referencestreng af længde $r$.
+Vi giver datastrukturer der vedligeholder en asymptotisk optimal kompression i denne model og understøtter operationer der tilgår, ændrer, indsætter og sletter tegn i $S$. 
+Vores løsninger understøtter hver operation i $\Oh(\log n / \log \log n + \log \log r)$ tid og $\Oh(n+r)$ plads; eller $\Oh(\log n / \log \log n)$ tid og $\Oh(n+r \log^{\epsilon} r)$ plads.
+De generaliserer naturligt til at opbevare flere strenge.
+
+Vi opnår næsten-optimale grænser, og vores løsning er den første der understøtter at dynamisk vedligeholde en streng i en type kompression der kan opnå bedre end entropi-kompression.
+Som en del af vores løsning viser vi forbedrede grænser for \emph{delstrengskonkatenering} og en udvidelse af vores struktur kan anvendes til at opnå en bedre løsning for det tidligere studerede problem \emph{dynamisk mønstergenkendelse}.
+
+
+\paragraph{Komprimeret Mønstergenkendelse.}
+I streamingmodellen ankommer en strøm af data et element af gangen som input til en klient der ikke har plads til at opbevare det hele. 
+Den \emph{annoterede streamingmodel} udvider modellen ved at introducere en kraftfuld ikke-pålidelig annotator (som repræsenterer ``skyen'') der kan tilføje annoteret information til input elementer, ved at sende envejskommunikation til klienten.
+Vi generaliserer denne model for at kunne løse problemer på strenge, og præsenterer en datastruktur der lader os afveje plads på klienten og størrelsen af annotationen. Dette tillader os at anvende annotatorens kraft.
+
+I \emph{komprimeret mønstergenkendelse} skal vi rapportere forekomster af et mønster af længde $m$ i en tekst der er komprimeret som $n$ fraser (omfatter LZ78 kompression og varianter). I streamingmodellen kræver enhver løsning til problemet $\Omega(n)$ plads.
+Vi viser at problemet kan løses i den annoterede streamingmodel med $\Oh(\log n)$ klientplads og $\Oh(\log n)$ tid og $\Oh(\log n)$ ord annotering per frase. Dermed bryder vores resultat med pladsgrænsen i streamingmodellen, og det er den første løsning på et klassisk problem fra kombinatorisk mønstergenkendelse i den annoterede streamingmodel.
+
+
+\paragraph{Mønsterudvinding.}
+Der er mange forskelligartede anvendelser af at kunne udvinde vigtige mønstre fra tekst, eksempelvis i data mining, intrusion detection og genetisk analyse. Derfor er der varianter af \emph{mønsterudvindingsproblemet}, med forskellige typer mønster og mål for vigtighed. Vi studerer en naturlig variation hvor mønstre har 1) højst $k$ wildcards der hver matcher et tegn, og 2) et minimalt antal forekomster for at betragtes som vigtige.
+
+Vi viser hvordan sådanne mønstre og deres forekomster kan udvindes fra en tekst af længde $n$ i $\Oh(nk + k^3 \textrm{occ})$ tid og plads, hvor $\textrm{occ}$ er det totale antal mønsterforekomster.
+Vores grænse er den første løsning til en hvilken som helst ikke-eksakt variation af mønstergenkendelsesproblemet, alle tidligere løsninger kræver $\Omega(n^2)$ tid per rapporteret mønster. 
+Vores algoritme er relativt simpel, men kræver en ny analyseteknik der amortiserer udgiften ved at konstruere indekset over det totale antal mønsterforekomster.
+
+
+\paragraph{Komprimerede Punktmængder.}
+\emph{Ortogonal søgning} på en mængde punkter er et klassisk geometrisk datastrukturproblem. Løsninger skal enten tælle eller returnere punkter i et givet forespørgselsområde. Der er talrige klassiske løsninger på problemet der typisk opbevarer punkterne i et træ.
+
+Vi viser at næsten alle klassiske datastrukturer til problemet kan komprimeres uden at øge tiden til at svare på forespørgsler asymptotisk. Dette lader os reducere det krævede pladsforbrug hvor punktsættet indeholder geometriske gentagelser (kopier af ens punktsæt).
+Vores resultat omfanger de fleste klassiske datastrukturer, såsom Range træer, KD-træer, R-træer og Quad træer. Vi viser en hierarkisk klyngealgoritme der sikrer at geometriske gentagelser kan komprimeres.
+
+
+\paragraph{Punkter med Farver.}
+Farvet ortogonal søgning er en naturlig generalisering af ortogonal søgning der lader os foretage statistisk analyse af punktsæt. Vi skal gemme $n$ punkter der hver har en farve (også kaldet en kategori) og understøtte forespørgsler der enten tæller eller returnerer de unikke farver på punkterne i et forespørgselsområde.
+
+Vi viser datastrukturer der understøtter begge typer forespørgsler i mindre end lineær tid, og gemmer to-dimensionelle punkter i lineær plads og høj-dimensionelle punkter i næsten-lineær plads. Dette er de første løsninger med (næsten) lineær pladsforbrug. Vi viser også den første dynamiske løsning med under-lineær forespørgselstid for alle dimensionaliteter. Tidligere løsninger svarer hurtigere, men kræver meget mere plads.
+
+
+\paragraph{Punkter med Vægte i Praksis.}
+Hvis vi tildeler hvert punkt en vægt er det naturligt at studere problemet \emph{tærskeltælling}. En løsning til dette gemmer punkterne og understøtter at tælle punkterne i et forespørgselsområde med en vægt som overstiger en given tærskelværdi. 
+Denne type forespørgsel optræder naturligt i software udviklet af Milestone Systems, og muliggør at finde bevægelse i overvågningsvideo.
+
+Vi implementerer en prototype af et indeks for 3-dimensionelle punkter som bruger lidt plads og svarer effektivt på forespørgsler. I eksperimenter på realistiske datasæt bruger vores prototype $10\%$ yderligere plads men svarer mindst $30\times$ hurtigere på forespørgsler sammenlignet med den tidligere løsning. En optimeret løsning af vores indeks er implementeret i den seneste udgave af  softwaren fra Milestone Systems.
+
+
+\paragraph{Finger-Forgænger.}
+I forgængerproblemet skal vi opbevare en mængde af $n$ heltal fra et univers af størrelse $N$ og understøtte forespørgsler efter forgængere, som returnerer det største heltal i mængden som er mindre end et givet heltal $q$. Vi studerer en variation hvor en forespørgsler også modtager en finger til et heltal $\ell$ i mængden, hvorfra en søgning kan starte. Vi viser en lineær plads datastruktur der svarer på \emph{fingerforgængerforespørgsler} i $\Oh(\log \log |\ell-q|)$ tid. Dette generaliserer og forbedrer løsningerne til standard forgænger problemet, som kræver $\Oh(\log \log N)$ tid. Vores datastruktur er den første løsning med et tidsforbrug der kun afhænger af den numeriske afstand mellem fingeren og forespørgslen.
+
+
+\paragraph{Dynamiske Delsummer.}
+Det velstuderede delsumsproblem er at gemme en sekvens af $n$ heltal med understøttelse for forespørgslerne sum og søg. Sekvensen er statisk idet dens længde ikke kan ændres, men update operationen kan bruges til at ændre værdien af et givent heltal i sekvensen med en værdi på højst $|2^\updbit|$. 
+Der er matchende øvre og nedre grænser for problemet som viser at det kan løses på en Word RAM med $w$-bit ord i lineær plads og $\Theta(\log n / \log (w/\updbit))$ tid per operation, hvor $\updbit$ er det maksimale antal tilladt bits i update.
+
+Som en naturlig generalisering studerer vi \emph{dynamiske delsummer}, hvor vi tillader indsættelser og sletninger i sekvensen. Vores løsning kræver lineær plads og understøtter alle operationer i optimal tid $\Theta(\log n / \log (w/\updbit))$, som matcher nedre grænser for alle understøttede operationer. Vores resultat er den første løsning til dynamiske delsummer der matcher de nedre grænser, og den første til at understøtte at gemme heltal på mere end $\log w$ bits.
+

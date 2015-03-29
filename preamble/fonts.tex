@@ -22,4 +22,12 @@
 %\setsansfont[Ligatures=TeX]{Latin Modern Sans} % Latin Modern Sans serif font
 
 \usepackage[bitstream-charter]{mathdesign}
-\usepackage[T1]{fontenc}
+
+ % Normal mathcal font
+\DeclareSymbolFont{usualmathcal}{OMS}{cmsy}{m}{n}
+\DeclareSymbolFontAlphabet{\mathcal}{usualmathcal} 
+%\usepackage[T1]{fontenc}
+
+\usepackage{newunicodechar} 
+\newunicodechar{ă}{{\u{a}}}
+\newunicodechar{ş}{{\c{s}}}

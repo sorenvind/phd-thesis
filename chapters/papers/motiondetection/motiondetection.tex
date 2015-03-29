@@ -1,5 +1,5 @@
 %!TEX root = ../../../Thesis.tex
-\chapter{Indexing Motion Detection Data for Surveillance Video}
+\chapter{Indexing Motion Detection Data for Surveillance Video}\label{chp:motiondetection}
 \begin{infosection}
     \begin{authors}
         Philip Bille\footnote{Supported by a grant from the Danish Council for Independent Research $\vert$ Natural Sciences.} \qquad Inge Li G{\o}rtz\samethanks \qquad S{\o}ren Vind\footnote{Supported by a grant from the Danish National Advanced Technology Foundation.}
@@ -31,13 +31,13 @@ Video data require massive amounts of storage space and substantial computationa
 
 
 
-\subsection{Problem \& Goal}
+\subsection*{Problem \& Goal}
 A \emph{motion detection query} $\mdquery$ specifies a time range $T$, an area $A$, and two thresholds $v \in [0, 255]$ and $p \in [0, 100]$. The answer to the query is a list of timestamps in $T$ where the amount of motion in $A$ exceeds thresholds $v$ and $p$, meaning that $\geq p\%$ of the pixels in $A$ changed by $\geq v$ pixel values. Our goal is build an index for video data that supports motion detection queries. Ideally, the index should be small compared to the compressed size of the video data and should support queries significantly faster than motion detection without an index. 
 
-\subsection{Related Work}
+\subsection*{Related Work}
 Several papers have considered the problem of \emph{online} motion detection, where the goal is to efficiently identify movement in the video in real time, see e.g. \cite{sachs1994real, tian2005robust, hu2004survey, cutler2000robust, huang2011advanced}. Previous papers \cite{du2014event, kao2008a} mentions indexing movement of objects based on motion trajectories embedded in video encoding. However, to the best of our knowledge, our solution is the first to show a highly efficient index for motion detection queries on the raw video. 
 
-\subsection{Our Results}
+\subsection*{Our Results}
 We design a simple index for surveillance video files, which support motion detection queries efficiently. The performance of the index is tested by running experiments on a number of surveillance videos that we make freely available for use. These test videos capture typical surveillance camera scenarios, with varying amounts of movement in the video.
 
 Our index reduces the supported time- and area-resolution of queries by building summary \emph{histograms} for the number of changed pixels in a number of \emph{regions} of frames succeeding each other. Histograms for a frame are compressed and stored using an off-the-shelf compressor. Queries are answered by decompressing the appropriate histograms and looking up the answer to the query in the histograms.
@@ -67,17 +67,17 @@ All experiments ran on an Apple Macbook Pro with an Intel Core i7-2720QM CPU, 8G
 \subsection{Data sets}
 We tested our index on the following three typical video surveillance scenarios, encoded at 29.97fps using H264/MP4 (reference~\cite{sourcecode}). We use different video resolutions ($1920\times1080$, $1280\times720$ and $852\times480$ pixels). See Table~\ref{tab:scenarios}.
 
-\subsubsection{Office}
+\paragraph{Office}
 Recording of typical workday activities in a small well-lit office with three people moving. The image is almost static, only containing small movements by the people. There is very little local motion in the video.
 
-\subsubsection{Students}
+\paragraph{Students}
 Recording of a group of students working in small groups, with trees visible through large windows that give a lot of reflection. People move about, which gives a medium amount of motion across most of the frame.
 
-\subsubsection{Rain}
-A camera mounted on the outside of a building, recording activities occurring along the building and looking towards another building. It is windy and raining, which combined with many trees in the frame creates a high amount of motion across the entire frame.
+\paragraph{Rain}
+A camera mounted on the outside of a building, recording activities along the building and looking towards another building. It is windy and raining, which combined with many trees in the frame creates a high amount of motion in the entire frame.
 
 \begin{table}[t]
-    \caption{Surveillance video recording samples used for testing. Videos were encoded at 29.97fps using H264/MP4.}\label{tab:scenarios}
+    \caption{Surveillance video recording samples used for testing. Videos were encoded at 29.97fps using H264/MP4}\label{tab:scenarios}
 	\centering
     \begin{tabular}{r c c r r r }
 	~ & ~ & ~ & \multicolumn{3}{c}{\textbf{Size (MB)}} \\ \cline{4-6}
@@ -91,7 +91,7 @@ A camera mounted on the outside of a building, recording activities occurring al
 
 \subsection{Implementation}
 \begin{table}[b]
-    \caption{Tunable parameters for use in experiments.}\label{tab:parameters}
+    \caption{Tunable parameters for use in experiments}\label{tab:parameters}
 	\centering
     \begin{tabular}{r p{2.5in}}
     \textbf{Name} & \textbf{Description} \\ \hline\noalign{\smallskip}
@@ -119,7 +119,7 @@ Table \ref{res:scenario-comparison} summarises the results, with the index size 
 
 \begin{table}[t]
     %Scenario: 1080p, 3 fps, 1024 regions stored, zlib-6 compression, 1 frame, linear. Speedup and size are compared to querying and storing the compressed video. We can see here that the office scenario spends most time decompressing video because it compresses much better.
-    \caption{Index query time versus video query time for 1 and 1024 regions queried. Size of index compared to the video size.}\label{res:scenario-comparison}
+    \caption{Index query time versus video query time for 1 and 1024 regions queried. Size of index compared to the video size}\label{res:scenario-comparison}
 	\centering
     \begin{tabular}{r r c c r r}
 		~ & ~ & \multicolumn{2}{c}{\textbf{Time (s)}} & ~ & \\
@@ -140,7 +140,7 @@ Table \ref{res:resolution-comparison} shows that the relative index query time i
 
 \begin{table}[t]
     %Students, zlib-6, 32 regions, linear, speedup comparison for different resolutions
-    \caption{Speedup for index query time compared to video query time for students scenario, with varying input video resolutions and number of regions queried.}\label{res:resolution-comparison}	
+    \caption{Speedup for index query time compared to video query time for students scenario, with varying input video resolutions and number of regions queried}\label{res:resolution-comparison}	
 	\centering
     \begin{tabular}{r rrrr}
         ~ & \multicolumn{3}{c}{\textbf{Speedup / Query Reg.}} \\
@@ -158,7 +158,7 @@ Table \ref{res:resolution-comparison} show the influence of the video resolution
 
 \begin{table}[t]
     %zlib-6, 32 regions, 1 frame, linear, size comparison for different resolutions
-    \caption{Size of indexes for varying input video resolutions.}\label{res:resolution-space}
+    \caption{Size of indexes for varying input video resolutions}\label{res:resolution-space}
 	\centering
     \begin{tabular}{ r rrr rrr }
 		~ & \multicolumn{3}{c|}{\textbf{Index Size (MB)}} & \multicolumn{3}{c}{\textbf{Index Size (\%)}} \\
@@ -181,7 +181,7 @@ Clearly, the number of regions stored by the index has an influence on the index
 
 \begin{table}[t]
     %students, zlib-6, 1 frame, linear, size comparison for different regions stored
-    \caption{Index size for varying number of stored regions and resolutions in the students scenario.}\label{res:regions-stored}
+    \caption{Index size for varying number of stored regions and resolutions in the students scenario}\label{res:regions-stored}
 	\centering
     \begin{tabular}{r rrr rrr}
 		~ & \multicolumn{3}{c|}{\textbf{Index Size (MB)}} & \multicolumn{3}{c}{\textbf{Index Size (\%)}} \\
@@ -198,12 +198,12 @@ Clearly, the number of regions stored by the index has an influence on the index
 In this section, we review the index performance when varying the different parameters listed in Table \ref{tab:parameters}. Changing the index parameters had insignificant influence on query times, so we only show results for the index space when varying the parameters. The largest contributor to the index advantage over the video decompression method is the idea of storing an index, and thus we only briefly review the results when varying the parameters.
 %\fix{Reduce the number of result cases shown (Extras)}
 
-\subsection{Compressor}
+\subsection*{Compressor}
 Table \ref{res:compressor-space} shows the size of the index when the histograms are compressed using a number of different compressors, and Table \ref{res:compressor-time} shows the time spent compressing the index in total (remember the input is a 60s video file). In all of the tests in the previous section, we have used the \texttt{zlib-6} compressor, as it gives a good tradeoff between compression time and space use. If one can spare the computing resources, there is hope for almost halving the index space if switching to \texttt{bzip2} compression. Note, however, that the query time increases with a slower decompressor (especially when querying few regions, as shown in Section \ref{sec:query-time-components}).
 
 \begin{table}
     %32 regions, 1 frame, 1080p, linear, size comparison for different compressors. Space required before compression: 92.2 MB
-    \caption{Index size comparison for different compressors.}\label{res:compressor-space}
+    \caption{Index size comparison for different compressors}\label{res:compressor-space}
 	\centering
     \begin{tabular}{ r rrrrr }
 		~ & \multicolumn{5}{c}{\textbf{Index Size (MB) / Compressor}}\\
@@ -218,7 +218,7 @@ Table \ref{res:compressor-space} shows the size of the index when the histograms
 
 \begin{table}
     %32 regions, 1 frame, 1080p, linear, compression time comparison for different compressors. Space required before compression: 92.2 MB
-    \caption{Index compression time for different compressors.}\label{res:compressor-time}
+    \caption{Index compression time for different compressors}\label{res:compressor-time}
 	\centering
     \begin{tabular}{ r rrrrr }
 		~ & \multicolumn{5}{c}{\textbf{Compression Time (s) / Compressor}}\\
@@ -231,12 +231,12 @@ Table \ref{res:compressor-space} shows the size of the index when the histograms
 	   \end{tabular}
 \end{table}
 
-\subsection{Query Time Components}\label{sec:query-time-components}
+\subsection*{Query Time Components}\label{sec:query-time-components}
 To see the influence of the compressor used, we determined how much of the total query time is spent checking the decompressed values, compared to the amount of time spent decompressing the video frames or histograms. The results are in Table \ref{res:time-components}. It is evident that the video resolution and our chosen index compressor only has a small influence on the total query time when the number of regions queried is large: Around $75\%$ of the time is spent on the actual query. As for the video query time, $>95\%$ of the total time is spent decompressing the video, with the actual query time being very insignificant in all cases. In absolute terms, the query times for the index and the decompressed video approach are comparable (difference around $10\times$) after decompression.
 
 \begin{table}[t]
     % Students, zlib-6, 32 regions, 1 frame, linear, percent of time spent performing query (the remainder is decompression)
-    \caption{Fraction of time spent analysing regions of total query time for students scenario (remainder is decompression). }\label{res:time-components}	
+    \caption{Fraction of time spent analysing regions of total query time for students scenario (remainder is decompression)}\label{res:time-components}	
 	\centering
     \begin{tabular}{r rr rr r}
         ~ & \multicolumn{2}{c|}{\textbf{Index Query Time}} & \multicolumn{2}{c}{\textbf{Video Query Time}} \\
@@ -250,7 +250,7 @@ To see the influence of the compressor used, we determined how much of the total
 	   \end{tabular}
 \end{table}
 
-\subsection{Frames/File \& Histogram Packing Strategies}
+\subsection*{Frames/File \& Histogram Packing Strategies}
 We tested the influence on the index size if storing more than one difference frame per file on disk. We tested four different value packing strategies: linear, binned, reg-linear, reg-binned. Consider a frame $F$ with two region histograms $r_1, r_2$. In the linear strategy, we just write all values from $r_1$ followed by all values from $r_2$. In the binned strategy, we interleave the value for the same histogram index from all regions in a frame, i.e. we wite $r_1[0] r_2[0] r_1[1] r_2[1] \ldots r_1[255] r_2[255]$ on disk. 
 When storing multiple frames $F_1, F_2$ in a file, assume $r_1, r_2$ has the same spatial coordinate in both frames. Then the reg-linear strategy writes $r_1$ followed by $r_2$, while the reg-binned strategy interleaves the values as before. 
 
@@ -260,7 +260,7 @@ storing more frames per file and changing the packing strategy had very little e
 
 \begin{comment}
 \begin{table}
-    \caption{Index size comparison for students scenario, for different histogram packing strategies and frames stored per file.}\label{res:frames-packing}
+    \caption{Index size comparison for students scenario, for different histogram packing strategies and frames stored per file}\label{res:frames-packing}
 	\centering
     \begin{tabular}{ r rrrr }
 		~ & \multicolumn{4}{c}{\textbf{Index Size (MB) / Packing Strategy}} \\

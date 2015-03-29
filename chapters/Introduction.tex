@@ -1,369 +1,148 @@
 %!TEX root = ../Thesis.tex
 \chapter{Introduction}
-\emph{Data Structures} are the basic building blocks in software engineering; they are the organizational method that allow us to store and access information in our computers efficiently. 
-An \emph{Algorithm} specifies the steps we perform to complete some task on an input in order to produce the correct output, relying on underlying data structures. %, typically relying on underlying data structures. 
-Naturally, deep knowledge and understanding of algorithms and data structures are core competences for software engineers, absolutely vital to developing efficient and predictable software. In this thesis, we consider the \emph{design and analysis of algorithms and data structures}:
+In this dissertation, we consider the \emph{design and analysis of algorithms and data structures}:
 
 %The core of the field of \emph{design and analysis of algorithms and data structures} is as follows:
 
 \begin{leftbar}
 %\paragraph{Design and analysis of algorithms and data structures}
-\noindent Our objective is to use resources efficiently. We \emph{design} data structures and algorithms that solve a \emph{problem}, and \emph{analyse} proposed designs in a \emph{machine model} that allows us to predict and compare the efficiency of different solutions on real computers.
+\noindent Our goal is to use computational resources efficiently. We \emph{design} data structures and algorithms that solve \emph{problems}, and \emph{analyse} proposed \emph{solutions} in a \emph{model of computation} that lets us predict efficiency and compare different solutions on real computers.
 \end{leftbar}
 
+\emph{Data Structures} are the basic building blocks in software engineering; they are the organizational method we use to store and access information in our computers efficiently. 
+An \emph{Algorithm} specifies the steps we perform to complete some task on an input in order to produce the correct output, relying on underlying data structures. %, typically relying on underlying data structures. 
+Naturally, deep knowledge and understanding of algorithms and data structures are core competences for software engineers, absolutely vital to developing efficient software. 
+
+This dissertation documents our research in this field of theoretical computer science, and later chapters each include one of the following papers that are published in or submitted to peer-reviewed conference proceedings. 
+Papers appear in separate chapters in their original form except for formatting, meaning that notation, language and terminology has not been changed and may not be consistent across chapters. 
+%The chapter titles are equal to the original paper titles. 
+Authors are listed alphabetically as is the tradition in theoretical computer science (except for \emph{Indexing Motion Detection Data for Surveillance Video}, which was published at a multimedia conference). 
 
 %For software engineers, knowledge and understanding of algorithms and data structures remain a core competence, absolutely vital to developing efficient and predictable software. This is especially true for data structures, as they are the basic building blocks in software engineering; they are the method through which we store and access information in our computers. 
 
-The following Section \ref{sec:in-back} is a brief general introduction to the field of algorithmic research, and may be skipped by familiar readers. The remainder of this chapter is an overview and introduction to our contributions.
-The later chapters each include one of the following papers that are published in or submitted to peer-reviewed conference proceedings. 
-
 \begin{description}
-    \item[Fingerprints in Compressed Strings.] By Philip Bille, Patrick Hagge Cording, Inge Li Gørtz, Benjamin Sach, Hjalte Wedel Vildhøj and Søren Vind. At Algorithms and Data Structures Symposium (WADS) 2013~\cite{bille2013fingerprints}.
-    \item[Colored Range Searching In Linear Space.] By Roberto Grossi and Søren Vind. At Scandinavian Symposium and Workshops on Algorithm Theory (SWAT) 2014~\cite{grossi2014colored}.
-    \item[Indexing Motion Detection Data for Surveillance Video.] By Søren Vind, Philip Bille and Inge Li Gørtz. At IEEE International Symposium on Multimedia (ISM) 2014~\cite{vind2014indexing}.
-    \item[Output-Sensitive Pattern Extraction in Sequences.] By Roberto Grossi, Giulia Menconi, Nadia Pisanti, Roberto Trani and Søren Vind. At Foundations of Software Technology and Theoretical Computer Science (FSTTCS) 2014~\cite{grossi2014output}.
-    \item[Compressed Data Structures for Range Searching.] By Philip Bille, Inge Li Gørtz and Søren Vind. At International Conference on Language and Automata Theory and Applications (LATA) 2015~\cite{bille2015compressedrs}.
-    \item[Compressed Pattern Matching in the Annotated Streaming Model.] By Markus Jalsenius, Benjamin Sach and Søren Vind. In submission.
-    \item[Dynamic Relative Compression and Dynamic Partial Sums.] By Philip Bille, Patrick Hagge Cording, Inge Li Gørtz, Frederik Rye Skjoldjensen, Hjalte Wedel Vildhøj and Søren Vind. In submission.
+    \item[Chapter \ref{chp:fingerprints}: \emph{Fingerprints in Compressed Strings}.]~\\
+    By Philip Bille, Patrick Hagge Cording, Inge Li Gørtz, Benjamin Sach, Hjalte Wedel Vildhøj and Søren Vind. At Algorithms and Data Structures Symposium (WADS) 2013~\cite{bille2013fingerprints}.
+    \item[Chapter \ref{chp:dynamiccompression}: \emph{Dynamic Relative Compression and Dynamic Partial Sums}.]~\\
+    By Philip Bille, Patrick Hagge Cording, Inge Li Gørtz, Frederik Rye Skjoldjensen, Hjalte Wedel Vildhøj and Søren Vind. In submission.
+    \item[Chapter \ref{chp:annotated}: \emph{Compressed Pattern Matching in the Annotated Streaming Model}.]~\\
+    By Markus Jalsenius, Benjamin Sach and Søren Vind. In submission.
+    \item[Chapter \ref{chp:patternextraction}: \emph{Output-Sensitive Pattern Extraction in Sequences}.]~\\
+    By Roberto Grossi, Giulia Menconi, Nadia Pisanti, Roberto Trani and Søren Vind. At Foundations of Software Technology and Theoretical Computer Science (FSTTCS) 2014~\cite{grossi2014output}.
+    \item[Chapter \ref{chp:compressedrangesearching}: \emph{Compressed Data Structures for Range Searching}.]~\\
+    By Philip Bille, Inge Li Gørtz and Søren Vind. At International Conference on Language and Automata Theory and Applications (LATA) 2015~\cite{bille2015compressedrs}.
+    \item[Chapter \ref{chp:coloredrangesearching}: \emph{Colored Range Searching In Linear Space}.]~\\
+    By Roberto Grossi and Søren Vind. At Scandinavian Symposium and Workshops on Algorithm Theory (SWAT) 2014~\cite{grossi2014colored}.
+    \item[Chapter \ref{chp:motiondetection}: \emph{Indexing Motion Detection Data for Surveillance Video}.]~\\
+    By Søren Vind, Philip Bille and Inge Li Gørtz. At IEEE International Symposium on Multimedia (ISM) 2014~\cite{vind2014indexing}.
 \end{description}
 
-The papers appear in separate chapters in their original form (except for formatting), meaning that notation, language and terminology has not been changed and may not be consistent across chapters. The chapter titles are equal to the original paper titles. Authors are listed as per the tradition in the field (alphabetically except for \emph{Indexing Motion Detection Data for Surveillance Video} which was published at a multimedia conference). 
-
-The journal version of the following paper appeared during my PhD, but as the results were obtained and the conference version published prior to starting the PhD programme, the paper is omitted from this dissertation.
+The journal version of the following paper appeared during my PhD enrollment, but as the results were obtained and the conference version published prior to starting the PhD programme, the paper is omitted from this dissertation.
 
 \begin{description}
-    \item[String Indexing for Patterns with Wildcards.] By Philip Bille, Inge Li Gørtz, Hjalte Wedel Vildhøj and Søren Vind. At Scandinavian Symposium and Workshops on Algorithm Theory (SWAT) 2012~\cite{bille2012string}. In Theory of Computing Systems 2014.~\cite{bille2014string}
+    \item[\emph{String Indexing for Patterns with Wildcards}.]~\\
+    By Philip Bille, Inge Li Gørtz, Hjalte Wedel Vildhøj and Søren Vind. At Scandinavian Symposium and Workshops on Algorithm Theory (SWAT) 2012~\cite{bille2012string}. In Theory of Computing Systems 2014~\cite{bille2014string}.
 \end{description}
- 
+
+The dissertation is organized as follows. 
+The following Section \ref{sec:in-back} is a brief general introduction to the field of algorithmic research, and may be skipped by readers familiar with the subject. 
+Chapter \ref{chp:contributions} gives an overview of our contributions, and the later Chapters include the papers mentioned above.
+
 
 %How does the world look? And where are we?
-\section{Bits of Background and Context}\label{sec:in-back}
+\section{Background and Context}\label{sec:in-back}
 %\section{Algorithms and Data Structures: Taxonomy} 
 %The academic field of Computer Science emerged from mathematics and electrical engineering during the latter half of the 20th century. 
 %The first large-scale use of computers was during the Second World War, where they were used to break encryption schemes. Ever more complex and large computer installations were built in the following years, primarily for military use, but the machines eventually found a home in industry and universities. 
 %The result was that the first academic institutions devoted to studying computer science were created almost exactly fifty years ago (e.g. The Department of Computer Science at Carnegie Mellon University was founded in 1965, as possibly the first such department in the world).
 
-In his pioneering work \emph{``On Computable Numbers, with an Application to the Entscheidungsproblem''}~\cite{turing1936computable} from 1936, Alan Turing in a single stroke became the father of the field of \emph{theoretical computer science}. He gave the first general model of the theoretical capabilities of computers with the \emph{Turing Machine}, and (among others) gave a formalisation of \emph{algorithms}.
-In the following 80 years theoretical computer science naturally expanded, with the computer revolution and the first computer science institutions being established around fifty years ago\footnote{In 1965, the Department of Computer Science was founded at Carnegie Mellon University, as possibly the first such department in the world.}. 
+In his pioneering work \emph{``On Computable Numbers, with an Application to the Entscheidungsproblem''}~\cite{turing1936computable} from 1936, Alan Turing in a single stroke became the father of the field of \emph{theoretical computer science}. He gave the first general model of the theoretical capabilities of computers with the \emph{Turing Machine}, and in doing so formalized the concept of \emph{algorithms}.
+In the following 80 years the computer revolution occurred and the first institutions devoted to computer science research were established around fifty years ago, causing the field to naturally expand\footnote{In 1965, the Department of Computer Science was founded at Carnegie Mellon University, as possibly the first such department in the world.}. 
 %\fix{Move to after defs below} The fields of algorithms and data structures are extremely closely related, and we often use solutions and ideas from one in the other. 
-Today, the field is founded on the modern day equivalents of the concepts introduced by Turing:
+Today, the field is founded on modern day equivalents of the concepts introduced by Turing:
 
 \begin{description}
-    \item[Machine Model] We use an abstract model of a computer that ignores most details and allows us to understand its behaviour and reason about performance.
-    For example, computation in the very common Word RAM model resembles the capabilities of modern day CPUs: memory is modeled as a sequence of words with $w$ bits. We can read or write a word in unit time and perform arithmetic and word-operations on a constant number of words in unit time.
-    \item[Algorithms] In its most general formulation, an algorithm is a method for solving a problem on an input that produces the correct output. 
+    \item[Algorithms] 
+    An \emph{algorithm} is a method for solving a \emph{problem} on an input which produces the correct output. 
 %The method can be thought of as a series of calculations that must be performed on the input in order to generate the output. 
-    The \emph{problem} is a central concept which states the desired properties of the input and output.
-    One classic example of an algorithmic problem is \prob{sorting}: given as input a list of numbers, return the same numbers in non-decreasing order.
-    \item[Data Structures] A data structure is a method for maintaining a representation of some data while supporting a set of \emph{operations} on the data: allow \emph{updates}, and answer \emph{queries} on the updated data. 
+    The problem is a central concept which states the properties of the input and requirements for the output.
+    \prob{Sorting} is a classic example of an algorithmic problem: given as input a list of numbers, return the same numbers listed in non-decreasing order.
+    \item[Data Structures] 
+    A \emph{data structure} is a method for maintaining a representation of some data while supporting \emph{operations} on the data. Operations typically either \emph{update} or answer \emph{queries} on the stored data. We may think of a data structure as a collection of algorithms operate on the stored data.
     An example of a data structure problem is \prob{sorted list representation}: store a list of numbers subject to insertions and deletions, and support queries for the $k$'th smallest number.
+    \item[Model of Computation] 
+    The \emph{model of computation}\footnote{Also sometimes called the \emph{machine model}.} is an abstract model of a computer that ignores most real-world implementation details. This allows us to reason about the performance of algorithms and data structures on real physical computers.
+    The model of computation we use in this thesis is called the \emph{unit-cost $w$-bit Word RAM}, which resembles the capabilities of modern day processors: 
+    memory is modeled as a sequence of $w$-bit words that can be read and written, and we can perform arithmetic and word-operations on (pairs of) words.
 \end{description}
 
-%\paragraph{Solution Qualities}
+Generally, research in a particular problem takes two different angles. 
+One is to prove that the problem is impossible to solve using fewer resources than some \emph{lower bound}, meaning that \emph{any} solution must use at least that many resources. However, in this thesis our focus is on the opposite direction, which is to show that there is a solution with some \emph{upper bound} on the resources used.
+
 We characterise proposed solutions using several parameters.
 %, including \emph{correctness} and \emph{performance}. 
-First, the output of an algorithm or query must always be (one of the possible) \emph{correct} answers.
-The \emph{performance} of a solution is the amount of resources required to execute it in our machine model, calculated relative to the size $n$ of a finite input: typically the \emph{space usage} is the number of memory words required, and the \emph{time} is the number of machine operations necessary. We generally consider \emph{worst-case analysis}, meaning the performance obtained when given the input that cause the solution to perform as poorly as possible.
+The output of a (deterministic) solution must always adhere to its requirements and be a \emph{correct} answer.
+The \emph{performance} of a solution is the amount of resources it requires in our model of computation relative to the size $n$ of a finite input. Typically, we split the performance into two components: the \emph{space usage} is the number of memory words required, and the \emph{time} is the number of unit-cost machine operations required. Here, we study \emph{worst-case analysis}, which is the performance obtained when given an input that causes the solution to perform as poorly as possible.
+
+There are some problems for which traditional \emph{deterministic} solutions have inherently bad worst-case performance. To work around this, \emph{randomized} solutions relaxes the strict requirements on correctness or good worst-case performance. Instead, \emph{Monte Carlo} solutions have worst-case performance guarantees with a low probability of producing incorrect outputs. On the contrary, \emph{Las Vegas} solutions always produce correct outputs with a low risk of exhibiting bad performance for some inputs.
+
+\section{Why is this Important?}
+We now give a slightly contrived example that serves to illustrate why studying algorithms and data structures is important. It shows two different possible solutions for the fundamental \emph{dictionary} data structure problem, and indicates how we can calculate their (relative) performance. 
 
 \begin{leftbar}
-    \vspace{-1.4em} \paragraph{Data Structure Example: Two Possible Solutions}
+    %\vspace{-1.4em} \paragraph{A \prob{Dictionary} Data Structure Example: Why are data structures important?}~\\
+    Imagine that you want to look up the word \emph{``Dissertation''} in The Oxford English Dictionary in the physical book version from 1989. 
+    You remember that you used to perform this kind of query before the internet, so you would know to go to a page roughly in the middle and see if you had surpassed the entries for ``D''. If so, you would go to the middle part in the left half and continue like that. The property of the dictionary you use is that dictionary editors traditionally sort the entries. 
+    
+    However, suppose that the editors forgot to sort the words before printing your dictionary: How would you find the entry? Your only possibility would be to start on the first page and check each entry it contains. This is unfortunate: You risk that the entry is on the last page in the dictionary, forcing you to look at all pages!
+    
+    The 1989 Oxford English Dictionary consist of $20$ volumes with $21 730$ pages that contain about $300 000$ entries. If you can check $1$ entry per second the normal (sorted) search would complete in less than $20$ seconds, but the second (unsorted) search would require slightly more than $83$ hours. That is, your normal search is roughly $16000$ times faster than the unsorted search!
+    
+    Our sorted or unsorted dictionary is a good model of how we may store data in our computer, and the search for a word is called a \emph{membership} query. In computer science the first (sorted) search is called a \emph{binary search}, and it can be performed exactly when the data we search in is sorted. Otherwise we must perform a \emph{linear search} like the second (unsorted) search. 
+
+    \begin{comment}
     %We here give a description of a simplified data structure for the \prob{membership} problem, which is to store a set of distinct numbers $X$ subject to member queries: given a number $y$, does $X$ contain $y$? 
-    We now give a simple example with two possible solutions to a basic data structure problem called \prob{membership}, where we must
+    We now give an example that serves to illustrate how we can reason about the performance of two different possible solutions when solving a fundamental data structure problem. The problem is called \prob{membership}, and is to
     %for illustrative purposes. Our aim here is not to give the most efficient solution.    
     %The \prob{membership} problem is to 
-    store a set of distinct numbers $X$ and support member queries: given a number $y$, does $X$ contain $y$? We use a simplified machine model that models time by how many comparisons of numbers are made, and ignores space.
+    store a set of numbers $N$ and support \emph{member} queries on $N$: given a number $y$, does $N$ contain $y$? We analyse the time spent answering a query by counting how many number comparisons are made. 
+    %\fix{we ignore space and construction time}
     
-    The first solution is to store the unordered set $X$ in a list. To answer the query, we start at one end of the list and compare $y$ with a list element $x$: if $x = y$ we answer yes; otherwise we move to the next element. If we did not see $y$ after checking all elements in the list $y \not\in X$ and we answer no. Observe that a query answer always requires $O(|X|)$ comparisons if $y \not\in X$.
+    Our first proposed solution is to store the unsorted numbers $N$ in a list. To answer the query, we start at one end of the list and compare $y$ with a number $x$ in the list: if $x = y$ we answer $\YES$ (since then $N$ contains $y$); otherwise we move to the next number in the list and compare it to $y$ as before. If we reach the end of the list without finding $y$, then $y$ is not in $N$ and we answer $\NO$. 
+
+%    Observe that answering a query always requires as many comparisons as the size of the list if $y \not\in X$, which we write as $\Oh(|X|)$.
  
-    An alternate solution is to store the numbers sorted in ascending order.
-    This allows us to repeatedly use a single comparison to reduce the size of the list where $y$ can possibly exist by half. The technique is called \emph{binary search}, and  %compare $y$ to an element and exploit the ordering to ignore half of the list where $y$ cannot possibly lie. %using a single comparison.%and thus narrow down the search area much more efficiently than one element at a time.
-    it works as follows. We start at the middle number in the ordered list and compare its value $x$ to $y$. No matter the result, we know that $y$ can only possibly be in one half of the list and we can thus ignore the other half (if $x = y$ we answer yes; if $x < y$ we ignore the lower half, and conversely if $x > y$ we ignore the upper). The search continues by comparing $y$ to the remaining non-ignored part of the list and expanding the ignored part until the possible list has size one, meaning $y \not\in X$. In the worst case, we use $O(\log |X|)$ comparisons as each allows us to ignore half of the remaining possible list, and $\log |X|$ is the number of halvings of $|X|$ until $|X| \leq 1$.
+    An alternative solution is to store the numbers $N$ in a list sorted in increasing order, meaning that the smallest number is first in the list and the largest number is last in the list.
+    This allows us to repeatedly reduce the size of the part of the list where $y$ can possibly exist by half. The technique is called \emph{binary search}, and  %compare $y$ to an element and exploit the ordering to ignore half of the list where $y$ cannot possibly lie. %using a single comparison.%and thus narrow down the search area much more efficiently than one element at a time.
+    it works as follows. We find the middle number $m$ in the list, and observe that $m$ partitions the numbers in the list depending on how they compare to $m$: all smaller numbers are left of $m$ and all larger numbers are right of $m$.
+    %No matter the result, the ordering means that $y$ can only possibly be in one half of the list and we can thus ignore the other half: 
+    This means that if $y$ is smaller than $m$, the only possible positions where $y$ can appear (if it is in $N$) are in the left half of the list. If $y$ is larger than $m$ then $y$ can appear only in the right half.
+    %This means that if $y$ is smaller than $m$ we never need to look for $y$ to the right of $m$, so we ignore the upper half of the list (and if $y$ is larger than $m$ we ignore the lower half). 
+    %Thus, if $m < y$ we ignore the lower half of the list, and conversely if $m > y$ we ignore the upper half. 
     
-    In the above descriptions we ignored the time taken to construct the data structures. This can be done in $O(|X|)$ time for the unsorted list and $O(|X| \log |X|)$ time for the sorted solution. As the list is only created once and then queried repeatedly, the sorted solution spend less time in total if we make more than $O(\log |X|)$ queries.    
+    The search starts by comparing $m$ to $y$. If $m = y$ we answer $\YES$ as then $N$ contains $y$. Otherwise if $m < y$ we ignore the left half of the list, and conversely if $y < m$ we ignore the right half. 
+    We continue the search in the same way, by repeatedly comparing $y$ to the middle number of the non-ignored part of the list. In this way, we ignore half of the remaining list until the non-ignored list only contains one number $r$. If $r = y$ we answer $\YES$, and otherwise we answer $\NO$. 
+    
+    The worst case performance occur when $N$ does not contain $y$. Here, the first solution compares $y$ with all numbers in $N$, so the number of comparisons performed equals how many numbers are in $N$, which we write $|N|$. The alternative solution repeatedly use a single comparison to halve the size of the non-ignored part of the list until it reaches a size of $1$. Since $\log |N|$ is the number of halvings of $|N|$ until it reaches a size of at most $1$, we perform $\log |N|$ comparisons in the second solution.
+        
+    In the above descriptions we ignored the time spent constructing the data structures. This can be done in $\Oh(|X|)$ time for the unsorted list and $\Oh(|X| \log |X|)$ time for the sorted solution. As the list is only created once and then queried repeatedly, the sorted solution spend less time in total if we make more than a constant number of queries.    
+    \end{comment}
 \end{leftbar}
 
-Traditional \emph{deterministic} solutions have inherently bad worst-case performance when solving some problems. To this end, \emph{randomized} solutions relaxes the strict requirements on correctness and worst-case analysis. Instead, \emph{monte carlo} solutions have worst case performance guarantees but some probability of giving an incorrect output. On the contrary, \emph{las vegas} solutions always give a correct output, but with a risk of bad performance.
+Structuring data in an ordered fashion to help search is of course not a new invention from computer science. The alphabetic ordering of information dates back at least two thousand years, and the first monolingual English dictionary from 1604 was also ordered alphabetically\footnote{Interestingly, the alphabetic ordering was unusual enough to require an explanation from the editor.}. The example simply shows two simple possibilities for structuring data: the remainder of this dissertation discuss much more advanced data structuring techniques and algorithms for finding information in the structured data. As shown in the example, the difference in performance is dramatic, and it only grows with larger data sets. This is the main motivation for studying algorithms and data structures: we \emph{have to} use clever algorithmic techniques to cope with the ever growing quantities of data.
 
-%\paragraph{Upper and Lower Bounds}
-Generally, research in a particular problem takes two different angles. 
-One is to prove that it is impossible to solve the problem using less resources than some \emph{lower bound} for \emph{any} solution in a given machine model. The opposite direction is to show the existence of a solution where the amount of used resources can be limited by some \emph{upper bound}. 
-%That is, on one hand we try to show that we cannot possibly do better, and on the other we show what we can actually do. 
 
-%One is to prove \emph{lower bounds}, showing that it is impossible to solve the problem using less resources than some lower bound in a given machine model. When proving \emph{upper bounds}, we do the opposite by showing the existence of a solution where the amount of used resources is limited by some upper bound. 
+\begin{comment}
 \begin{leftbar}
-    \vspace{-1.4em} \paragraph{Lower Bound Example: Sorting}
+    \vspace{-1.4em} \paragraph{Lower Bound Example: \prob{Sorting}.} \todo{Lower Bound example, motivation}
     %Consider the classic problem of sorting a list of $n$ numbers where we measure the number of comparisons and swaps of pairs of numbers in the list. 
-    %There is a lower bound showing that $\Omega(n \log n)$ comparisons are necessary\docite{sorting}, and a matching upper bound giving an algorithm for solving the problem using $O(n \log n)$ comparisons\docite{mergesort, heapsort}. 
-    It is easy to show a lower bound of $\Omega(n \log n)$ for \prob{sorting} $n$ numbers using comparisons and swaps of pairs of numbers. If all $n$ numbers are distinct they have $n!$ possible permutations, only one of which is the correct ordering. Then the number of number-pair comparisons to identify a single permutation uniquely is $\Omega(\log (n!)) = \Omega(n \log n)$. There are several matching upper bounds in the form of algorithms solving the problem using $O(n \log n)$ comparisons\docite{mergesort, heapsort}.
+    %There is a lower bound showing that $\Omega(n \log n)$ comparisons are necessary\docite{sorting}, and a matching upper bound giving an algorithm for solving the problem using $\Oh(n \log n)$ comparisons\docite{mergesort, heapsort}. 
+    It is easy to show a lower bound of $\Omega(n \log n)$ for \prob{sorting} $n$ numbers using comparisons and swaps of pairs of numbers. If all $n$ numbers are distinct they have $n!$ possible permutations, only one of which is the correct ordering. Then the number of number-pair comparisons to identify a single permutation uniquely is $\Omega(\log (n!)) = \Omega(n \log n)$. There are several matching upper bounds in the form of algorithms solving the problem using $\Oh(n \log n)$ comparisons\docite{mergesort, heapsort}.
 
-    Observe that the sorting lower bound immediately implies a lower bound on the time per operation for any \prob{sorted list representation} data structure $\mathcal{D}$. The argument is as follows: First insert the entire list of $n$ numbers into $\mathcal{D}$, and then repeatedly get, store, and remove the smallest number in $\mathcal{D}$. Then the result is an ordered version of the original list, created in $O(n)$ operations, meaning that at least one of the operations must take time $\Omega(\log n)$.
+    Observe that the sorting lower bound immediately implies a lower bound on the time per operation for any \prob{sorted list representation} data structure $\mathcal{D}$. The argument is as follows: First insert the entire list of $n$ numbers into $\mathcal{D}$, and then repeatedly get, store, and remove the smallest number in $\mathcal{D}$. Then the result is an ordered version of the original list, created in $\Oh(n)$ operations, meaning that at least one of the operations must take time $\Omega(\log n)$.
 
-    Generally, lower bounds in weaker models may be circumvented by a stronger machine model. For example, there is a sorting algorithm taking $O(n \log \log n)$ time in the Word RAM model.
+    Generally, lower bounds in weaker models may be circumvented by a stronger machine model. For example, there is a sorting algorithm taking $\Oh(n \log \log n)$ time in the Word RAM model.
 \end{leftbar}
+\end{comment}
 
-% So what particular branch do we consider? And why is this interesting?
-\section{My Contributions}
-As initially stated, I consider data structures to one of the most fundamental building blocks for efficiently solving problems. 
-%To see why, consider an example from the origins of the field of combinatorial pattern matching. In 1970, a fair amount of research had gone into finding solutions to the problem of determining the \emph{longest common substring}\footnote{Given two strings of length $n$, what is the longest substring that is in both strings?} of two strings of length $n$, and thus it was eventually conjectured that no linear time solution existed\docite{donald knuth}. However, in 1973 Peter Weiner~\cite{weiner1973linear} disproved the conjecture by inventing the \emph{suffix tree} data structure, which immediately solved the problem (and many others). In the following 40 years, the data structure and its extensions have been exploited to solve countless problems\docite{many papers} in combinatorial pattern matching, where it remains a key primitive.
-Consequently, my main interest has been in designing new solutions for core data structure problems.
-%I have particularly enjoyed considering the simplest of questions, focusing on core data structure primitives and extremely classic problems.
-A particular interest of mine is to find solutions that require relatively little space. Each of the proposed data structures exhibit this particular property, though they span several different subfields of algorithmic research, namely combinatorial pattern matching, geometry, and compression. 
-
-The papers included in the remaining chapters of this thesis each contribute at least one non-trivial newly-designed data structure for solving a particular problem. In some instances, the data structure is a cornerstone in giving a solution to an algorithmic problem, while in other cases it is the singular contribution. All but one of the papers are purely theoretical, meaning that although the proposed solutions may be good in practice, their efficiency have only been established in theory. In a single case, the proposed data structure was implemented and tested experimentally in practical scenarios.
-
-In the following, I will give a brief overview of some of the fundamental data structure problems that are relevant for the later chapters, and provide a background for how our contributions fit in the larger world of data structures. The chapter is meant to give a brief overview of the field from our perspective, not to provide an exhaustive history.
-%Since the contributions by each paper fit into a number of categories, I will discuss general themes, and include each paper in the themes where it fits.
-
-%The chapter should be relatively self-contained and the significance of the results understandable.
-
-
-\begin{framed}
-\noindent For each paper or subject considered in the later chapters, make a subsection. 
-Then in that subsection clarify:
-\begin{itemize}
-    \item Our Contributions
-    \item Future Directions
-\end{itemize}
-\end{framed}
-
-\subsection{Model}
-The computation model used in all papers is the \emph{Word RAM model}, where the memory is modeled as an array of $w$-bit words. To be able to index into the array in constant time, we always require $w \geq \log n$ where $n$ is the problem size. In this model, words can be accessed and modified in constant time. Comparisons, arithmetic operations and common word-operations (AND, OR, NOT) each take constant time when operating on a constant number of words. 
-
-
-\subsection{Strings}
-A \emph{string} (or text) is a sequence of characters from some \emph{alphabet}. Classically, we store the sequence as is, with each character taking up a single word in memory. Strings is a core data abstraction, and much data may be stored and transmitted in the form of text, such as log files, time series databases, text documents or DNA sequences \fix{such as ACGATTAGATAAGC}. 
-
-We may also consider storing strings in compressed form.
-\emph{Phrase-compression} is a standard compression model, where the text is compressed into a sequence of phrases and each phrase is an extension of some previous phrase in the sequence. A \emph{straight line program} is such a phrase-based compression scheme, where a new phrase is always either 1) a terminal character or 2) the concatenation of two previous phrases.
-This theoretical scheme captures many compression schemes with low overhead, such as the LZ77 and LZ78 schemes invented by Lempel and Ziv~\cite{lz77,lz78}. 
-% The \emph{straight line program} is a well-studied phrase-based general compression scheme. It captures many compressions such as the LZ77 and LZ78 schemes invented by Lempel and Ziv~\docite{lz77,lz78}. 
-When dealing with compressed text, we denote by $n$ the size of the compressed text (the number of phrases), and let $N$ be the size of the decompressed text. 
-
-Four papers related to strings are included in this dissertation. 
-First, we consider \prob{compressed fingerprints}, showing how augment a straight line program with linear additional storage to support efficient fingerprint queries.
-We also consider the \prob{compressed pattern matching} problem, which is to find the occurrences of a given \emph{pattern} in a given \emph{compressed text} (i.e. the starting positions where a substring of the text matches the pattern). 
-A single paper give the first output-sensitive solution to \prob{pattern extraction}, which may be considered the opposite of pattern matching. It is to extract unknown and \emph{important patterns} from a given text (where importance is measured as the number of occurrences of the pattern). 
-%That is, only the text is given, the patterns are unknown and must be found by the algorithm (along with their occurrences). 
-Finally, we consider \prob{dynamic compression}, where we must maintain a representation of a compressed string that can be modified.
-
-
-
-\clearpage
-\subsubsection{Compressed Fingerprints}
-In 1987, Karp and Rabin~\cite{karp1987efficient} proposed a classic pattern matching algorithm for uncompressed text of length $N$. Their approach is \emph{randomized}, relying on \emph{fingerprints} to efficiently compare substrings. The randomization is one-sided: all occurrences will be reported, but there is a small risk of reporting occurrences that do not exist.
-Their \emph{Karp-Rabin fingerprints} have subsequently been used for a multitude of purposes, as a cornerstone in solving many string problems~\cite{amir1992efficient, andoni2006efficient, cole2003faster, cormode2005substring, cormode2007string, farach1998string, gasieniec1996randomized, kalai2002efficient, porat2009exact}. 
-% We use $\fp(s)$ to denote the Karp-Rabin fingerprints of a string $s$.
-They have a number of key properties that make them extremely useful:
-\begin{enumerate}
-    \item they support composition in constant time, allowing us to find the fingerprint of a string from the fingerprints of two halves,
-    \item they can be stored in constant space per fingerprint,
-    \item the fingerprints of two strings are different with high probability if the strings are different (if the strings are equal the fingerprints are as well).
-\end{enumerate}
-These properties mean, for example, that we can create and store fingerprints of all prefixes of a string $s$ in $O(N)$ time and space to allow (probabilistic) substring comparisons in $s$ in constant time. While the same bound can be achieved deterministically by storing a suffix tree, we will use the same properties on compressed strings.
-
-
-\paragraph{Our Contribution} 
-If storing a compressed string we cannot afford linear space in the text length to store fingerprints. In \paper{Fingerprints for Compressed Strings} we provide a data structure for storing fingerprints in compressed space that supports efficient retrieval. Our data structure is for straight line programs, uses $O(n)$ space and allows us to retrieve the Karp-Rabin fingerprint of any (decompressed) substring in $O(\log N)$ time. A previous solution with the same query time was given by Gagie for the much simpler case of balanced straight line programs, but no previous results were known in the general case~\cite{gagiefingerprint}. Our data structure builds on techniques introduced in a seminal paper by Bille, Landau, Raman, Sadakane, Satti, and Weimann~\cite{bille2011random}, where they show how to store a straight line program in linear space to support random access to a character in the decompressed string in $O(\log N)$ time.
-
-The consequence of our result is that (probabilistically) comparing two substrings can now be done in the same time as accessing a single character. This is the same situation as for uncompressed strings. As an application of our fingerprint queries, we also show how to answer \prob{longest common extension} queries, asking for the length $\ell$ of the longest matching substring starting from two positions in the uncompressed text, in time $O(\log \ell \log N)$. This is a fundamental primitive used in many string algorithms~\docite{zillionpapers}.
-This data structure immediately implies a compressed space implementation of all previous algorithms relying on Karp-Rabin fingerprints or longest common extension queries. It also admits a compressed space probabilistic implementation with $O(\log N)$ overhead of all deterministic algorithms relying on constant time substring comparisons on the decompressed string.
-
-\paragraph{Future Work}
-Very recently, \fix{XXX et al.}~\docite{patrick++} have shown that random access in straight line programs can be solved in optimal time \fix{$O(\log N / \log \log N)$} if increasing the space use to be \fix{superlinear}. This matches a lower bound by \fix{somepeople}~\docite{RASLPlowerbound}. A natural question is if their technique can be extended to improve the query time for fingerprint queries?
-
-We answer longest common extension queries by an exponential search followed by a binary search, both using fingerprint queries to compare substrings. The fingerprint queries are extremely structured, and it feels like this may be exploited to improve the query time. However, having looked at this for a long time, I believe a different approach or new techniques are required. This is an obvious interesting research direction.
-
-
-\clearpage
-\subsubsection{Compressed Pattern Matching}
-The canonical problem on strings is \prob{pattern matching}, where we must find occurrences of a \emph{pattern} in a text. In the classic problem, the pattern consist of characters from the same alphabet as the text, and an occurrence of the pattern in the text is the location of a substring in the text that is equal to the pattern.
-In \prob{compressed pattern matching}, the text is compressed into $n$ phrases (the pattern is not) and we must solve pattern matching on the decompressed text: report the occurrences of the pattern of length $m$ in the decompressed text of length $N$. 
-
-For both the classic and compressed problem good solutions exist. In the classic variant there are multiple optimal solutions, some of which even work in the \emph{streaming model}~\cite{munro1980selection, flajolet1985probabilistic, alon1999space}. In this model the text is received in a stream one character at a time, occurrences must be reported when they occur, and only sublinear space $o(N)$ is allowed. 
-Known solutions for the compressed case does not work in the streaming model with the sequence of phrases received one at a time. In fact there is a space lower bound showing that any solution to compressed matching in the streaming model must use space $\Omega(n)$. 
-
-In order to model the current state of affairs in computing with easy and cheap access to massive computational power over the internet, the \emph{annotated streaming model} introduced by Chakrabarti, Cormode and McGregor~\cite{chakrabarti2009annotations, chakrabarti2014annotations} expands the classic streaming model by introducing an untrustworthy \emph{annotator}. 
-This annotator is a theoretical version of ``the cloud'', assumed to have unbounded computational resources and storage, and it assists a \emph{client} in solving some problem by providing an \emph{annotated data stream} that is transmitted along with the normal input stream (i.e. the client-annotator communication is one-way). 
-Software and hardware faults, as well as intentional attempts at deceit by the annotator (as could reasonably be the case), are modeled by assuming that the annotator cannot be trusted.
-In this model, the relevant performance parameters is the space required on the client, the time to process a phrase and the amount of annotation sent per item in the input stream.
-
-
-\paragraph{Our Contribution} 
-In \paper{Compressed Pattern Matching in the Annotated Streaming Model}, we give a trade-off solution to compressed pattern matching in the annotated streaming model that requires $O(\log n)$ space on the client, and uses $O(\log n)$ words of annotation and time per phrase received. 
-The result is possibly the first to show the power of cloud computing in solving traditional problems on strings (the existing early work focuses on graph algorithms). 
-
-
-\paragraph{Future Work}
-There are multiple natural directions to go in extending our work in the annotated streaming model. Generally, research into decreasing the amount of annotation per stream element even further would be of great interest. 
-It seems likely that our obtained result can be extended to dictionary matching, where matches with any pattern from a dictionary of patterns must be reported. Of course, we would hope to get bounds better than just repeating the same algorithm for an entire dictionary of patterns. 
-
-A natural and much more powerful extension of our patterns is that of regular expressions. Intuitively, access to an untrusted annotator with unbounded computational power seems like it should help, as answering regular expression matching typically require many resources. However, extending our techniques to this case was non-trivial, but is a promising area of further research. 
-
-
-\clearpage
-\subsubsection{Pattern Extraction}
-In \emph{pattern extraction}, the task is to extract the ``most important'' and frequently occurring patterns from a text $S$.
-We define the occurrence of a pattern in $S$ as in \emph{pattern matching} (pattern $p$ occurs at position $i$ in $S$ iff $p$ appears as a substring of $S$ starting at position $i$). The importance of a pattern depends on its statistical relevance, namely, if the number of occurrences is above a certain threshold.
-
-Pattern extraction should \emph{not} be confused with pattern matching. In fact, we may consider the problems inverse: the former gets a text $S$ from the user, and extracts patterns $P$ and their occurrences from $S$, where both are unknown to the user (and $P$ meets some criteria); the latter gets $S$ and a given pattern $p$ from the user, and searches for occurrences of $p$ in $S$, and thus only the pattern occurrences are unknown to the user.
-
-As is the case in pattern matching, one can imagine generalizing the standard patterns that consist of characters from the text alphabet in many ways (making the problem more real-world applicable). Indeed, many notions of patterns exist in the pattern extraction world
-\cite{CominV13, CunialA12, ApostolicoPU11, rime, Eskin04, IliopoulosMPPRS05, grossi2011madmx, IsaacAU05, sagot1998spelling, tcsUkkonen09, arimura2007efficient}. The natural variation we study allows the special don't care character $\dontcare$ in a pattern to mean that the position inside the pattern occurrences in~$S$ can be ignored (so $\dontcare$ matches any single character in~$S$). For example, $\mathtt{TA}\dontcare\mathtt{C}\dontcare \mathtt{ACA}\dontcare \mathtt{GTG}$ is such a pattern for DNA sequences.
-
-%A \emph{motif} is a pattern of \emph{any} length with \emph{at most   $k$ don't cares} occurring \emph{at least $q$ times} in $S$. In this paper, we consider the problem of determining the \emph{maximal} motifs, where any attempt to extend them or replace their $\dontcare$'s with symbols from $\Sigma$ causes a loss of significant information (where the number of occurrences in $S$ changes).  We denote the family of all motifs by $M_{qk}$, the set of maximal motifs $\maxset \subseteq M_{qk}$ (dropping the subscripts in $\maxset$) and let $\occ(m)$ denote the number of occurrences of a motif $m$ inside $S$. It is well known that $M_{qk}$ can be exponentially larger than $\maxset$ \cite{Parida00}.
-
-\paragraph{Our Contribution} 
-In \paper{Output-Sensitive Pattern Extraction in Sequences}, we show how to extract patterns with at most $k$ don't cares and a minimum number of occurrences. We extract only \emph{maximal} patterns, meaning that we do not report patterns that can be made more precise (by extending them or replacing a don't care by an alphabet symbol) without losing occurrences.
-
-We give the first truly output-sensitive bounds for any variation of the pattern extraction problem, with all previous bounds that claimed to be output-sensitive still requiring polynomial time in $n$ to report each pattern. Instead, our solution requires $O(k^3)$ time per pattern occurrence, which is far superior as $k$ is typically a small constant. Our algorithm is simple, but the analysis is complex.
-
-\todo{The outline here.}
-
-\paragraph{Future Work}
-\begin{itemize}
-\item Our paper was analyzing how the construction algorithm worked for the motif trie. We amortized the construction cost for the entire trie on the number of actual maximal motifs it stores.
-\item Does the same kind of analysis extend to the \prob{frequent itemset problem}? Here algorithms also perform bad in the worst case, but often not so bad in practice (as was the case for motif extraction before). We feel that the same situation may occur here.
-\end{itemize}
-
-
-\clearpage
-\subsubsection{Dynamic Compression}
-\fix{Dynamic Relative Compression}
-
-\begin{itemize}
-    \item Maintaining an asymptotically optimal compression of dynamic strings
-\end{itemize}
-
-\paragraph{Future Work}
-
-
-
-\clearpage
-\subsection{Range Searching}
-Much real world data has a natural spatial representation, as is the case for locations of interesting landmarks, visual data, or visitors to websites.
-Furthermore, much data can be represented spatially. For example, each row in a relational database can be thought of as a multidimensional point (with one dimension for each column). Consequently, geometric data structures is an important and well-studied research topic. 
-
-One of the core problems is \prob{orthogonal range searching}, where we must store a set of $d$-dimensional points $P$ to support \emph{reporting} and \emph{counting} queries. The input to a query is a $d$-dimensional rectangle, and the answer is the list of points in $P$ that are contained in the rectangle (or the number of points). If we allow updates, they are typically in the form of point insertions or deletions. 
-
-If the points are in a single dimension, we can typically solve problems efficiently using integer data structures. We will focus on points of dimension at least two, where there are multiple efficient data structures for range searching. However, only the simplest variant is understood, with upper and lower bounds for higher dimensions being far apart.
-
-Three of our papers consider variations of range searching. First, we consider \prob{colored range searching} where the points each have a single color and the colors inside a query rectangle must be reported or counted. We then give a result on \prob{compressed range searching}, showing a compression scheme for almost any classic range searching data structure that does not increase query times. Finally, we give experimental results on supporting \prob{threshold range searching}, where each point has some weight and only the points exceeding some weight threshold must be reported. 
-
-
-\clearpage
-\subsubsection{Points with Colors}
-We consider \prob{colored range searching}, which is a natural variation of range searching where points each have a single color. Colors are picked from some color alphabet, and two points can have the same color. The problem is also sometimes called generalized or categorical range searching, as we can think of the colors as categories that the points are put in. Queries ask for information about the colors of the points contained in a query range (instead of the actual points). That is, an answer to a reporting query is the distinct colors in a range, and a counting query must return the number of distinct colors.
-
-Perhaps surprisingly, the colored variations of range searching are known to be much harder than their non-colored counterparts of the same dimensionality~\docite{lower bounds}. This is due to the non-uniqueness of colors in the query range, which means that reporting distinct colors incur additional computation that cannot be counted towards the time spent outputting points \fix{normally we count the time spent outputting points separately, as this is a required part of the output}. 
-
-\todo{Counting hardness}
-\todo{Counting "harder" than reporting}
-
-Observe that for any constant dimensionality, we can always obtain linear space and linear time by simply storing the points in a list and scanning throught it to find (the distinct colors of) the points in the range. 
-Furthermore, the well-known range tree~\docite{range tree} gives logarithmic query time for the non-colored problem using space $O(n \log n)$, and in linear space we can obtain $O(\sqrt{n})$ time with the K-D tree. 
-However, to obtain sublinear query times for the colored variant, previous solutions required excessive amounts of space of roughly $O(n^d)$. 
-
-
-\paragraph{Our Contribution} 
-In the paper \paper{Colored Range Searching in Linear Space}, we give the first data structure for two-dimensional points in linear space and with sub-linear query time. We also give high dimensional structures with almost-linear space of $O(n \log \log^d n)$. In addition, we propose the first dynamic solutions in for any number of dimensions.
-
-No previous papers considered how to obtain a non-trivial solution to colored range searching in (almost) linear space, and consequently, the proposed solution uses much less space than previous solutions.
-
-Our result is obtained by partitioning points into groups depending on their color. Each group stores all the points for at most $\log n$ specific colors. We then further partition the points in each group into buckets, each containing a polylogarithmic number of points. 
-The points in each bucket are stored in a modified range tree data structure, storing for each node in the range tree an auxiliary data structure identifying the colors contained in its range. 
-To answer a query, we solve the problem independently in each bucket and get the final answer by merging the bucket results. 
-
-
-\paragraph{Future Work}
-\begin{itemize}
-    \item Non-trivial linear space data structure for at least 3 dimensions
-    \item Improved bounds for two-dimensional colored range searching (we know of a tabulation improvement)
-    \item What if the points have multiple colors?
-    \item What if the points are moving?
-\end{itemize}
-
-
-\clearpage
-\subsubsection{Compressed Point Sets}
-The orthogonal range searching problem has been studied extensively over the last 40 years, creating a variety of classic proposed solutions~\cite{bentley1975multidimensional, bentley1979multidimensional, orenstein1982multidimensional, bentley1980decomposable, lueker1978data, lee1980quintary, guttman1984r, clarkson1983fast, kanth1999optimal, van1991dividedk, gaede1998multidimensional, bayer1972organization, arge2008priority, robinson1981kdb, procopiuc2003bkd, comer1979ubiquitous, eppstein2008skip} (Samet presents an overview in \cite{samet1990applications}). The classic solutions typically store the points in a some tree, using some strategy for dividing the $d$-dimensional universe into smaller areas and possibly introducing multiple copies of the same point to answer queries efficiently. 
-
-There are applications where the point set stored in an orthogonal range searching data structure commonly contains geometric repetitions, that is, subsets of points that are identical to each other but where the subset is offset by some translation vector.
-Range searching on points sets with geometric repetitions arise naturally in several scenarios such as data and image analysis \cite{tetko2001pattern, pajarola2000image, dick2009a}, GIS applications \cite{schindler2008detecting, zhu2002efficient, haegler2010a, dick2009a}, and in compactly representing sparse matrices and web graphs~\cite{Galli98compressionof, brisaboa2009k2, brisaboaainterleaved, de2013compact}.
-
-\paragraph{Our Contribution} 
-In \paper{Compressed Data Structures for Range Searching} we show that geometric repetitions can be exploited to compress all classic data structures that are based on trees can be efficiently compressed into a directed acyclic graph (DAG) representation. Any query on the original data structure can be answered by simulation on the compressed representation with only constant overhead. 
-
-We give a canonical range searching data structure, which is a tree that models almost all classic range searching data structures with constant overhead. We then show how to represent this using relative coordinates, allowing us to compress the relative tree using a minimal DAG representation that can be constructed in linear time due to Downey, Sethi and Tarjan~\cite{downey1980variations}.
-
-As the classic data structures are not designed to be compressed, they may be un-compressible though the underlying points they store are. 
-To this end, we also give a new hierarchical clustering algorithm that ensures that compressible point sets are indeed compressed (under certain constraints). The result is a new compressed data structure for which we can guarantee that the points are compressed.
-
-\paragraph{Future Work}
-\begin{itemize}
-    \item Improve clustering algorithm run time
-    \item Clustering for larger range of point distributions
-    \item Give bounds for compression of specific point distributions
-\end{itemize}
-One could imagine other types of repetitions, such as subsets of points that are identical under rotation or scaling. We do not consider those in the paper, though the canonical range searching data structure supports storing such repetitions (as long as they can be described by a constant number of words per edge). An open question is how to efficiently find such repetitions and construct a corresponding relative tree.
-
-\clearpage
-\subsubsection{Threshold Range Searching in Practice}
-Yet another variation of range searching arise if we assume that the points each have an integer weight. We can then naturally consider queries asking us to report or count the number of points in some query area where the weight of a reported point exceed some threshold. 
-Alternatively, we can think of the weight as a coordinate in a new dimension and the queries as being unbounded in one direction in that new dimension.
-
-An instance of the 4-dimensional threshold range counting problem occurred naturally in a software package for video surveillance built by Milestone Systems. Their system stores surveillance videos on disk in compressed form for later analysis. The goal was to be able to answer \prob{motion detection} queries on video from a (statically mounted) surveillance camera to find ``interesting clips''. More precisely, given a time interval $T$, a video area $A$ and two motion parameters $p$ and $q$, report all the timestamps in $T$ where area $A$ of the video had more than $p\%$ of the pixels changed by more than $q$ values. That is, each pixel is a point and the pixel value change is its weight.
-For this particular practical problem, the previously implemented solution performed extremely poorly. It simply decompressed the entire relevant portion of the compressed video file and computed the query. This made the functionality useless in practice. 
-
-\paragraph{Our Contribution} 
-In \paper{Indexing Motion Detection Data for Surveillance Video}, we suggest an index for answering \prob{motion detection} queries. The solution 1) creates a single data structure for each frame, 2) reduces the resolution of the queries allowed by partitioning frames into a number of regions, 3) creates histogram for the number of different weights in each region, and 4) stores the histograms after having compressed them using a standard compressor. To answer queries, the relevant histograms are decompressed, and the answer can be directly looked up.
-
-We implemented a prototype and performed a number of experiments with realistic data sets. The index is space-efficient in practice (using around $10\%$ of space required by the video file), quick to construct and answers queries quickly (speedup of at least $30x$). 
-
-\paragraph{Real World Implications} 
-A modified version of the suggested solution has already been implemented by Milestone in their software package. Their implementation is a restricted and optimized version of the prototype. First, by also implementing automatic noise detection they filter out the image noise. This allows them to reduce the histogram resolution, only storing a handful of difference values for each histogram. The end result is a performance improvement of ~100x compared to their previous solution, for a space requirement of ~1KB per second of video. This has enabled them to use the search function as an integral part of their product as it can now deliver results in real time.
-
-
-\paragraph{Future Work}
-The reason we are solving threshold range searching in the first place is that data structures for storing moving points are quite complicated and seem to perform relatively poorly.
-What we \emph{actually} want is a simple kinetic data structure that supports efficient threshold queries. It should be able to compete with our current approach of just creating a new data structure per time stamp.
-
-
-\clearpage
-\subsection{Bonus: Integer Data Structures}
-One of the most fundamental and important fields of data structures is that of \emph{integer data structures}, where we operate on a sequence of integers, here denoted $X$. In our work, we have suggested new solutions to variants of two core problems called \prob{predecessor} and \prob{prefix sums}.
-
-
-\clearpage
-\subsubsection{Predecessor}
-We must store $X$ in order to support the \emph{predecessor} query $\pred(q)$, asking for the largest element in $X$ smaller than $q$ (a \emph{successor} query for the smallest element larger than $q$ must also be supported). Early data structures for the problem only supported that query, but later developments also included support for insertions and deletions in $X$ as well as other closely related queries. The latest solutions are extremely advanced data structures; they are the culmination of decades of work and essentially optimal for all possible parameters\docite{vEB, PatrascuThorup, Fusion Trees}, yielding a query time of $O(\log \log |X|)$\fix{include fusion tree bounds}. 
-
-\paragraph{Our Contribution} 
-Predecessor data structures are used in several of the included papers as a black box. But we also introduced a new data structure in \paper{Fingerprints in Compressed Strings} for answering \emph{finger predecessor} queries: The query is as before except that it also gives a reference to an existing element $\ell \in X$. For this variation, we give a dynamic solution with query time $O(\log \log |\ell-q|)$ \fix{number of elements between $q, \ell$?}, which is much better than the general solution when the reference is close to the query point. This is used in the paper to reduce the query time for multiple repeated queries to the same data structure.
-
-\paragraph{Future Work}
-\begin{itemize}
-    \item Predecessor (and Finger Predecessor) essentially solved
-    \item Succinct
-    \item Deterministic?
-    \item Finger Trees
-\end{itemize}
-
-
-\clearpage
-\subsubsection{Partial Sums}
-We must store the sequence of integers $X$ to support three operations: \emph{update} the value of an integer at some position by adding some value to it, find the \emph{sum} of the first $i$ elements, and \emph{search} for the smallest sum larger than some query integer $q$. It is natural to consider the search operation as a successor query among the prefix sums in $X$. 
-
-The partial sums problem is extremely well-studied, with a long line of papers showing improved upper and lower bounds\docite{ManyPapers}. It was shown early that $O(\log n / \log \log n)$ time per operation is sufficient\docite{somePaper}. Due to Patrascu~and~Demaine~\cite{PatrascuDemaine, Others?}, we now have matching upper and lower bounds of $O(\log n / \log (w / \Delta))$ \fix{check this} time per query in the Word RAM model, where $\Delta$ is the maximal number of bits allowed in the update argument and $w$ is the maximal number of bits per integer in $X$. 
-
-\paragraph{Our Contribution} 
-In \paper{Dynamic Relative Compression and Dynamic Partial Sums} we give a new improvement to the existing (optimal-time) data structure that also allow insertions and deletions in the sequence $X$. All previous data structures that allow modifications in $X$ only worked for very small integers (where $w = O(\log \log n)$) \fix{check this}. 
-
-\paragraph{Future Work}
-\begin{itemize}
-    \item Succinct
-    \item Dynamic Partial Sums essentially solved
-    \item Match the lower bound also for new operations
-    \item No hope of improving parameter possibilities for insert/delete
-    \item Further new operations may be considered
-\end{itemize}
 

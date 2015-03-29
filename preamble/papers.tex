@@ -11,6 +11,7 @@
 \usetikzlibrary{fit}
 \usetikzlibrary{arrows}
 \usetikzlibrary{decorations.markings}
+\usetikzlibrary{matrix}
 \tikzstyle{every picture}+=[remember picture]
 
 
@@ -65,7 +66,7 @@
 %    {\begin{center}}
 %    {\end{center}\setcounter{footnote}{0}\vspace{1em}}
     \newenvironment{authors}
-      {\par\edef\savedfootnotenumber{\number\value{footnote}}
+      {\vspace{1cm}\par\edef\savedfootnotenumber{\number\value{footnote}}
        \renewcommand{\thefootnote}{\fnsymbol{footnote}}
        \setcounter{footnote}{0}\centering}
       {\par\setcounter{footnote}{\savedfootnotenumber}}

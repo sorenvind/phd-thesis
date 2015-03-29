@@ -1,0 +1,2277 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.20)  23 MAR 2015 13:23
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**arrayexample1.tex
+(./arrayexample1.tex
+LaTeX2e <2011/06/27>
+Babel <3.9f> and hyphenation patterns for 78 languages loaded.
+
+./arrayexample1.tex:1: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \usepackage{
+                matrixcells}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+./arrayexample1.tex:2: Undefined control sequence.
+l.2 \usetikzlibrary
+                   {matrix}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./arrayexample1.tex:2: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2 \usetikzlibrary{m
+                     atrix}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no m in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no x in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 2--3
+[] 
+ []
+
+./arrayexample1.tex:4: Undefined control sequence.
+l.4 \tikzset
+            {
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./arrayexample1.tex:5: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.5 n
+     odesrep/.style={
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no n in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no / in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no k in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 9 in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no / in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no - in font nullfont!
+./arrayexample1.tex:15: Undefined control sequence.
+l.15     row sep=-\pgflinewidth
+                               ,
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no , in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no - in font nullfont!
+./arrayexample1.tex:16: Undefined control sequence.
+l.16     column sep=-\pgflinewidth
+                                  ,
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no , in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no = in font nullfont!
+./arrayexample1.tex:17: Undefined control sequence.
+l.17     font=\footnotesize
+                           ,
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no , in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no k in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no / in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no / in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no = in font nullfont!
+./arrayexample1.tex:38: Undefined control sequence.
+l.38           font=\tiny
+                         
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no , in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no 4 in font nullfont!
+Missing character: There is no / in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 5--48
+[]
+ []
+
+
+./arrayexample1.tex:49: LaTeX Error: Environment figure undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.49 \begin{figure}
+                   
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+./arrayexample1.tex:51: LaTeX Error: Environment tikzpicture undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.51 \begin{tikzpicture}
+                        
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./arrayexample1.tex:53: Missing $ inserted.
+<inserted text> 
+                $
+l.53 \matrix (
+              first) [table1withindices,text width=1em]
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+./arrayexample1.tex:53: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.53 \matrix (
+              first) [table1withindices,text width=1em]
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 53.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 53.
+./arrayexample1.tex:55: Misplaced alignment tab character &.
+l.55   &
+         1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 &\node (a) {12}; & 13 &...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:55: Misplaced alignment tab character &.
+l.55   & 1 &
+             2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 &\node (a) {12}; & 13 &...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:55: Misplaced alignment tab character &.
+l.55   & 1 & 2 &
+                 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 &\node (a) {12}; & 13 &...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:55: Misplaced alignment tab character &.
+l.55   & 1 & 2 & 3 &
+                     4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 &\node (a) {12}; & 13 &...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:55: Misplaced alignment tab character &.
+l.55   & 1 & 2 & 3 & 4 &
+                         5 & 6 & 7 & 8 & 9 & 10 & 11 &\node (a) {12}; & 13 &...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:55: Misplaced alignment tab character &.
+l.55   & 1 & 2 & 3 & 4 & 5 &
+                             6 & 7 & 8 & 9 & 10 & 11 &\node (a) {12}; & 13 &...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:55: Misplaced alignment tab character &.
+l.55   & 1 & 2 & 3 & 4 & 5 & 6 &
+                                 7 & 8 & 9 & 10 & 11 &\node (a) {12}; & 13 &...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:55: Misplaced alignment tab character &.
+l.55   & 1 & 2 & 3 & 4 & 5 & 6 & 7 &
+                                     8 & 9 & 10 & 11 &\node (a) {12}; & 13 &...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:55: Misplaced alignment tab character &.
+l.55   & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 &
+                                         9 & 10 & 11 &\node (a) {12}; & 13 &...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:55: Misplaced alignment tab character &.
+l.55   & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 &
+                                             10 & 11 &\node (a) {12}; & 13 &...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:55: Misplaced alignment tab character &.
+l.55   & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 &
+                                                  11 &\node (a) {12}; & 13 &...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:55: Misplaced alignment tab character &.
+l.55 ... 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 &
+                                                  \node (a) {12}; & 13 & 14 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:55: Undefined control sequence.
+l.55 ...3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 &\node
+                                                   (a) {12}; & 13 & 14 & 15 ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./arrayexample1.tex:55: Misplaced alignment tab character &.
+l.55 ...6 & 7 & 8 & 9 & 10 & 11 &\node (a) {12}; &
+                                                   13 & 14 & 15 & 16 & 17 & ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:55: Misplaced alignment tab character &.
+l.55 ... & 8 & 9 & 10 & 11 &\node (a) {12}; & 13 &
+                                                   14 & 15 & 16 & 17 & 18 & ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:55: Misplaced alignment tab character &.
+l.55 ...& 9 & 10 & 11 &\node (a) {12}; & 13 & 14 &
+                                                   15 & 16 & 17 & 18 & 19 \\...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:55: Misplaced alignment tab character &.
+l.55 ... 10 & 11 &\node (a) {12}; & 13 & 14 & 15 &
+                                                   16 & 17 & 18 & 19 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:55: Misplaced alignment tab character &.
+l.55 ... 11 &\node (a) {12}; & 13 & 14 & 15 & 16 &
+                                                   17 & 18 & 19 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:55: Misplaced alignment tab character &.
+l.55 ...\node (a) {12}; & 13 & 14 & 15 & 16 & 17 &
+                                                   18 & 19 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:55: Misplaced alignment tab character &.
+l.55 ... (a) {12}; & 13 & 14 & 15 & 16 & 17 & 18 &
+                                                   19 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+./arrayexample1.tex:55: LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.55 ...12}; & 13 & 14 & 15 & 16 & 17 & 18 & 19 \\
+                                                  [0.1em]
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./arrayexample1.tex:55: Missing $ inserted.
+<inserted text> 
+                $
+l.55 ...12}; & 13 & 14 & 15 & 16 & 17 & 18 & 19 \\
+                                                  [0.1em]
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./arrayexample1.tex:55: Missing } inserted.
+<inserted text> 
+                }
+l.55 ...12}; & 13 & 14 & 15 & 16 & 17 & 18 & 19 \\
+                                                  [0.1em]
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (170.8126pt too wide) in paragraph at lines 53--55
+ []$[] \OML/cmm/m/it/10 first\OT1/cmr/m/n/10 )[\OML/cmm/m/it/10 table\OT1/cmr/m
+/n/10 1\OML/cmm/m/it/10 withindices; textwidth \OT1/cmr/m/n/10 = 
+ []
+
+
+Overfull \hbox (183.72275pt too wide) in paragraph at lines 53--55
+ \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 em\OT1/cmr/m/n/10 ][]$ 
+ []
+
+
+./arrayexample1.tex:56: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.56   $
+        Z$   & 5 & 1 & 4 & 7 & 1 & 1 & 6 & 5 & 1 & 1 & 2 & 2 & 1 & 3 & 5 & 1...
+
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+./arrayexample1.tex:56: Misplaced alignment tab character &.
+l.56   $Z$   &
+               5 & 1 & 4 & 7 & 1 & 1 & 6 & 5 & 1 & 1 & 2 & 2 & 1 & 3 & 5 & 1...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 5 in font nullfont!
+./arrayexample1.tex:56: Misplaced alignment tab character &.
+l.56   $Z$   & 5 &
+                   1 & 4 & 7 & 1 & 1 & 6 & 5 & 1 & 1 & 2 & 2 & 1 & 3 & 5 & 1...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+./arrayexample1.tex:56: Misplaced alignment tab character &.
+l.56   $Z$   & 5 & 1 &
+                       4 & 7 & 1 & 1 & 6 & 5 & 1 & 1 & 2 & 2 & 1 & 3 & 5 & 1...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 4 in font nullfont!
+./arrayexample1.tex:56: Misplaced alignment tab character &.
+l.56   $Z$   & 5 & 1 & 4 &
+                           7 & 1 & 1 & 6 & 5 & 1 & 1 & 2 & 2 & 1 & 3 & 5 & 1...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 7 in font nullfont!
+./arrayexample1.tex:56: Misplaced alignment tab character &.
+l.56   $Z$   & 5 & 1 & 4 & 7 &
+                               1 & 1 & 6 & 5 & 1 & 1 & 2 & 2 & 1 & 3 & 5 & 1...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+./arrayexample1.tex:56: Misplaced alignment tab character &.
+l.56   $Z$   & 5 & 1 & 4 & 7 & 1 &
+                                   1 & 6 & 5 & 1 & 1 & 2 & 2 & 1 & 3 & 5 & 1...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+./arrayexample1.tex:56: Misplaced alignment tab character &.
+l.56   $Z$   & 5 & 1 & 4 & 7 & 1 & 1 &
+                                       6 & 5 & 1 & 1 & 2 & 2 & 1 & 3 & 5 & 1...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 6 in font nullfont!
+./arrayexample1.tex:56: Misplaced alignment tab character &.
+l.56   $Z$   & 5 & 1 & 4 & 7 & 1 & 1 & 6 &
+                                           5 & 1 & 1 & 2 & 2 & 1 & 3 & 5 & 1...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 5 in font nullfont!
+./arrayexample1.tex:56: Misplaced alignment tab character &.
+l.56   $Z$   & 5 & 1 & 4 & 7 & 1 & 1 & 6 & 5 &
+                                               1 & 1 & 2 & 2 & 1 & 3 & 5 & 1...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+./arrayexample1.tex:56: Misplaced alignment tab character &.
+l.56   $Z$   & 5 & 1 & 4 & 7 & 1 & 1 & 6 & 5 & 1 &
+                                                   1 & 2 & 2 & 1 & 3 & 5 & 1...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+./arrayexample1.tex:56: Misplaced alignment tab character &.
+l.56 ... & 5 & 1 & 4 & 7 & 1 & 1 & 6 & 5 & 1 & 1 &
+                                                   2 & 2 & 1 & 3 & 5 & 10 & ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 2 in font nullfont!
+./arrayexample1.tex:56: Misplaced alignment tab character &.
+l.56 ... & 1 & 4 & 7 & 1 & 1 & 6 & 5 & 1 & 1 & 2 &
+                                                   2 & 1 & 3 & 5 & 10 & 5 & ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 2 in font nullfont!
+./arrayexample1.tex:56: Misplaced alignment tab character &.
+l.56 ... & 4 & 7 & 1 & 1 & 6 & 5 & 1 & 1 & 2 & 2 &
+                                                   1 & 3 & 5 & 10 & 5 & 10 &...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+./arrayexample1.tex:56: Misplaced alignment tab character &.
+l.56 ... & 7 & 1 & 1 & 6 & 5 & 1 & 1 & 2 & 2 & 1 &
+                                                   3 & 5 & 10 & 5 & 10 & 2 \...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 3 in font nullfont!
+./arrayexample1.tex:56: Misplaced alignment tab character &.
+l.56 ... & 1 & 1 & 6 & 5 & 1 & 1 & 2 & 2 & 1 & 3 &
+                                                   5 & 10 & 5 & 10 & 2 \\[0....
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 5 in font nullfont!
+./arrayexample1.tex:56: Misplaced alignment tab character &.
+l.56 ... & 1 & 6 & 5 & 1 & 1 & 2 & 2 & 1 & 3 & 5 &
+                                                   10 & 5 & 10 & 2 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+./arrayexample1.tex:56: Misplaced alignment tab character &.
+l.56 ...& 6 & 5 & 1 & 1 & 2 & 2 & 1 & 3 & 5 & 10 &
+                                                   5 & 10 & 2 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 5 in font nullfont!
+./arrayexample1.tex:56: Misplaced alignment tab character &.
+l.56 ...& 5 & 1 & 1 & 2 & 2 & 1 & 3 & 5 & 10 & 5 &
+                                                   10 & 2 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+./arrayexample1.tex:56: Misplaced alignment tab character &.
+l.56 ... 1 & 1 & 2 & 2 & 1 & 3 & 5 & 10 & 5 & 10 &
+                                                   2 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 2 in font nullfont!
+
+Overfull \hbox (7.54167pt too wide) in paragraph at lines 56--56
+ []$\OML/cmm/m/it/10 Z$ 
+ []
+
+
+./arrayexample1.tex:57: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.57   $
+        Y$   &\node[fill=black!20] () {5}; & 6 & 10 & \node[fill=black!20] (...
+
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+./arrayexample1.tex:57: Misplaced alignment tab character &.
+l.57   $Y$   &
+              \node[fill=black!20] () {5}; & 6 & 10 & \node[fill=black!20] (...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:57: Undefined control sequence.
+l.57   $Y$   &\node
+                   [fill=black!20] () {5}; & 6 & 10 & \node[fill=black!20] (...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no [ in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no k in font nullfont!
+Missing character: There is no ! in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no ] in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no 5 in font nullfont!
+Missing character: There is no ; in font nullfont!
+./arrayexample1.tex:57: Misplaced alignment tab character &.
+l.57   $Y$   &\node[fill=black!20] () {5}; &
+                                             6 & 10 & \node[fill=black!20] (...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 6 in font nullfont!
+./arrayexample1.tex:57: Misplaced alignment tab character &.
+l.57   $Y$   &\node[fill=black!20] () {5}; & 6 &
+                                                 10 & \node[fill=black!20] (...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+./arrayexample1.tex:57: Misplaced alignment tab character &.
+l.57 ...  &\node[fill=black!20] () {5}; & 6 & 10 &
+                                                   \node[fill=black!20] () {...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:57: Undefined control sequence.
+l.57 ...de[fill=black!20] () {5}; & 6 & 10 & \node
+                                                  [fill=black!20] () {17}; &...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no [ in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no k in font nullfont!
+Missing character: There is no ! in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no ] in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 7 in font nullfont!
+Missing character: There is no ; in font nullfont!
+./arrayexample1.tex:57: Misplaced alignment tab character &.
+l.57 ...& 6 & 10 & \node[fill=black!20] () {17}; &
+                                                   18 & 19 & \node[fill=blac...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 8 in font nullfont!
+./arrayexample1.tex:57: Misplaced alignment tab character &.
+l.57 ... 10 & \node[fill=black!20] () {17}; & 18 &
+                                                   19 & \node[fill=black!20]...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 9 in font nullfont!
+./arrayexample1.tex:57: Misplaced alignment tab character &.
+l.57 ... \node[fill=black!20] () {17}; & 18 & 19 &
+                                                   \node[fill=black!20] () {...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:57: Undefined control sequence.
+l.57 ...[fill=black!20] () {17}; & 18 & 19 & \node
+                                                  [fill=black!20] () {25}; &...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no [ in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no k in font nullfont!
+Missing character: There is no ! in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no ] in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 5 in font nullfont!
+Missing character: There is no ; in font nullfont!
+./arrayexample1.tex:57: Misplaced alignment tab character &.
+l.57 ... 18 & 19 & \node[fill=black!20] () {25}; &
+                                                   \node[fill=black!20] () {...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:57: Undefined control sequence.
+l.57 ...19 & \node[fill=black!20] () {25}; & \node
+                                                  [fill=black!20] () {30}; &...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no [ in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no k in font nullfont!
+Missing character: There is no ! in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no ] in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no 3 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no ; in font nullfont!
+./arrayexample1.tex:57: Misplaced alignment tab character &.
+l.57 ...() {25}; & \node[fill=black!20] () {30}; &
+                                                   31 & 32 & 34 & 36 & 37 & ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 3 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+./arrayexample1.tex:57: Misplaced alignment tab character &.
+l.57 ...5}; & \node[fill=black!20] () {30}; & 31 &
+                                                   32 & 34 & 36 & 37 & 40 & ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 3 in font nullfont!
+Missing character: There is no 2 in font nullfont!
+./arrayexample1.tex:57: Misplaced alignment tab character &.
+l.57 ... \node[fill=black!20] () {30}; & 31 & 32 &
+                                                   34 & 36 & 37 & 40 & \node...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 3 in font nullfont!
+Missing character: There is no 4 in font nullfont!
+./arrayexample1.tex:57: Misplaced alignment tab character &.
+l.57 ...e[fill=black!20] () {30}; & 31 & 32 & 34 &
+                                                   36 & 37 & 40 & \node[fill...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 3 in font nullfont!
+Missing character: There is no 6 in font nullfont!
+./arrayexample1.tex:57: Misplaced alignment tab character &.
+l.57 ...l=black!20] () {30}; & 31 & 32 & 34 & 36 &
+                                                   37 & 40 & \node[fill=blac...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 3 in font nullfont!
+Missing character: There is no 7 in font nullfont!
+./arrayexample1.tex:57: Misplaced alignment tab character &.
+l.57 ...ck!20] () {30}; & 31 & 32 & 34 & 36 & 37 &
+                                                   40 & \node[fill=black!20]...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 4 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+./arrayexample1.tex:57: Misplaced alignment tab character &.
+l.57 ...] () {30}; & 31 & 32 & 34 & 36 & 37 & 40 &
+                                                   \node[fill=black!20] () {...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:57: Undefined control sequence.
+l.57 ...30}; & 31 & 32 & 34 & 36 & 37 & 40 & \node
+                                                  [fill=black!20] () {45}; &...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no [ in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no k in font nullfont!
+Missing character: There is no ! in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no ] in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no 4 in font nullfont!
+Missing character: There is no 5 in font nullfont!
+Missing character: There is no ; in font nullfont!
+./arrayexample1.tex:57: Misplaced alignment tab character &.
+l.57 ... 37 & 40 & \node[fill=black!20] () {45}; &
+                                                   \node[fill=black!20] () {...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:57: Undefined control sequence.
+l.57 ...40 & \node[fill=black!20] () {45}; & \node
+                                                  [fill=black!20] () {55}; &...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no [ in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no k in font nullfont!
+Missing character: There is no ! in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no ] in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no 5 in font nullfont!
+Missing character: There is no 5 in font nullfont!
+Missing character: There is no ; in font nullfont!
+./arrayexample1.tex:57: Misplaced alignment tab character &.
+l.57 ...() {45}; & \node[fill=black!20] () {55}; &
+                                                   \node[fill=black!20] () {...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:57: Undefined control sequence.
+l.57 ...}; & \node[fill=black!20] () {55}; & \node
+                                                  [fill=black!20] () {60}; &...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no [ in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no k in font nullfont!
+Missing character: There is no ! in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no ] in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no 6 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no ; in font nullfont!
+./arrayexample1.tex:57: Misplaced alignment tab character &.
+l.57 ...() {55}; & \node[fill=black!20] () {60}; &
+                                                   \node[fill=black!20] () {...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+./arrayexample1.tex:57: Undefined control sequence.
+l.57 ...}; & \node[fill=black!20] () {60}; & \node
+                                                  [fill=black!20] () {70}; &...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no [ in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no k in font nullfont!
+Missing character: There is no ! in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no ] in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no 7 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no ; in font nullfont!
+./arrayexample1.tex:57: Misplaced alignment tab character &.
+l.57 ...() {60}; & \node[fill=black!20] () {70}; &
+                                                   72 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 7 in font nullfont!
+Missing character: There is no 2 in font nullfont!
+
+Overfull \hbox (8.02779pt too wide) in paragraph at lines 57--57
+ []$\OML/cmm/m/it/10 Y$ 
+ []
+
+
+./arrayexample1.tex:58: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.58 $
+      \mathcal{R}$  & $\{5, 17, 25, 30, 45, 55, 60, 70\}$ \\[0.1em]
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+./arrayexample1.tex:58: Misplaced alignment tab character &.
+l.58 $\mathcal{R}$  &
+                      $\{5, 17, 25, 30, 45, 55, 60, 70\}$ \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+Overfull \hbox (8.47504pt too wide) in paragraph at lines 58--58
+ []$\OMS/cmsy/m/n/10 R$ 
+ []
+
+
+Overfull \hbox (116.11115pt too wide) in paragraph at lines 58--58
+ \OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10 5\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 17\OML/c
+mm/m/it/10 ; \OT1/cmr/m/n/10 25\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 30\OML/cmm/m/
+it/10 ; \OT1/cmr/m/n/10 45\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 55\OML/cmm/m/it/10
+ ; \OT1/cmr/m/n/10 60\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 70\OMS/cmsy/m/n/10 g$ 
+ []
+
+
+./arrayexample1.tex:59: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.59 $
+      \mathcal{U}$   & 0 & 1 & 5 & 0 & 1 & 2 & 0 & 0 & 1 & 2 & 4 & 6 & 7 & 1...
+
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+./arrayexample1.tex:59: Misplaced alignment tab character &.
+l.59 $\mathcal{U}$   &
+                       0 & 1 & 5 & 0 & 1 & 2 & 0 & 0 & 1 & 2 & 4 & 6 & 7 & 1...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 0 in font nullfont!
+./arrayexample1.tex:59: Misplaced alignment tab character &.
+l.59 $\mathcal{U}$   & 0 &
+                           1 & 5 & 0 & 1 & 2 & 0 & 0 & 1 & 2 & 4 & 6 & 7 & 1...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+./arrayexample1.tex:59: Misplaced alignment tab character &.
+l.59 $\mathcal{U}$   & 0 & 1 &
+                               5 & 0 & 1 & 2 & 0 & 0 & 1 & 2 & 4 & 6 & 7 & 1...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 5 in font nullfont!
+./arrayexample1.tex:59: Misplaced alignment tab character &.
+l.59 $\mathcal{U}$   & 0 & 1 & 5 &
+                                   0 & 1 & 2 & 0 & 0 & 1 & 2 & 4 & 6 & 7 & 1...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 0 in font nullfont!
+./arrayexample1.tex:59: Misplaced alignment tab character &.
+l.59 $\mathcal{U}$   & 0 & 1 & 5 & 0 &
+                                       1 & 2 & 0 & 0 & 1 & 2 & 4 & 6 & 7 & 1...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+./arrayexample1.tex:59: Misplaced alignment tab character &.
+l.59 $\mathcal{U}$   & 0 & 1 & 5 & 0 & 1 &
+                                           2 & 0 & 0 & 1 & 2 & 4 & 6 & 7 & 1...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 2 in font nullfont!
+./arrayexample1.tex:59: Misplaced alignment tab character &.
+l.59 $\mathcal{U}$   & 0 & 1 & 5 & 0 & 1 & 2 &
+                                               0 & 0 & 1 & 2 & 4 & 6 & 7 & 1...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 0 in font nullfont!
+./arrayexample1.tex:59: Misplaced alignment tab character &.
+l.59 $\mathcal{U}$   & 0 & 1 & 5 & 0 & 1 & 2 & 0 &
+                                                   0 & 1 & 2 & 4 & 6 & 7 & 1...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 0 in font nullfont!
+./arrayexample1.tex:59: Misplaced alignment tab character &.
+l.59 ...al{U}$   & 0 & 1 & 5 & 0 & 1 & 2 & 0 & 0 &
+                                                   1 & 2 & 4 & 6 & 7 & 10 & ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+./arrayexample1.tex:59: Misplaced alignment tab character &.
+l.59 ...}$   & 0 & 1 & 5 & 0 & 1 & 2 & 0 & 0 & 1 &
+                                                   2 & 4 & 6 & 7 & 10 & 0 & ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 2 in font nullfont!
+./arrayexample1.tex:59: Misplaced alignment tab character &.
+l.59 ... & 0 & 1 & 5 & 0 & 1 & 2 & 0 & 0 & 1 & 2 &
+                                                   4 & 6 & 7 & 10 & 0 & 0 & ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 4 in font nullfont!
+./arrayexample1.tex:59: Misplaced alignment tab character &.
+l.59 ... & 1 & 5 & 0 & 1 & 2 & 0 & 0 & 1 & 2 & 4 &
+                                                   6 & 7 & 10 & 0 & 0 & 0 & ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 6 in font nullfont!
+./arrayexample1.tex:59: Misplaced alignment tab character &.
+l.59 ... & 5 & 0 & 1 & 2 & 0 & 0 & 1 & 2 & 4 & 6 &
+                                                   7 & 10 & 0 & 0 & 0 & 0 & ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 7 in font nullfont!
+./arrayexample1.tex:59: Misplaced alignment tab character &.
+l.59 ... & 0 & 1 & 2 & 0 & 0 & 1 & 2 & 4 & 6 & 7 &
+                                                   10 & 0 & 0 & 0 & 0 & 2 \\...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+./arrayexample1.tex:59: Misplaced alignment tab character &.
+l.59 ...& 1 & 2 & 0 & 0 & 1 & 2 & 4 & 6 & 7 & 10 &
+                                                   0 & 0 & 0 & 0 & 2 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 0 in font nullfont!
+./arrayexample1.tex:59: Misplaced alignment tab character &.
+l.59 ...& 2 & 0 & 0 & 1 & 2 & 4 & 6 & 7 & 10 & 0 &
+                                                   0 & 0 & 0 & 2 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 0 in font nullfont!
+./arrayexample1.tex:59: Misplaced alignment tab character &.
+l.59 ...& 0 & 0 & 1 & 2 & 4 & 6 & 7 & 10 & 0 & 0 &
+                                                   0 & 0 & 2 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 0 in font nullfont!
+./arrayexample1.tex:59: Misplaced alignment tab character &.
+l.59 ...& 0 & 1 & 2 & 4 & 6 & 7 & 10 & 0 & 0 & 0 &
+                                                   0 & 2 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 0 in font nullfont!
+./arrayexample1.tex:59: Misplaced alignment tab character &.
+l.59 ...& 1 & 2 & 4 & 6 & 7 & 10 & 0 & 0 & 0 & 0 &
+                                                   2 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 2 in font nullfont!
+
+Overfull \hbox (7.25137pt too wide) in paragraph at lines 59--59
+ []$\OMS/cmsy/m/n/10 U$ 
+ []
+
+
+./arrayexample1.tex:60: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.60 $
+      \mathcal{B}$  & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 ...
+
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+./arrayexample1.tex:60: Misplaced alignment tab character &.
+l.60 $\mathcal{B}$  &
+                      1 & 0 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+./arrayexample1.tex:60: Misplaced alignment tab character &.
+l.60 $\mathcal{B}$  & 1 &
+                          0 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 0 in font nullfont!
+./arrayexample1.tex:60: Misplaced alignment tab character &.
+l.60 $\mathcal{B}$  & 1 & 0 &
+                              0 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 0 in font nullfont!
+./arrayexample1.tex:60: Misplaced alignment tab character &.
+l.60 $\mathcal{B}$  & 1 & 0 & 0 &
+                                  1 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+./arrayexample1.tex:60: Misplaced alignment tab character &.
+l.60 $\mathcal{B}$  & 1 & 0 & 0 & 1 &
+                                      0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 0 in font nullfont!
+./arrayexample1.tex:60: Misplaced alignment tab character &.
+l.60 $\mathcal{B}$  & 1 & 0 & 0 & 1 & 0 &
+                                          0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 0 in font nullfont!
+./arrayexample1.tex:60: Misplaced alignment tab character &.
+l.60 $\mathcal{B}$  & 1 & 0 & 0 & 1 & 0 & 0 &
+                                              1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+./arrayexample1.tex:60: Misplaced alignment tab character &.
+l.60 $\mathcal{B}$  & 1 & 0 & 0 & 1 & 0 & 0 & 1 &
+                                                  1 & 0 & 0 & 0 & 0 & 0 & 0 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+./arrayexample1.tex:60: Misplaced alignment tab character &.
+l.60 ...cal{B}$  & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 1 &
+                                                   0 & 0 & 0 & 0 & 0 & 0 & 1...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 0 in font nullfont!
+./arrayexample1.tex:60: Misplaced alignment tab character &.
+l.60 ...B}$  & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 1 & 0 &
+                                                   0 & 0 & 0 & 0 & 0 & 1 & 1...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 0 in font nullfont!
+./arrayexample1.tex:60: Misplaced alignment tab character &.
+l.60 ... & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 0 &
+                                                   0 & 0 & 0 & 0 & 1 & 1 & 1...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 0 in font nullfont!
+./arrayexample1.tex:60: Misplaced alignment tab character &.
+l.60 ... & 0 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 0 &
+                                                   0 & 0 & 0 & 1 & 1 & 1 & 1...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 0 in font nullfont!
+./arrayexample1.tex:60: Misplaced alignment tab character &.
+l.60 ... & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 &
+                                                   0 & 0 & 1 & 1 & 1 & 1 & 0...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 0 in font nullfont!
+./arrayexample1.tex:60: Misplaced alignment tab character &.
+l.60 ... & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 &
+                                                   0 & 1 & 1 & 1 & 1 & 0 \\[...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 0 in font nullfont!
+./arrayexample1.tex:60: Misplaced alignment tab character &.
+l.60 ... & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 &
+                                                   1 & 1 & 1 & 1 & 0 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+./arrayexample1.tex:60: Misplaced alignment tab character &.
+l.60 ... & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 &
+                                                   1 & 1 & 1 & 0 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+./arrayexample1.tex:60: Misplaced alignment tab character &.
+l.60 ... & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 &
+                                                   1 & 1 & 0 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+./arrayexample1.tex:60: Misplaced alignment tab character &.
+l.60 ... & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 &
+                                                   1 & 0 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+./arrayexample1.tex:60: Misplaced alignment tab character &.
+l.60 ... & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 &
+                                                   0 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 0 in font nullfont!
+
+Overfull \hbox (6.87221pt too wide) in paragraph at lines 60--60
+ []$\OMS/cmsy/m/n/10 B$ 
+ []
+
+
+./arrayexample1.tex:61: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.61 $
+      \mathcal{C}$  & 1 & 1 & 1 & 2 & 2 & 2 & 3 & 4 & 4 & 4 & 4 & 4 & 4 & 4 ...
+
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+./arrayexample1.tex:61: Misplaced alignment tab character &.
+l.61 $\mathcal{C}$  &
+                      1 & 1 & 1 & 2 & 2 & 2 & 3 & 4 & 4 & 4 & 4 & 4 & 4 & 4 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+./arrayexample1.tex:61: Misplaced alignment tab character &.
+l.61 $\mathcal{C}$  & 1 &
+                          1 & 1 & 2 & 2 & 2 & 3 & 4 & 4 & 4 & 4 & 4 & 4 & 4 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+./arrayexample1.tex:61: Misplaced alignment tab character &.
+l.61 $\mathcal{C}$  & 1 & 1 &
+                              1 & 2 & 2 & 2 & 3 & 4 & 4 & 4 & 4 & 4 & 4 & 4 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 1 in font nullfont!
+./arrayexample1.tex:61: Misplaced alignment tab character &.
+l.61 $\mathcal{C}$  & 1 & 1 & 1 &
+                                  2 & 2 & 2 & 3 & 4 & 4 & 4 & 4 & 4 & 4 & 4 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 2 in font nullfont!
+./arrayexample1.tex:61: Misplaced alignment tab character &.
+l.61 $\mathcal{C}$  & 1 & 1 & 1 & 2 &
+                                      2 & 2 & 3 & 4 & 4 & 4 & 4 & 4 & 4 & 4 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 2 in font nullfont!
+./arrayexample1.tex:61: Misplaced alignment tab character &.
+l.61 $\mathcal{C}$  & 1 & 1 & 1 & 2 & 2 &
+                                          2 & 3 & 4 & 4 & 4 & 4 & 4 & 4 & 4 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 2 in font nullfont!
+./arrayexample1.tex:61: Misplaced alignment tab character &.
+l.61 $\mathcal{C}$  & 1 & 1 & 1 & 2 & 2 & 2 &
+                                              3 & 4 & 4 & 4 & 4 & 4 & 4 & 4 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 3 in font nullfont!
+./arrayexample1.tex:61: Misplaced alignment tab character &.
+l.61 $\mathcal{C}$  & 1 & 1 & 1 & 2 & 2 & 2 & 3 &
+                                                  4 & 4 & 4 & 4 & 4 & 4 & 4 ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 4 in font nullfont!
+./arrayexample1.tex:61: Misplaced alignment tab character &.
+l.61 ...cal{C}$  & 1 & 1 & 1 & 2 & 2 & 2 & 3 & 4 &
+                                                   4 & 4 & 4 & 4 & 4 & 4 & 5...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 4 in font nullfont!
+./arrayexample1.tex:61: Misplaced alignment tab character &.
+l.61 ...C}$  & 1 & 1 & 1 & 2 & 2 & 2 & 3 & 4 & 4 &
+                                                   4 & 4 & 4 & 4 & 4 & 5 & 6...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 4 in font nullfont!
+./arrayexample1.tex:61: Misplaced alignment tab character &.
+l.61 ... & 1 & 1 & 1 & 2 & 2 & 2 & 3 & 4 & 4 & 4 &
+                                                   4 & 4 & 4 & 4 & 5 & 6 & 7...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 4 in font nullfont!
+./arrayexample1.tex:61: Misplaced alignment tab character &.
+l.61 ... & 1 & 1 & 2 & 2 & 2 & 3 & 4 & 4 & 4 & 4 &
+                                                   4 & 4 & 4 & 5 & 6 & 7 & 8...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 4 in font nullfont!
+./arrayexample1.tex:61: Misplaced alignment tab character &.
+l.61 ... & 1 & 2 & 2 & 2 & 3 & 4 & 4 & 4 & 4 & 4 &
+                                                   4 & 4 & 5 & 6 & 7 & 8 & 8...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 4 in font nullfont!
+./arrayexample1.tex:61: Misplaced alignment tab character &.
+l.61 ... & 2 & 2 & 2 & 3 & 4 & 4 & 4 & 4 & 4 & 4 &
+                                                   4 & 5 & 6 & 7 & 8 & 8 \\[...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 4 in font nullfont!
+./arrayexample1.tex:61: Misplaced alignment tab character &.
+l.61 ... & 2 & 2 & 3 & 4 & 4 & 4 & 4 & 4 & 4 & 4 &
+                                                   5 & 6 & 7 & 8 & 8 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 5 in font nullfont!
+./arrayexample1.tex:61: Misplaced alignment tab character &.
+l.61 ... & 2 & 3 & 4 & 4 & 4 & 4 & 4 & 4 & 4 & 5 &
+                                                   6 & 7 & 8 & 8 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 6 in font nullfont!
+./arrayexample1.tex:61: Misplaced alignment tab character &.
+l.61 ... & 3 & 4 & 4 & 4 & 4 & 4 & 4 & 4 & 5 & 6 &
+                                                   7 & 8 & 8 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 7 in font nullfont!
+./arrayexample1.tex:61: Misplaced alignment tab character &.
+l.61 ... & 4 & 4 & 4 & 4 & 4 & 4 & 4 & 5 & 6 & 7 &
+                                                   8 & 8 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 8 in font nullfont!
+./arrayexample1.tex:61: Misplaced alignment tab character &.
+l.61 ... & 4 & 4 & 4 & 4 & 4 & 4 & 5 & 6 & 7 & 8 &
+                                                   8 \\[0.1em]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+Missing character: There is no 8 in font nullfont!
+
+Overfull \hbox (5.84865pt too wide) in paragraph at lines 61--61
+ []$\OMS/cmsy/m/n/10 C$ 
+ []
+
+./arrayexample1.tex:63: Extra }, or forgotten \endgroup.
+l.63 }
+      ;
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+./arrayexample1.tex:63: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.63 };
+       
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no ; in font nullfont!
+
+./arrayexample1.tex:65: LaTeX Error: \begin{document} ended by \end{tikzpicture
+}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.65 \end{tikzpicture}
+                      
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+./arrayexample1.tex:66: LaTeX Error: \caption outside float.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.66 \caption
+             {\label{fig:exampleinit}The initial data structure constructed ...
+
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no T in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no . in font nullfont!
+
+./arrayexample1.tex:67: LaTeX Error: \begin{document} ended by \end{figure}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.67 \end{figure}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+)
+! Emergency stop.
+<*> arrayexample1.tex
+                     
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 11 strings out of 493315
+ 218 string characters out of 6137903
+ 53158 words of memory out of 5000000
+ 3563 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 19i,10n,13p,345b,73s stack positions out of 5000i,500n,10000p,200000b,80000s
+!  ==> Fatal error occurred, no output PDF file produced!

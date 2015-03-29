@@ -1,0 +1,40 @@
+\begin{figure}
+\centering
+\begin{tikzpicture}
+
+\matrix (first) [table2,text width=1em]
+{
+  $Y$   & \node[text=white] (leftleft) {1}; & \node[text=white] (left) {1};  & & \node[text=black!20,fill=black!20] (a) {1};&  &  &  &  & \node[text=black!20,fill=black!20] (b) {1};  &  &  &  &  &  &  & \node[text=black!20,fill=black!20] (c) {1}; &  & \node[text=white] (right) {1};  &\node[text=white] (rightright) {1};  \\[0.1em]
+%& 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 \\[0.1em]
+};
+
+% labels
+\node [above=1em of a] (labela) {$select_{\mathcal{R}}(rank_{\mathcal{R}}(succ_{\mathcal{R}}(t)-1))$};
+\draw [->,black,thick] (labela.south) -- (a.north);
+\node [above=3em of b] (labelb) {$succ_{\mathcal{R}}(t)$};
+\draw [->,black, thick] (labelb.south) -- (b.north);
+\node [above=1em of c] (labelc) {$select_{\mathcal{R}}(rank_{\mathcal{R}}(succ_{\mathcal{R}}(t)+1))$};
+\draw [->,black,thick] (labelc.south) -- (c.north);
+
+\draw [black,dashed] (left.north) -- (leftleft.north west);
+\draw [black] (c.north) -- (left.north);
+\draw [black] (c.north) -- (right.north);
+\draw [black,dashed] (right.north) -- (rightright.north east);
+\draw [black,dashed] (left.south) -- (leftleft.south west);
+\draw [black] (c.south) -- (left.south);
+\draw [black] (c.south) -- (right.south);
+\draw [black,dashed] (right.south) -- (rightright.south east);
+%representative boxes
+\draw [black] (a.south west) -- (a.north west);
+\draw [black] (a.south east) -- (a.north east);
+\draw [black] (b.south west) -- (b.north west);
+\draw [black] (b.south east) -- (b.north east);
+\draw [black] (c.south west) -- (c.north west);
+\draw [black] (c.south east) -- (c.north east);
+
+%range
+\draw [decorate,decoration={brace,amplitude=10pt, mirror}]
+(a.south east) -- (b.south east) node [black, midway, yshift=-2em] {$t$};
+\end{tikzpicture}
+\caption{\label{fig:initial_range_t} The range of indices that the value $t$ can reside in after a rebuild.}
+\end{figure}

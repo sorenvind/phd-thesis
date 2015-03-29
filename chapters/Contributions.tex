@@ -1,0 +1,345 @@
+%!TEX root = ../Thesis.tex
+\chapter{Contributions}\label{chp:contributions}
+This chapter gives a brief overview of our contributions and shows how they fit in the larger world of algorithms and data structures. It is meant to describe important related problems from our perspective, not to provide an exhaustive history of the field. Each of the following chapters contain a paper on a problem related to either strings or points. We describe the contributions n the same order as the chapters, and finally present our additional contributions to data structures for integers.
+
+Our included papers each contribute at least one newly-designed data structure for particular problem. In some instances, the data structure is a cornerstone in giving a solution to an algorithmic problem, while in other cases it is the singular contribution. All but one of the papers are purely theoretical, meaning that though they may perform well in practice, their efficiency are only established in theory. In a single case, the proposed data structure was implemented and tested experimentally on realistic data sets.
+
+%Since the contributions by each paper fit into a number of categories, I will discuss general themes, and include each paper in the themes where it fits.
+
+%The chapter should be relatively self-contained and the significance of the results understandable.
+
+\section{Model of Computation}
+The computation model used in all papers is the \emph{unit-cost $w$-bit Word RAM}~\cite{Hagerup1998}, which models memory as an array of $w$-bit words that can each be read and written in constant time. To be able to index into the memory array in constant time, we require $w \geq \log n$ where $n$ is the problem size. Comparisons, arithmetic operations and common word-operations (as available in the \texttt{C} programming language) each take constant time. 
+
+\section{Strings}
+A \emph{string} (or text) is a sequence of characters from some \emph{alphabet}. Classically, we store the sequence as is, with each character taking up a single word in memory. Text is core data abstraction that naturally appears in countless applications, for example in log files, text documents or DNA sequences such as $\mathtt{AGCAATTTGACCTAGATA}$. 
+
+We may also consider storing strings in compressed form.
+\emph{Phrase compression}\footnote{Also sometimes called \emph{grammar compression}.} is a standard form of compression, where the text is compressed into a sequence of phrases that may each be an extension of some previous phrase in the sequence. When dealing with compressed text, we denote by $n$ the size of the compressed text (equal to the number of phrases), and let $N$ be the size of the decompressed text. 
+
+Typically, encoding in a phrase-compression scheme processes a text from left to right, maintaining a growing dictionary of phrases that was used to encode previous parts of the text, which may be extended. 
+%We can view the compressed scheme as splitting the uncompressed text into blocks that each correspond to the text encoded by a corresponding phrase. 
+Decompression of the whole string is simple, but it is not straightforward to access a single character, as phrases may be recursively defined (i.e. they extend on each other), requiring us to process many phrases to access a character.
+% The \emph{straight line program} is a well-studied phrase-based general compression scheme. It captures many compressions such as the LZ77 and LZ78 schemes invented by Lempel and Ziv~\docite{lz77,lz78}. 
+
+
+We include four papers on string problems. 
+First, we study \prob{compressed fingerprints}, which provide a useful primitive for designing algorithms that work efficiently on most types of phrase compression.
+Second, we consider \prob{dynamic compression}, which is to efficiently maintain a compressed representation of a string subject to insert, delete, replace and random access operations on the string.
+%showing how to augment a straight line program with linear additional storage to support efficient fingerprint queries.
+Third, we study the \prob{compressed pattern matching} problem, which is to find the occurrences of a given \emph{pattern} in a given \emph{compressed text} (i.e. the starting positions where a substring of the text matches the pattern). 
+Finally, we consider \prob{pattern extraction}, which may be considered the opposite of pattern matching. It is to extract unknown and \emph{important patterns} from a given text, where importance is measured as the number of occurrences of the pattern in the text. 
+%That is, only the text is given, the patterns are unknown and must be found by the algorithm (along with their occurrences). 
+
+
+%\clearpage
+\subsection{Compressed Fingerprints}
+In 1987, Karp and Rabin~\cite{karp1987efficient} proposed a classic \emph{Monte Carlo randomized} pattern matching algorithm for uncompressed text of length $N$. Their approach rely on \emph{fingerprints} to efficiently compare substrings, allowing one-sided errors: all occurrences will be reported, but there is a small risk of reporting occurrences that do not exist.
+Their fingerprints have subsequently been used as a cornerstone in solving many string problems~\cite{amir1992efficient, andoni2006efficient, cole2003faster, cormode2005substring, cormode2007string, farach1998string, gasieniec1996randomized, kalai2002efficient, porat2009exact}. 
+
+The \emph{Karp-Rabin fingerprint} function $\fp$ for a string $x$ is given by 
+\begin{center}
+    $\fp(x) = \sum_{i=1}^{|x|} x[i] \cdot c^i \bmod p$,
+\end{center}
+where $c < p$ is a randomly chosen positive integer, and $p$ is a prime. 
+If choosing prime $p$ sufficiently large compared to the length of $x$, we get multiple key properties that make fingerprints extremely useful:
+\begin{enumerate}
+%    \item they can be created in linear time,
+    \item they support composition in constant time, allowing us to find the fingerprint of a string from the fingerprints of two halves,
+    \item each fingerprint can be stored in constant space,
+    \item equal strings have equal fingerprints, and different strings have different fingerprints with high probability.
+\end{enumerate}
+%Alternatively, as we can build fingerprints in linear time, we can always create a fingerprint for $s$ in constant space and time proportional to its length.
+
+An similarly fundamental string primitive is called \prob{longest common extensions} ($\lceq$), used in many string algorithms as a black box (see for example~\cite{amir1992efficient, andoni2006efficient, cole2003faster, cormode2005substring, cormode2007string, farach1998string, gasieniec1996randomized, kalai2002efficient, porat2009exact}). The answer to an $\lceq$ query on a string $s$ is the length of the longest matching substring in $s$ starting from two given positions positions. 
+
+%The consequence is that we can create and store fingerprints for all prefixes of an uncompressed string in linear time and space to get constant time (probabilistic) substring comparisons.
+
+For uncompressed strings, both fingerprints and answers to $\lceq$ queries can be retrieved in constant time and linear space (as well as random access to a character). 
+%deterministically for uncompressed strings, but the properties of Karp-Rabin fingerprints are useful when considering compressed strings.
+
+
+\paragraph{Our Contribution: \paper{Fingerprints for Compressed Strings}} 
+%An ultimate use for fingerprints is to support fast substring comparisons, but if storing a compressed string we do not want to spend linear uncompressed space to answer fingerprint queries quickly. 
+%In \paper{Fingerprints for Compressed Strings} we provide a data structure for storing fingerprints in compressed space that supports efficient retrieval in logarithmic time. 
+The paper considers strings of length $N$ that are compressed into a \emph{straight line program} ($\slpc$) with $n$ rules. The $\slpc$ is a general phrase compression scheme that captures many compression schemes with low overhead. That is, it efficiently models many other types of phrase compression, such as the LZ family schemes invented by Lempel and Ziv~\cite{lz1977,lz1978}. 
+%The scheme forces phrases to be in Chomsky Normal Form. This means that a new phrase is always either 1) a terminal character or 2) the concatenation of two previous phrases.
+
+We present a data structure for storing a $\slpc$ in linear compressed space $\Oh(n)$ that supports answering \emph{fingerprint queries} that returns the Karp-Rabin fingerprint of any decompressed substring of the compressed string in $\Oh(\log N)$ time. 
+Our structure also supports answering $\lceq$ queries in time $\Oh(\log \ell \log N)$ correctly with high probability.
+We also give a modified data structure that works for \emph{Linear SLPs}, which restricts $\slpc$s to model compression schemes such as LZ78~\cite{lz1978} with constant overhead. Here, we show that fingerprints can be obtained in improved time $\Oh(\log \log N)$ and $\Oh(n)$ space, and we support $\lceq$ queries in $\Oh(\log \log N + \log \ell \log \log \ell)$ time.
+Our data structure for general $\slpc$s matches the query time of a structure by Gagie, Gawrychowski, K{\"a}rkk{\"a}inen, Nekrich and Puglisi~\cite{gagiefingerprint} which only answers queries in balanced $\slpc$s.
+
+The property we exploit is that any fingerprint can be composed  from many smaller fingerprints that we store in the data structure. 
+To obtain linear (compressed) space, we use techniques introduced in a seminal paper by Bille, Landau, Raman, Sadakane, Satti, and Weimann~\cite{bille2011random} where they showed how to store a $\slpc$ in linear space to support random access to a character in the decompressed string in $\Oh(\log N)$ time. We use our fingerprints for substring comparisons to answer $\lceq$ queries using an exponential search followed by a binary search.
+
+The consequence of our result is that (probabilistically) comparing two substrings can be done in the same time as accessing a single character in $\slpc$s. This is the same situation as for uncompressed strings, though both operations have a logarithmic slowdown for compressed strings. 
+Our result immediately implies compressed space implementations of all previous algorithms relying on access to Karp-Rabin fingerprints or $\lceq$ queries. 
+%It also admits a compressed space probabilistic implementation with $\Oh(\log N)$ overhead of all deterministic algorithms relying on constant time substring comparisons on the decompressed string.
+
+
+\paragraph{Future Work}
+For uncompressed strings, it is possible to answer both random access, fingerprint and $\lceq$ queries in constant time. This is contrary to the situation for $\slpc$s, where we are able to answer only the first two queries in the same time $\Oh(\log N)$, and the best solution for answering $\lceq$ queries take $\Oh(\log^2 N)$ time. Solving this disparaty for $\lceq$ queries is an obviously interesting research direction.
+
+For random access in $\slpc$s Verbin and Yu~\cite{verbin2013data} gave a lower bound showing that the result of~\cite{bille2011random} is almost optimal for most compression ratios. A natural question is if optimal structures exist for all compression ratios, and if fingerprint queries can be improved similarly.
+
+
+%\clearpage
+\subsection{Dynamic Compression}
+Classically, we store a string as a sequence of characters that each require a word, giving support for basic operations in constant time. For example, given a string $s$ and a position $i$, we can access the character $s[i]$ or replace it with another alphabet symbol. 
+We may also consider more complicated operations, such as deleting or inserting a character in a string. Intuitively, because these operations cause all characters after the inserted or deleted character to have their position changed, such operations require superconstant time. Indeed, Fredman~and~Saks~\cite{fredman1989cell} gave a lower bound of $\Omega(\log n/\log \log n)$ time per operation for supporting access, insert and delete in a string of length $n$.
+
+When storing compressed strings, we normally do not support dynamic operations. The intuitive reason is that we use redundancy in the string to compress it efficiently, and any such redundancy can be removed by operations that change the compressed string. For example, it can be shown that an $\slpc$ for a string $s$ may double in size if inserting a character in the middle of $s$. 
+However, a number of results show that it is possible to maintain an entropy-compressed string representation under some dynamic operations. In particular, the structure of Grossi, Raman, Rao and Venturini~\cite{grossi2013} supports access, replace, insert and delete in optimal $\Oh(\log n/\log \log n)$ time and $k^\text{th}$ order empirical entropy space (plus lower order terms), which is always $\Omega(n / \log n)$ words.
+
+Recently, the \emph{relative compression} scheme originally suggested by Storer~and~Szymanski~\cite{SS1978,Storer1982} has gained significant interest due to its performance in practice. Here, we store an uncompressed reference string, and strings are compressed into a sequence of substrings from the reference string. It has been shown experimentally that variations of their general scheme such as the \emph{Relative Lempel-Ziv} compression scheme exhibit extremely good performance in applications storing a large dictionary of similar strings such as genomes~\cite{ferragina2013bit,kuruppu2011optimized,chern2012reference,do2014fast,hoobin2011relative,kuruppu2011reference,wandelt2013fresco,deorowicz2011robust,wandelt2012adaptive,ochoa2014idocomp}. 
+
+
+\paragraph{Our Contribution: \paper{Dynamic Relative Compression and Dynamic Partial Sums}}
+We present a new dynamic variant of relative compression that supports access, replace, insert and delete of a single character in the compressed string. Our data structure maintains an asymptotically optimal compression of size $n$, storing a compressed string of (uncompressed) length $N$ relative to a given reference string of length $r$. 
+Operations are supported in:
+\begin{enumerate}
+    \item almost-optimal time $\Oh(\log n / \log \log n + \log \log r)$ and linear space $\Oh(n+r)$, or 
+    \item optimal time $\Oh(\log n / \log \log n)$ and almost-linear space $\Oh(n+r \log^{\epsilon} r)$.
+\end{enumerate}
+
+Crucially, our result can be easily generalized to store multiple strings compressed relative to the same reference string. 
+Interestingly, the bounds we obtain almost match those for uncompressed strings. That is, we can store our strings in compressed form with almost no overhead for insert and delete operations. This is the first dynamic compression result that ensures asymptotically optimal grammar-based compression, with previous approaches only providing entropy compression. Our result implies an improved solution to the dynamic text static pattern matching problem studied by Amir, Landau, Lewenstein and Sokol~\cite{amir2007dynamic}.
+
+The difficulty in solving the problem comes from the new dynamic operations that change the string, forcing us to modify the representation. This may break both our desired time bound for operations and our asymptotically optimal compression ratio. 
+
+Our solution rely on two key properties: 1) modifications are local and can be reduced to accessing and changing at most five substrings in the compression sequence; and 2) a \emph{maximal compression} is enough to maintain an asymptotically optimal compression relative to a given reference string.
+% because any compression with the property is within a factor of two of the optimal compression. A compression is maximal if the compressed sequence has no two neighboring substrings where their concatenation exist as a single substring in the reference string. 
+This lets us solve the problem by reducing it to two core data structure problems. 
+First, we ensure compression maximality by detecting if neighboring substrings among the five touched substrings can be merged into one. To support efficient access operations, we maintain the dynamically changing sequence of substring lengths. These data structure problems are known as \prob{substring concatenation} and \prob{dynamic partial sums}, and we give new general solutions that significantly improve on previous solutions to both. 
+
+In substring concatenation, we must preprocess a text of length $r$ to support queries asking for an occurrence of a substring of the text which is the concatenation of two other substrings in the text (if it exists). We show two different solutions. The first requires $\Oh(\log \log r)$ time and linear space and is a simple application of some of our previous work~\cite{bille2014string}. The second solution requires constant time and $\Oh(r \log^\epsilon r)$ space, reducing the problem to answering one-dimensional range emptiness queries on nodes of a suffix tree. We describe our dynamic partial sums data structure in Section \ref{sec:intro:partialsums}.
+
+\paragraph{Future Work}
+A natural question is if we can get the best of both worlds for substring concatenation queries, answering queries in constant time and linear space? Such a data structure can be plugged into our current solution for dynamic relative compression, resulting in a linear space and optimal time solution that closes the problem.
+The presented compression scheme is relatively simple, and an experimental performance comparison against other possible approaches would be highly interesting. 
+
+
+%\clearpage
+\subsection{Compressed Pattern Matching}
+A classic string problem is \prob{pattern matching}, where we must find occurrences of a \emph{pattern} in a text. Traditionally a pattern consist of characters from the same alphabet as the text, and a pattern occurrence is the location of a substring in the text that is equal to the pattern.
+In \prob{compressed pattern matching}, the text of length $N$ is compressed into $n$ phrases and we must report the occurrences of a pattern of length $m$ in the decompressed text. 
+
+Good solutions exist for both the classic and compressed problem. There are multiple optimal solutions to the classic variant, some of which even work in the \emph{streaming model}~\cite{munro1980selection, flajolet1985probabilistic, alon1999space}. In this model of computation, the text is received in a stream one character at a time, only sublinear space $o(N)$ is allowed and we must report occurrences immediately.
+Known solutions for compressed pattern matching do \emph{not} work in the streaming model. In fact, there is a space lower bound for compressed pattern matching in the streaming model, showing that it requires $\Omega(n)$ space. 
+
+In order to model the current state of affairs in computing with easy access to massive computational power over the internet, the \emph{annotated streaming model} introduced by Chakrabarti, Cormode and McGregor~\cite{chakrabarti2009annotations, chakrabarti2014annotations} expands the classic streaming model by introducing an untrustworthy \emph{annotator}. 
+This annotator is a theoretical abstraction of ``the cloud'', with unbounded computational resources and storage, and it assists a \emph{client} in solving some problem by providing an \emph{annotated data stream} that is transmitted along the normal input stream (i.e. the client-annotator communication is one-way). 
+Software and hardware faults, as well as intentional attempts at deceit by the annotator are modeled by assuming that the annotator cannot be trusted.
+In this model, the relevant performance parameters are the client space, the time to process a phrase and the amount of annotation sent per input element.
+
+
+\paragraph{Our Contribution: \paper{Compressed Pattern Matching in the Annotated Streaming Model}} 
+We give a randomized trade-off solution to compressed pattern matching in the annotated streaming model which require $\Oh(\log n)$ space on the client, and uses $\Oh(\log n)$ words of annotation and time per phrase received (at one end of the trade-off). 
+The result is possibly the first to show the power of the annotator in solving traditional problems on strings (existing work in the model focuses on graph algorithms). 
+The implication of the result is that the power of the annotator is highly useful even though it cannot be trusted. In particular, our solution circumvent the $\Omega(n)$ space lower bound at the cost of annotation.
+
+We solve the problem by a careful application of techniques for pattern matching in compressed strings, providing a simple initial solution in linear space and constant time per phrase with no annotation.
+We reduce the space use with a new randomized annotated data structure that generally allows us to trade client space for annotation, allowing us to store and access arbitrary information in logarithmic client space with logarithmic annotation overhead.
+
+
+\paragraph{Future Work}
+There are multiple natural directions to go in extending our work in the annotated streaming model. Results that decrease the amount of annotation per input element would be of great interest. It seems likely that our result can be extended to dictionary matching, where matches with any pattern from a dictionary of patterns must be reported. 
+%Of course, we would hope to get bounds better than just repeating the same algorithm for an entire dictionary of patterns. 
+
+Pattern matching for more powerful pattern such as regular expressions may be worth investigating. Intuitively, access to an untrusted annotator with unbounded computational power should help, as finding such patterns typically require more resources than classic patterns. %However, extending our techniques to this case was non-trivial, but is a promising area of further research. 
+
+
+%\clearpage
+\subsection{Pattern Extraction}
+In \emph{pattern extraction}, the task is to extract the ``most important'' patterns from a text $S$.
+We define the occurrence of a pattern in $S$ as in \emph{pattern matching}, and the importance of a pattern depends on its statistical relevance like its number of occurrences.
+
+Pattern extraction should \emph{not} be confused with pattern matching. In fact, we may consider the problems inverse: the former gets a text $S$ as input and extracts patterns $P$ and their occurrences from $S$, where both are unknown (and $P$ meets some criteria); the latter gets $S$ and a given pattern $p$ as input, and finds unknown occurrences of $p$ in $S$.
+
+As is the case in pattern matching, one can imagine many ways of generalizing the standard patterns which consist of text characters, making the problem more real-world applicable. 
+Indeed, many approximate pattern variations and measures of importance exist in the pattern extraction world
+\cite{CominV13, CunialA12, ApostolicoPU11, rime, Eskin04, IliopoulosMPPRS05, grossi2011madmx, sagot1998spelling, tcsUkkonen09, arimura2007efficient}. The natural variation we study allows patterns that contain the special don't care character $\dontcare$, which means that the position can be ignored (so $\dontcare$ matches any single character in~$S$). For example, $\mathtt{TA}\dontcare\mathtt{C}$ is such a pattern for DNA sequences that e.g. matches strings $\mathtt{TATC}$ and $\mathtt{TAGC}$.
+
+%A \emph{motif} is a pattern of \emph{any} length with \emph{at most   $k$ don't cares} occurring \emph{at least $q$ times} in $S$. In this paper, we consider the problem of determining the \emph{maximal} motifs, where any attempt to extend them or replace their $\dontcare$'s with symbols from $\Sigma$ causes a loss of significant information (where the number of occurrences in $S$ changes).  We denote the family of all motifs by $M_{qk}$, the set of maximal motifs $\maxset \subseteq M_{qk}$ (dropping the subscripts in $\maxset$) and let $\occ(m)$ denote the number of occurrences of a motif $m$ inside $S$. It is well known that $M_{qk}$ can be exponentially larger than $\maxset$ \cite{Parida00}.
+
+\paragraph{Our Contribution: \paper{Output-Sensitive Pattern Extraction in Sequences}} 
+We consider extraction of patterns with at most $k$ don't cares and at least $q$ occurrences. We call such patterns \emph{motifs} and note that both $k$ and $q$ are input parameters. 
+More precisely, we show how to extract \emph{maximal motifs}, meaning that we do not report motifs that can be made more precise (by extending them or replacing a don't care by an alphabet symbol) without losing occurrences. We extract all maximal motifs in $\Oh(nk + k^3 \textrm{occ})$ time and space, where $\textrm{occ}$ is the their total number of occurrences.
+
+In comparison, existing approaches %to pattern extraction are typically fast in practice, but exhibit bad worst-case performance. 
+%All previous bounds 
+require polynomial time in $n$ to report each pattern. 
+%Instead, our solution requires $\Oh(k^3)$ time per pattern occurrence, which is far superior as $k$ is typically a small constant. 
+That is, we give the first truly \emph{output-sensitive} bounds for any approximate variation of the pattern extraction problem (we note that $k$ is typically a small constant). This is in the data structure sense of output-sensitivity where the time to output a single occurrence cannot depend on the size of the input.
+Our algorithm is relatively simple to implement, but the analysis is complex. 
+
+%We call patterns obeying these restrictions \emph{maximal motifs}, and let $\maxset$ denote the set of all maximal motifs.
+We suggest an index called a \emph{motif trie} that compactly stores the set of all maximal motifs $\maxset$. Each (maximal) motif can be represented as $\Oh(k)$ characters from a motif alphabet. The motif trie uses this property to store $\maxset$ in a generalized suffix tree, representing motifs using the motif alphabet. 
+Note that it is easy to extract $\maxset$ from the motif trie and the difficulty is how to construct it efficiently. We do so level-wise, using an oracle that reveals the children of a node efficiently using properties of the motif alphabet and one-dimensional intervals. To determine the time spent by our algorithm, we use a novel analysis that amortizes the construction cost for the entire trie over the number of occurrences it stores.
+
+
+\paragraph{A Curious Result}
+This result started not as a theoretical piece of work, but as an implementation. Roberto Trani was a student of Roberto Grossi who created a high-performing pattern extraction implementation. The approach was relatively simple, but analyzing why it had such good performance turned out to be complicated. The presented result is a theoretical algorithm that uses some of the originally implemented ideas and extend them to be able to prove worst-case time bounds. Interestingly, the history of the result indicates that (a variant of) the solution performs well in practice, though the presented version has not been implemented.
+
+
+\paragraph{Future Work}
+The motif trie is a natural construction, and our construction algorithm may be used to create other similar indices. Interestingly, the presented algorithm is essentially a slow way to generate a traditional suffix tree. 
+A natural question is if a similar construction and analysis can help understand the \prob{frequent itemset problem}, which is to extract frequently occurring subsets of items from a collection of sets of items. Here algorithms also perform bad in the worst case, but often have reasonable performance in practice.
+
+
+%\clearpage
+\section{Points}
+Much real world data such as locations of landmarks, visual data, or visitors to websites contains natural spatial information.
+Though it has no immediate spatial information, even more data can be represented spatially. For example, each row in a relational database may be thought of as a multidimensional point (with one dimension for each column). Consequently, geometric data structures is an important and well-studied research topic. 
+
+One of the core problems is \prob{orthogonal range searching}, where we must store a set of $d$-dimensional points $P$, possibly with support for point insertions or deletions. There are two standard types of queries that takes as input a $d$-dimensional rectangle $R$. A \emph{reporting} query must return a list of points from $P$ contained in $R$, and the answer to a \emph{counting} query is the number of points from $P$ contained in $R$. Reporting query times have a necessary $\occ$ term, which is the time spent listing the points in the output.
+%If the points are in a single dimension, we can typically solve problems efficiently using integer data structures. 
+We note that the range searching problems are relatively well-understood for two-dimensional points, but there are many open questions for the high-dimensional variants.
+%, with upper and lower bounds far apart. 
+
+Three included papers consider variations of range searching for points in at least two dimensions. 
+First, we consider \prob{compressed range searching}, which is to store the points in a compressed form while supporting standard range searching queries.  
+Second, we study \prob{colored range searching} where the points each have a single color and a query answer must list or count the distinct colors inside a query rectangle.
+Finally, we give experimental results on supporting \prob{threshold range counting}, where each point has a weight and we must count the points exceeding some weight threshold inside a query rectangle.
+
+
+%\clearpage
+\subsection{Compressed Point Sets}
+The orthogonal range searching problem has been studied extensively over the last 40 years, with a variety of classic solutions~\cite{bentley1975multidimensional, bentley1979multidimensional, orenstein1982multidimensional, bentley1980decomposable, lueker1978data, lee1980quintary, guttman1984r, clarkson1983fast, kanth1999optimal, van1991dividedk, gaede1998multidimensional, bayer1972organization, arge2008priority, robinson1981kdb, procopiuc2003bkd, comer1979ubiquitous, eppstein2008skip} (Samet presents an overview in \cite{samet1990applications}). 
+They typically store the points in a tree, using a strategy for dividing the $d$-dimensional universe into smaller areas and possibly storing multiple copies of the same point to answer queries efficiently. 
+
+The point set may contain geometric repetitions, that is, copies of point subsets that are identical to each other but where each copy is offset by some translation vector.
+Range searching on such points sets arise naturally in several scenarios such as data and image analysis \cite{tetko2001pattern, pajarola2000image, dick2009a}, GIS applications \cite{schindler2008detecting, zhu2002efficient, haegler2010a, dick2009a}, and when compactly representing sparse matrices and web graphs~\cite{Galli98compressionof, brisaboa2009k2, brisaboaainterleaved, de2013compact}.
+
+\paragraph{Our Contribution: \paper{Compressed Data Structures for Range Searching}} 
+We show how to exploit geometric repetitions to compress almost all classic data structures based on trees. We show that any query on the original data structure can be answered by simulation on the compressed representation with only constant overhead. 
+
+We give a tree model that capture almost all classic range searching data structures with constant overhead. We then show how to represent this model efficiently, compressing it using a minimal DAG representation.
+As the classic data structures are not designed to be compressed, they may be un-compressible even though the underlying point set is. 
+To compensate for this, we also give a new hierarchical clustering algorithm ensuring that geometric repetitions are indeed compressed (under certain constraints). The result is a new compressed data structure.
+
+\paragraph{Future Work}
+Our clustering algorithm requires $\Oh(N^2 \log D)$ time to cluster $N$ points with a maximum distance of $D$ between points. This is prohibitive for large point sets, and improvements would be interesting. Furthermore, the clustering algorithm may be modified to allow good clustering of more point distributions, such as subsets of points that are identical under rotation or scaling. Our general tree model supports storing such repetitions (if they can be described by a constant number of words per edge). An open question is how to efficiently find such repetitions and construct a corresponding tree.
+
+
+%\clearpage
+\subsection{Points with Colors}
+We consider \prob{colored range searching} as a natural variation of range searching where each point has a single color. Colors are picked from some color alphabet, and two points can have the same color. The problem is sometimes called generalized or categorical range searching, as we can think of the colors as categories assigned to the points. Queries ask for information about the distinct colors of points contained in a query range $R$ (instead of the actual points). That is, an answer to a reporting query is the distinct colors in $R$, and a counting query must return the number of distinct colors in $R$.
+
+Known solutions to colored range searching have much worse query performance than their non-colored counterparts. Intuitively, this is because points in the query range may have non-unique colors, meaning that additional filtering is required to output distinct color information.
+Observe that we can always obtain linear space and time by simply storing the points in a list and scanning through it to find distinct colors of points in the range. 
+
+Curiously, colored counting is considered harder than colored reporting as the former problem is not decomposable: an answer cannot be determined from the number of colors in two halves of the query range. 
+This is opposed to reporting, where an answer can be obtained by querying smaller parts of the range, merging the results and removing duplicates. For the standard problems both types of queries are decomposable, and solutions to counting are generally most efficient.
+Kaplan, Rubin, Sharir and Verbin~\cite{kaplan2007counting} give a hardness reduction which shows that a solution to two dimensional colored range counting in polylogarithmic time per query and $\Oh(n \polylog n)$ space would improve the best known matrix multiplication algorithm. This would be a major breakthrough, and the reduction suggest that even in two dimensions, no polylogarithmic time and almost-linear space solution for counting may exist.
+
+
+\paragraph{Our Contribution: \paper{Colored Range Searching in Linear Space}} 
+Our goal is to give data structures that support both types of queries in little space.
+We give the first linear space data structure for two-dimensional points that answers queries in sublinear time. We also give a high-dimensional structure with almost-linear space of $\Oh(n \log \log^d n)$ and the first dynamic solutions for any dimensionality.
+This can be compared to previous results that have large space use of $\Omega(n^d)$ for counting and $\Omega(n \log^{d-1} n)$ for reporting to get polylogarithmic query bounds. %Consequently, our proposed (almost) linear space solutions use much less space than previous data structures at the expense of worse query times of roughly $\Oh(\frac{n}{\log n}(\log \log n)^d)$.
+
+Our result is obtained by partitioning points into groups with logarithmiccally many color. %Each group stores all the points for at most $\log n$ specific colors. 
+We further partition each group into buckets, each containing a polylogarithmic number of points. 
+The points in each bucket are stored in a modified range tree data structure with color information stored in auxiliary data structures for each node.
+To answer a query, we solve the problem independently in each bucket and merge bucket results. 
+
+
+\paragraph{Future Work}
+The colored range searching problem has many interesting loose ends and possible variations. First, the hardness result in \cite{kaplan2007counting} indicates that it may be possible to achieve ``real'' large lower bounds for colored range counting. 
+Second, if focusing on upper bounds, improved query bounds in little space or with some restriction on the number of colors would be very interesting. We believe that especially the two-dimensional case can be improved by tabulating answers for small sets of points. 
+An open question is if there is a linear space data structure with sublinear query time for at least 3 dimensional points? 
+
+
+%\clearpage
+\subsection{Points with Weights in Practice}
+Another natural variation of range searching arise if points each have an integer weight. We may consider \prob{threshold queries} asking us to report or count the number of points in a query area where the weight of each reported point must exceed some threshold. 
+
+To the best of our knowledge, no previous work has been done on obtaining results for this particular variation of range searching. 
+However, we can think of the weight as a coordinate in a new integer dimension and the queries as being unbounded in one direction in that new dimension. This allows us to use known range searching data structures to answer queries at the expense of increasing the dimensionality of the points stored.
+Other related work show how to count the sums of weights~\cite{chazelle1990lower}, or how to report the top-$k$ heaviest points inside a query area~\cite{rahul2011efficient}.
+%We were also not able to find any experimental results on the problem.
+
+% allows us to answer \prob{motion detection} queries on video from a (statically mounted) surveillance camera to find ``interesting clips''. More precisely, the query is given a time interval $T$, a video area $A$ and two motion parameters $p$ and $q$, and must report all the timestamps in $T$ where area $A$ of the video had more than $p\%$ of the pixels changed by more than $q$ values. That is, each pixel is a point and the pixel value change is its weight.
+
+%For example, a real-world instance of the 3-dimensional threshold range counting problem occurred naturally in a software package for video surveillance built by Milestone Systems. Their system stores surveillance videos on disk in compressed form for later analysis. 
+
+
+\paragraph{Our Contribution: \paper{Indexing Motion Detection Data for Surveillance Video}} 
+We suggest a data structure for 3-dimensional points that supports \prob{threshold range counting} queries. Our data structure is in turn used to answer \prob{motion detection} queries on video from a statically mounted surveillance camera to find ``interesting clips'' that contain a lot of motion in an area of the frame. The problem appears in a software system by Milestone Systems, and in our paper we give experimental results on an implemented prototype.
+
+To see why threshold range counting can help answer motion detection queries, observe that each pixel in 2-dimensional grayscale video from a surveillance camera may be considered a weighted 3-dimensional point (the timestamp in the video is the third dimension). The difference between two frames in the video is a matrix with large weights in areas where many pixels changed value by a lot, meaning that something significant happened. By storing such pixel differences a large answer to threshold range counting implies motion in the video.
+
+Our solution reduces the resolution of allowed queries. It stores histograms that summarize information from the video and allow us to answer queries efficiently. The histograms are stored in compressed form on disk to reduce the space use. 
+%1) creates a single data structure for each frame, 2) reduces the resolution of the queries allowed by partitioning frames into a number of regions, 3) creates histogram for the number of different weights in each region, and 4) stores the histograms after having compressed them using a standard compressor. To answer queries, the relevant histograms are decompressed, and the answer can be directly looked up.
+
+The previous solution implemented by Milestone Systems answered queries by decompressing the entire relevant portion of the compressed video file and computing the answer from the decompressed frames. 
+We implemented a prototype of our solution in Python and performed a number of experiments with realistic data sets. The index is space-efficient in practice (using around $10\%$ of space required by the video file), quick to construct and answers queries efficiently (speedup of at least a factor $30$). 
+
+\paragraph{Real World Implications} 
+A modified version of the suggested solution is in use by Milestone Systems. Their implementation is a restricted and optimized version of the prototype, implementing automatic noise detection to filter out image noise. This allows them to reduce the query resolution further. The end result is a performance improvement of a factor $100$ compared to their previous solution, for a space requirement of about $1\texttt{KB}$ per second of video. The new data structure has enabled them to use the search function as an integral part of their product, as it can now deliver results in real time. This is contrary to previously where it was so slow that it was useless in practice.
+
+
+\paragraph{Future Work}
+The reason we study threshold range searching in the first place is that data structures for storing moving points are quite complicated and seem to perform relatively poorly in practice.
+What we \emph{actually} want is a simple kinetic data structure that supports efficient threshold queries: does such a structure exist?
+
+
+%\clearpage
+\section{Integers}
+An important and particularly well-studied area of data structure research is \emph{integer data structures}. Generally, we must store a sequence of $n$ integers, here denoted $X$, and support operations on the sequence\footnote{Sometimes we consider sets of integers, but to unify our presentation we here only discuss sequences.}. In our work, we suggest new solutions to variants of two core problems called \prob{predecessor} and \prob{partial sums}.
+
+
+%\clearpage
+\subsection{Finger Predecessor}
+We must store a sequence $X$ of $n$ integers to support the \emph{predecessor} query $\pred(q)$, returning the largest element in $X$ smaller than $q$. The \emph{successor} query $\succ(q)$, returning the smallest element larger than $q$, must also be supported. Elements in $X$ are drawn from a universe of size $N$ (remember that $w \geq \log N$). 
+A line of papers by van Emde Boas, Kaas and Zijlstra; Johnson; and Willard~ \cite{van1976design, van1977preserving, willard1983log, johnson1981priority} showed the existence of data structures for the problem with $\Oh(\log \log N) = \Oh(\log w)$ query time and $\Oh(N)$ space use. Later, Mehlhorn and N{\"a}her~\cite{mehlhorn1990bounded} showed how to reduce the space use to $\Oh(n)$ by using perfect hashing. The resulting data structure additionally supports insertions and deletions in the sequence in $\Oh(\log \log N)$ expected time.
+
+%Other papers focus on solutions with query times that depend on the number of elements stored rather than the universe size (this is beneficial for small sequences drawn from big universes). The Fusion Tree data structure was shown by Fredman and Willard~\cite{fredmanwillardfusion} to answer queries in $\Oh(\log n / \log w)$ time and $\Oh(n)$ space (or $\Oh(\sqrt{\log n})$ amortized time per operation if allowing insertions and deletions). This result was recently improved by Pătraşcu~and~Thorup~\cite{patrascu2014dynamic} to $\Oh(\log n / \log w)$ worst-case time for all operations and linear space.
+
+A finger search tree supports \emph{finger predecessor} queries, which is a predecessor query where the data structure is given a reference to an existing element $\ell \in X$ to start the search from. Dietz and Raman~\cite{dietz1994constant} showed that queries, insertions and deletions in such a tree can be supported in time $\Oh(\log d)$, where $d$ is the number of integers between the query answer and $\ell$. Andersson and Thorup~\cite{andersson2000tight} subsequently improved the query time to $\Oh(\sqrt{\log d / \log \log d})$. 
+
+
+\paragraph{Our Contribution: \paper{Fingerprints in Compressed Strings}} 
+%Predecessor data structures are used in several of the included papers as a black box, and some of our time bounds are parametrised by the bounds of a freely chosen predecessor data structure. 
+We give a new data structure for answering finger predecessor queries in bounds that depend on the absolute distance between the query integer $q$ and the finger $\ell$. For this variation, we give a solution supporting insertions and deletions with query time $\Oh(\log \log |\ell-q|)$, which is an improvement over the general solution when the reference element is close to the query point. Our data structure is used in the paper to reduce the query time for multiple close queries to improve the time to answer $\lceq$ queries.
+
+
+\paragraph{Future Work}
+A new result by Pătraşcu~and~Thorup~\cite{patrascu2014dynamic} essentially closes the classic variant of the predecessor problem, and existing structures are optimal in almost all cases. It is an open problem to construct optimal succinct solutions that use space proportional to the information theoretic lower bound.
+
+
+%\clearpage
+\subsection{Dynamic Partial Sums}\label{sec:intro:partialsums}
+In the \emph{partial sums} problem, we must store a sequence $X$ of $n$ integers to support three operations: \emph{update} the value of an integer at position $i$ by adding some value $\updabs$ to it, find the \emph{sum} of the first $i$ elements, and \emph{search} for the smallest sum larger than some integer $q$. It is natural to consider the search operation as a successor query among the prefix sums of $X$. 
+The problem is extremely well-studied, with many papers studying variations and showing improved upper and lower bounds~\cite{dietz1989optimal,raman2001succinct, husfeldt2003new,fredman1989cell,hon2011a,husfeldt1996lower,fenwick1994new,puaatracscu2004tight,chan2010counting}.
+In 2004, Pătraşcu and Demaine~\cite{puaatracscu2004tight} gave a linear space solution in the $w$-bit Word RAM model with optimal query time $\Oh(\log n / \log (w / \updbit))$ per operation and showed a matching lower bound. 
+They restrict the possibly negative $\updabs$ argument to the update operation to be at most $\updbit$ bits, so $|\updabs| \leq 2^\updbit$, and show that $\updbit = o(\log^\epsilon n)$ for a solution to be faster than $\Oh(\log n)$ time per operation. 
+
+\emph{Dynamic partial sums} is a generalization of partial sums where we must additionally support insertions and deletions of integers, changing the length of $X$. However, almost no solutions include support for such modifications, though individual integers can be updated. The only known solutions to dynamic partial sums are by Hon, Sadakane and Sung~\cite{hon2011a} and Navarro and Sadakane~\cite{navarro2014fully}. Their solutions are succinct and use $\Oh(\log n / \log \log n)$ time per operation, but only work for sequences of small integers of at most $\log w$ bits. This is exponentially smaller than the $w$-bit integers supported in the static data structure by Pătraşcu and Demaine~\cite{puaatracscu2004tight}.
+
+
+\paragraph{Our Contribution: \paper{Dynamic Relative Compression and Dynamic Partial Sums}} 
+We give a new linear space data structure for the dynamic partial sums problem that additionally supports splitting and merging neighboring integers in sequence $X$. Our data structure is the first to support full $w$-bit integers, and it supports all operations in optimal worst-case time $\Oh(\log n / \log (w / \updbit))$, matching the lower bound for non-dynamic partial sums of $\Omega(\log n / \log (w / \updbit))$ time per operation by Pătraşcu and Demaine~\cite{puaatracscu2004tight}. 
+
+Since insert and delete can be used to implement update, the lower bound implies that the new operations are supported in optimal time, and the $\updbit$ update restriction implies that only integers smaller than $2^\updbit$ can be inserted or deleted.
+Any dynamic partial sums solution solves list representation (support access, insert and delete on a list), and we match the lower bound of $\Omega(\log n / \log \log n)$ due to Fredman and Saks~\cite{fredman1989cell} for elements of $\updbit \leq \log^\epsilon n$ bits where $\epsilon < 1$. This is optimal when also supporting $\psum$.
+ 
+The main difficulty in supporting modifications is that indices may change, which causes elements in the sequence to shift left or right. 
+Our data structure builds and improves on the techniques used by Pătraşcu and Demaine~\cite{puaatracscu2004tight} in their non-dynamic optimal-time data structure.
+They precompute sums and store them in an array coupled with a small data structure for updates. This supports all non-dynamic operations in constant time for small sequences of polylogarithmic length, and a standard reduction is used to store the full sequence in a B-tree.
+In our construction we first simplify their approach,
+%To do so, we first simplify the construction by 
+only storing some representative elements in a dynamic predecessor data structure by Pătraşcu and Thorup~\cite{patrascu2014dynamic}. All other elements are stored in a small update data structure. We then show how to modify this representation to efficiently support insertions and deletions, changing the way we store representatives and supporting modifications on the update data structure. 
+
+
+\paragraph{Future Work}
+Our new data structure almost closes the dynamic partial sums problem, matching amortized lower bounds for all operations. Two open problems remain. 
+First, as the lower bounds are amortized, some operations may be implementable in less time: for example, Chan and Pătraşcu~\cite{chan2010counting} give a linear space solution to the non-dynamic variant with a faster increment/decrement update operation and optimal query time for sum. 
+Second, our data structure uses linear space in words. Though succinct solutions exist for the partial sums problem, previous solutions to dynamic partial sums only support very small integers, so a natural question is if our data structure can be made succinct. 
+
+
+
+
+

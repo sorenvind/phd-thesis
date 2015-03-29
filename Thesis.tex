@@ -13,9 +13,6 @@
 
 \begin{document}
 
-% Fixme list on very first page. Eases finding it :D
-\listoffixmes
-
 \prefrontmatter
 \include{prefrontmatter/titlepage}
 \cleartoevenpage
@@ -32,19 +29,31 @@
 \clearforchapter
 
 \mainmatter
+\part{Setting the Stage}
+
 \include{chapters/Introduction}
+\include{chapters/Contributions}
+
+
 
 \iftoggle{withpapers}{
-    \todo{Dynamic Relative Compression paper} %text, compression, ds
+%    \part{Act 1-4: Strings}
+    \part{Strings}
+    
     \include{chapters/papers/fingerprints/fingerprints} %text, compression, ds
-
+    \include{chapters/papers/dynamiccompression/dynamiccompression}  %text, compression, ds
     \include{chapters/papers/annotated/annotated} %text, streaming, ds
     \include{chapters/papers/patternextraction/patternextraction} %text, algorithm, ds
+
+%    \part{Act 5-7: Range Searching}
+    \part{Points}
+
     \include{chapters/papers/compressedrangesearching/compressedrangesearching} %geometry, compression, ds
     \include{chapters/papers/coloredrangecounting/coloredrangecounting} %geometry, ds
     \include{chapters/papers/motiondetection/motiondetection} %geometry, compression, practical, ds
 
     %\blinddocument %% Gives demo/instructions for use
+    %\part{Encore}
     %\include{chapters/Conclusion}
 
     %\appendix
@@ -53,5 +62,8 @@
 
 \backmatter
 \printbibliography
+
+% FIXFIXFIX
+%\listoffixmes
 
 \end{document}

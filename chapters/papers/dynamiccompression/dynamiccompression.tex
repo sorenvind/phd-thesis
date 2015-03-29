@@ -1,0 +1,409 @@
+%!TEX root = ../../../Thesis.tex
+\chapter{Dynamic Relative Compression and Dynamic Partial Sums}\label{chp:dynamiccompression}
+
+\begin{infosection}
+    \begin{authors}
+        Philip Bille\footnote{Supported by the Danish Research Council and the Danish Research Council under the Sapere Aude Program (DFF 4005-00267).} \qquad Patrick Hagge Cording \qquad Inge Li G{\o}rtz\samethanks \\
+        Frederik Rye Skjoldjensen\footnote{Supported by the FNU project AlgoDisc (DFF 1323-00178).} \qquad Hjalte Wedel Vildh{\o}j \qquad S{\o}ren Vind\footnote{Supported by a grant from the Danish National Advanced Technology Foundation.}
+    \end{authors}
+
+    \begin{uninames}
+        Technical University of Denmark
+    \end{uninames}
+
+    \begin{abstract}
+We initiate the study of \emph{dynamic relative compression}, which is the problem of maintaining a compression of a dynamically changing string $S$. In this model $S$ is compressed as a sequence of pointers to substrings of a static reference string $R$ of length $r$. Let $n$ be the size of the \emph{optimal compression} of $S$ with regards to $R$.
+%
+We give a data structure that maintains an asymptotically optimal compression of $S$ with regards to $R$ using $O(n+r)$ space and $O(\log n / \log \log n + \log\log r)$ time to access, replace, insert or delete a character in $S$. We can improve the update time to $O(\log n / \log \log n)$ at the cost of increasing the space to $O(n+r\log^\epsilon r)$, for any $\epsilon > 0$. Our result can be generalized to storing multiple compressed strings with regards to the same reference string.
+
+%\todo{The below paragraph needs a better explanation, possibly def. of operations.}
+
+Our main technical contribution is a new linear-space data structure for \emph{dynamic partial sums} on a sequence of $w$-bit integers with support for insertions and deletions, where $w$ is the word size. 
+%The data structure supports the classic partial sums operations as well as insertions and deletions on the sequence.
+Previous data structures assumed $\log w$-bit or even $O(1)$-bit integers.
+%
+We support all operations in optimal time $O(\log s / \log (w/\updbit))$, matching a lower bound by Pătraşcu and Demaine~[SODA~2004]. Here $s$ is the length of the sequence and $\updbit \leq w$ is the maximum number of bits allowed in updates.
+    \end{abstract}
+\end{infosection}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%% INTRODUCTION %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+In this paper we study the problem of maintaining a compressed representation of a dynamically changing string $S$. Our solutions support efficient updates on $S$ while guaranteeing that the compression is always asymptotically optimal.
+
+The model of compression we consider is \emph{relative compression}. Given a static reference string $R$, a \emph{relative compression of a string $S$ with regards to $R$} is an encoding of $S$ as a sequence of references to substrings of $R$. Relative compression is a classic and general model of compression introduced by Storer~and~Szymanski~\cite{SS1978,Storer1982} in 1978. Variations of this model, such as \emph{relative Lempel-Ziv compression}, have been widely studied and shown to be very useful in practice~\cite{kuruppu2010relative, kuruppu2011optimized, chern2012reference, do2014fast, hoobin2011relative}.
+
+We initiate the study of \emph{dynamic relative compression} (DRC). More specifically, the dynamic relative compression problem is to maintain a relative compression of $S$ under the following operations:
+
+\begin{description}
+\item[$\quad\sacc(i)$:] return the character $S[i]$,
+\item[$\quad\srep(i, \alpha)$:] change $S[i]$ to $\alpha$,
+\item[$\quad\sins(i, \alpha)$:] insert character $\alpha$ before position $i$ in $S$,
+\item[$\quad\sdel(i)$: ] delete the character at position $i$ in $S$,
+\end{description}
+where $i$ is a position in $S$ and $\alpha$ is a character that occurs in $R$. Note that operations $\sins$ and $\sdel$ changes the length of $S$ by a single character. In all our results we also support decompressing an arbitrary substring of length $\ell$ in time $O(t_\text{acc}+\ell)$, where $t_\text{acc}$ is the time to perform a single $\sacc(i)$ query.
+%In general, we can also support decompressing any substring of $S$ of length $\ell$ in time equal to performing a single $\sacc$ query and an additive $O(\ell)$ term.
+
+
+A \emph{relative compression of $S$ with regards to $R$} is a sequence $C=((i_1,j_1),...,(i_{|C|},j_{|C|}))$ such that $S = R[i_1,j_1] \cdots R[i_{|C|},j_{|C|}]$. The size of the compression is $|C|$, and we say that $C$ is \emph{optimal} if it has minimum size over all relative compressions of $S$ with regards to $R$. Throughout the paper, let $r$ be the length of the reference string $R$, $N$ be the length of the (uncompressed) string $S$, and $n$ be the size of an optimal relative compression of $S$ with regards to $R$.
+
+
+%Let $R$ be a \emph{reference string} and let $S$ be a \emph{source string}. A \emph{substring cover} $C$ of $S$ by $R$ is a sequence of substrings of $R$ such that the concatenation of the substrings in $C$ equal $S$. The length of $C$ is the number of substrings in $C$ and $C$ is optimal if its length is minimal. A \emph{relative compression scheme} encodes $S$ by a substring cover $C$ of $S$ by $R$. Each substring in $C$ is compactly represented by its starting and ending position in $R$. A relative compression scheme is optimal if its substring cover is optimal. Hence, if $S$ contains many long substrings of $R$ an optimal (or sufficiently close to optimal) relative compression scheme can compress $S$ efficiently.
+
+%In this paper we initiate the study of relative compression in a dynamic setting. Given a static reference string $R$, the \emph{dynamic relative compression problem} is to maintain a relative compression of a dynamic source string $S$ under the following operations. Let $i$ be a position in $S$ and $\alpha \in \Sigma$ be a character. 
+
+
+
+\subsection{Our Results}
+We present solutions to the DRC problem that efficiently support updating $S$ while maintaining a relative compression of $S$ of size at most $2n-1$. All of our results are valid in the Word RAM model with word length $w \geq \log (n+r)$ bits. 
+
+\begin{theorem}\label{thm:main}
+We can solve the DRC problem
+%Let $R$ and $S$ be a reference and source string of lengths $r$ and $N$, respectively, and let $n$ be the length of the optimal substring cover of $S$ by $R$. Then, we can solve the dynamic relative compression problem supporting $\sacc$, $\srep$, $\sins$, and $\sdel$
+\begin{itemize}
+\item[(i)] in $O(n + r)$ space and $O\left(\frac{\log n}{\log \log n} + \log \log r\right)$ time per operation, or
+\item[(ii)] in $O(n + r \log^\epsilon r)$ space and $O\left(\frac{\log n}{\log \log n}\right)$ time per operation, for any $\epsilon>0$.
+\end{itemize}
+
+\end{theorem}
+Together, these bounds are optimal for most natural parameter combinations. In particular, any data structure for a string of length $N$ supporting $\sacc$, $\sins$, and $\sdel$ must use $\Omega(\log N/\log \log N)$ time in the worst-case regardless of the space~\cite{fredman1989cell} (this is called the \emph{list representation problem}). Since $n \leq N$, we can view  $O(\log n /\log \log n)$ as a compressed optimal time bound that is always $O(\log N/\log \log N)$ and better when $S$ is compressible. Hence, Theorem~\ref{thm:main}(i) provides a linear-space solution that achieves the compressed optimal time bound except for an $O(\log \log r)$ additive term. Note that whenever $n \geq (\log r)^{\log^\epsilon \log r}$, for any $\epsilon>0$, the $O(\log n/\log \log n)$ term dominates the query time and we match the compressed time bound. Hence, Theorem~\ref{thm:main}(i) is only suboptimal in the special case when $n$ is almost exponentially smaller than $R$. In this case, we can use Theorem~\ref{thm:main}(ii) which always provides a solution achieving the compressed time bound at the cost of increasing the space to $O(n + r\log^\epsilon r)$.
+
+Our solution can be generalized to support storing multiple strings with regards to a single reference string $R$ in the natural way. In this case, $n$ is the sum of the optimal compression sizes with regards to $R$ for each string.
+
+\subsection{Technical Contributions}
+We reduce the DRC problem to the following two central problems, which we provide new and improved solutions for. Both of these problems are of independent interest.
+
+\subsubsection{The Dynamic Partial Sums Problem} Let $Z=Z[1],...,Z[s]$ be a sequence of $w$-bit integers. The problem is to support the operations:
+\begin{description}
+ \item[$\quad\psum(i)$:] return $\sum_{j=1}^i Z[j]$,
+ \item[$\quad\pupdate(i, \updabs)$:] set $Z[i] = Z[i] + \updabs$,
+ \item[$\quad\psearch(t)$:] return $1 \leq i \leq s$ such that $\psum(i-1) < t \leq \psum(i)$,
+ \item[$\quad\pinsert(i, \updabs)$:] insert integer $\updabs$ before $Z[i]$,
+ \item[$\quad\pdelete(i)$:] delete $Z[i]$.
+ \end{description}
+%We allow (possibly negative) modifications of at most $\updbit$ bits, so $|\updabs| \leq 2^\updbit$, and 
+We require $Z[i] \geq 0$ for all $i$ at all times to ensure well-defined answers to $\psearch(t)$. 
+The possibly negative $\updabs$ argument in $\pupdate$ is restricted to be at most $\updbit$ bits, so $|\updabs| \leq 2^\updbit$. 
+%Note that $\pupdate$ can be implemented using $\pinsert$ and $\pdelete$, so those operations have the same element size restrictions of $\updbit$ bits as $\pupdate$.
+This (sometimes implicit) data structure parameter $\updbit$ is standard and included in the best lower bound. Note that the update restriction implies that only elements of size $\leq 2^\updbit$ can be inserted or deleted (as these operations can be used to implement update).
+
+The non-dynamic partial sums problem (without the operations $\pinsert$ and $\pdelete$) is well-studied~\cite{dietz1989optimal,raman2001succinct, husfeldt2003new,fredman1989cell,hon2011a,husfeldt1996lower,fenwick1994new,puaatracscu2004tight}. Pătraşcu and Demaine~\cite{puaatracscu2004tight} presented a linear-space data structure with query time $O(\log s / \log (w / \updbit))$ per operation and showed a matching lower bound.
+
+We give a new data structure for dynamic partial sums, which also supports the non-standard operations: $\pentrydivide(i, t)$, which replaces $Z[i]$ by $Z[i]' = t$ and $Z[i]'' = Z[i] - t$, where $0 \leq t \leq Z[i]$; and $\pentrymerge(i)$, which replaces $Z[i]$ and $Z[i+1]$ with $Z[i]' = Z[i] + Z[i+1]$.
+
+\begin{theorem}\label{thm:partialsums}
+    The dynamic partial sums problem can be solved in linear space and $O(\log s / \log (w / \updbit))$ worst-case time per operation. The data structure also supports the operations $\pentrydivide$ and $\pentrymerge$ in the same time.
+\end{theorem}
+
+\noindent The only known solutions to dynamic partial sums are by Hon~et~al.~\cite{hon2011a} and Navarro and Sadakane~\cite{navarro2014fully}. Their solutions are succinct and use $O(\log s / \log \log s)$ time per operation, but only work for sequences of small integers of $\leq \log w$ bits.
+
+Our dynamic partial sums data structure is the first to support full $w$-bit integers. Moreover, we match the lower bound for non-dynamic partial sums of $\Omega(\log s / \log (w / \updbit))$ time per operation by Pătraşcu and Demaine~\cite{puaatracscu2004tight}. 
+%As $\pupdate$ can be implemented using $\pinsert$ and $\pdelete$, we also support the dynamic operations in optimal time.
+The dynamic operations are supported in optimal time as $\pupdate$ can be implemented with $\pinsert$ and $\pdelete$.
+Any solution to dynamic partial sums also solves list representation (we can solve $\sacc$ using two $\psum$ queries), and we match the lower bound of $\Omega(\log s / \log \log s)$ for elements of $\updbit \leq \log^\epsilon s$ bits where $\epsilon < 1$. 
+Pătraşcu and Demaine~\cite{puaatracscu2004tight} show that this is optimal when also supporting $\psum$.
+
+%Our construction is relatively simple, using techniques similar to those of Dietz, Pătraşcu and Demaine~\cite{dietz1989optimal, puaatracscu2004tight}, the new dynamic fusion node by Pătraşcu and Thorup~\cite{patrascu2014dynamic} and new data structures for efficient update operations and modifications in polylogarithmically large sequences. 
+
+%The difficulty in supporting insertions and deletions in the sequence is that a solution to the dynamic partial sums problem is also a solution to both (non-dynamic) partial sums as well as list representation. 
+%Because insertions and deletions changes indices and thus shifts elements, it is not obvious to extend the optimal solution to (non-dynamic) partial sums by Pătraşcu and Demaine~\cite{puaatracscu2004tight} to the dynamic case. 
+The main difficulty in supporting insertions and deletions is that indices may change, which causes elements in the sequence to shift left or right. We build on the solution to non-dynamic partial sums by Pătraşcu and Demaine~\cite{puaatracscu2004tight}, extending it to the dynamic case. 
+They precompute sums and store them in an array coupled with a small data structure for updates. This supports all operations in constant time for a polylogarithmically size sequence, and a standard reduction (that we will also use) is used to store the full sequence in a B-tree.
+
+In our construction we first simplify their approach,
+%To do so, we first simplify the construction by 
+only storing (values and indices) of some representative elements in a dynamic integer set data structure by Pătraşcu and Thorup~\cite{patrascu2014dynamic}. All other elements are stored in the update data structure. We then show that this representation can be changed to efficiently support insertions and deletions by modifying the way we store representative indices (and how to support the dynamic operations in the update data structure). 
+
+
+\subsubsection{The Substring Concatenation Problem}
+A \emph{substring concatenation query} on a string $R$ takes two pairs of indices $(i,j)$ and $(i',j')$ and returns the start position in $R$ of an occurrence of $R[i,j] R[i',j']$, or \texttt{NO} if the string is not a substring of $R$. The \emph{substring concatenation problem} is to preprocess $R$ into a data structure that supports substring concatenation queries.
+
+%The problem is to support \emph{substring concatenation queries} on a string $R$. Such a query takes two pairs of indicies $(i_1,j_1), (i_2,j_2)$. If $R[i_1,j_1] R[i_2,j_2]$ occurs in $R$ the query returns the start and end position of such an occurrence, and otherwise it returns \texttt{NO}.
+
+Let $r$ be the length of $R$. Amir~et~al.~\cite{amir2007dynamic} gave a solution using $O(r\sqrt{\log r})$ space with query time $O(\log\log r)$, and very recently Gawrychowski~et~al.~\cite{gawrychowski2014weighted} showed how to solve the problem in $O(r\log r)$ space and $O(1)$ time. We propose two new solutions that improve each of their bounds.
+
+\begin{theorem}\label{thm:substringconcat}
+The substring concatenation problem can be solved in
+\begin{itemize}
+\item[(i)] in $O(r\log^\epsilon r)$ space and $O(1)$ time, for any $\epsilon>0$, or
+\item[(ii)] in $O(r)$ space and $O(\log \log r)$ time,
+\end{itemize}
+\end{theorem}
+
+\noindent The two solutions lead to the two branches of Theorem~\ref{thm:main}.
+
+
+\subsection{Extensions}
+Our results have the following interesting extensions, the details are in Section~\ref{sec:extensions}.
+%We list some here and leave the details for the full version of this paper.
+
+%If we do not require support for insertions and deletions, we can improve the query time by using a predecessor data structure in place of the dynamic prefix sums data structure.
+
+\begin{theorem}\label{thm:extension1}
+We can solve the DRC problem, only supporting $\sacc$ and $\srep$
+\begin{itemize}
+\item[(i)] in space $O(n + r)$ and time $O(\log\log N)$ for $\sacc$ and time $O(\log\log N + \log\log r)$ for $\srep$, or
+\item[(ii)] in space $O(n + r\log^\epsilon r)$ and time $O(\log\log N)$ for both operations.
+\end{itemize}
+\end{theorem}
+
+\noindent This implies an improved solution to the following dynamic pattern matching problem: Given a static pattern $P$ and a text $T$, maintain the set $\mathcal L$ of occurrences of $P$ in $T$ under an update operation that replaces the $i^\text{th}$ character in $T$ with another character from the alphabet. For this problem, Amir~et~al.~\cite{amir2007dynamic} gave a data structure using $O(|T|+|P|\sqrt{\log |P|})$ space and supporting updates in $O(\log \log |P|)$ time. By using Theorem~\ref{thm:extension1}(i) as a black-box in their work, we obtain a data structure using $O(|T|+|P|)$ space with $O(\log \log |P|)$ update time.
+
+\subsubsection*{Multiple Strings with Split and Concatenate}
+The \emph{dynamic relative compression problem on multiple strings} is the problem of maintaining a dynamic set of strings, $\stringset=\{S_1,\ldots,S_k\}$, all compressed in the dynamic relative compression model, relative to the same reference string $R$. In this problem the operations $\sacc$, $\srep$, $\sins$ and $\sdel$ take an extra parameter indicating the string from $\stringset$ to perform the operation on. We additionally wish to support the operations $\ssplit(i,j)$, which updates $\stringset$ to $(\stringset \setminus S_i) \cup \{S_i[1,j-1], S_i[j,|S_i|]\}$, and $\sconcat(i,j)$ updating $\stringset$ to $(\stringset \setminus \{S_i,S_j\}) \cup \{S_i S_j\}$.
+
+\begin{theorem}\label{thm:extension2}
+We can solve the DRC problem on multiple strings, supporting $\sacc$, $\srep$, $\sins$, $\sdel$, $\ssplit$, and $\sconcat$,
+\begin{itemize}
+\item[(i)] in space $O(n + r)$ and time $O(\log n)$ for $\sacc$ and time $O(\log n + \log\log r)$ for $\srep$, $\sins$, $\sdel$, $\ssplit$, and $\sconcat$, or
+\item[(ii)] in space $O(n + r\log^\epsilon r)$ and time $O(\log n)$ for all operations.
+\end{itemize}
+\end{theorem}
+
+
+
+\subsection{Related Work}\label{sec:related}
+\paragraph{Relative Compression} 
+The non-recursive external pointer macro compression scheme was introduced by Storer and Szymanski in 1978~\cite{SS1978,Storer1982}. They provided seminal analytical work, showing that finding the best reference string given some uncompressed string is NP-complete, and showed that $n+r = \Omega(\sqrt{N})$ for any reference string when only compressing a single string. This is the same compression ratio as obtained by the LZ78/LZW schemes~\cite{Welch1984,lz1978} when compressing a single string. However, if compressing multiple strings with regards to the same reference string we can do much better. Relative compression is a special case of their scheme which also supports compressing multiple strings. The general scheme suggested by Storer~and~Szymanski is also sometimes called LZSS, used by popular archivers such as PKZip, ARJ and RAR.
+
+More recently, Kuruppu~et~al.~\cite{kuruppu2010relative} suggested the Relative Lempel-Ziv (RLZ) scheme for compressing highly repetitive data such as genomes. 
+%RLZ is the same scheme as the one we consider in this paper. 
+The RLZ scheme defines its parse identically to the greedy LZ77~\cite{lz1977} parse when using all substrings of $R$ as the dictionary, meaning that it produces an optimal compression for a given and fixed reference string (shown in \cite{cohn1996parsing,Storer1982,Crochemore201455}).  
+%(see e.g. \cite{cohn1996parsing,Storer1982,Crochemore201455} for optimality of the greedy LZ77 parse). 
+Multiple papers show impressive compression ratios for both RLZ and LZSS in various practical settings, storing a dictionary of similar strings~\cite{ferragina2013bit,kuruppu2011optimized,chern2012reference,do2014fast,hoobin2011relative,kuruppu2011reference,wandelt2013fresco,deorowicz2011robust,wandelt2012adaptive,ochoa2014idocomp}. 
+The relative compression scheme considered in this paper is closely related to RLZ, and we may in fact create our initial compression as in the RLZ scheme. However, we maintain an asymptotically optimal compression under updates.
+%including a variant that allows changing the reference string~\cite{kuruppu2011reference}.
+%However, Ferragina~et~al.~\cite{ferragina2013bit} showed that when using variable length encoding of the indices in phrases, the greedy parse is no longer optimal. In the wake of this, Kuruppu~et~al.~\cite{kuruppu2011optimized} and Chern~et~al.~\cite{chern2012reference} proposed non-greedy parsing strategies for RLZ that give better compressions in various practical settings. A variant that allows changing the reference string also emerged~\cite{kuruppu2011reference}. RLZ has since been used in for work on compact self-indices~\cite{do2014fast} and storing other kinds of data~\cite{hoobin2011relative}.
+    
+\paragraph{Dynamic Compression}
+Several schemes for dynamic compression exist in the literature. The overall idea is to dynamically maintain a compressed string under a set of operations. In particular, Grossi et al. \cite{grossi2013} presents a scheme for compressing a string $S$ in entropy bounds while dynamically maintaining  it under the operations: access a substring of $S$; replace, insert or delete a character of $S$; support rank and select queries on $S$. This work stem from earlier work on string compression in entropy bounds. Both Grossi~et~al.~\cite{Grossi03} and Ferragina~et~al.~\cite{Ferragina04succinctrepresentation} present schemes for providing random access to entropy compressed strings. These ideas have gradually been refined and varied in \cite{Ferragina04succinctrepresentation, ferragina2005indexing, Sadakane2006, Bin2007, Ferragina2007, Jansson12_cram, navarro2013optimal}.
+
+%All of these schemes consider strings compressed in entropy bounds. Instead, our dynamic compression scheme based on relative compression supports a set of common operations on strings and may compress much better than existing dynamic schemes.
+All of the above schemes either use succinct space or compressed space depending on the empirical entropy defined relative to fixed-length contexts. In contrast, relative compression can take advantage of long contexts and hence may achieve much better compression on such strings.
+
+\section{Dynamic Relative Compression}\label{sec:DRC}
+In this section we show how Theorems~\ref{thm:partialsums} and \ref{thm:substringconcat} lead to Theorem~\ref{thm:main}. The proofs of Theorems~\ref{thm:partialsums} and \ref{thm:substringconcat} appear in Section~\ref{sec:dynps} and Section~\ref{app:substringconcat}, respectively. 
+
+Let $C=((i_1,j_1),...,(i_{|C|},j_{|C|}))$ be the compressed representation of $S$. From now on, we refer to $C$ as the \emph{cover of $S$}, and call each element $(i_l,j_l)$ in $C$ a \emph{block}. Recall that a block $(i_l,j_l)$ refers to a substring $R[i_l,j_l]$ of $R$.
+%A cover $C$ is \emph{maximal} if concatenating any two consecutive blocks in $C$ yields a string that does not occur in $R$. We need the following lemma.
+A cover $C$ is \emph{maximal} if 
+concatenating any two consecutive blocks $(i_l,j_l),(i_{l+1},j_{l+1})$ in $C$ yields a string that does not occur in $R$, 
+i.e., the string $R[i_l,j_l]R[i_{l+1},j_{l+1}]$ is not a substring of $R$. We need the following lemma.
+
+
+\begin{lemma}\label{lem:maxcover}
+If $C_\textsc{max}$ is a maximal cover and $C$ is an arbitrary cover of $S$, then $|C_\textsc{max}| \leq 2|C|-1$.
+\end{lemma}
+\begin{proof}
+In each block $b$ of $C$ there can start at most two blocks in $C_\textsc{max}$, because otherwise two adjacent blocks in $C_\textsc{max}$ would be entirely contained in the block $b$, contradicting the maximality of $C_\textsc{max}$. In the last block of $C$ there can start at most one block in $C_\textsc{max}$. Hence, $|C_\textsc{max}| \leq 2|C|-1$.
+\end{proof}
+Recall that $n$ is the size of an optimal cover of $S$ with regards to $R$. 
+The lemma implies that we can maintain a compression with size at most $2n-1$ by maintaining a maximal cover of $S$.
+The remainder of this section describes our data structure for maintaining and accessing such a cover.
+Initially, we construct a maximal cover of $S$ in $O(|S|+r)$ time by greedily traversing the suffix tree of $R$.
+
+\subsection{Data Structure}
+The high level idea for supporting the DRC operations on $S$ is to store the sequence of block lengths $(j_1-i_1+1, \ldots, j_{|C|}-i_{|C|}+1)$ in a dynamic partial sums data structure. This allows us, for example, to identify the block that encodes the $k^\text{th}$ character in $S$ by performing a $\psearch(k)$ query.
+
+Updates to $S$ are implemented by splitting a block in $C$, which may break the maximality property. The key idea is to use substring concatenation queries on $R$ to detect consecutive blocks that break maximality. When two such blocks are found, we merge the two blocks in $C$. We only need a constant number of substring concatenation queries to restore maximality. To maintain the correct sequence of block lengths we use $\pupdate$, $\pentrydivide$ and $\pentrymerge$ operations on the dynamic partial sums data structure.
+
+%\subsection{The DRC Data Structure}
+%\subsection{Substring Covers}
+%Let $R \subset \Sigma^*$ be a static string called the \emph{reference string}, and let $C=(b_1,b_2,\ldots,b_k)$ be a sequence of $k$ (possibly overlapping) substrings of $R$. We say that $C$ is a \emph{cover} (with respect to $R$) for the string $S$ if and only if $S = b_1 \cdot b_2 \cdots b_k$. The \emph{size} of $C$, denoted $|C|$, is equal to $k$, and we refer to each $b_i \in C$ as a \emph{block}. We say that the cover $C$ is \emph{maximal} if the concatenation of every two consecutive blocks $b_i \cdot b_{i+1}$, is not a substring of $R$, for $i=1,\ldots,k-1$.
+%%%Moreover, we say that $C$ is \emph{optimal} for $S$ if the size of $C$ is minimum over all covers of $S$.
+%
+%We first show that a maximal cover is at most a factor $2$ from the optimal cover. 
+%\begin{lemma}\label{lem:maxcover}
+%If $C_\textsc{max}$ is a maximal cover and $C$ is an arbitrary cover of $S$ by $R$, then $|C_\textsc{max}| \leq 2|C|-1$.
+%\end{lemma}
+%\begin{proof}
+%In each block $b$ of $C$ there can start at most two blocks in $C_\textsc{max}$, because otherwise two adjacent blocks in $C_\textsc{max}$ would be entirely contained in the block $b$, contradicting the maximality of $C_\textsc{max}$. In the last block of $C$ there can start at most one block in $C_\textsc{max}$. Hence, $|C_\textsc{max}| \leq 2|C|-1$.
+%\end{proof}
+
+Our data structure consist of the string $R$, a substring concatenation data structure of Theorem~\ref{thm:substringconcat} for $R$, a maximal cover $C$ for $S$ stored in a doubly linked list, and the dynamic partial sums data structure of Theorem~\ref{thm:partialsums} storing the block lengths of $C$ (we require the data structure to support $\pentrydivide$ and $\pentrymerge$). 
+We also store auxiliary links between a block in the doubly linked list and the corresponding block length in the partial sums data structure, and a list of alphabet symbols in $R$ with the location of an occurrence for each symbol.
+By Lemma~\ref{lem:maxcover} and since $C$ is maximal we have $|C| \leq 2n-1 = O(n)$. Hence, the total space for $C$ and the partial sums data structure is $O(n)$. The space for $R$ is $O(r)$ and the space for substring concatenation data structure is either $O(r)$ or $O(r \log^\epsilon r)$ depending on the choice in Lemma~\ref{thm:substringconcat}. Hence, in total we use either $O(n + r)$ or $O(n +r \log^\epsilon r)$ space.
+
+\subsection{Answering Queries}
+To answer $\sacc(i)$ queries we first compute $\psearch(i)$ in the dynamic partial sums structure to identify the block $b_l = (i_l,j_l)$ containing position $i$ in $S$. The local index in $R[i_l,j_l]$ of the $i^\text{th}$ character in $R$ is $\ell = i - \psum(l-1)$, and thus the answer to the query is the character $R[i_l + \ell]$.
+% and the corresponding local position $\ell = i - \start(b_j)$ of $i$ in $b_j$. Finally, we return the character at $R[a + \ell]$. 
+
+We perform $\srep$ and $\sdel$ by first identifying $b_l = (i_l,j_l)$ and $\ell$ as above. Then we partition $b_l$ into three new blocks 
+%${b^1_l} = R[i_l, \ell - 1]$, ${b^2_l} = R[\ell]$, and ${b^3_l} = R[\ell + 1, j_l]$. 
+${b^1_l}=(i_l, i_l+\ell-1)$, ${b^2_l} = (i_l+\ell)$, ${b^3_l}=(i_l+\ell+1, j_l)$ where $b^2_l$ is the single character block for index $i$ in $S$ that we must change. 
+In $\srep$ we change ${b^2_l}$ to an index of an occurrence in $R$ of the new character (which we can find from the list of alphabet symbols), while we remove ${b^2_l}$ in $\sdel$. The new blocks and their neighbors, that is, $b_{l-1}$, ${b^1_l}$, ${b^2_l}$, ${b^3_l}$, and $b_{l+1}$ may now be non-maximal. To restore maximality we perform substring concatenation queries on each consecutive pair of these 5 blocks, and replace non-maximal blocks with merged maximal blocks. A similar idea is used by Amir~et~al.~\cite{amir2007dynamic}. We perform $\pupdate$, $\pentrydivide$ and $\pentrymerge$ operations to maintain the corresponding lengths in the dynamic partial sums data structure. The $\sins$ operation is similar, but inserts a new single character block between two parts of $b_j$ before restoring maximality. Observe that using $\updbit = O(1)$ bits in $\pupdate$ is sufficient to maintain the correct block lengths.
+
+In total, each operation require a constant number of substring concatenation queries and dynamic partial sums operations; the latter with time complexity $O(\log n/\log(w/\updbit))=O(\log n/\log\log n)$ as $w \geq \log n$. Hence, the total time for each $\sacc$, $\srep$, $\sins$, and $\sdel$ operation is either $O(\log n/\log \log n + \log \log r)$ or $O(\log n/\log \log n)$ depending on the substring concatenation data structure used. In summary, this proves Theorem~\ref{thm:main}.
+
+
+
+%\section{Covers}
+%%Definition of our cover model (and pairwise non-concatenationability)
+%
+%Let $R \subset \Sigma^*$ be a static string called the \emph{reference string}, and let $C=(b_1,b_2,\ldots,b_k)$ be a sequence of $k$ (possibly overlapping) substrings of $R$. We say that $C$ is a \emph{cover} (with respect to $R$) for the string $S$ if and only if $S = b_1 \cdot b_2 \cdots b_k$. The \emph{size} of $C$, denoted $|C|$, is equal to $k$, and we refer to each $b_i \in C$ as a \emph{block}. We say that the cover $C$ is \emph{maximal} if the concatenation of every two consecutive blocks $b_i \cdot b_{i+1}$, is not a substring of $R$, for $i=1,\ldots,k-1$.
+%%Moreover, we say that $C$ is \emph{optimal} for $S$ if the size of $C$ is minimum over all covers of $S$.
+%
+%\begin{lemma}\label{lem:maxcover}
+%If $C_\textsc{max}$ is a maximal cover and $C$ is an arbitrary cover of $S$ w.r.t. $R$, then $|C_\textsc{max}| \leq 2|C|-1$.
+%\end{lemma}
+%\begin{proof}
+%In each block $b$ of $C$ there can start at most two blocks in $C_\textsc{max}$, because otherwise two adjacent blocks in $C_\textsc{max}$ would be entirely contained in the block $b$, contradicting the maximality of $C_\textsc{max}$. In the last block of $C$ there can start at most one block in $C_\textsc{max}$. Hence, $|C_\textsc{max}| \leq 2|C|-1$.
+%\end{proof}
+%
+%More strongly, we say that a cover $C$ is \emph{right maximal} if $b_i \cdot b_{i+1}[1]$ is not a substring of $R$ for all $i=1,\ldots,k-1$.
+%
+%\begin{lemma}\label{lem:rightmaxcover}
+%If $|C_\textsc{rmax}|$ is a right maximal cover and $C$ is an arbitrary cover of $S$ w.r.t. $R$, then $|C_\textsc{rmax}| \leq |C|$.
+%\end{lemma}
+%\begin{proof}
+%Any block $b_i \in C_\textsc{rmax}$ which starts inside a block $b_j \in C$ must end where $b_j$ ends or after that. This implies that $|C_\textsc{rmax}| \leq |C|$.
+%\end{proof}
+%
+%Lemma \ref{lem:rightmaxcover} implies that the right maximal cover of $S$ is also \emph{optimal}, i.e., it has minimum size over all covers of $S$ w.r.t. $R$. Right maximal covers are easy to construct using a simple greedy algorithm that traverses the suffix tree of $R$. From now on, we are going to focus on maximal covers, which by \autoref{lem:maxcover} provide a 2-approximation to an optimal cover.
+
+
+\section{Dynamic Partial Sums}\label{sec:dynps}
+In this section we prove Theorem~\ref{thm:partialsums}. Recall that $Z=Z[1],...,Z[s]$ is a sequence of $w$-bit integer keys. We show how to implement the two non-standard operations $\pentrydivide(i, t)$ and $\pentrymerge(i)$, besides operations $\psum(i)$, $\psearch(t)$, and $\pupdate(i, \updabs)$. 
+%Remember that $\psum(i)$ is the prefix sum of the first $i$ elements, $\psearch(t)$ is the index of the smallest prefix sum larger than $t$ and $\pupdate(i, \updabs)$ changes the value of $Z[i]$ by $\updabs$. We assume all elements in $Z$ are positive, and let $\updbit$ denote the number of bits allowed in an update (so $\updabs \leq 2^\updbit$).
+%The operation $\pentrydivide(i, t)$ splits entry $Z[i]$ into two, replacing $Z[i]$ by $Z[i]' = t$ and $Z[i]'' = Z[i] - t$, assuming $t < Z[i]$. Conversely, $\pentrymerge(i)$ merges the neighbour entries $Z[i]$ and $Z[i+1]$ into one, replacing them with $Z[i]' = Z[i] + Z[i+1]$. 
+We support the operations $\pinsert(i, \updabs)$ and $\pdelete(i)$ (insert a new integer $\updabs$ before element $i$ or delete element $i$, respectively) by implementing them using $\pupdate$ and a $\pentrydivide$ or $\pentrymerge$ operation, respectively. This means that we support inserting or deleting keys with value at most $2^\updbit$.
+
+We first solve the problem for small sequences. The general solution uses a standard reduction, storing $Z$ at the leaves of a B-tree of large outdegree. We use the solution for small sequences to navigate in the internal nodes of the B-tree.
+
+\paragraph{Dynamic Integer Sets}
+We need the following recent result due to Pătraşcu and Thorup~\cite{patrascu2014dynamic} on maintaining a set of integer keys $X$ under insertions and deletions.
+The queries are as follows, where $q$ is an integer. The membership query $\tmember(q)$ returns true if $q \in X$, predecessor $\pred_X(q)$ returns the largest key $x \in X$ where $x < q$, and successor $\succ_X(q)$ returns the smallest key $x \in X$ where $x \geq q$. The rank $\trank_X(q)$ returns the number of keys in $X$ smaller than $q$, and $\tselect(i)$ returns the $i^\text{th}$ smallest key in $X$.
+
+\begin{lemma}[Pătraşcu and Thorup~\cite{patrascu2014dynamic}]\label{lem:dynIS}
+    %Let $X$ be a dynamic set of $w^{O(1)}$ $w$-bit integers. 
+    %We can support insert, delete, membership, predecessor, successor, rank and select operations in linear space and constant time each.
+    There is a data structure for maintaining a dynamic set of $w^{O(1)}$ $w$-bit integers that supports insert, delete, membership, predecessor, successor, rank and select in constant time per operation.
+    
+    %Consider a dynamic set $S$ of $w$-bit integers on a $w$-bit word RAM, that must be maintained under insertions and deletions of elements. 
+    %The set must support predecessor, successor, rank and select queries. 
+    %For $|S| = w^{O(1)}$ it is possible to support all operations on $S$ in constant time.
+\end{lemma}
+
+
+\subsection{Dynamic Partial Sums for Small Sequences}
+Let $Z$ be a sequence of at most $B \leq w^{O(1)}$ integer keys. We will show how to store $Z$ in linear space such that all dynamic partial sums operations can be performed in constant time. We let $Y$ be the sequence of prefix sums of $Z$, defined such that each key $Y[i]$ is the sum of the first $i$ keys in $Z$, i.e., $Y[i] = \sum_{j=1}^i Z[j]$. 
+Observe that $\psum(i) = Y[i]$ and $\psearch(t)$ is the index of the successor of $t$ in $Y$. Our goal is to store and maintain a representation of $Y$ subject to the dynamic operations $\pupdate$, $\pentrydivide$ and $\pentrymerge$ in constant time per operation.
+
+\subsubsection{The Scheme by Pătraşcu and Demaine.}
+We first review a version of the solution to the non-dynamic partial sums problem by Pătraşcu and Demaine~\cite{puaatracscu2004tight}, simplified and improved due to Lemma~\ref{lem:dynIS}. Our dynamic solution builds on this.
+
+The entire data structure is rebuilt every $B$ operations as follows. We first partition $Y$ greedily into \emph{runs}. Two neighboring elements in $Y$ are in the same run if their difference is at most $B 2^\updbit$, and we call the first element of each run a \emph{representative} for all elements in the run. We use $\mathcal{R}$ to denote the sequence of representative values in $Y$ and $rep(i)$ to be the index of the representative for element $Y[i]$ among the elements in $\mathcal{R}$.
+
+We store $Y$ by splitting representatives and other elements into separate data structures: $\mathcal{I}$ and $\mathcal{R}$ store the representatives at the time of the last rebuild, while $\mathcal{U}$ stores each element in $Y$ as an offset to its representative value as well as updates since the last rebuild. We ensure $Y[i] = \mathcal{R}[rep(i)]+\mathcal{U}[i]$ for any $i$ and can thus reconstruct the values of all elements in $Y$.
+
+%The idea is to store $Y$ using two separate data structures, splitting it into a rarely-updated part $\mathcal{R}$ and an often-updated part $\mathcal{U}$, ensuring $Y[i] = \mathcal{R}[rep(i)]+\mathcal{U}[i]$ for any $i$. \fix{Define $rep(i)$ here}
+%The entire structure is rebuilt every $B$ updates: $\mathcal{R}$ stores a sequence of representatives that were correct at some point in the past, while $\mathcal{U}$ stores each element as an offset to its representatives and recent updates. After a rebuild, the structure is as follows. \fix{The ordering of this is a little odd.}
+
+The representatives are stored as follows. $\mathcal{I}$ is the sequence of indices in $Y$ of the representatives and $\mathcal{R}$ is the sequence of representative values in $Y$. Both $\mathcal{I}$ and $\mathcal{R}$ are stored using the data structure of Lemma~\ref{lem:dynIS}. We then define $\trep(i) = \trank_\mathcal{I}(\pred_\mathcal{I}(i))$ as the index of the representative for $i$ among all representatives, and use $\mathcal{R}[\trep(i)] = \tselect_\mathcal{R}(\trep(i))$ to get the value of the representative for $i$.
+
+%More precisely, $\mathcal{R}$ is the sequence of representative values stored using the data structure of Lemma~\ref{lem:dynIS}. By storing $rep(i)$ for all $i$ in the data structure of Lemma~\ref{lem:dynIS}, we can find the index in $\mathcal{R}$ of the representative at location $rep(i)$ for any $i$ using a predecessor and a rank query.
+
+We store in $\mathcal{U}$ the current difference from each element to its representative, $\mathcal{U}[i] = Y[i] - \mathcal{R}[\trep(i)]$ (i.e. updates between rebuilds are applied to $\mathcal{U}$). The idea is to pack $\mathcal{U}$ into a single word of $B$ elements.
+Observe that $\pupdate(i, \updabs)$ adds value $\updabs$ to all elements in $Y$ with index at least $i$. We can support this operation in constant time by adding to $\mathcal{U}$ a word that encodes $\updabs$ for those elements.
+%The goal is to pack $\mathcal{U}$ into a word, allowing us to add the same value to all elements after some index in $\mathcal{U}$ by applying a bitmask. -- this is exactly the operation required by $\pupdate(i, \updabs)$.  
+Since each difference between neighbours in a run is at most $B 2^\updbit$ and $|Y| = O(B)$, the maximum value in $\mathcal{U}$ after a rebuild is $O(B^2 2^\updbit)$. As $B$ updates of size $2^\updbit$ may be applied before a rebuild, the changed value at each element due to updates is $O(B 2^\updbit)$. So each element in $\mathcal{U}$ requires $O(\log B + \updbit)$ bits (including an overflow bit per element). Thus, $\mathcal{U}$ requires $O(B(\log B + \updbit))$ bits in total and can be packed in a single word for $B = O(\min \{w / \log w, w / \updbit \})$.
+%This means that representatives are separated by $> B 2^\updbit$, so their gap cannot be closed by $B$ updates of $\updbit$ bits each. 
+
+Between rebuilds the stored representatives are potentially outdated because updates may have changed their values. %We do not change $\mathcal{I}$ and $\mathcal{R}$ between rebuilds, so there may be "new" representatives in runs between rebuilds. 
+However, observe that the values of two neighboring representatives differ by more than $B 2^\updbit$ at the time of a rebuild, so the gap between two representatives cannot be closed by $B$ updates of $\updbit$ bits each (before the structure is rebuilt again). 
+Hence, an answer to $\psearch(t)$ cannot drift much from the values stored by the representatives; it can only be in a constant number of runs, namely those with a representative value $\succ_\mathcal{R}(t)$ and its two neighbours. 
+In a run with representative value $v$, we find the smallest $j$ (inside the run) such that $\mathcal{U}[j] + v - t > 0$. The smallest $j$ found in all three runs is the answer to the $\psearch(t)$ query.
+% the runs $\mathcal{R}[i-1]$, $\mathcal{R}[i]$ or $\mathcal{R}[i+1]$ where $\mathcal{R}[i]$ is the successor of $t$ in $\mathcal{R}$ (since if $B$ updates of $\updbit$ bits were made at elements before $i$, the answer to $\psearch(t)$ must be in one of those runs). 
+Thus, by rebuilding periodically, we only need to check a constant number of runs when answering a $\psearch(t)$ query.
+
+On this structure, Pătraşcu and Demaine~\cite{puaatracscu2004tight} show that the operations $\psum$, $\psearch$ and $\pupdate$ can be supported in constant time each as follows:
+\begin{description}
+\item[$\psum(i)$:] return the sum of $\mathcal{R}[\trep(i)]$ and $\mathcal{U}[i]$. This takes constant time as $\mathcal{U}[i]$ is a field in a word and representatives are stored using Lemma~\ref{lem:dynIS}.
+\item[$\psearch(t)$:] let $r_0 = \trank_\mathcal{R}(\succ_\mathcal{R}(t))$. We must find the smallest $j$ such that $\mathcal{U}[j] + R[r] - t > 0$ for $r \in \{r_0-1, r_0, r_0+1\}$, where $j$ is in run $r$.
+We do this for each $r$ using standard word operations in constant time by adding $R[r]-t$ to all elements in $\mathcal{U}$, masking elements not in the run (outside indices $\tselect_\mathcal{I}(r)$ to $\tselect_\mathcal{I}(r+1)-1$, and counting the number of negative elements.
+%find and return the smallest $j$ such that $\mathcal{R}[r] + \mathcal{U}[j] - t > 0$ for $r \in \{succ_\mathcal{R}(t)-1, succ_\mathcal{R}(t), succ_\mathcal{R}(t)+1\}$\fix{Check the $r$ set for correctness}. This can be done in constant time for each $r$ by a single subtraction of all elements in $\mathcal{U}$ with an appropriate bitmask and checking for the location of the first set overflow-bit.
+%\fix{$j$ should only take the value of the indices related to the relevant representatives.}
+\item[$\pupdate(i, \updabs)$:] we do this in constant time by copying $\updabs$ to all fields $j \geq i$ by a multiplication and adding the result to $\mathcal{U}$. 
+\end{description}
+To count the number of negative elements or find the least significant bit in a word in constant time, we use the technique by Fredman and Willard~\cite{fredmanwillardfusion}.
+
+Notice that rebuilding the data structure every $B$ operations takes $O(B)$ time, resulting in amortized constant time per operation. We can instead do this incrementally by a standard approach by Dietz~\cite{dietz1989optimal}, reducing the time per operation to worst case constant. 
+The idea is to construct the new replacement data structure incrementally while using the old and complete data structure. 
+More precisely, during update $j$ we rebuild the data structure for index $(j~\mathrm{mod}~B)$.
+
+\subsubsection{Efficient Support for Modifications}
+We now show how to maintain the structure described above while supporting operations $\pentrydivide(i, t)$ and $\pentrymerge(i)$.
+
+Observe that the operations are only local: Splitting $Z[i]$ into two parts or merging $Z[i]$ and $Z[i+1]$ does not influence the precomputed values in $Y$ (besides adding/removing values for the divided/merged elements). We must update $\mathcal{I}$, $\mathcal{R}$ and $\mathcal{U}$ to reflect these local changes accordingly. Because a $\pentrydivide$ or $\pentrymerge$ operation may create new representatives between rebuilds with values that does not fit in $\mathcal{U}$, we change $\mathcal{I}$, $\mathcal{R}$ and $\mathcal{U}$ to reflect these new representatives by rebuilding the data structure locally. This is done as follows.
+
+First, consider the run representatives. Both $\pentrydivide(i, t)$ and $\pentrymerge(i)$ may require us to create a new run, combine two existing runs or remove a run.
+In any of those cases, we can find a replacement representative for each run affected. 
+%Since replacements may have both value and index possibly changed for each run affected. 
+As the operations are only local, the replacement is either a divided or merged element, or one of the neighbours of the replaced representative. 
+Replacing representatives may cause both indices and values for the stored representatives to change.
+We use insertions and deletions on $\mathcal{R}$ to update representative values. 
+
+Since the new operations change the indices of the elements, these changes must also be reflected in $\mathcal{I}$. For example, a $\pentrymerge(i)$ operation decrement the indices of all elements with index larger than $i$ compared to the indices stored at the time of the last rebuild (and similarly for $\pentrydivide(i, t)$). We should in principle adjust the $O(B)$ changed indices stored in $\mathcal{I}$. The cost of adjusting the indices accordingly when using Lemma~\ref{lem:dynIS} to store $\mathcal{I}$ is $O(B)$. 
+Instead, to get our desired constant time bounds, we represent $\mathcal{I}$ using a resizable data structure with the same number of elements as $Y$ that supports this kind of update. We must support $\tselect_\mathcal{I}(i)$, $\trank_\mathcal{I}(q)$, and $\pred_\mathcal{I}(q)$ as well as inserting and deleting elements in constant time. Because $\mathcal{I}$ has few and small elements, we can support the operations in constant time by representing it using a bitstring $\mathcal{B}$ and a structure $\mathcal{C}$ which is the prefix sum over $\mathcal{B}$ as follows.
+
+%To avoid that, we instead represent $\mathcal{I}$ as follows, using a $B$-length bitstring $\mathcal{B}$ and a structure $\mathcal{C}$ which is the prefix sum over $\mathcal{B}$. Because there are so few and small elements in $\mathcal{I}$, we can store both data structures in $O(1)$ words and support $select_\mathcal{I}(i)$, $rank_\mathcal{I}(q)$, and $pred_\mathcal{I}(q)$ as well as inserting and deleting elements in constant time.
+
+Let $\mathcal{B}$ be a bitstring of length $|Y|\leq B$, where $\mathcal{B}[i] = 1$ iff there is a representative at index $i$. $\mathcal{C}$ has $|Y|$ elements, where $\mathcal{C}[i]$ is the prefix sum of $\mathcal{B}$ including element $i$. Since $\mathcal{C}$ requires $O(B \log B)$ bits in total we can pack it in a single word. We answer queries as follows: $\trank_\mathcal{I}(q)$ equals $\mathcal{C}[q-1]$, we answer $\tselect_\mathcal{I}(i)$ by subtracting $i$ from all elements in $\mathcal{C}$ and return one plus the number of elements smaller than $0$ (as done in $\mathcal{U}$ when answering $\psearch$), and we find $\pred_\mathcal{I}(q)$ as the index of the least significant bit in $\mathcal{B}$ after having masked all indices larger than $q$.
+Updates are performed as follows. Using mask, shift and concatenate operations, we can ensure that $\mathcal{B}$ and $\mathcal{C}$ have the same size as $Y$ at all times (we extend and shrink them when performing $\pentrydivide$ and $\pentrymerge$ operations). Inserting or deleting a representative is to set a bit in $\mathcal{B}$, and to keep $\mathcal{C}$ up to date, we employ the same $\pm 1$ update operation as used in $\mathcal{U}$.
+
+%Because $\mathcal{I}$ and $\mathcal{R}$ are stored using the data structure of Lemma~\ref{lem:dynIS} we can perform the changes by inserting or deleting representatives in constant time. 
+
+We finally need to adjust the relative offsets of all elements with a changed representative in $\mathcal{U}$ (since they now belong to a representative with a different value).
+In particular, if the representative for $\mathcal{U}[j]$ changed value from $v$ to $v'$, we must subtract $v' - v$ from $\mathcal{U}[j]$. 
+This can be done for all affected elements belonging to a single representative simultaneously in $\mathcal{U}$ by a single addition with an appropriate bitmask ($\pupdate$ a range of $\mathcal{U}$). Note that we know the range of elements to update from the representative indices. Finally, we may need to insert or delete an element in $\mathcal{U}$, which can be done easily by mask, shift and concatenate operations on the word $\mathcal{U}$.
+
+
+
+%Two difficulties remain. 
+%First, the new operations change the indices of the elements, which must also be reflected in the data structure. For example, a $\pentrymerge(i)$ operation reduces the indices of all elements with index larger than $i$ by one compared to the old index values at the time of the last rebuild. This is not a problem in $\mathcal{U}$ as we just remove one of the merged fields and so $\mathcal{U}$ always reflect the correct indices. We should in principle adjust the $O(B)$ changed indices stored in $\mathcal{I}$, but this may take too much time. Instead, we introduce a correction-bitstring $\mathcal{C}$ similar to $\mathcal{U}$ (with support for the same operations). Whenever a merge occurs we remove the field for element $i+1$ and add 1 to all elements in $\mathcal{C}$ from element $i+1$ onwards. Similarly, a $\pentrydivide(i, t)$ operation results in adding a new element $i+1$ equal to the element $\mathcal{C}[i]-1$ and subtracting 1 from all elements in $\mathcal{C}$ after the new element $i+1$. Then when looking up an index $i$ in $\mathcal{I}$, we first add the corrective term $\mathcal{C}[i]$ to find the index for element $i$ at the time of rebuilding $\mathcal{I}$.
+
+%The final difficulty is that in the case of a $\pentrydivide(i, t)$ operation where $Y[i]$ is a representative, both halves of the split element may be a representative after a split. This causes an issue if the old element $Y[i+1]$ was also a representative as then $\mathcal{I}$ already contains the new index. That is, there is no room in $\mathcal{I}$ for the new representative index, and we must essentially shift the indices of a number of representatives by one. To do this, we find the first index $j$ in $Y$ after index $i$ where there is no representative. 
+%This can be achieved using yet another bitstring $\mathcal{L}$ similar to $\mathcal{U}$ that stores the lengths of each run, which allows us to find the next run longer than a single element (the index of which equal $j$). We can then insert $j$ in $\mathcal{I}$ as that is the new index in $Y$ where there is a representative. In this case, we subtract $-1$ from the elements of $\mathcal{C}$ after element $j$ (instead of $i+1$), as the indices between element $i+1$ and $j$ are correct.
+
+%by performing a single addition in $\mathcal{U}$ with an appropriate bitmask (since it corresponds to updating a subrange of $\mathcal{U}$ with a single value). A 
+
+We present an example structure where $B2^{\delta}=4$ in Figures \ref{fig:exampleinit}, \ref{fig:examplesplit} and \ref{fig:examplemerge}. Figure \ref{fig:exampleinit} presents the data structure immediately after a rebuild, 
+Figure \ref{fig:examplesplit} shows the result of performing $\pdivide(8,3)$ on the structure of Figure \ref{fig:exampleinit}, and 
+Figure \ref{fig:examplemerge} shows the result of performing $\pmerge(12)$ on the structure of Figure \ref{fig:examplesplit}.
+
+\input{chapters/papers/dynamiccompression/arrayexample1}
+\input{chapters/papers/dynamiccompression/arrayexample2}
+\input{chapters/papers/dynamiccompression/arrayexample3}
+%\input{tplacementexample}
+
+Concluding, $\pentrydivide$ and $\pentrymerge$ can be supported in constant time, so:
+
+\begin{theorem}\label{thm:prefixsumssmall}
+    There is a linear space data structure for dynamic partial sums supporting each operation $\psearch$, $\psum$, $\pupdate$, $\pinsert$, $\pdelete$, $\pentrydivide$, and $\pentrymerge$ on a sequence of length $O(\min \{w / \log w, w / \updbit \})$ in worst-case constant time.
+%    The maximum value in an update is $|\Delta| \leq 2^\updbit$.
+\end{theorem}
+
+\subsection{Dynamic Partial Sums for Large Sequences}
+Willard \cite{willard2000examining} (and implicitly Dietz~\cite{dietz1989optimal}) showed that a leaf-oriented B-tree with out-degree $B$ of height $h$ can be maintained in $O(h)$ worst-case time if: 1) searches, insertions and deletions take $O(1)$ time per node when no splits or merges occur, and 2) merging or splitting a node of size $B$ require $O(B)$ time.
+% for maintaining dynamic leaf-oriented B-trees, which is also . 
+%The lemma considers a leaf-oriented B-tree with $B > 16$ such that internal nodes have between $B/8$ and $B$ children and the root has between $2$ and $B$ children. 
+%Keys are stored in leaves, all of the same depth. 
+%The consequence of the lemma is that 
+%if we can maintain and navigate individual nodes of size $O(B)$ in constant time per operation, we have $O(h)$ worst-case time for all operations.
+%\begin{lemma}[Willard]
+%    Consider a leaf-oriented B-tree. Suppose that searches, insertions and deletions in such a tree of height $h$ has cost $O(h)$ when no splits or merges occur, and suppose the cost for merging or splitting nodes is $O(B)$. Then, regardless of the implementation of a node, insertions and deletions of keys can be performed in $O(h)$ worst-case time.
+%\end{lemma}
+
+We use this as follows, where $Z$ is our integer sequence of length $s$. Create a leaf-oriented B-tree of degree $B = \Theta(\min \{w / \log w, w / \updbit \})$ storing $Z$ in the leaves, with height $h = O(\log_B n) = O(\log n / \log (w / \updbit))$.
+Each node $v$% with children $u_1, \ldots, u_b$ 
+uses Theorem~\ref{thm:prefixsumssmall} to store the $O(B)$ sums of leaves in each of the subtrees of its children. Searching for $t$ in a node corresponds to finding the successor $Y[i]$ of $t$ among these sums. Dividing or merging elements in $Z$ corresponds to inserting or deleting a leaf. This concludes the proof of Theorem~\ref{thm:partialsums}.
+
+\input{chapters/papers/dynamiccompression/substringconcat}
+
+\input{chapters/papers/dynamiccompression/extensions}
+
+\subsubsection*{Acknowledgements}
+We thank Pawel Gawrychowski for helpful discussions.
+
+

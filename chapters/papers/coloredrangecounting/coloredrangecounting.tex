@@ -1,7 +1,5 @@
 %!TEX root = ../../../Thesis.tex
-\chapter{Colored Range Searching in Linear Space}
-
-
+\chapter{Colored Range Searching in Linear Space}\label{chp:coloredrangesearching}
 
 \begin{infosection}
     \begin{authors}
@@ -35,24 +33,24 @@ As shown in Tables~\ref{tab:count}--\ref{tab:report}, there has been a renewed i
     \centering
     \begin{tabular}{c c c c c}
        %\hline
-    ~Dim.~ & Query Time               & Space Usage                          & Dyn. & ~Ref.~     \\[1mm]
+    Dim. & Query Time               & Space Usage                          & Dyn. & Ref.    \\[1mm]
         \hline\\[-3mm]
-    $d=1$        & $O(\log n / \log \log n)$& $O(n)$                             & $\times$ & \cite{jaja2005space} \\[1mm]
+    $1$        & $O(\log n / \log \log n)$& $O(n)$                             & $\times$ & $\mathsection$ \\[1mm]
     \hline\\[-3mm]
 %%    $d=2$        & $O(n)$                   & $O(n)$ &  \\
-            & $O(\log^2 n)$            & $O(n^2 \log^2 n)$                    & & \cite{gupta1995further}  \\
-            & $O(\log^2 n)$            & $O(n^2 \log^2 n)$                    & & \cite{kaplan2007counting} \\
-    $d=2$   & $O(X \log^7 n)$          & $O((n / X)^2 \log^6 n + n \log^4 n)$ & & \cite{kaplan2007counting} \\
+            & $O(\log^2 n)$            & $O(n^2 \log^2 n)$                    & & $\star$  \\
+            & $O(\log^2 n)$            & $O(n^2 \log^2 n)$                    & & $\dagger$ \\
+    $2$   & $O(X \log^7 n)$          & $O((\frac{n}{X})^2 \log^6 n + n \log^4 n)$ & & $\dagger$ \\
             & $O\left( ( \frac{\sigma}{\log n} + \frac{n}{\log ^c n} ) (\log \log ^c n)^{2+\epsilon} \right)$ & $O(n)$ & & New \\[1mm]
     \hline\\[-3mm]
-            & $O(\log^{2(d-1)} n)$     & $O(n^d \log ^{2(d-1)} n)$            & & \cite{kaplan2007counting} \\
-    $d> 2$  & $O(X \log^{d-1} n)$      & $O((n / X)^{2d} + n \log^{d-1} n)$   & & \cite{kaplan2007counting} \\
-            & ~$O\left(( \frac{\sigma}{\log n} + \frac{n}{\log ^c n} ) (\log  \log^{c} n)^{d-1} \log \log \log ^c n\right)$~ & $O\!\left(n (\log \log^{c} n)^{d-1} \right)$ & & New \\[1mm]
+            & $O(\log^{2(d-1)} n)$     & $O(n^d \log ^{2(d-1)} n)$            & & $\dagger$ \\
+    $> 2$  & $O(X \log^{d-1} n)$      & $O((\frac{n}{X})^{2d} + n \log^{d-1} n)$   & & $\dagger$ \\
+            & $O\left(( \frac{\sigma}{\log n} + \frac{n}{\log ^c n} ) (\log  \log^{c} n)^{d-1} \log \log \log ^c n\right)$ & $O\!\left(n (\log \log^{c} n)^{d-1} \right)$ & & New \\[1mm]
      \hline\\[-3mm]
-    $d\geq 2$  & $O\left( ( \frac{\sigma}{\log n} + \frac{n}{\log ^c n} ) (\log \log ^c n)^{d} \right)$ & $O\!\left(n (\log \log^{c} n)^{d-1} \right)$ & $\times$ & New \\[1mm]
+    $\geq 2$  & $O\left( ( \frac{\sigma}{\log n} + \frac{n}{\log ^c n} ) (\log \log ^c n)^{d} \right)$ & $O\!\left(n (\log \log^{c} n)^{d-1} \right)$ & $\times$ & New \\[1mm]
         \hline\\[-3mm]
     \end{tabular}
-    \caption{Known and new solutions to \emph{colored range counting}, ordered according to decreasing space use in each dimension group. Dyn. column shows if solution is dynamic.}
+    \caption{Known and new solutions to \emph{colored range counting}, ordered according to decreasing space use in each dimension group. Dyn. column shows if solution is dynamic, $d$ is the dimensionality. References are abbreviated $\mathsection$ = \cite{jaja2005space}, $\star$ = \cite{gupta1995further}, $\dagger$ = \cite{kaplan2007counting}}
  \label{tab:count}
 \end{table}
 
@@ -71,28 +69,28 @@ Due to the extensive history and the number of problems considered, we will pres
     \centering
     \begin{tabular}{c c c c c}
     %\hline
-    ~Dim.~ & Query Time               & Space Usage                          & Dyn. & ~Ref.~     \\[1mm]
+    Dim. & Query Time               & Space Usage                          & Dyn. & Ref.     \\[1mm]
     \hline\\[-3mm]
-    $d=1$        & $O(1+k)$         & $O(n)$              & $\times$ & \cite{nekrich2013optimal}             \\[1mm]
+    $1$        & $O(1+k)$         & $O(n)$              & $\times$ & $\mathsection$             \\[1mm]
     \hline\\[-3mm]
-                 & $O(\log n+k)$    & $O(n \log n)$       & & \cite{shi2005optimal}                 \\
-    $d=2$        & $O(\log^2 n+k\log n)$    & $O(n \log n)$       & $\times$ & \cite{gupta1995further, bozanis1995new}  \\
+                 & $O(\log n+k)$    & $O(n \log n)$       & & $\dagger$                 \\
+    $2$        & $O(\log^2 n+k\log n)$    & $O(n \log n)$       & $\times$ & $\star$, $\ddagger$  \\
 %    $d=2$        & $O(n)$                   & $O(n)$ & Naive \\
                 & $O\left( ( \frac{\sigma}{\log n} + \frac{n}{\log ^c n} ) (\log\log^c n)^{2+\epsilon}  + k\right)$ & $O(n)$  & & New \\[1mm]
      \hline\\[-3mm]
-    $d\geq 2$  & $O\left( ( \frac{\sigma}{\log n} + \frac{n}{\log ^c n} ) (\log \log ^c n)^{d} + k\right)$ & $O\!\left(n (\log \log^{c} n)^{d-1} \right)$ & $\times$ & New \\[1mm]
+    $\geq 2$  & $O\left( ( \frac{\sigma}{\log n} + \frac{n}{\log ^c n} ) (\log \log ^c n)^{d} + k\right)$ & $O\!\left(n (\log \log^{c} n)^{d-1} \right)$ & $\times$ & New \\[1mm]
     \hline\\[-3mm]
-    $d=3$        & $O(\log ^2 n+k)$ & $O(n \log^4 n)$     & & \cite{gupta1995further}               \\
-    $d> 3$      & $O(\log n+k)$    & $O(n^{1+\epsilon})$ & & \cite{van1992new, gupta1997technique} \\ 
-    $d \geq 3$        & ~~$O\left(( \frac{\sigma}{\log n} + \frac{n}{\log^c n} ) (\log\log^c n)^{d-1} \log \log \log^c n + k\right)$~~ & $O\!\left(n (\log\log^c n)^{d-1}\right)$ & & New \\[1mm]
+    $3$        & $O(\log ^2 n+k)$ & $O(n \log^4 n)$     & & $\star$               \\
+    $> 3$      & $O(\log n+k)$    & $O(n^{1+\epsilon})$ & & $\diamond$, $\$$ \\ 
+    $\geq 3$        & $O\left(( \frac{\sigma}{\log n} + \frac{n}{\log^c n} ) (\log\log^c n)^{d-1} \log \log \log^c n + k\right)$ & $O\!\left(n (\log\log^c n)^{d-1}\right)$ & & New \\[1mm]
 \hline\\[-3mm]
     \end{tabular}
-    \caption{Known and new solutions to \emph{colored range reporting}, ordered according to decreasing space use in each dimension group. Dyn. column shows if solution is dynamic.}
-\label{tab:report}
+    \caption{Known and new solutions to \emph{colored range reporting}, ordered according to decreasing space use in each dimension group. Dyn. column shows if solution is dynamic, $d$ is the dimensionality. References are abbreviated $\mathsection$ = \cite{nekrich2013optimal}, $\star$ = \cite{gupta1995further}, $\dagger$ = \cite{shi2005optimal}, $\ddagger$ = \cite{bozanis1995new}, $\diamond$ = \cite{van1992new}, $\$$ = \cite{gupta1997technique}}
+    \label{tab:report}
 \end{table}
 
 
-\subsection{Our results}
+\subsection{Our Results}
 \label{sub:our-results}
 %
 We observe (see Section~\ref{sub:previous-results}) that there are no known solutions to any of the colored problems in two dimensions that uses $O(n)$ words of space and answer queries in $o(n)$ worst case time. Furthermore, for colored range reporting there are no known solutions in $d> 3$ dimensions using $o(n^{1+\epsilon})$ words of space and answering queries in $o(n)$ worst case time. For colored range counting, no solutions with $o(n \polylog n)$ words of space and $o(n)$ worst case time exist. 
@@ -158,7 +156,7 @@ In two dimensions this is a logarithmic improvement over the solution where a ra
     There is a $O(n \log n)$ space data structure storing $n$ two-dimensional colored points each assigned one of $\sigma$ colors. The data structure answers colored range counting and reporting queries in time $O(\sigma + k \log n \log \log n)$.
 \end{corollary}
 
-\subsection{Previous results}
+\subsection{Previous Results}
 \label{sub:previous-results}
 \paragraph*{Colored range counting.}
 %
@@ -179,7 +177,7 @@ Kaplan et al. \cite{kaplan2007counting} showed that answering $n$ two dimensiona
 
 \paragraph*{Colored range reporting.}
 %
-The colored range reporting problem is relatively well-studied \cite{janardan1993generalized, nekrich2012space, nekrich2013optimal, nekrich2014efficient, gagie2012colored, shi2005optimal, gupta1995further, gupta1997technique, van1992new, mortensen2003generalized, bozanis1995new, larsen2012efficient}, with output-sensitive solutions almost matching the time and space bounds obtained for standard range reporting in one and two dimensions. In particular, Nekrich and Vitter recently gave a dynamic solution to one dimensional colored range reporting with optimal query time $O(1+k)$ and linear space \cite{nekrich2013optimal}, while Gagie et al. earlier presented a succinct solution with query time logarithmic in the length of the query interval \cite{gagie2012colored}.
+The colored range reporting problem is well-studied \cite{janardan1993generalized, nekrich2012space, nekrich2013optimal, nekrich2014efficient, gagie2012colored, shi2005optimal, gupta1995further, gupta1997technique, van1992new, mortensen2003generalized, bozanis1995new, larsen2012efficient}, with output-sensitive solutions almost matching the time and space bounds obtained for standard range reporting in one and two dimensions. In particular, Nekrich and Vitter recently gave a dynamic solution to one dimensional colored range reporting with optimal query time $O(1+k)$ and linear space \cite{nekrich2013optimal}, while Gagie et al. earlier presented a succinct solution with query time logarithmic in the length of the query interval \cite{gagie2012colored}.
 
 In two dimensions, Shi and JaJa obtain a bound of $O(\log n + k)$ time and $O(n \log n)$ space \cite{shi2005optimal} by querying an efficient static data structure for three-sided queries, storing each point $O(\log n)$ times. Solutions for the dynamic two-dimensional case were developed in \cite{gupta1995further, bozanis1995new}, answering queries with a logarithmic penalty per answer. If the points are located on an $N \times N$ grid, Agarwal et al. \cite{agarwal2002range} present a solution with query time $O(\log \log N + k)$ and space use $O(n \log ^2 N)$. Gupta et al. achieve a static data structure using $O(n \log ^4 n)$ space and answering queries in $O(\log ^2 n + k)$ \cite{gupta1995further} in the three-dimensional case. To the best of our knowledge, the only known non-trivial data structures for $d> 3$ dimensions are by van Kreveld and Gupta et al., answering queries in $O(\log n + k)$ time and using $O(n^{1+\epsilon})$ space \cite{van1992new, gupta1997technique}. Other recent work on the problem include external memory model solutions when the points lie on a grid \cite{nekrich2012space, larsen2012efficient, nekrich2014efficient}.
 
@@ -191,7 +189,7 @@ In two dimensions, Shi and JaJa obtain a bound of $O(\log n + k)$ time and $O(n 
 %
 We present here the basic approach that is modified to obtain our theorems. We first show how to partition the points into $O(\sigma / \log n + n / \log ^c n)$ buckets each storing $m = O(\log ^c n)$ points of $f = O(\log n)$ distinct colors, for which the results can be easily combined. We then show how to answer queries in each bucket in time $O(\log ^{d-1} m \log \log m)$ and space $O(m \log ^{d-1} m)$, thus obtaining Theorem \ref{thm:dD}.
 
-\subsection{Color grouping and bucketing}
+\subsection{Color Grouping and Bucketing}
 %
 We partition the points of $P$ into a number of groups $P_i$, where $i = 1, \ldots, \frac{\sigma}{\log n}$, depending on their color. Each group stores all points having $f = \log n$ distinct colors (except for the last group which may store points with less distinct colors). For each group $P_i$ we store an ordered color list $L_i$ of the $f$ colors in the group. That is, a group may contain $O(n)$ points but the points have at most $f$ distinct colors. Since colors are partitioned among groups, we can clearly answer a colored query by summing or merging the results to the same query in each group. 
 %Observe that assuming a colored range counting query can be answered for each group, we can clearly answer a colored range counting query by adding the results for each group (since colors are partitioned among groups).
@@ -199,7 +197,7 @@ We partition the points of $P$ into a number of groups $P_i$, where $i = 1, \ldo
 \begin{figure}[tb]
 	\begin{center}
 	\includegraphics[width=0.9\textwidth]{chapters/papers/coloredrangecounting/groups-buckets}
-	\caption{Grouping and bucketing of some point set with $f = 4$. The white boxes are the groups and the grey boxes below each group are buckets each storing $O(\log^c n)$ points.\label{fig:groups-buckets}}
+	\caption{Grouping and bucketing of some point set with $f = 4$. The white boxes are the groups and the grey boxes below each group are buckets each storing $O(\log^c n)$ points\label{fig:groups-buckets}}
 	\end{center}
 \end{figure} 
 
@@ -213,7 +211,7 @@ Finally, we store a lookup table $T$ of size $O(\sqrt{n} \log n) = o(n)$ for all
 Summarising, we can merge answers to the restricted colored range reporting queries in $O(1)$ time per bucket and obtain the full query results for each group $P_i$. Using a constant number of table lookups per group, we can count the number of colors present in $Q$. There is $O(1)$ additional cost per reported color.
 %Summarising, we can combine answers from each bucket in a group and add the results for all groups in time linear in the number of buckets for a colored range counting query. Thus, the total time spent is bounded by the number of buckets present multiplied by the time taken to answer a restricted colored range reporting query in a bucket. Additionally, we can answer colored range reporting queries in the same time plus $O(1)$ time per reported color.
 
-\subsection{Restricted colored range reporting for buckets}
+\subsection{Restricted Colored Range Reporting for Buckets}
 \label{sec:RCRR}
 %
 Each bucket in a group $P_i$ stores up to $m = \log^c n$ points colored with up to $f = \log n$ distinct colors, and must support restricted colored range reporting queries, reporting the colors in  query range $Q$ using an $f$-bit long bitstring. A simple solution is to use a classic $d$-dimensional range tree $R$, augmented with an $f$-bit long bitstring for each node on the last level of $R$ (using the $L_i$ ordering of the $f$ colors). The colors within the range can thus be reported by taking the bitwise OR of all the bitstrings stored at the $O(\log^d m)$ summary nodes of $R$ spanning the range in the last level. This solution takes total time $O(\frac{f}{w} \log ^d m) = O(\log ^d m)$ and space $O(m \log ^{d-1} m \frac{f}{w}) = O(m \log ^{d-1} m)$, and it can be constructed in time $O(m \log ^{d-1} m)$ by building the node bitstrings from the leaves and up (recall that $w = \Theta(\log n)$ is the word size). 
@@ -245,7 +243,7 @@ To find the answer for the two intervals that contain $a$ or $b$, we find $O(\lo
 %
 To obtain linear space in two dimensions and the proof of Theorem~\ref{thm:2D}, we use the same grouping and bucketing approach as in Section~\ref{sec:basics}. For each group $P_{i'}$, we only change the solution of each bucket $B_i$ in $P_{i'}$, recalling that $B_i$ contains up to $m = \log^c n$ points with $f = \log n$ distinct colors, so as to use linear space instead of $O(m \log m)$ words of space. 
 
-We store a linear space 2D standard range reporting data structure $A_i$ by Nekrich~\cite{nekrich2009orthogonal} for all points in the bucket $B_i$. As shown in~\cite{nekrich2009orthogonal}, $A_i$ supports orthogonal standard range reporting queries in $O(\log m + r \log ^{\epsilon} m)$ time and updates in $O(\log ^{3+\epsilon} m)$ time, where $r$ is the reported number of points and $\epsilon > 0$.
+We store a linear space 2D standard range reporting data structure $A_i$ due to Nekrich \cite{nekrich2009orthogonal} for all points in the bucket $B_i$. As shown in~\cite{nekrich2009orthogonal}, $A_i$ supports orthogonal standard range reporting queries in $O(\log m + r \log ^{\epsilon} m)$ time and updates in $O(\log ^{3+\epsilon} m)$ time, where $r$ is the reported number of points and $\epsilon > 0$.
 
 
 % \begin{theorem}[Nekrich % \cite{nekrich2009orthogonal}]\label{thm:nekrich}
@@ -275,18 +273,18 @@ We first give bounds on how to update a bucket, and then show how to support upd
 
 % We also give bounds when the buckets are implemented with the classic % range tree where each node on the final level is augmented with an % $f$-bit long bitstring over the colors in the subtree. 
 
-\subsection{Updating a bucket}
+\subsection{Updating a Bucket}
 %
 Updating a bucket with a point corresponds to updating a $d$-dimensional range tree using known techniques in dynamic data structures. Partial rebuilding \cite{andersson1999general, overmars1983design} requires amortised time $O(\log^d m)$, including updating the bitstrings in the partially rebuilt trees and in each node of the last level trees (which takes constant time). Specifically, the bitstrings for the $O(\log^{d-1} m)$ trees on the last level where a point was updated may need to have the bitstrings fixed on the path to the root on that level. This takes time $O(\log m)$ per tree, giving a total amortised update time of $O(\log^d m)$.
 
-\subsection{Updating color grouping and point bucketing}
+\subsection{Updating Color Grouping and Point Bucketing}
 \label{sub:update-color-group-bucket}
 %
 When supporting $\opins(p, c)$, we first need to find the group to which $c$ belongs. If the color is new and there is a group $P_i$ with less than $f$ colors, we must update the color list $L_i$. Otherwise, we can create a new group $P_i$ for the new color. In the group $P_i$, we must find a bucket to put $p$ in. If possible, we put $p$ in a bucket with less than $m$ points, or otherwise we create a new bucket for $p$. Keeping track of sizes of groups and buckets can be done using priority queues in time $O(\log \log n)$. Note that we never split groups or buckets on insertions.
 
 As for supporting $\opdel(p)$, we risk making both groups and buckets underfull, thus requiring a merge of either. A bucket is underfull when it contains less than $m/2$ points. We allow at most one underfull bucket in a group. If there are two underfull buckets in a group, we merge them in time $O(m \log^d m)$. Since merging buckets can only happen after $\Omega(m)$ deletions, the amortized time for a deletion in this case is $O(\log^d m)$. A group is underfull if it contains less than $f/2$ colors and, as for buckets, if there are any two underfull groups $P_i, P_j$, we merge them. When merging $P_i, P_j$ into a new group $P_r$, we concatenate their color lists $L_i, L_j$ into $L_r$, removing the colors that are no more present while keeping the relative ordering of the surviving colors from $L_i, L_j$. In this way, a group merge does not require us to merge the underlying buckets, as points are partitioned arbitrarily into the buckets. However, a drawback arises: as the color list $L_r$ for the merged group is different from the color lists $L_i, L_j$ used for answering bucket queries, this may introduce errors in bucket query answers. Recall that an answer to a bucket query is an $f$-bit long bitstring which marks with {\bitone}s the colors in $L_i$ that are in the range $Q$. So we have a bitstring for $L_i$, and one for $L_j$, for the buckets previously belonging to $P_i, P_j$, but we should instead output a bitstring for $L_r$ in time proportional to the number of buckets in $P_r$. We handle this situation efficiently as discussed in Section~\ref{sub:fixing-bucket-answers}.
 
-\subsection{Fixing bucket answers during a query}
+\subsection{Fixing Bucket Answers During a Query}
 \label{sub:fixing-bucket-answers}
 %
 As mentioned in Section~\ref{sub:update-color-group-bucket}, we do not change the buckets when two or more groups are merged into $P_r$. Consider the $f$-bit long bitstring $b_i$ that is the answer for one merged group, say $P'_i$, relative to its color list, say $L_i$. However, after the merge, only a sublist $L'_i \subseteq L_i$ of colors survives as a portion of the color list $L_r$ for $P_r$. We show how to use $L_i$ and $L'_i$ to contribute to the $f$-bit long bitstring $a$ that is the answer to query $Q$ for the color list $L_r$ in $P_r$. The time constraint is that we can spend time proportional to the number, say $g$, of buckets in $P_r$. 

@@ -21,93 +21,125 @@ aVamsthm
 p10
 aVarray
 p11
-aVupgreek
+aVifthen
 p12
-aVmathtools
+aVupgreek
 p13
-aVnicefrac
+aVmathtools
 p14
-aVbabel
+aVnewunicodechar
 p15
-aVpreamble/dtucolors
+aVnicefrac
 p16
-aValgpseudocode
+aVbabel
 p17
-aVblindtext
+aVpreamble/dtucolors
 p18
-aVsubfig
+aValgpseudocode
 p19
-aVmicrotype
+aVblindtext
 p20
-aVtikz
+aVmicrotype
 p21
-aVcleveref
-p22
-aVlastpage
-p23
-aVmathdesign
-p24
-aVeso-pic
-p25
-aVgraphicx
-p26
-aVtodonotes
-p27
 aVhyperref
+p22
+aVtikz
+p23
+aVcleveref
+p24
+aVlastpage
+p25
+aVmathdesign
+p26
+aVeso-pic
+p27
+aVgraphicx
 p28
-aVfixme
+aVsubfig
 p29
-aVauthblk
+aVtodonotes
 p30
-aValgorithm
+aVfixme
 p31
-aVurl
+aVauthblk
 p32
-aVlistings
+aValgorithm
 p33
-aVsoul
+aVurl
 p34
-aVtotcount
+aVlistings
 p35
-aVfontenc
+aVsoul
 p36
-aVcsquotes
+aVtotcount
 p37
-atp38
-Rp39
+aVcsquotes
+p38
+atp39
+Rp40
 sVfiles_with_guttermarks
-p40
+p41
 g4
-((lp41
-V/Users/sovi/Google Drive/phd/thesis/chapters/papers/annotated/annotated.tex
-p42
-aV/Users/sovi/Google Drive/phd/thesis/chapters/papers/patternextraction/patternextraction.tex
+((lp42
+V/Users/sovi/Google Drive/phd/thesis/chapters/papers/dynamiccompression/arrayexample3.tex
 p43
-aV/Users/sovi/Google Drive/phd/thesis/chapters/papers/compressedrangesearching/compressedrangesearching.tex
+aV/Users/sovi/Google Drive/phd/thesis/./prefrontmatter/titlepage.tex
 p44
 aV/Users/sovi/Google Drive/phd/thesis/./chapters/Introduction.tex
 p45
-aV/Users/sovi/Google Drive/phd/thesis/chapters/Conclusion.tex
-p46
-aV/Users/sovi/Google Drive/phd/thesis/./preamble/papers.tex
-p47
 aV/Users/sovi/Google Drive/phd/thesis/chapters/papers/motiondetection/motiondetection.tex
-p48
-aV/Users/sovi/Google Drive/phd/thesis/chapters/Introduction.tex
-p49
-aV/Users/sovi/Google Drive/phd/thesis/chapters/papers/fingerprints/fingerprints.tex
-p50
-aV/Users/sovi/Google Drive/phd/thesis/appendices/AnAppendix.tex
-p51
+p46
+aV/Users/sovi/Google Drive/phd/thesis/./chapters/papers/dynamiccompression/arrayexample1.tex
+p47
 aV/Users/sovi/Google Drive/phd/thesis/chapters/papers/coloredrangecounting/coloredrangecounting.tex
+p48
+aV/Users/sovi/Google Drive/phd/thesis/chapters/papers/dynamiccompression/arrayexample2.tex
+p49
+aV/Users/sovi/Google Drive/phd/thesis/chapters/papers/dynamiccompression/dynamiccompression.tex
+p50
+aV/Users/sovi/Google Drive/phd/thesis/./chapters/papers/coloredrangecounting/coloredrangecounting.tex
+p51
+aV/Users/sovi/Google Drive/phd/thesis/./chapters/papers/fingerprints/fingerprints.tex
 p52
-aV/Users/sovi/Google Drive/phd/thesis/./Thesis.tex
+aV/Users/sovi/Google Drive/phd/thesis/chapters/papers/compressedrangesearching/compressedrangesearching.tex
 p53
-aVThesis.tex
+aV/Users/sovi/Google Drive/phd/thesis/chapters/papers/dynamiccompression/substringconcat.tex
 p54
-atp55
-Rp56
-sVsynctex
+aV/Users/sovi/Google Drive/phd/thesis/chapters/papers/dynamiccompression/extensions.tex
+p55
+aV/Users/sovi/Google Drive/phd/thesis/./chapters/papers/dynamiccompression/arrayexample3.tex
+p56
+aV/Users/sovi/Google Drive/phd/thesis/chapters/papers/patternextraction/patternextraction.tex
 p57
+aV/Users/sovi/Google Drive/phd/thesis/./chapters/papers/patternextraction/patternextraction.tex
+p58
+aV/Users/sovi/Google Drive/phd/thesis/chapters/Contributions.tex
+p59
+aS'Thesis.tex'
+p60
+aV/Users/sovi/Google Drive/phd/thesis/chapters/papers/annotated/annotated.tex
+p61
+aV/Users/sovi/Google Drive/phd/thesis/./chapters/papers/annotated/annotated.tex
+p62
+aV/Users/sovi/Google Drive/phd/thesis/./chapters/papers/dynamiccompression/arrayexample2.tex
+p63
+aV/Users/sovi/Google Drive/phd/thesis/./preamble/papers.tex
+p64
+aV/Users/sovi/Google Drive/phd/thesis/./chapters/papers/motiondetection/motiondetection.tex
+p65
+aV/Users/sovi/Google Drive/phd/thesis/./chapters/Contributions.tex
+p66
+aV/Users/sovi/Google Drive/phd/thesis/chapters/Introduction.tex
+p67
+aV/Users/sovi/Google Drive/phd/thesis/./chapters/papers/compressedrangesearching/compressedrangesearching.tex
+p68
+aV/Users/sovi/Google Drive/phd/thesis/chapters/papers/fingerprints/fingerprints.tex
+p69
+aV/Users/sovi/Google Drive/phd/thesis/./chapters/papers/dynamiccompression/dynamiccompression.tex
+p70
+atp71
+Rp72
+sVsynctex
+p73
 I01
 s.

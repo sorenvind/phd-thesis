@@ -1,5 +1,5 @@
 %!TEX root = ../../../Thesis.tex
-\chapter{Compressed Range Searching}
+\chapter{Compressed Data Structures for Range Searching}\label{chp:compressedrangesearching}
 
 \begin{infosection}
     \begin{authors}
@@ -33,14 +33,14 @@ First, we present a simple technique to effectively compress geometric repetitio
 Secondly, we present a compression scheme that efficiently identifies translated geometric repetitions. Our compression scheme guarantees that if point set $P_1$ is a translated geometric repetition of point set $P_2$ and $P_1$ and $P_2$ are at least a factor $2$ times their diameter away from other points, the repetition is identified. This compression scheme is based on a hierarchical clustering of the point set that produces a tree of height $O(\log D)$, where $D$ is the diameter of the input point set. Combined with our first result we immediately obtain a compressed representation that supports range searching. 
 
 
-\subsection{Related Work} 
+\subsection*{Related Work} 
 Several succinct data structures and entropy-based compressed data structures for range searching have recently been proposed, see e.g.,~\cite{makinen2007rank, bose2009succinct, barbay2010compact, farzan2014entropy}. While these significantly improve the space of the classic range searching data structure, they all require at least a $\Omega(N)$ \emph{bits} to encode $N$ points. In contrast, our construction can achieve exponential compression for highly compressible point sets (i.e. where there is a lot of geometric repetitions). 
 
 A number of papers have considered the problem of compactly representing web graphs and tertiary relations~\cite{brisaboa2009k2, brisaboaainterleaved, de2013compact}. They consider how to efficiently represent a binary (or tertiary) quad tree by encoding it as bitstrings. That is, their approach may be considered compact storage of a (sparse) adjacency matrix for a graph. The approach allows compression of quadrants of the quad tree that only contain zeros or ones. However, it does not exploit the possibly high degree of geometric repetition in such adjacency matrices (and any quadrant with different values cannot be compressed).
 
 To the best of our knowledge, the existence of geometric repetitions in the point sets has not been exploited in previous solutions for neither compression nor range searching. Thus, we give a new perspective on those problems when repetitions are present. 
 
-\subsection{Outline}
+\subsection*{Outline}
 We first present a general model for range searching, which we call a \emph{canonical range searching data structure}, in Section~\ref{sec:canrsds}. We show how to compress such data structures efficiently and how to support range searching on the compressed data structure in the same asymptotic time as on the uncompressed data structure in Section~\ref{sec:compcrs}. Finally, we present a \emph{similarity clustering} algorithm in Section~\ref{sec:clustering}, guaranteeing that geometric repetitions are clustered such that the resulting canonical range searching data structure is compressible.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -63,7 +63,7 @@ The two-dimensional R tree is a canonical range searching data structure since a
 	}\quad\quad\quad\quad\subfloat[R tree.]{
 		\includegraphics[width=0.4\textwidth]{chapters/papers/compressedrangesearching/rtree-comp}
 	}
-	\caption{A two-dimensional point set with R tree ranges overlaid, and the resulting R tree. Blue ranges are children of the root in the tree, red ranges are at the second level. A vertex label ($a$ - $h$) in the R tree identifies the range. We have omitted the precise coordinates for the ranges, but e.g. range $a$ spans the range $[13, 22] \times [46, 54]$. \label{fig:r-rep}}
+	\caption{A two-dimensional point set with R tree ranges overlaid, and the resulting R tree. Blue ranges are children of the root in the tree, red ranges are at the second level. A vertex label ($a$ - $h$) in the R tree identifies the range. We have omitted the precise coordinates for the ranges, but e.g. range $a$ spans the range $[13, 22] \times [46, 54]$ \label{fig:r-rep}}
 	\end{center}
 \end{figure} 
 
@@ -86,7 +86,7 @@ Given any canonical range searching data structure $T$, we can construct the cor
 \begin{proof}
 First, note that a relative tree allows each vertex to store extent vectors and labels. Thus, to construct a relative tree $R$ representing the canonical range searching data structure $T$, we can simply copy the entire tree including extent vectors and vertex labels. So we only need to show how to store offset vectors in $R$ to ensure that the ranges for each pair of copied vertices are equal.
 
-Consider a vertex $v \in T$ and its copy $v_R \in R$ and their parents $w \in T$ and $w_R \in R$. Since the extent vector and vertex labels are copied, $\rangespan(\range{v}) = \rangespan(\range{v_R})$ and $\vlabel(v) = \vlabel(v_R)$. The offset vector for the $(w_R, v_R)$ edge is $\offset(w_R, v_R) = \position(\range{v}) - \position(\range{w})$. We assume the offset for the root is the 0-vector. Observe that summing up all the offset vectors on $\rootpath(v)$ is exactly $\position(\range{v})$, and so $\position(\range{v_R}) = \position(\range{v})$.
+Consider a vertex $v \in T$ and its copy $v_R \in R$ and their parents $w \in T$ and $w_R \in R$. Since the extent vector and vertex labels are copied, $\rangespan(\range{v}) = \rangespan(\range{v_R})$ and $\vlabel(v) = \vlabel(v_R)$. The offset vector for edge $(w_R, v_R)$ is $\offset(w_R, v_R) = \position(\range{v}) - \position(\range{w})$. We assume the offset for the root is the 0-vector. Observe that summing up all the offset vectors on $\rootpath(v)$ is exactly $\position(\range{v})$, and so $\position(\range{v_R}) = \position(\range{v})$.
 
 Since each vertex and edge in $T$ is only visited a constant number of times during the mapping, the construction time for $R$ is $O(N)$. The total number of labels stored by $R$ is asymptotically equal to the number of labels stored by $T$. Finally, the degrees of vertices does not change from $T$ to $R$. Thus, if $v \in T$ is mapped to $v_R \in R$ and $v$ requires $s$ space, $v_R$ requires $\Theta(s)$ space.
 \end{proof}
@@ -100,7 +100,7 @@ The compressed canonical data structure is the minimal DAG $G$ of the relative t
 	}\quad\quad\quad\quad\subfloat[Minimal DAG.]{
 		\makebox[0.4\textwidth]{\includegraphics[height=0.3\textwidth]{chapters/papers/compressedrangesearching/rtree-dag}}
 	}
-	\caption{The relative tree obtained from the R tree from Figure \ref{fig:r-rep} and the resulting minimal DAG $G$ generating the tree. Only coordinates of the lower left corner of the ranges in the R tree are shown. In the relative tree, the absolute coordinates for the points are only shown for illustration, in order to see that the relative coordinates sum to the absolute coordinate along the root-to-leaf paths. \label{fig:r-compression}}
+	\caption{The relative tree obtained from the R tree from Figure \ref{fig:r-rep} and the resulting minimal DAG $G$ generating the tree. Only coordinates of the lower left corner of the ranges in the R tree are shown. In the relative tree, the absolute coordinates for the points are only shown for illustration, in order to see that the relative coordinates sum to the absolute coordinate along the root-to-leaf paths \label{fig:r-compression}}
 	\end{center}
 \end{figure}
 
@@ -134,7 +134,7 @@ We now introduce the \emph{similarity clustering} algorithm. Even if there are s
 \paragraph{Points and point sets}
 We consider points in $k$-dimensional space, assuming $k$ is constant. The distance between two points $p_1$ and $p_2$, denoted $d(p_1, p_2)$, is their euclidian distance. We denote by $P = \{ p_1, p_2, \ldots, p_r \}$ a point set containing $r$ points. We say that two point sets $P_1, P_2$ are \emph{equivalent} if $P_2$ can be obtained from $P_1$ by translating all points with a constant $k$-dimensional offset vector.
 
-The minimum distance between a point $p_q$ and a point set $P$, $\mindist(P, p_q) = \min_{p \in P} d(p, p_q)$, is the distance between $p_q$ and the closest point in $P$. The minimum distance between two point sets $P_1, P_2$ is the distance between the two closest points in the two sets, $\mindist(P_1, P_2) = \min_{p_1 \in P_1, p_2 \in P_2} d(p_1, p_2)$. These definitions extend to maximum distance in the natural way, denoted $\maxdist(P, p_q)$ and $\maxdist(P_1, P_2)$. The diameter of a point set $P$ is the maximum distance between any two points in $P$, $\diameter(P) = \max_{p_1, p_2 \in P} d(p_1, p_2) = \maxdist(P, P)$.
+The minimum distance between a point $p_q$ and a point set $P$ is the distance between $p_q$ and the closest point in $P$, $\mindist(P, p_q) = \min_{p \in P} d(p, p_q)$. The minimum distance between two point sets $P_1, P_2$ is the distance between the two closest points in the two sets, $\mindist(P_1, P_2) = \min_{p_1 \in P_1, p_2 \in P_2} d(p_1, p_2)$. These definitions extend to maximum distance in the natural way, denoted $\maxdist(P, p_q)$ and $\maxdist(P_1, P_2)$. The diameter of a point set $P$ is the maximum distance between any two points in $P$, $\diameter(P) = \max_{p_1, p_2 \in P} d(p_1, p_2) = \maxdist(P, P)$.
 
 A point set $P_1 \subset P$ is \emph{lonely} if the distance from $P_1$ to any other point is more than twice $\diameter(P_1)$, i.e. $\mindist(P_1, P \setminus P_1) > 2 \times \diameter(P_1)$.
 
