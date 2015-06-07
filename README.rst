@@ -1,6 +1,12 @@
 =================================
-Laursen's XeLaTeX thesis template
+Phd Thesis
 =================================
+
+This is the source for my PhD thesis. It contains all required files. It is built on top of `laursen's thesis template <https://bitbucket.org/_laursen/laursens-xelatex-thesis-template/>`. The changes from the template are mostly significant in chapter headings (and the actual content :)).
+
+
+README from the origin template follows.
+========================================
 
 This is an alternative to the "LUKE'S PHD THESIS TEMPLATE 1.2" used as standard layout for the
 thesis written at DTU Compute.
